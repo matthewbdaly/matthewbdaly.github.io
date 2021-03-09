@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Layout from "../components/layout"
+import Layout from "../src/components/layout"
 
 const PageTemplate = ({ data, pageContext, location }) => {
   const page = data.mdx

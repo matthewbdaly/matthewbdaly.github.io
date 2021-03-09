@@ -33,8 +33,9 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          post: require.resolve(`./src/templates/post.js`),
-          default: require.resolve(`./src/templates/page.js`),
+          post: require.resolve(`./templates/post.js`),
+          page: require.resolve(`./templates/page.js`),
+          default: require.resolve(`./templates/page.js`),
         },
       },
     },
@@ -59,8 +60,16 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        name: "content",
+        path: "./src/content/pages/",
+      },
+      __key: "content",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "posts",
-        path: "./src/posts/",
+        path: "./src/content/posts/",
       },
       __key: "posts",
     },
@@ -72,7 +81,7 @@ module.exports = {
           {
             name: 'path',
             callback: (node) => {
-              if (node.fileAbsolutePath.indexOf('posts') > -1) {
+              if (node.fileAbsolutePath.indexOf('content/posts') > -1) {
                 return node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
               } else {
                 return node.fileAbsolutePath.replace(/([\w*-]+)\.md$/, '/$1/')
