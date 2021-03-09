@@ -32,6 +32,10 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        defaultLayouts: {
+          post: require.resolve(`./src/templates/post.js`),
+          default: require.resolve(`./src/templates/page.js`),
+        },
       },
     },
     "gatsby-plugin-sharp",
@@ -79,6 +83,15 @@ module.exports = {
             name: 'date',
             callback: (node) => {
               return node.fileAbsolutePath.replace(/.+\/(\d+-\d+-\d+)-[\w*-]+\.md$/, '$1')
+            }
+          },
+          {
+            name: 'layout',
+            callback: (node) => {
+              if (typeof node.frontmatter.layout === "undefined") {
+                return "page";
+              }
+              return node.frontmatter.layout
             }
           }
         ]

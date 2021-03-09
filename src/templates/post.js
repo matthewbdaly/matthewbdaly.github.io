@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
 
@@ -10,10 +11,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.excerpt}
-      />
       <article>
         <header>
           <h1
@@ -25,11 +22,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.frontmatter.date}
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section>
+          <MDXRenderer>{post.html}</MDXRenderer>
+        </section>
         <hr
         />
         <footer>
-          <Bio />
         </footer>
       </article>
 
@@ -65,7 +63,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    mdx(fields: { path: { eq: $path } }) {
+    mdx(fields: { path: { eq: $path }, layout: {ne: "page"}}) {
       id
       excerpt(pruneLength: 160)
       html
@@ -75,6 +73,7 @@ export const pageQuery = graphql`
       fields {
         path
         date(formatString: "MMMM DD, YYYY")
+        layout
       }
     }
   }
