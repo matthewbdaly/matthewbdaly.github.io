@@ -4,7 +4,7 @@ exports.onCreateNode = (
 ) => {
   const { type } = node.internal
 
-  if (type !== ('Mdx')) return
+  if (type !== ('Mdx') && type !== ('allMdx')) return
 
   options.extract.forEach(({ name, callback }) => {
     const value = callback(node);
