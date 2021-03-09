@@ -42,7 +42,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    mdx(fields: { path: { eq: $path }, layout: {ne: "page"}}) {
+    mdx(fields: { path: { eq: $path }, layout: {eq: "page"}}) {
       id
       html
       frontmatter {
