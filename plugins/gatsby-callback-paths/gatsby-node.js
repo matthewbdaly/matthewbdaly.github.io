@@ -4,7 +4,7 @@ exports.onCreateNode = (
 ) => {
   const { type } = node.internal
 
-  if (type !== ('MarkdownRemark')) return
+  if (type !== ('Mdx')) return
 
   options.extract.forEach(({ name, callback }) => {
     const value = callback(node);

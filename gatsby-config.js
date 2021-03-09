@@ -38,5 +38,28 @@ module.exports = {
       },
       __key: "pages",
     },
+    {
+      resolve: 'gatsby-callback-paths',
+      options: {
+        matchNodeType: 'Mdx',
+        extract: [
+          {
+            name: 'path',
+            callback: (node) => {
+              if (node.fileAbsolutePath.indexOf('pages/blog') > -1) {
+                return node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
+              }
+              return node.fileAbsolutePath.replace(/.+\/pages\/([\w*-]+)\.md$/, '/$1')
+            }
+          },
+          {
+            name: 'date',
+            callback: (node) => {
+              return node.fileAbsolutePath.replace(/.+\/(\d+-\d+-\d+)-[\w*-]+\.md$/, '$1')
+            }
+          }
+        ]
+      }
+    },
   ],
 };
