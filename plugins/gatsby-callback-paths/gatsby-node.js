@@ -2,15 +2,13 @@ exports.onCreateNode = (
   { actions, node },
   options
 ) => {
-  const { type } = node.internal
-
-  if (type !== ('Mdx') && type !== ('allMdx')) return
+  const { createNodeField } = actions
 
   options.extract.forEach(({ name, callback }) => {
     const value = callback(node);
 
-    if (value !== null && value !== node.fileAbsolutePath) {
-      actions.createNodeField({
+    if (value !== null && value !== node.fileAbsolutePath && options.matchNodeType.includes(node.internal.type)) {
+      createNodeField({
         node,
         name,
         value,
