@@ -23,7 +23,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <section>
-          <MDXRenderer>{post.html}</MDXRenderer>
+          <MDXRenderer>{post.body}</MDXRenderer>
         </section>
         <hr
         />
