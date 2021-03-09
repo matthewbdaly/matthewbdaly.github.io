@@ -1,9 +1,9 @@
 ---
+layout: page
 title: "About me"
 comments: false
 sharing: true
 footer: true
-path: /about
 ---
 
 I'm a web and mobile app developer based in Norfolk in the UK.

@@ -53,8 +53,9 @@ module.exports = {
             callback: (node) => {
               if (node.fileAbsolutePath.indexOf('pages/blog') > -1) {
                 return node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
+              } else {
+                return node.fileAbsolutePath.replace(/([\w*-]+)\.md$/, '/$1/')
               }
-              return node.fileAbsolutePath.replace(/.+\/pages\/([\w*-]+)\.md$/, '/$1')
             }
           },
           {

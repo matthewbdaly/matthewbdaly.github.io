@@ -1,6 +1,6 @@
 ---
 title: Uses
-path: /uses
+layout: page
 ---
 ## Editor
 
