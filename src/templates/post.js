@@ -73,7 +73,6 @@ export const pageQuery = graphql`
       fields {
         path
         date(formatString: "MMMM DD, YYYY")
-        layout
       }
     }
   }
