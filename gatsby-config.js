@@ -53,6 +53,14 @@ module.exports = {
       __key: "pages",
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "posts",
+        path: "./src/posts/",
+      },
+      __key: "posts",
+    },
+    {
       resolve: 'gatsby-callback-paths',
       options: {
         matchNodeType: 'Mdx',
@@ -60,7 +68,7 @@ module.exports = {
           {
             name: 'path',
             callback: (node) => {
-              if (node.fileAbsolutePath.indexOf('pages/blog') > -1) {
+              if (node.fileAbsolutePath.indexOf('posts') > -1) {
                 return node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
               } else {
                 return node.fileAbsolutePath.replace(/([\w*-]+)\.md$/, '/$1/')
