@@ -4,7 +4,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+const PostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
@@ -54,9 +54,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   )
 }
 
-export default BlogPostTemplate
+export default PostTemplate
 
-export const pageQuery = graphql`
+export const postQuery = graphql`
   query BlogPostByPath($path: String!) {
     site {
       siteMetadata {
