@@ -1,6 +1,7 @@
 ---
 title: "New laptop"
 date: 2015-07-21 21:15:52 +0100
+layout: post
 categories:
 - ubuntu
 - hardware
