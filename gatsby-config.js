@@ -76,7 +76,7 @@ module.exports = {
     {
       resolve: 'gatsby-callback-paths',
       options: {
-        matchNodeType: 'Mdx',
+        matchNodeType: ['Mdx', 'allMdx'],
         extract: [
           {
             name: 'path',
