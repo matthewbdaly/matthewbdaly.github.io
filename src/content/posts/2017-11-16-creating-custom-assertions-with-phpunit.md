@@ -1,6 +1,7 @@
 ---
 title: "Creating custom assertions with PHPUnit"
 date: 2017-11-16 15:15:50 +0000
+layout: post
 categories:
 - php
 - tdd

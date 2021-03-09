@@ -1,6 +1,7 @@
 ---
 title: "Getting django-behave and Celery to work together"
 date: 2015-06-17 20:34:08 +0100
+layout: post
 categories:
 - python
 - django

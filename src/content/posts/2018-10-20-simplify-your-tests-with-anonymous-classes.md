@@ -1,6 +1,7 @@
 ---
 title: "Simplify your tests with anonymous classes"
 date: 2018-10-20 14:48:05 +0100
+layout: post
 categories:
 - php
 comments: true

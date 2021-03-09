@@ -1,6 +1,7 @@
 ---
 title: "Simple fuzzy search with Laravel and PostgreSQL"
 date: 2017-10-03 23:56:11 +0100
+layout: post
 categories:
 - laravel
 - postgresql

@@ -1,6 +1,7 @@
 ---
 title: "Deploying new versions of a Laravel app with Fabric"
 date: 2016-09-05 22:22:16 +0100
+layout: post
 categories:
 - php
 - python

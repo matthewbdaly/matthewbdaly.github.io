@@ -1,6 +1,7 @@
 ---
 title: "Exploring the HStoreField in Django 1.8"
 date: 2015-08-01 18:26:54 +0100
+layout: post
 categories: 
 - python
 - django

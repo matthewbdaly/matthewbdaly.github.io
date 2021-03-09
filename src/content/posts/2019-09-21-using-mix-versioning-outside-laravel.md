@@ -1,6 +1,7 @@
 ---
 title: "Using Mix versioning outside Laravel"
 date: 2019-09-21 11:30:50 +0100
+layout: post
 categories:
 - php
 - laravel

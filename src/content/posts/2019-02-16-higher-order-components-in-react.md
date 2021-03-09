@@ -1,6 +1,7 @@
 ---
 title: "Higher-order components in React"
 date: 2019-02-16 19:00:30 +0000
+layout: post
 categories:
 - javascript
 - react

@@ -1,6 +1,7 @@
 ---
 title: "An Azure Filesystem integration for Laravel"
 date: 2017-10-29 19:31:34 +0000
+layout: post
 categories:
 - azure
 - php

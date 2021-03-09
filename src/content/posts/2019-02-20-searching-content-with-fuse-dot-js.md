@@ -1,6 +1,7 @@
 ---
 title: "Searching content with Fuse.js"
 date: 2019-02-20 17:25:58 +0000
+layout: post
 categories:
 - javascript
 - search

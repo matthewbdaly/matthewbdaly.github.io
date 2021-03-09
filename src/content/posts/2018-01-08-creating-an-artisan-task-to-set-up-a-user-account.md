@@ -1,6 +1,7 @@
 ---
 title: "Creating an Artisan task to set up a user account"
 date: 2018-01-08 12:52:39 +0000
+layout: post
 categories:
 - php
 - laravel

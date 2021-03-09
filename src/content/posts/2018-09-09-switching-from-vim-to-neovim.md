@@ -1,6 +1,7 @@
 ---
 title: "Switching from Vim to Neovim"
 date: 2018-09-09 13:40:35 +0100
+layout: post
 categories:
 - vim
 - neovim

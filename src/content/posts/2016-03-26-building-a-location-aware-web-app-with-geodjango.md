@@ -1,6 +1,7 @@
 ---
 title: "Building a location aware web app with GeoDjango"
 date: 2016-03-26 21:30:29 +0000
+layout: post
 categories:
 - python
 - django

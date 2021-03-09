@@ -1,6 +1,7 @@
 ---
 title: "Writing golden master tests for Laravel applications"
 date: 2019-05-14 12:15:17 +0100
+layout: post
 categories:
 - php
 - laravel

@@ -1,6 +1,7 @@
 ---
 title: "Learning more about React.js and Flux"
 date: 2015-11-18 19:52:48 +0000
+layout: post
 categories:
 - react.js
 - flux

@@ -1,6 +1,7 @@
 ---
 title: "You don't need that module package"
 date: 2019-01-03 23:55:49 +0000
+layout: post
 categories:
 - php
 - composer

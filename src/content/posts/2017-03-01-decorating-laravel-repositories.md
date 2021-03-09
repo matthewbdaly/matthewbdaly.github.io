@@ -1,6 +1,7 @@
 ---
 title: "Decorating Laravel repositories"
 date: 2017-03-01 23:16:57 +0000
+layout: post
 categories:
 - php
 - laravel

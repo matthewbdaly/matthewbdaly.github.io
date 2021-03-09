@@ -1,6 +1,7 @@
 ---
 title: "Building a postcode lookup client with HTTPlug and PHPSpec"
 date: 2017-11-28 11:40:39 +0000
+layout: post
 categories:
 - php
 - tdd

@@ -1,6 +1,7 @@
 ---
 title: "Decorating service classes"
 date: 2018-12-06 18:34:16 +0000
+layout: post
 categories:
 - php
 comments: true

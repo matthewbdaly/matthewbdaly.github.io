@@ -1,6 +1,7 @@
 ---
 title: "Using phpiredis with Laravel"
 date: 2017-10-20 22:55:26 +0100
+layout: post
 categories:
 - php
 - laravel

@@ -1,6 +1,7 @@
 ---
 title: "Building a real-time Twitter stream with Node.js, React.js and Redis"
 date: 2015-09-28 20:00:55 +0100
+layout: post
 categories:
 - node.js
 - react.js

@@ -1,6 +1,7 @@
 ---
 title: "Creating an Azure storage adapter for Laravel"
 date: 2016-10-24 00:25:27 +0100
+layout: post
 categories:
 - php
 - laravel

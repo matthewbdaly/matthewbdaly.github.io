@@ -1,6 +1,7 @@
 ---
 title: "Flow typed AJAX responses with React Hooks"
 date: 2020-06-13 13:50:41 +0100
+layout: post
 categories:
 - javascript
 - react

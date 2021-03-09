@@ -1,6 +1,7 @@
 ---
 title: "More tricks for speeding up your Laravel test suite"
 date: 2018-01-07 16:32:03 +0000
+layout: post
 categories:
 - php
 - laravel

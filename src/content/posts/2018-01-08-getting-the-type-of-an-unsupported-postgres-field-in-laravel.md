@@ -1,6 +1,7 @@
 ---
 title: "Getting the type of an unsupported Postgres field in Laravel"
 date: 2018-01-08 14:00:15 +0000
+layout: post
 categories:
 - php
 - laravel

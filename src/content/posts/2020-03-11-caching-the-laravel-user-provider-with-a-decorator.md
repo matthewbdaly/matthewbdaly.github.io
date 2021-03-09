@@ -1,6 +1,7 @@
 ---
 title: "Caching the Laravel user provider with a decorator"
 date: 2020-03-11 21:20:14 +0000
+layout: post
 categories:
 - php
 - laravel

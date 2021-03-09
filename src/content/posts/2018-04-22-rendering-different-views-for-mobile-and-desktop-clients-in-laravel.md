@@ -1,6 +1,7 @@
 ---
 title: "Rendering different views for mobile and desktop clients in Laravel"
 date: 2018-04-22 22:50:10 +0000
+layout: post
 categories:
 - php
 - laravel

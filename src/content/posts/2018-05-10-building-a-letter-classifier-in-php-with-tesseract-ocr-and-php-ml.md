@@ -1,6 +1,7 @@
 ---
 title: "Building a letter classifier in PHP with Tesseract OCR and PHP ML"
 date: 2018-05-10 22:50:08 +0000
+layout: post
 categories:
 - php
 - machine-learning

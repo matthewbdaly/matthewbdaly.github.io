@@ -1,6 +1,7 @@
 ---
 title: "Check your code base is PHP 7 ready with PHP Compatibility"
 date: 2018-02-25 17:22:34 +0000
+layout: post
 categories:
 - php
 comments: true

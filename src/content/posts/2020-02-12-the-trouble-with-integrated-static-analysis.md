@@ -1,6 +1,7 @@
 ---
 title: "The trouble with integrated static analysis"
 date: 2020-02-12 22:40:15 +0000
+layout: post
 categories:
 - php
 comments: true

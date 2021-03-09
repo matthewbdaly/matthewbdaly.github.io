@@ -1,6 +1,7 @@
 ---
 title: "Using Lando as an alternative to Vagrant"
 date: 2018-02-04 00:12:16 +0000
+layout: post
 categories:
 - docker
 - virtualisation

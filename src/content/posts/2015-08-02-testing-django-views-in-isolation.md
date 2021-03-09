@@ -1,6 +1,7 @@
 ---
 title: "Testing Django views in isolation"
 date: 2015-08-02 17:58:45 +0100
+layout: post
 categories: 
 - python
 - django

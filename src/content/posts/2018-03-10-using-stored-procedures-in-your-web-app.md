@@ -1,6 +1,7 @@
 ---
 title: "Using stored procedures in your web app"
 date: 2018-03-10 15:10:16 +0000
+layout: post
 categories:
 - sql
 comments: true

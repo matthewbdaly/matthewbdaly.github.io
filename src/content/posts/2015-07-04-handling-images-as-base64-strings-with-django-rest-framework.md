@@ -1,6 +1,7 @@
 ---
 title: "Handling images as base64 strings with Django REST Framework"
 date: 2015-07-04 13:01:40 +0100
+layout: post
 categories:
 - python
 - django

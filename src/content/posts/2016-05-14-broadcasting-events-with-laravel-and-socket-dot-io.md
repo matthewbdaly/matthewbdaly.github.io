@@ -1,6 +1,7 @@
 ---
 title: "Broadcasting events with Laravel and Socket.io"
 date: 2016-05-14 21:00:00 +0100
+layout: post
 categories:
 - laravel
 - php

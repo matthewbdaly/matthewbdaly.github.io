@@ -1,6 +1,7 @@
 ---
 title: "Extending our Node.js and Redis chat server"
 date: 2015-03-02 23:03:48 +0000
+layout: post
 categories: 
 - node.js
 - redis

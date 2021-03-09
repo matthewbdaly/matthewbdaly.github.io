@@ -1,6 +1,7 @@
 ---
 title: "Setting private properties in tests"
 date: 2019-09-07 20:16:47 +0100
+layout: post
 categories:
 - php
 - tdd

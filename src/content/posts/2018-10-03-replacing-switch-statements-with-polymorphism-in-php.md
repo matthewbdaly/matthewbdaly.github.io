@@ -1,6 +1,7 @@
 ---
 title: "Replacing switch statements with polymorphism in PHP"
 date: 2018-10-03 23:07:33 +0100
+layout: post
 categories:
 - php
 - designpatterns

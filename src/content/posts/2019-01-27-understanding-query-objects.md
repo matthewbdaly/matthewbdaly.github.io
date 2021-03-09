@@ -1,6 +1,7 @@
 ---
 title: "Understanding query objects"
 date: 2019-01-27 23:10:39 +0000
+layout: post
 categories:
 - php
 comments: true

@@ -1,6 +1,7 @@
 ---
 title: "My first Laravel package"
 date: 2017-02-19 15:50:11 +0000
+layout: post
 categories:
 - php
 - laravel

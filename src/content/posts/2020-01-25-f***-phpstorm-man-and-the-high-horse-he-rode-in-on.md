@@ -1,6 +1,7 @@
 ---
 title: "F*** PHPStorm Man and the high horse he rode in on"
 date: 2020-01-25 22:25:17 +0000
+layout: post
 categories:
 - programming
 comments: true

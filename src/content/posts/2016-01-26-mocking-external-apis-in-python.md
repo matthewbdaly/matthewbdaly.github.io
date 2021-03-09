@@ -1,6 +1,7 @@
 ---
 title: "Mocking external APIs in Python"
 date: 2016-01-26 23:40:25 +0000
+layout: post
 categories:
 - python
 - tdd

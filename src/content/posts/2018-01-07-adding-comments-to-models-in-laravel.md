@@ -1,6 +1,7 @@
 ---
 title: "Adding comments to models in Laravel"
 date: 2018-01-07 17:21:50 +0000
+layout: post
 categories:
 - php
 - laravel

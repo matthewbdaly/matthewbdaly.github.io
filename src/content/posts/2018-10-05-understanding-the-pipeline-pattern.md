@@ -1,5 +1,6 @@
 ---
 title: "Understanding the pipeline pattern"
+layout: post
 date: 2018-10-05 19:36:16 +0100
 categories:
 - php

@@ -1,6 +1,7 @@
 ---
 title: "Profiling your Laravel application with Clockwork"
 date: 2017-08-14 12:40:00 +0100
+layout: post
 categories:
 - php
 - laravel

@@ -1,6 +1,7 @@
 ---
 title: "How I deploy Laravel apps"
 date: 2018-01-29 22:00:35 +0000
+layout: post
 categories:
 - php
 - laravel

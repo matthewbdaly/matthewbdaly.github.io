@@ -1,6 +1,7 @@
 ---
 title: "What I want in a PHP CMS"
 date: 2020-09-28 15:50:48 +0100
+layout: post
 categories:
 - php
 - cms

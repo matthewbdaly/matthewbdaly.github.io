@@ -1,6 +1,7 @@
 ---
 title: "Snapshot test your Vue components with Jest"
 date: 2017-06-17 14:12:02 +0100
+layout: post
 categories:
 - vue
 - jest

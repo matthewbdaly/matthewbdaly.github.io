@@ -1,6 +1,7 @@
 ---
 title: "Setting ETags in Laravel 5"
 date: 2015-06-14 21:29:52 +0100
+layout: post
 categories: 
 - php
 - laravel

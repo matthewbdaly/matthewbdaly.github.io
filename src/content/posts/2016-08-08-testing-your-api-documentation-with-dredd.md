@@ -1,6 +1,7 @@
 ---
 title: "Testing your API documentation with Dredd"
 date: 2016-08-08 17:05:00 +0100
+layout: post
 categories:
 - api
 - documentation

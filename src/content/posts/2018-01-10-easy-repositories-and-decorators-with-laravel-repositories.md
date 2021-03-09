@@ -1,6 +1,7 @@
 ---
 title: "Easy repositories and decorators with Laravel Repositories"
 date: 2018-01-10 12:22:44 +0000
+layout: post
 categories:
 - php
 - laravel

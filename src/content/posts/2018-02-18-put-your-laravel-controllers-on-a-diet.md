@@ -1,6 +1,7 @@
 ---
 title: "Put your Laravel controllers on a diet"
 date: 2018-02-18 18:10:10 +0000
+layout: post
 categories:
 - php
 - laravel

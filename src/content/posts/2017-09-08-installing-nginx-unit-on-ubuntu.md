@@ -1,5 +1,6 @@
 ---
 title: "Installing Nginx Unit on Ubuntu"
+layout: post
 date: 2017-09-08 22:05:04 +0100
 categories:
 - php

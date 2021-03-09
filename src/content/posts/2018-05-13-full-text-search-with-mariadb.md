@@ -1,6 +1,7 @@
 ---
 title: "Full-text search with MariaDB"
 date: 2018-05-13 14:55:42 +0100
+layout: post
 categories:
 - mysql
 - mariadb

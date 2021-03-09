@@ -1,6 +1,7 @@
 ---
 title: "Flexible data types with the JSON field"
 date: 2019-10-13 23:10:43 +0100
+layout: post
 categories:
 - php
 - laravel

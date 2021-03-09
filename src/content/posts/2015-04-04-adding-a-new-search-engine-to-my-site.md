@@ -1,6 +1,7 @@
 ---
 title: "Adding a new search engine to my site"
 date: 2015-04-04 01:47:43 +0100
+layout: post
 categories: 
 - grunt
 - yeoman

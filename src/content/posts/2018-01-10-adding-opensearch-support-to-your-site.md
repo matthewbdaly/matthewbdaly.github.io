@@ -1,6 +1,7 @@
 ---
 title: "Adding OpenSearch support to your site"
 date: 2018-01-10 22:07:27 +0000
+layout: post
 categories:
 - search
 comments: true

@@ -1,5 +1,6 @@
 ---
 title: "Creating your own dependency injection container in PHP"
+layout: post
 date: 2019-02-02 21:45:52 +0100
 categories:
 - php

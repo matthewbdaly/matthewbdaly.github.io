@@ -1,6 +1,7 @@
 ---
 title: "How I'm refactoring a Zend 1 legacy project"
 date: 2018-09-24 22:30:46 +0100
+layout: post
 categories:
 - php
 - legacy

@@ -1,6 +1,7 @@
 ---
 title: "Don't use stdClass"
 date: 2020-02-09 10:10:48 +0000
+layout: post
 categories:
 - php
 comments: true

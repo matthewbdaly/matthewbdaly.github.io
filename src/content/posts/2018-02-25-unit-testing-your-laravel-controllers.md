@@ -1,6 +1,7 @@
 ---
 title: "Unit testing your Laravel controllers"
 date: 2018-02-25 15:50:44 +0000
+layout: post
 categories:
 - php
 - laravel

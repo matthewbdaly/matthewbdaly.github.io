@@ -1,6 +1,7 @@
 ---
 title: "A quick and easy Varnish primer"
 date: 2015-09-19 19:42:17 +0100
+layout: post
 categories:
 - varnish
 - performance

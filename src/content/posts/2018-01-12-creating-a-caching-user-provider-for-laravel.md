@@ -1,6 +1,7 @@
 ---
 title: "Creating a caching user provider for Laravel"
 date: 2018-01-12 13:16:51 +0000
+layout: post
 categories:
 - php
 - laravel

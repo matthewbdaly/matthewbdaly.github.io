@@ -1,6 +1,7 @@
 ---
 title: "Building a Phonegap App with Laravel and Angular - Part 4"
 date: 2016-11-13 16:15:00 +0000
+layout: post
 categories:
 - php
 - laravel

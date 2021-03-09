@@ -1,6 +1,7 @@
 ---
 title: "Catching debug statements in PHP"
 date: 2017-11-06 12:00:18 +0000
+layout: post
 categories:
 - php
 - codesniffer

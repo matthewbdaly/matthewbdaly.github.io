@@ -1,6 +1,7 @@
 ---
 title: "Run your tests locally with Sismo"
 date: 2017-08-19 15:40:07 +0100
+layout: post
 categories:
 - php
 - tdd

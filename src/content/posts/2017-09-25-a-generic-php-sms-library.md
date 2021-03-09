@@ -1,5 +1,6 @@
 ---
 title: "A generic PHP SMS library"
+layout: post
 date: 2017-09-25 22:18:18 +0100
 categories:
 - php

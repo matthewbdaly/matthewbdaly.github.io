@@ -1,6 +1,7 @@
 ---
 title: "Using UUIDs as primary keys with Laravel and PostgreSQL"
 date: 2017-12-29 18:01:04 +0000
+layout: post
 categories:
 - php
 - laravel

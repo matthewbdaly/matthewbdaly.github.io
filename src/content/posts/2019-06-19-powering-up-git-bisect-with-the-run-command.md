@@ -1,6 +1,7 @@
 ---
 title: "Powering up git bisect with the run command"
 date: 2019-06-19 22:00:27 +0100
+layout: post
 categories:
 - git
 comments: true

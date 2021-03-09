@@ -1,5 +1,6 @@
 ---
 title: "Switching to my own static site generator"
+layout: post
 date: 2015-02-15 18:11:22 +0000
 categories: 
 - grunt

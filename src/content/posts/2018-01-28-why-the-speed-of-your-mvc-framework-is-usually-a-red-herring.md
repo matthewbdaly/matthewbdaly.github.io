@@ -1,6 +1,7 @@
 ---
 title: "Why the speed of your MVC framework is usually a red herring"
 date: 2018-01-28 20:20:03 +0000
+layout: post
 categories:
 - performance
 comments: true

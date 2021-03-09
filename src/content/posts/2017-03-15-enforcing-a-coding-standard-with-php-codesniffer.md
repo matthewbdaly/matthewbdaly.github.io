@@ -1,6 +1,7 @@
 ---
 title: "Enforcing a coding standard with PHP CodeSniffer"
 date: 2017-03-15 21:37:11 +0000
+layout: post
 categories:
 - php
 comments: true

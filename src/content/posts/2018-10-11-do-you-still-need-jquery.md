@@ -1,6 +1,7 @@
 ---
 title: "Do you still need jQuery?"
 date: 2018-10-11 09:21:58 +0100
+layout: post
 categories:
 - javascript
 - jquery

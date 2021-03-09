@@ -1,6 +1,7 @@
 ---
 title: "Mutation testing with Infection"
 date: 2018-09-13 20:10:09 +0100
+layout: post
 categories:
 - php
 - testing

@@ -1,6 +1,7 @@
 ---
 title: "My experience using PHP 7 in production"
 date: 2016-03-18 19:42:37 +0000
+layout: post
 categories:
 - php
 - php7

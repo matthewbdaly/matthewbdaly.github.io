@@ -1,6 +1,7 @@
 ---
 title: "An approach to writing golden master tests for PHP web applications"
 date: 2018-10-08 11:20:53 +0100
+layout: post
 categories:
 - php
 - testing

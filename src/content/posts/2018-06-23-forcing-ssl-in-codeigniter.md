@@ -1,6 +1,7 @@
 ---
 title: "Forcing SSL in CodeIgniter"
 date: 2018-06-23 13:03:28 +0100
+layout: post
 categories:
 - php
 - codeigniter

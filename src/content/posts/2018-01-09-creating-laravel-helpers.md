@@ -1,6 +1,7 @@
 ---
 title: "Creating Laravel Helpers"
 date: 2018-01-09 17:26:26 +0000
+layout: post
 categories:
 - php
 - laravel

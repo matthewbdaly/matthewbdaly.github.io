@@ -1,6 +1,7 @@
 ---
 title: "Easy static asset versioning in PHP"
 date: 2016-11-26 21:40:39 +0000
+layout: post
 categories:
 - php
 - static

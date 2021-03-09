@@ -1,6 +1,7 @@
 ---
 title: "Lightweight Laravel - deconstructing a full stack framework"
 date: 2020-12-30 17:00:00 +0000
+layout: post
 categories:
 - php
 - laravel

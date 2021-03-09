@@ -1,6 +1,7 @@
 ---
 title: "Making internal requests with Laravel"
 date: 2017-09-02 14:45:27 +0100
+layout: post
 categories:
 - php
 - laravel

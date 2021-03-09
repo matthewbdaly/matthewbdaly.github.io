@@ -1,6 +1,7 @@
 ---
 title: "Writing faster Laravel tests"
 date: 2016-04-04 20:55:15 +0100
+layout: post
 categories:
 - php
 - laravel

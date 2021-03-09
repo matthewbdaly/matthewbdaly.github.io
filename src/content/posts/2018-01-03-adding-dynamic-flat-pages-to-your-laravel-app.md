@@ -1,6 +1,7 @@
 ---
 title: "Adding dynamic flat pages to your Laravel app"
 date: 2018-01-03 11:49:11 +0000
+layout: post
 categories:
 - php
 - laravel

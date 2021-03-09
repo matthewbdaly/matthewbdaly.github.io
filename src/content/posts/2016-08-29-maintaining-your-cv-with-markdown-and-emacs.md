@@ -1,6 +1,7 @@
 ---
 title: "Maintaining your CV with Markdown and Emacs"
 date: 2016-08-29 16:40:08 +0100
+layout: post
 categories:
 - markdown
 - emacs

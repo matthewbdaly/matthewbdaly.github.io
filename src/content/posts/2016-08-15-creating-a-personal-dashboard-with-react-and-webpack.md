@@ -1,6 +1,7 @@
 ---
 title: "Creating a personal dashboard with React and Webpack"
 date: 2016-08-15 23:18:00 +0100
+layout: post
 categories:
 - javascript
 - react

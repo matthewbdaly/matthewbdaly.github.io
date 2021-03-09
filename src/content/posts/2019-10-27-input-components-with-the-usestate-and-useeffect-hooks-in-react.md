@@ -1,6 +1,7 @@
 ---
 title: "Input components with the useState and useEffect hooks in React"
 date: 2019-10-27 21:20:00 +0000
+layout: post
 categories:
 - javascript
 - react

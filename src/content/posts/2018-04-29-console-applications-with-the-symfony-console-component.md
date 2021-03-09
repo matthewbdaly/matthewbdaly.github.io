@@ -1,6 +1,7 @@
 ---
 title: "Console applications with the Symfony Console component"
 date: 2018-04-29 20:59:27 +0100
+layout: post
 categories:
 - php
 - symfony

@@ -1,6 +1,7 @@
 ---
 title: "Why bad code is bad"
 date: 2019-01-02 23:00:50 +0000
+layout: post
 categories:
 - productivity
 comments: true

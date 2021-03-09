@@ -1,6 +1,7 @@
 ---
 title: "Syntax highlighting in fenced code blocks in Vim"
 date: 2015-03-02 23:25:43 +0000
+layout: post
 categories:
 - vim
 - markdown

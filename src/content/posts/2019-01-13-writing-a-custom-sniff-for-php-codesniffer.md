@@ -1,6 +1,7 @@
 ---
 title: "Writing a custom sniff for PHP CodeSniffer"
 date: 2019-01-13 18:50:45 +0000
+layout: post
 categories:
 - php
 - codesniffer

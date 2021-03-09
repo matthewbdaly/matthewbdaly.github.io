@@ -1,6 +1,7 @@
 ---
 title: "Using Artisan from standalone Laravel packages"
 date: 2018-01-02 12:01:10 +0000
+layout: post
 categories:
 - php
 - laravel

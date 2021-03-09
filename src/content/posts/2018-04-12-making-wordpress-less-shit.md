@@ -1,6 +1,7 @@
 ---
 title: "Making Wordpress less shit"
 date: 2018-04-12 23:57:05 +0100
+layout: post
 categories:
 - wordpress
 comments: true

@@ -1,6 +1,7 @@
 ---
 title: "How I added search to my site with Lunr.js"
 date: 2015-04-18 15:05:41 +0100
+layout: post
 categories:
 - grunt
 - nodejs

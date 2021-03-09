@@ -1,6 +1,7 @@
 ---
 title: "Using Jenkins pipelines"
 date: 2016-06-05 16:32:15 +0100
+layout: post
 categories:
 - jenkins
 comments: true

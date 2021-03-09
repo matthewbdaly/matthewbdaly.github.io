@@ -1,6 +1,7 @@
 ---
 title: "Creating Artisan tasks that generate files"
 date: 2018-01-01 16:06:21 +0000
+layout: post
 categories:
 - php
 - artisan

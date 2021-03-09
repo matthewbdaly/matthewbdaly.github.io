@@ -1,6 +1,7 @@
 ---
 title: "How much difference does adding an index to a database table make?"
 date: 2019-03-04 21:26:18 +0000
+layout: post
 categories:
 - sql
 - performance

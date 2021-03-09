@@ -1,5 +1,6 @@
 ---
 title: "Better strings in PHP"
+layout: post
 date: 2018-07-25 22:25:17 +0100
 categories:
 - php

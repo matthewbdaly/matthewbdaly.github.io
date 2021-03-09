@@ -1,6 +1,7 @@
 ---
 title: "Full text search with Laravel and PostgreSQL"
 date: 2017-12-02 23:30:44 +0000
+layout: post
 categories:
 - postgresql
 - laravel

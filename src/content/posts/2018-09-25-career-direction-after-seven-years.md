@@ -1,6 +1,7 @@
 ---
 title: "Career direction after seven years"
 date: 2018-09-25 22:03:29 +0100
+layout: post
 categories:
 - career
 comments: true

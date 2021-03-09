@@ -1,6 +1,7 @@
 ---
 title: "Integrating Behat with Laravel"
 date: 2017-02-18 21:25:57 +0000
+layout: post
 categories:
 - php
 - laravel

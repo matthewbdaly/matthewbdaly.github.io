@@ -1,5 +1,6 @@
 ---
 title: "Adding Google AMP support to my site"
+layout: post
 date: 2016-05-22 23:29:34 +0100
 categories:
 - html

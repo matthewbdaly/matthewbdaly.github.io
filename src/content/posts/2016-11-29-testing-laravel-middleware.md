@@ -1,6 +1,7 @@
 ---
 title: "Testing Laravel Middleware"
 date: 2016-11-29 23:00:38 +0000
+layout: post
 categories:
 - php
 - laravel

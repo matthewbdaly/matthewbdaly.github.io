@@ -1,6 +1,7 @@
 ---
 title: "When you should not use Wordpress"
 date: 2015-08-22 19:32:34 +0100
+layout: post
 categories: 
 - wordpress
 comments: true

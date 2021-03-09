@@ -1,6 +1,7 @@
 ---
 title: "An introduction to managing your servers with Ansible"
 date: 2016-08-10 20:45:56 +0100
+layout: post
 categories:
 - ansible
 - sysadmin

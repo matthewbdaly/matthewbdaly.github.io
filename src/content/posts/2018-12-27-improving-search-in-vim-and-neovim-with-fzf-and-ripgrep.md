@@ -1,6 +1,7 @@
 ---
 title: "Improving search in Vim and Neovim with FZF and Ripgrep"
 date: 2018-12-27 18:37:09 +0000
+layout: post
 categories:
 - vim
 - neovim

@@ -1,6 +1,7 @@
 ---
 title: "A Laravel package boilerplate"
 date: 2018-01-02 12:12:15 +0000
+layout: post
 categories:
 - php
 - laravel

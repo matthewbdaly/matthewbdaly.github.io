@@ -1,6 +1,7 @@
 ---
 title: "Deploying your Laravel application with Deployer"
 date: 2018-01-22 12:00:14 +0000
+layout: post
 categories:
 - php
 - laravel

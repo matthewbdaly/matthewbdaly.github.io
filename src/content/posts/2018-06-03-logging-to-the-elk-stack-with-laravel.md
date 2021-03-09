@@ -1,6 +1,7 @@
 ---
 title: "Logging to the ELK stack with Laravel"
 date: 2018-06-03 16:30:54 +0100
+layout: post
 categories:
 - php
 - laravel
