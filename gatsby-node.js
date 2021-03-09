@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         allMdx(
-          sort: { fields: [fields___date], order: DESC }
+          sort: { fields: [frontmatter___date], order: DESC }
           filter: { frontmatter: {layout: {eq: "post"}}}
           limit: 1000
         ) {
@@ -56,10 +56,10 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               fields {
                 path
-                date
               }
               frontmatter {
                 title
+                date
               }
             }
           }
@@ -94,7 +94,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+
+    let value;
+    if (node.fileAbsolutePath.indexOf('content/posts') > -1) {
+      value = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
+    } else {
+      value = node.fileAbsolutePath.replace(/([\w*-]+)\.md$/, '/$1/')
+    }
+
     createNodeField({
       name: `path`,
       node,

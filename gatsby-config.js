@@ -73,38 +73,5 @@ module.exports = {
       },
       __key: "posts",
     },
-    {
-      resolve: 'gatsby-callback-paths',
-      options: {
-        matchNodeType: ['Mdx', 'allMdx'],
-        extract: [
-          {
-            name: 'path',
-            callback: (node) => {
-              if (node.fileAbsolutePath.indexOf('content/posts') > -1) {
-                return node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
-              } else {
-                return node.fileAbsolutePath.replace(/([\w*-]+)\.md$/, '/$1/')
-              }
-            }
-          },
-          {
-            name: 'date',
-            callback: (node) => {
-              return node.fileAbsolutePath.replace(/.+\/(\d+-\d+-\d+)-[\w*-]+\.md$/, '$1')
-            }
-          },
-          {
-            name: 'layout',
-            callback: (node) => {
-              if (typeof node.frontmatter.layout === "undefined") {
-                return "page";
-              }
-              return node.frontmatter.layout
-            }
-          }
-        ]
-      }
-    },
   ],
 };
