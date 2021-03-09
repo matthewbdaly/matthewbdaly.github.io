@@ -1,6 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: "Matthew Daly's Blog",
+    title: `Matthew Daly's Blog`,
+    author: {
+      name: `Matthew Daly`,
+      summary: `who lives in Norfolk and works in Norwich (except during the lockdown, when he's been working from home).`,
+    },
+    description: `I'm a web developer in Norfolk. This is my blog...`,
+    siteUrl: `https://matthewdaly.co.uk`,
+    social: {
+      twitter: `mattbd`,
+    },
   },
   plugins: [
     "gatsby-plugin-netlify-cms",
