@@ -63,7 +63,7 @@ export const postQuery = graphql`
         title
       }
     }
-    mdx(fields: { path: { eq: $path }, layout: {ne: "page"}}) {
+    mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
       id
       excerpt(pruneLength: 160)
       html
