@@ -2,6 +2,7 @@ import React from 'react'
 import Highlight, {defaultProps} from 'prism-react-renderer'
 import {LiveProvider, LiveEditor, LiveError, LivePreview} from 'react-live'
 import {mdx} from '@mdx-js/react'
+import oceanicNext from 'prism-react-renderer/themes/oceanicNext';
 
 const CodeBlock = ({children, className, live}) => {
   const language = className.replace(/language-/, '')
@@ -23,7 +24,7 @@ const CodeBlock = ({children, className, live}) => {
   }
 
   return (
-    <Highlight {...defaultProps} code={children} language={language}>
+    <Highlight {...defaultProps} code={children} language={language} theme={oceanicNext}>
       {({className, style, tokens, getLineProps, getTokenProps}) => (
         <pre className={className} style={{...style, padding: '20px'}}>
           {tokens.map((line, i) => (
