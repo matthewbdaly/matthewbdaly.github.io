@@ -1,14 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import CodeBlock from "../src/components/CodeBlock"
+import TextSection from "../src/components/TextSection"
 
 import Layout from "../src/components/layout"
-
-const components = {
-  pre: props => <div {...props} />,
-  code: CodeBlock,
-}
 
 const PageTemplate = ({ data, pageContext, location }) => {
   const page = data.mdx
@@ -27,9 +21,7 @@ const PageTemplate = ({ data, pageContext, location }) => {
             {page.frontmatter.date}
           </p>
         </header>
-        <section>
-          <MDXRenderer components={components}>{page.body}</MDXRenderer>
-        </section>
+        <TextSection>{page.body}</TextSection>
         <hr
         />
         <footer>
