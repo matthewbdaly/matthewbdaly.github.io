@@ -66,7 +66,6 @@ export const postQuery = graphql`
     mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
       id
       excerpt(pruneLength: 160)
-      html
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

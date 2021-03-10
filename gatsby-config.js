@@ -32,11 +32,6 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        defaultLayouts: {
-          post: require.resolve(`./templates/post.js`),
-          page: require.resolve(`./templates/page.js`),
-          default: require.resolve(`./templates/page.js`),
-        },
       },
     },
     "gatsby-plugin-sharp",

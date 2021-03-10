@@ -4,44 +4,43 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-//   const pageTemplate = path.resolve(`./templates/page.js`)
-//   const pageResult = await graphql(
-//     `
-//       {
-//         allMdx(
-//           filter: { frontmatter: {layout: {eq: "page"}}}
-//           limit: 1000
-//         ) {
-//           edges {
-//             node {
-//               fields {
-//                 path
-//               }
-//               frontmatter {
-//                 title
-//               }
-//             }
-//           }
-//         }
-//       }
-//     `
-//   )
+  const pageTemplate = path.resolve(`./templates/page.js`)
+  const pageResult = await graphql(
+    `
+      {
+        allMdx(
+          filter: { frontmatter: {layout: {eq: "page"}}}
+        ) {
+          edges {
+            node {
+              fields {
+                path
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+      }
+    `
+  )
 
-//   if (pageResult.errors) {
-//     throw pageResult.errors
-//   }
+  if (pageResult.errors) {
+    throw pageResult.errors
+  }
 
-//   // Create pages.
-//   const pages = pageResult.data.allMdx.edges
+  // Create pages.
+  const pages = pageResult.data.allMdx.edges
 
-//   pages.forEach((page, index) => {
-//     createPage({
-//       path: page.node.fields.path,
-//       component: pageTemplate,
-//       context: {
-//       },
-//     })
-//   })
+  pages.forEach((page, index) => {
+    createPage({
+      path: page.node.fields.path,
+      component: pageTemplate,
+      context: {
+      },
+    })
+  })
 
   const postTemplate = path.resolve(`./templates/post.js`)
   const result = await graphql(
