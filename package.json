@@ -44,6 +44,7 @@
     "prism-react-renderer": "^1.2.0",
     "prismjs": "^1.23.0",
     "react-live": "^2.2.3",
+    "react-use-flexsearch": "^0.1.1",
     "tailwindcss": "^2.0.3"
   }
 }
