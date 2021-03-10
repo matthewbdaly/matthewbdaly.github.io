@@ -21,6 +21,62 @@ module.exports = {
         trackingId: "UA-17043630-1",
       },
     },
+    {
+      resolve: "gatsby-plugin-feed",
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [{
+          serialize: ({ query: { site, allMdx } }) => {
+            return allMdx.edges.map(edge => {
+              return Object.assign({}, edge.node.frontmatter, {
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.date,
+                url: site.siteMetadata.siteUrl + edge.node.fields.path,
+                guid: site.siteMetadata.siteUrl + edge.node.fields.path,
+                custom_elements: [{ "content:encoded": edge.node.html }],
+              })
+            })
+          },
+          query: `
+            {
+              allMdx (
+                sort: { order: DESC, fields: [frontmatter___date] },
+                filter: { frontmatter: {layout: {eq: "post"}}}
+                limit: 100
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields {
+                        path
+                      }
+                      frontmatter {
+                        title
+                        date
+                      }
+                    }
+                  }
+                }
+            }
+          `,
+          output: `/rss.xml`,
+          title: "Matthew Daly's Blog"
+        }]
+      },
+    },
+
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
