@@ -24,7 +24,7 @@ const Chunk = ({ pageContext, data, location }) => {
         >
           <li>
             {previousPage && (
-              <Link to={`${previousPage > 0 ? `/posts/${previousPage}` : ``}`} rel="prev">
+              <Link to={`${previousPage > 1 ? `/posts/${previousPage}` : `/`}`} rel="prev">
                 ← 
               </Link>
             )}

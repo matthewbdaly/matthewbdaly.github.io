@@ -95,6 +95,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const postsPerPage = 5
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
+    const currentPage = (i + 1)
     createPage({
       path: i === 0 ? `/` : `/posts/${i + 1}`,
       component: chunkTemplate,
@@ -102,9 +103,9 @@ exports.createPages = async ({ graphql, actions }) => {
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
-        currentPage: i + 1,
-        previousPage: i > 0 ? null : i - 1,
-        nextPage: (i + 1) >= numPages ? null : i + 1
+        currentPage,
+        previousPage: currentPage > 1 ? currentPage - 1 : null,
+        nextPage: currentPage >= numPages ? null : currentPage + 1
       },
     })
   })
