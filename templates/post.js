@@ -7,7 +7,7 @@ import Layout from "../src/components/layout"
 
 const components = {
   pre: props => <div {...props} />,
-  code: props => <CodeBlock {...props} />
+  code: CodeBlock,
 }
 
 const PostTemplate = ({ data, pageContext, location }) => {

@@ -8,4 +8,8 @@
 
 /* purgecss start ignore */
 @import "prism-oceanic-next";
-/* purgecss emd ignore */
+
+code[class*="language-"], pre[class*="language-"] {
+    display: block;
+}
+/* purgecss end ignore */
