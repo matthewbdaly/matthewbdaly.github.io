@@ -26,6 +26,7 @@ const CodeBlock = ({children, className, live}) => {
         code={children.trim()}
         transformCode={code => '/** @jsx mdx */' + code}
         scope={{ mdx }}
+        theme={oceanicNext}
         _    >
         <div style={{marginTop: '40px', backgroundColor: 'white'}}>
           <LivePreview />
