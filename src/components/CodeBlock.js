@@ -15,6 +15,7 @@ require("prismjs/components/prism-pug");
 require("prismjs/components/prism-nginx");
 require("prismjs/components/prism-ruby");
 require("prismjs/components/prism-perl");
+require("prismjs/components/prism-flow");
 
 const CodeBlock = ({children, className, live}) => {
   const language = className ? className.replace(/language-/, '') : null
