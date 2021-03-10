@@ -16,6 +16,42 @@ module.exports = {
     `gatsby-plugin-postcss`,
     "gatsby-plugin-image",
     {
+      resolve: "gatsby-plugin-local-search",
+      options: {
+        name: 'posts',
+        engine: 'flexsearch',
+        engineOptions: 'speed',
+        query: `
+          {
+            allMdx (
+              filter: { frontmatter: {layout: {eq: "post"}}}
+            ) {
+              nodes {
+                id
+                frontmatter {
+                  title
+                }
+                fields {
+                  path
+                }
+                rawBody
+              }
+            }
+          }
+        `,
+        ref: 'id',
+        index: ['title', 'body'],
+        store: ['id', 'path', 'title'],
+        normalizer: ({ data }) => 
+        data.allMdx.nodes.map(node => ({
+          id: node.id,
+          path: node.fields.path,
+          title: node.frontmatter.title,
+          body: node.rawBody,
+        })),
+      },
+    },
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "UA-17043630-1",
