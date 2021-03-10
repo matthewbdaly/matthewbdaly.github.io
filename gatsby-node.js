@@ -98,10 +98,12 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: i === 0 ? `/` : `/posts/${i + 1}`,
       component: chunkTemplate,
-      limit: postsPerPage,
-      skip: i * postsPerPage,
-      numPages,
-      currentPage: i + 1
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      },
     })
   })
 
