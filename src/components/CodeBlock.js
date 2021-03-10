@@ -1,8 +1,26 @@
 import React from 'react'
 import Highlight, {defaultProps} from 'prism-react-renderer'
+import {LiveProvider, LiveEditor, LiveError, LivePreview} from 'react-live'
+import {mdx} from '@mdx-js/react'
 
-const CodeBlock = ({children, className}) => {
+const CodeBlock = ({children, className, live}) => {
   const language = className.replace(/language-/, '')
+
+  if (live) {
+    return (
+      <div style={{marginTop: '40px'}}>
+        <LiveProvider
+          code={children.trim()}
+            transformCode={code => '/** @jsx mdx */' + code}
+            scope={{ mdx }}
+        >
+          <LivePreview />
+          <LiveEditor />
+          <LiveError />
+        </LiveProvider>
+      </div>
+    )
+  }
 
   return (
     <Highlight {...defaultProps} code={children} language={language}>
