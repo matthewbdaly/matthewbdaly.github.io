@@ -11,8 +11,8 @@ const CodeBlock = ({children, className, live}) => {
       <div style={{marginTop: '40px'}}>
         <LiveProvider
           code={children.trim()}
-            transformCode={code => '/** @jsx mdx */' + code}
-            scope={{ mdx }}
+          transformCode={code => '/** @jsx mdx */' + code}
+          scope={{ mdx }}
         >
           <LivePreview />
           <LiveEditor />
