@@ -44,6 +44,7 @@ export const pageQuery = graphql`
     }
     mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "page"}}) {
       id
+      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
