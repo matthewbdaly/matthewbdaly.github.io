@@ -4,6 +4,7 @@ import Layout from "../src/components/layout"
 
 const Chunk = ({ pageContext, data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const { nextPage, previousPage } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -17,6 +18,27 @@ const Chunk = ({ pageContext, data, location }) => {
           </section>
         )
       })}
+
+      <nav>
+        <ul
+        >
+          <li>
+            {previousPage && (
+              <Link to={`${previousPage > 0 ? `/posts/${previousPage}` : ``}`} rel="prev">
+                ← 
+              </Link>
+            )}
+          </li>
+          <li>
+            {nextPage && (
+              <Link to={`/posts/${nextPage}`} rel="next">
+                →
+              </Link>
+            )}
+          </li>
+        </ul>
+      </nav>
+
     </Layout>
   )
 }
