@@ -13,7 +13,7 @@ I'm a big fan of type systems in general. Using Psalm to find missing type decla
 
 A while back I wrote the following custom hook, loosely inspired by axios-hooks (but using the Fetch API) to make a query to a GraphQL endpoint:
 
-```js live=true
+```javascript
 import { useCallback, useState, useEffect } from "react";
 
 function useFetch(url, query) {
@@ -60,7 +60,7 @@ When called, the hook receives two parameters, the URL to hit, and the query to 
 
 Using this hook, it was then possible to make an AJAX request when a component was loaded to populate the data, as in this example:
 
-```js live=true
+```javascript
 import React from 'react';
 import useFetch from './Hooks/useFetch';
 import marked from 'marked';
@@ -112,7 +112,7 @@ Generics to the rescue
 
 Flow provides a solution for this in the shape of [generic types](https://flow.org/en/docs/types/generics/). By passing in a polymorphic type using `<T>` in the function declaration, we can then refer to that type when specifying what `data` should look like:
 
-```js live=true
+```javascript
 //@flow
 import { useCallback, useState, useEffect } from "react";
 
@@ -158,7 +158,7 @@ export default useFetch;
 
 Then, when calling the hook, we can define a type that represents the expected shape of the data (here called `<Data>`, and specify that type when calling the hook, as in this example:
 
-```js live=true
+```javascript
 //@flow
 import React from 'react';
 import useFetch from './Hooks/useFetch';

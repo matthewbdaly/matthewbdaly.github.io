@@ -1,5 +1,6 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import {MDXProvider} from '@mdx-js/react'
 import CodeBlock from "./CodeBlock"
 
 const components = {
@@ -9,9 +10,11 @@ const components = {
 
 const TextSection = ({ children }) => {
   return (
-    <section>
-      <MDXRenderer components={components}>{children}</MDXRenderer>
-    </section>
+    <MDXProvider components={components}>
+      <section>
+        <MDXRenderer>{children}</MDXRenderer>
+      </section>
+    </MDXProvider>
   )
 }
 
