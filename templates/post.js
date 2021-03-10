@@ -1,8 +1,14 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import CodeBlock from "../src/components/CodeBlock"
 
 import Layout from "../src/components/layout"
+
+const components = {
+  pre: props => <div {...props} />,
+  code: props => <CodeBlock {...props} />
+}
 
 const PostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -23,7 +29,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <section>
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXRenderer components={components}>{post.body}</MDXRenderer>
         </section>
         <hr
         />
