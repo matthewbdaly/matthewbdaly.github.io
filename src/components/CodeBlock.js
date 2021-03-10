@@ -9,17 +9,19 @@ const CodeBlock = ({children, className, live}) => {
 
   if (live) {
     return (
-      <div style={{marginTop: '40px'}}>
-        <LiveProvider
-          code={children.trim()}
-          transformCode={code => '/** @jsx mdx */' + code}
-          scope={{ mdx }}
-    _    >
+      <LiveProvider
+        code={children.trim()}
+        transformCode={code => '/** @jsx mdx */' + code}
+        scope={{ mdx }}
+        _    >
+        <div style={{marginTop: '40px', backgroundColor: 'white'}}>
           <LivePreview />
+        </div>
+        <div style={{marginTop: '40px', backgroundColor: 'black'}}>
           <LiveEditor />
-          <LiveError />
-        </LiveProvider>
-      </div>
+        </div>
+        <LiveError />
+      </LiveProvider>
     )
   }
 
