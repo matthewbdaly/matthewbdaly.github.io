@@ -2,11 +2,21 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../src/components/layout"
 import TextSection from "../src/components/TextSection"
+import { DiscussionEmbed } from "disqus-react"
 
 const PostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
+  const disqusConfig = {
+      shortname: "matthewdaly",
+      config: {
+        url: data.site.siteMetadata.siteUrl + post.fields.path,
+        identifier: post.fields.path,
+        title: post.frontmatter.title,
+        languge: 'en_GB',
+      },
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -24,6 +34,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
         <TextSection>{post.body}</TextSection>
         <hr
         />
+        <DiscussionEmbed {...disqusConfig} />
         <footer>
         </footer>
       </article>
@@ -58,6 +69,7 @@ export const postQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
