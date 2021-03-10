@@ -95,7 +95,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === `Mdx`) {
 
     let value;
-    if (node.fileAbsolutePath.indexOf('content/posts') > -1) {
+    if (node.frontmatter.layout === "post") {
       value = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
     } else {
       value = node.fileAbsolutePath.replace(/([\w*-]+)\.md$/, '/$1/')
