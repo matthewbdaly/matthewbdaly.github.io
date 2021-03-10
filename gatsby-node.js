@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const _ = require("lodash")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -87,6 +88,32 @@ exports.createPages = async ({ graphql, actions }) => {
         previous,
         next,
       },
+    })
+  })
+
+  const categoryTemplate = path.resolve('./templates/category.js')
+
+  const categoryResult = await graphql(`
+    {
+      categoriesGroup: allMdx(limit: 2000) {
+        group(field: frontmatter___categories) {
+          fieldValue
+        }
+      }
+    }
+  `)
+
+  if (categoryResult.errors) {
+    throw categoryResult.errors
+  }
+  const categories = categoryResult.data.categoriesGroup.group
+  categories.forEach(category => {
+    createPage({
+      path: `/categories/${_.kebabCase(category.fieldValue)}/`,
+      component: categoryTemplate,
+      context: {
+        category: category.fieldValue
+      }
     })
   })
 }

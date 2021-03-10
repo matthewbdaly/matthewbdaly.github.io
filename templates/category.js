@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../src/components/layout"
 
 const Category = ({ pageContext, data, location }) => {
   const { category } = pageContext
