@@ -18,6 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                layout
               }
             }
           }
@@ -59,6 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 date
+                layout
               }
             }
           }
@@ -94,17 +96,19 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `Mdx`) {
 
-    let value;
     if (node.frontmatter.layout === "post") {
-      value = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
-    } else {
-      value = node.fileAbsolutePath.replace(/([\w*-]+)\.md$/, '/$1/')
+      createNodeField({
+        name: `path`,
+        node,
+        value: node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
+      })
     }
-
-    createNodeField({
-      name: `path`,
-      node,
-      value,
-    })
+    if (node.frontmatter.layout === "page") {
+      createNodeField({
+        name: `path`,
+        node,
+        value: node.fileAbsolutePath.replace(/.+\/([\w*-]+)\.md$/, '/$1/')
+      })
+    }
   }
 }
