@@ -7,6 +7,14 @@ import oceanicNext from 'prism-react-renderer/themes/oceanicNext';
 
 (typeof global !== "undefined" ? global : window).Prism = Prism;
 require("prismjs/components/prism-php");
+require("prismjs/components/prism-vim");
+require("prismjs/components/prism-gherkin");
+require("prismjs/components/prism-django");
+require("prismjs/components/prism-handlebars");
+require("prismjs/components/prism-pug");
+require("prismjs/components/prism-nginx");
+require("prismjs/components/prism-ruby");
+require("prismjs/components/prism-perl");
 
 const CodeBlock = ({children, className, live}) => {
   const language = className ? className.replace(/language-/, '') : null

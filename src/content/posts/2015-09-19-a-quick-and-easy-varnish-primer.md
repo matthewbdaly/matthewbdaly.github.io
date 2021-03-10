@@ -199,8 +199,7 @@ sub vcl_recv {
     set req.http.Cookie = regsuball(req.http.Cookie, "wp-settings-1=[^;]+(; )?", "");
 
     # Remove the wp-settings-time-1 cookie
-    set req.http.Cookie = regsuball(req.http.Cookie, "wp-settings-time-1=[^;]+(; )?"
-            , "");
+    set req.http.Cookie = regsuball(req.http.Cookie, "wp-settings-time-1=[^;]+(; )?", "");
 
     # Remove the wp test cookie
     set req.http.Cookie = regsuball(req.http.Cookie, "wordpress_test_cookie=[^;]+(; )?", "");
@@ -329,8 +328,7 @@ You'll need to consider which parts of your site must always serve the latest co
     set req.http.Cookie = regsuball(req.http.Cookie, "wp-settings-1=[^;]+(; )?", "");
 
     # Remove the wp-settings-time-1 cookie
-    set req.http.Cookie = regsuball(req.http.Cookie, "wp-settings-time-1=[^;]+(; )?"
-            , "");
+    set req.http.Cookie = regsuball(req.http.Cookie, "wp-settings-time-1=[^;]+(; )?", "");
 
     # Remove the wp test cookie
     set req.http.Cookie = regsuball(req.http.Cookie, "wordpress_test_cookie=[^;]+(; )?", "");

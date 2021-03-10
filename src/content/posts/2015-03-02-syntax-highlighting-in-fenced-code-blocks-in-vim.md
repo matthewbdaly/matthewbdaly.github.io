@@ -12,7 +12,7 @@ Just thought I'd share a little trick I picked up recently. As you may know, Git
 
 If you put the following code in your `.vimrc`, you can get syntax highlighting in those code blocks when you open up a Markdown file in Vim:
 
-```viml
+```vim
 "Syntax highlighting in Markdown
 au BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'handlebars', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html']

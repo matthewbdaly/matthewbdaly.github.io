@@ -131,7 +131,7 @@ For this application we'll be using the Express framework and the Jade templatin
 
 Create the folder `views` under the application directory and add the files `views/index.jade`:
 
-```jade
+```pug
 doctype html
 html(lang="en")
     head
@@ -150,7 +150,7 @@ html(lang="en")
 
 Also `views/output.jade`:
 
-```jade
+```pug
 doctype html
 html(lang="en")
     head
@@ -167,7 +167,7 @@ html(lang="en")
 
 and `views/error.jade`:
 
-```jade
+```pug
 doctype html
 html(lang="en")
     head
