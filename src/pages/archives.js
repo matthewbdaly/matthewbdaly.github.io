@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 
-const Archive = ({ data, location }) => {
+const Archives = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
@@ -19,7 +19,7 @@ const Archive = ({ data, location }) => {
   )
 }
 
-export default Archive
+export default Archives
 
 export const postsQuery = graphql`
   query {
