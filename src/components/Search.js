@@ -13,7 +13,7 @@ const Search = () => {
 	// const results = useFlexSearch(query, index, store)
 
 	return (
-		<form action="/" method="get">
+		<form action="/" method="get" autoComplete="off">
 			<label htmlFor="header-search">
 				<span className="hidden">Search blog posts</span>
 			</label>
