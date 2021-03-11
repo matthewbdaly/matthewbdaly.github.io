@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
 const Archives = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
