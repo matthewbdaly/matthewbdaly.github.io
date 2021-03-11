@@ -1,16 +1,18 @@
 import React, { useState } from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch'
 
-const posts = [
-	{ id: '1', name: 'This first post is about React' },
-	{ id: '2', name: 'This next post is about Preact' },
-	{ id: '3', name: 'We have yet another React post!' },
-	{ id: '4', name: 'This is the fourth and final post' },
-];
-
 const Search = () => {
-	// const [query, setQuery] = useState(null)
-	// const results = useFlexSearch(query, index, store)
+	const data = useStaticQuery(graphql`
+		query {
+			localSearchPosts {
+				index
+				store
+			}
+		}
+	`)
+	const [query, setQuery] = useState(null)
+	const results = useFlexSearch(query, data.localSearchPosts.index, data.localSearchPosts.store)
 
 	return (
 		<form action="/" method="get" autoComplete="off">
@@ -20,8 +22,8 @@ const Search = () => {
 			<input type="search" id="header-search" placeholder="Search blog posts" name="s" />
 			<button type="submit">Search</button>
 			<ul>
-				{posts.map(post => {
-					<li key={post.id}>post.name</li>
+				{results.map(result => {
+					<li key={result.path}>result.title</li>
 				})}
 			</ul>
 		</form>
