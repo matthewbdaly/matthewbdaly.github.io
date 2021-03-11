@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../src/components/Layout"
 import TextSection from "../src/components/TextSection"
 
-const PostTemplate = ({ data, pageContext, location }) => {
+const AmpPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
@@ -51,7 +51,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
   )
 }
 
-export default PostTemplate
+export default AmpPostTemplate
 
 export const ampPostQuery = graphql`
   query AmpBlogPostByPath($path: String!) {
