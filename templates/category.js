@@ -13,7 +13,7 @@ const Category = ({ pageContext, data, location }) => {
     <Layout location={location} title={categoryHeader}>
       {edges.map(({ node }) => {
         return (
-          <Link to={node.fields.path}>
+          <Link to={node.fields.path} key={node.fields.path}>
             {node.frontmatter.title}
           </Link>
         )

@@ -15,7 +15,7 @@ const Categories = ({ data: {
     <Layout location={location} title={title}>
       {group.map((node) => {
         return (
-          <Link to={`/categories/${kebabCase(node.category)}/`}>
+          <Link to={`/categories/${kebabCase(node.category)}/`} key={node.category}>
             {node.category} ({node.totalCount})
           </Link>
         );

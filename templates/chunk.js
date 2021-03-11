@@ -10,7 +10,7 @@ const Chunk = ({ pageContext, data, location }) => {
     <Layout location={location} title={siteTitle}>
       {data.allMdx.edges.map(({ node }) => {
         return (
-          <section>
+          <section key={node.fields.path}>
             <Link to={node.fields.path}>
               {node.frontmatter.title}
             </Link>

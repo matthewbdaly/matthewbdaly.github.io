@@ -10,7 +10,7 @@ const Archives = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       {data.allMdx.edges.map(({ node }) => {
         return (
-          <Link to={node.fields.path}>
+          <Link to={node.fields.path} key={node.fields.path}>
             {node.frontmatter.title}
           </Link>
         );
