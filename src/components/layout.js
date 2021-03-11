@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Search from "./Search"
 
 const Layout = ({ location, title, children }) => {
 	const header = (
@@ -7,6 +8,7 @@ const Layout = ({ location, title, children }) => {
 			<Link to={`/`}>
 				{title}
 			</Link>
+			<Search />
 		</h3>
 	)
 
