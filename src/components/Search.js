@@ -19,12 +19,16 @@ const Search = () => {
 			<label htmlFor="header-search">
 				<span className="hidden">Search blog posts</span>
 			</label>
-			<input type="search" id="header-search" placeholder="Search blog posts" name="s" />
+			<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={(e) => setQuery(e.currentTarget.value)} />
 			<button type="submit">Search</button>
 			<ul>
-				{results.map(result => {
-					<li key={result.path}>result.title</li>
-				})}
+				{results.map(result => (
+					<li key={result.id}>
+						<Link to={result.path}>
+							{result.title}
+						</Link>
+					</li>
+				))}
 			</ul>
 		</form>
 	)
