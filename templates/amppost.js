@@ -54,14 +54,14 @@ const AmpPostTemplate = ({ data, pageContext, location }) => {
 export default AmpPostTemplate
 
 export const ampPostQuery = graphql`
-  query AmpBlogPostByPath($path: String!) {
+  query AmpBlogPostByPath($amppath: String!) {
     site {
       siteMetadata {
         title
         siteUrl
       }
     }
-    mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
+    mdx(fields: { amppath: { eq: $amppath }}, frontmatter: {layout: {eq: "post"}}) {
       id
       body
       frontmatter {
@@ -70,6 +70,7 @@ export const ampPostQuery = graphql`
       }
       fields {
         path
+        amppath
       }
     }
   }

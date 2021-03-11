@@ -88,6 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         previous,
         next,
+        amppath: `${post.node.fields.path}amp/`,
       },
     })
 
@@ -97,6 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         previous,
         next,
+        amppath: `${post.node.fields.path}amp/`,
       },
     })
   })
@@ -153,10 +155,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === `Mdx`) {
 
     if (node.frontmatter.layout === "post") {
+      const url = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
       createNodeField({
         name: `path`,
         node,
-        value: node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
+        value: url
+      })
+      createNodeField({
+        name: `amppath`,
+        node,
+        value: `${url}amp/`
       })
     }
     if (node.frontmatter.layout === "page") {
