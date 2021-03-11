@@ -45,6 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const postTemplate = path.resolve(`./templates/post.js`)
+  const ampPostTemplate = path.resolve(`./templates/amppost.js`)
   const result = await graphql(
     `
       {
@@ -84,6 +85,15 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: post.node.fields.path,
       component: postTemplate,
+      context: {
+        previous,
+        next,
+      },
+    })
+
+    createPage({
+      path: `${post.node.fields.path}amp/`,
+      component: ampPostTemplate,
       context: {
         previous,
         next,
