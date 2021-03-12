@@ -14,7 +14,7 @@ NB: Despite the name I've chosen, I'm not singling out users of PHPStorm in part
 Who is PHPStorm Man?
 --------------------
 
-![The hero we really, really don't need](phpstorm-man.jpg)
+![The hero we really, really don't need](./phpstorm-man.jpg)
 
 PHPStorm Man (and he *will* almost certainly be a man - while it could be just because our industry is male-dominated, I've *never* known a woman to behave like this, and I strongly suspect it's nothing more than an industry-specific example of the common phenomenon of [mansplaining](https://en.wikipedia.org/wiki/Mansplaining)) doesn't know squat about your editor or IDE. He just knows his is superior, and he wants you to know it, regardless of the evidence.
 

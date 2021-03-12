@@ -45,7 +45,7 @@ WordPress has a lot of technical limitations and deficiencies from a programmer'
 Is WordPress being overused?
 ----------------------------
 
-![Archer - WordPress? The Dane Cook of content management systems?](wordpress-dane-cook.jpg)
+![Archer - WordPress? The Dane Cook of content management systems?](./wordpress-dane-cook.jpg)
 
 I suspect I'm running the risk of being branded a hipster for saying this ("Now it's popular, you hate WordPress..."), but the fact that WordPress is widespread and popular does not mean that it's the best solution for your project. Nor does the fact that it's technically possible to use it for your project.
 
