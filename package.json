@@ -40,6 +40,7 @@
     "gatsby-plugin-feed": "^3.0.0",
     "gatsby-plugin-local-search": "^2.0.0",
     "gatsby-plugin-postcss": "^4.0.0",
+    "gatsby-remark-images": "^4.0.0",
     "postcss": "^8.2.8",
     "prism-oceanic-next": "^1.0.0",
     "prism-react-renderer": "^1.2.0",
