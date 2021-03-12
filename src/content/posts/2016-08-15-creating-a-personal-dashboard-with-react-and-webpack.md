@@ -850,7 +850,7 @@ div.feedwidget {
 
 The end result should look something like this:
 
-![The personal dashboard in action](/static/images/dashboard.png)
+![The personal dashboard in action](dashboard.png)
 
 With that done, feel free to add whatever other feeds you want to include.
 

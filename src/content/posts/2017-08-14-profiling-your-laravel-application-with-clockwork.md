@@ -45,14 +45,14 @@ Once it's all installed and your application is running, open the dev tools and 
 Request
 -------
 
-![Request tab](/static/images/clockwork1.png)
+![Request tab](clockwork1.png)
 
 This is similar to Chrome's network tab in that it shows all of the headers for a given request. It's not anything you can't get using Chrome's existing dev tools, but because it doesn't show any static content it's arguably a bit easier to navigate.
 
 Timeline
 --------
 
-![Timeline tab](/static/images/clockwork2.png)
+![Timeline tab](clockwork2.png)
 
 This shows how long the response takes to respond, which can be helpful in identifying slower requests.
 
@@ -66,7 +66,7 @@ clock()->endEvent('email_sent');
 Log
 ---
 
-![Log tab](/static/images/clockwork8.png)
+![Log tab](clockwork8.png)
 
 The log tab is only displayed if you use the `clock()` helper to log data. You can log text or JSON objects as appropriate:
 
@@ -80,7 +80,7 @@ This is arguably more convenient than using the `Log` facade to write to the app
 Database
 --------
 
-![Database tab](/static/images/clockwork3.png)
+![Database tab](clockwork3.png)
 
 The database tab displays details of the queries made by a request. This is useful for identifying things such as:
 
@@ -93,28 +93,28 @@ Note that if a particular endpoint does not trigger a query, this tab will not b
 Cookies
 -------
 
-![Cookies tab](/static/images/clockwork4.png)
+![Cookies tab](clockwork4.png)
 
 For a REST API, you shouldn't really have much use for cookies, but if you do, this tab lets you view the cookies set on the request.
 
 Session
 -------
 
-![Session tab](/static/images/clockwork5.png)
+![Session tab](clockwork5.png)
 
 As with cookies, the session isn't normally something you'd use for an API, but this tab lets you view it.
 
 Views
 -----
 
-![Views tab](/static/images/clockwork6.png)
+![Views tab](clockwork6.png)
 
 This tab shows the views used on the page, and all of the data passed to them.
 
 Routes
 ------
 
-![Routes tab](/static/images/clockwork7.png)
+![Routes tab](clockwork7.png)
 
 This tab shows all of the routes defined within your application.
 

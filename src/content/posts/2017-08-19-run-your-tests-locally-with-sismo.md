@@ -100,11 +100,11 @@ php /var/www/html/sismo.php --quiet --force build laravel-etag-middleware `git l
 
 You should now be able to view your project in the Sismo web interface at [http://localhost](http://localhost):
 
-![Sismo](/static/images/sismo-screenshot.png)
+![Sismo](sismo-screenshot.png)
 
 Clicking on the project should take you through to its build history:
 
-![Sismo project page](/static/images/sismo-screenshot2.png)
+![Sismo project page](sismo-screenshot2.png)
 
 From here on, it should be straightforward to add new projects as and when necessary. Because you can change the command on a per-project basis, you can quite happily use it to run tests for Python or Node.js projects as well as PHP ones, and it's not hard to configure it.
 
