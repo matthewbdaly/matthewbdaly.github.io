@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import TextSection from "../components/TextSection"
+import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
 
 const PostTemplate = ({ data, pageContext, location }) => {
@@ -20,6 +21,10 @@ const PostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.excerpt}
+      />
       <article>
         <header>
           <h1
@@ -75,6 +80,7 @@ export const postQuery = graphql`
     mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
       id
       body
+      excerpt(pruneLength: 160)
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
