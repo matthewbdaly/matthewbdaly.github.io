@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import AmpLayout from "../components/AmpLayout"
+import SEO from "../components/Seo"
 import TextSection from "../components/TextSection"
 
 const AmpPostTemplate = ({ data, pageContext, location }) => {
@@ -10,6 +11,10 @@ const AmpPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <AmpLayout location={location} title={siteTitle}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.excerpt}
+      />
       <article>
         <header>
           <h1
@@ -64,6 +69,7 @@ export const ampPostQuery = graphql`
     mdx(fields: { amppath: { eq: $amppath }}, frontmatter: {layout: {eq: "post"}}) {
       id
       body
+      excerpt(pruneLength: 160)
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import TextSection from "../components/TextSection"
 import Layout from "../components/Layout"
+import SEO from "../components/Seo"
 
 const PageTemplate = ({ data, pageContext, location }) => {
   const page = data.mdx
@@ -9,6 +10,10 @@ const PageTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <SEO
+        title={page.frontmatter.title}
+        description={page.excerpt}
+      />
       <article>
         <header>
           <h1
@@ -42,6 +47,7 @@ export const pageQuery = graphql`
     mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "page"}}) {
       id
       body
+      excerpt(pruneLength: 160)
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
