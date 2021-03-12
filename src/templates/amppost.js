@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Layout from "../components/Layout"
+import AmpLayout from "../components/AmpLayout"
 import TextSection from "../components/TextSection"
 
 const AmpPostTemplate = ({ data, pageContext, location }) => {
@@ -9,7 +9,7 @@ const AmpPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <AmpLayout location={location} title={siteTitle}>
       <article>
         <header>
           <h1
@@ -47,7 +47,7 @@ const AmpPostTemplate = ({ data, pageContext, location }) => {
           </li>
         </ul>
       </nav>
-    </Layout>
+    </AmpLayout>
   )
 }
 
