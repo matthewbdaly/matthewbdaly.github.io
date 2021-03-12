@@ -45,7 +45,9 @@ module.exports = {
 			options: {
 				name: 'posts',
 				engine: 'flexsearch',
-				engineOptions: 'speed',
+				engineOptions: {
+					suggest: true,
+				},
 				query: `
 					{
 						allMdx (
