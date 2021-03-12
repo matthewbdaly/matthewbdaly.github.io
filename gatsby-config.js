@@ -55,24 +55,25 @@ module.exports = {
 								id
 								frontmatter {
 									title
+									categories
 								}
 								fields {
 									path
 								}
-								rawBody
+								body
 							}
 						}
 					}
 				`,
 				ref: 'id',
-				index: ['title', 'body'],
+				index: ['title', 'categories', 'body'],
 				store: ['id', 'path', 'title'],
 				normalizer: ({ data }) => 
 				data.allMdx.nodes.map(node => ({
 					id: node.id,
 					path: node.fields.path,
 					title: node.frontmatter.title,
-					body: node.rawBody,
+					body: node.body,
 				})),
 			},
 		},
