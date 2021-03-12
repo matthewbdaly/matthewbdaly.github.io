@@ -1,5 +1,7 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
+import Layout from "../components/Layout"
+import SEO from "../components/Seo"
 
 // styles
 const pageStyles = {
@@ -25,30 +27,48 @@ const codeStyles = {
 }
 
 // markup
-const NotFoundPage = () => {
+const NotFoundPage = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata.title
+
   return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <Layout location={location} title={siteTitle}>
+      <SEO
+        title={`Not found`}
+        description={`Not found`}
+      />
+      <main style={pageStyles}>
+        <title>Not found</title>
+        <h1 style={headingStyles}>Page not found</h1>
+        <p style={paragraphStyles}>
+          Sorry{" "}
+          <span role="img" aria-label="Pensive emoji">
+            😔
+          </span>{" "}
+          we couldn’t find what you were looking for.
+          <br />
+          {process.env.NODE_ENV === "development" ? (
+            <>
+              <br />
+              Try creating a page in <code style={codeStyles}>src/pages/</code>.
+              <br />
+            </>
+          ) : null}
+          <br />
+          <Link to="/">Go home</Link>.
+        </p>
+      </main>
+    </Layout>
   )
 }
 
 export default NotFoundPage
+
+export const NotFoundQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`

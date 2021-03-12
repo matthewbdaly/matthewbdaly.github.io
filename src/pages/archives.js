@@ -1,12 +1,17 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
+import SEO from "../components/Seo"
 
 const Archives = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
     <Layout location={location} title={siteTitle}>
+      <SEO
+        title={`Archives`}
+        description={`Post archive`}
+      />
       {data.allMdx.edges.map(({ node }) => {
         return (
           <Link to={node.fields.path} key={node.fields.path}>

@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Search from "./Search"
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ title, children }) => {
 	const header = (
 		<h3>
 			<Link to={`/`}>

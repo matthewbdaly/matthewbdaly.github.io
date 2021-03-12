@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
+import SEO from "../components/Seo"
 import kebabCase from "lodash/kebabCase"
 
 const Categories = ({ data: {
@@ -12,6 +13,10 @@ const Categories = ({ data: {
 
   return (
     <Layout location={location} title={title}>
+      <SEO
+        title={`Categories`}
+        description={`Categories`}
+      />
       {group.map((node) => {
         return (
           <Link to={`/categories/${kebabCase(node.category)}/`} key={node.category}>

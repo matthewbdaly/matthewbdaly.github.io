@@ -1,13 +1,18 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
+import SEO from "../components/Seo"
 
 const Chunk = ({ pageContext, data, location }) => {
   const siteTitle = data.site.siteMetadata.title
-  const { nextPage, previousPage } = pageContext
+  const { currentPage, nextPage, previousPage } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
+      <SEO
+        title={`Page ${currentPage}`}
+        description={`${siteTitle} - Page ${currentPage}`}
+      />
       {data.allMdx.edges.map(({ node }) => {
         return (
           <section key={node.fields.path}>

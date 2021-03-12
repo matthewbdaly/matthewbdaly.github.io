@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
+import SEO from "../components/Seo"
 
 const Category = ({ pageContext, data, location }) => {
   const { category } = pageContext
@@ -11,6 +12,10 @@ const Category = ({ pageContext, data, location }) => {
 
   return (
     <Layout location={location} title={categoryHeader}>
+      <SEO
+        title={category}
+        description={category}
+      />
       {edges.map(({ node }) => {
         return (
           <Link to={node.fields.path} key={node.fields.path}>
