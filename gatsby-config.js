@@ -13,6 +13,7 @@ module.exports = {
   },
 	plugins: [
 		"gatsby-plugin-netlify-cms",
+		"gatsby-plugin-robots-txt",
 		`gatsby-plugin-postcss`,
 		"gatsby-plugin-image",
 		{
