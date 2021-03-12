@@ -147,7 +147,13 @@ module.exports = {
 		{
 			resolve: "gatsby-plugin-manifest",
 			options: {
-				icon: "src/images/icon.png",
+				icon: `src/images/icon.png`,
+				name: `Matthew Daly's Blog`,
+				short_name: `Matthew Daly's Blog`,
+				start_url: `/`,
+				background_color: `white`,
+				theme_color: `black`,
+				display: `standalone`
 			},
 		},
 		"gatsby-plugin-offline",
