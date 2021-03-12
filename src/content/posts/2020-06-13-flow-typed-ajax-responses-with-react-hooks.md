@@ -112,7 +112,7 @@ Generics to the rescue
 
 Flow provides a solution for this in the shape of [generic types](https://flow.org/en/docs/types/generics/). By passing in a polymorphic type using `<T>` in the function declaration, we can then refer to that type when specifying what `data` should look like:
 
-```flow
+```flow {5-7}
 //@flow
 import { useCallback, useState, useEffect } from "react";
 
