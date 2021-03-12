@@ -151,10 +151,20 @@ module.exports = {
 			resolve: `gatsby-plugin-mdx`,
 			options: {
 				extensions: [`.mdx`, `.md`],
+				gatsbyRemarkPlugins: [
+					{
+						resolve: `gatsby-remark-images`,
+						options: {
+							maxWidth: 1200,
+						}
+					}
+				]
 			},
 		},
 		"gatsby-plugin-sharp",
 		"gatsby-transformer-sharp",
+		"gatsby-transformer-remark",
+		"gatsby-remark-images",
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
