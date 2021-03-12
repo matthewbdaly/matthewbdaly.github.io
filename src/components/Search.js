@@ -14,12 +14,20 @@ const Search = () => {
 	const [query, setQuery] = useState(null)
 	const results = useFlexSearch(query, data.localSearchPosts.index, data.localSearchPosts.store)
 
+	const updateSearch = (e) => {
+		if (e.currentTarget.value.length > 2) {
+			setQuery(e.currentTarget.value)
+		} else {
+			setQuery(null)
+		}
+	}
+
 	return (
 		<form action="/" method="get" autoComplete="off">
 			<label htmlFor="header-search">
 				<span className="hidden">Search blog posts</span>
 			</label>
-			<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={(e) => setQuery(e.currentTarget.value)} />
+			<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={updateSearch} />
 			<button type="submit">Search</button>
 			<ul>
 				{results.map(result => (
