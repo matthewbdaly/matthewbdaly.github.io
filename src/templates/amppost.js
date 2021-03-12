@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Layout from "../src/components/Layout"
-import TextSection from "../src/components/TextSection"
+import Layout from "../components/Layout"
+import TextSection from "../components/TextSection"
 
 const AmpPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx

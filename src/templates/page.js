@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import TextSection from "../src/components/TextSection"
-import Layout from "../src/components/Layout"
+import TextSection from "../components/TextSection"
+import Layout from "../components/Layout"
 
 const PageTemplate = ({ data, pageContext, location }) => {
   const page = data.mdx

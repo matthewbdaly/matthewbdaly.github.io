@@ -5,7 +5,7 @@ const _ = require("lodash")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const pageTemplate = path.resolve(`./templates/page.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
   const pageResult = await graphql(
     `
       {
@@ -44,8 +44,8 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const postTemplate = path.resolve(`./templates/post.js`)
-  const ampPostTemplate = path.resolve(`./templates/amppost.js`)
+  const postTemplate = path.resolve(`./src/templates/post.js`)
+  const ampPostTemplate = path.resolve(`./src/templates/amppost.js`)
   const result = await graphql(
     `
       {
@@ -103,7 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const chunkTemplate = path.resolve('./templates/chunk.js')
+  const chunkTemplate = path.resolve('./src/templates/chunk.js')
   const postsPerPage = 5
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
@@ -122,7 +122,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const categoryTemplate = path.resolve('./templates/category.js')
+  const categoryTemplate = path.resolve('./src/templates/category.js')
 
   const categoryResult = await graphql(`
     {
