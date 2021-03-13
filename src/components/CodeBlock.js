@@ -4,6 +4,7 @@ import Prism from 'prism-react-renderer/prism';
 import {LiveProvider, LiveEditor, LiveError, LivePreview} from 'react-live'
 import {mdx} from '@mdx-js/react'
 import oceanicNext from 'prism-react-renderer/themes/oceanicNext';
+import './CodeBlock.css'
 
 (typeof global !== "undefined" ? global : window).Prism = Prism;
 require("prismjs/components/prism-django");
@@ -63,23 +64,25 @@ const CodeBlock = ({children, className, live, metastring}) => {
   return (
     <Highlight Prism={Prism} {...defaultProps} code={children} language={language} theme={oceanicNext}>
       {({className, style, tokens, getLineProps, getTokenProps}) => (
-        <pre className={className} style={{...style, padding: '20px'}}>
-          {tokens.map((line, i) => {
-						const lineProps = getLineProps({ line, key: i })
+        <div className="gatsby-highlight" data-language={language}>
+          <pre className={className} style={{...style, padding: '20px'}}>
+            {tokens.map((line, i) => {
+              const lineProps = getLineProps({ line, key: i })
 
-						if (shouldHighlightLine(i)) {
-							lineProps.className = `${lineProps.className} highlight-line`
-						}
+              if (shouldHighlightLine(i)) {
+                lineProps.className = `${lineProps.className} highlight-line`
+              }
 
-						return (
-            <div key={i} {...lineProps}>
-							<span className="line-number-style">{i + 1}</span>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({token, key})} />
-              ))}
-            </div>
-          )})}
-        </pre>
+              return (
+                <div key={i} {...lineProps}>
+                  <span className="line-number-style">{i + 1}</span>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({token, key})} />
+                  ))}
+                </div>
+              )})}
+          </pre>
+        </div>
       )}
     </Highlight>
   )

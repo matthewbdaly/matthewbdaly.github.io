@@ -112,7 +112,7 @@ Generics to the rescue
 
 Flow provides a solution for this in the shape of [generic types](https://flow.org/en/docs/types/generics/). By passing in a polymorphic type using `<T>` in the function declaration, we can then refer to that type when specifying what `data` should look like:
 
-```flow {5-7}
+```flow {4-11}
 //@flow
 import { useCallback, useState, useEffect } from "react";
 
@@ -156,7 +156,7 @@ function useFetch<T>(url: string, query: string): [{
 export default useFetch;
 ```
 
-Then, when calling the hook, we can define a type that represents the expected shape of the data (here called `<Data>`, and specify that type when calling the hook, as in this example:
+Then, when calling the hook, we can define a type that represents the expected shape of the data (here called `<Data>`), and specify that type when calling the hook, as in this example:
 
 ```flow
 //@flow
