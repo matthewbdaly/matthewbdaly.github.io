@@ -137,7 +137,7 @@ module.exports = {
 						}
 					`,
 					output: `/rss.xml`,
-					title: "Matthew Daly's Blog"
+					title: "Matthew Daly"
 				}]
 			},
 		},
@@ -149,7 +149,7 @@ module.exports = {
 			options: {
 				icon: `src/images/icon.png`,
 				name: `Matthew Daly's Blog`,
-				short_name: `Matthew Daly's Blog`,
+				short_name: `Matthew Daly`,
 				start_url: `/`,
 				background_color: `white`,
 				theme_color: `black`,
