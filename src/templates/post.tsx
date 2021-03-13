@@ -39,7 +39,7 @@ const PostTemplate = ({ data, pageContext }) => {
         <TextSection>{post.body}</TextSection>
         <hr />
           <div className="py-4">
-              {post.frontmatter.categories.map((category: string) => (
+              {post.frontmatter.categories && post.frontmatter.categories.map((category: string) => (
                   <Link className="p-2 mr-4 text-xl text-white bg-green-600 rounded-md"
                       to={`/categories/${kebabCase(category)}/`}
                       key={category}
