@@ -29,11 +29,11 @@ const Search = () => {
 	}
 
 	return (
-		<form action="/" method="get" autoComplete="off" className="p-4">
+		<form action="/" method="get" autoComplete="off" className="float-right p-4">
 			<label htmlFor="header-search">
 				<span className="hidden">Search blog posts</span>
 			</label>
-			<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={updateSearch} />
+			<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={updateSearch} className="p-4 text-xl border-2 border-gray-100" />
 			<button type="submit">Search</button>
 			<ul>
                 {results.map((result: Result) => (
