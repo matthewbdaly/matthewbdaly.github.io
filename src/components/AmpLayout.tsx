@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const AmpLayout = ({ location, title, children }) => {
+const AmpLayout = ({ title, children }) => {
 	const header = (
 		<h3>
 			<Link to={`/`}>

@@ -4,13 +4,13 @@ import AmpLayout from "../components/AmpLayout"
 import SEO from "../components/Seo"
 import TextSection from "../components/TextSection"
 
-const AmpPostTemplate = ({ data, pageContext, location }) => {
+const AmpPostTemplate = ({ data, pageContext }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
   return (
-    <AmpLayout location={location} title={siteTitle}>
+    <AmpLayout title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.excerpt}

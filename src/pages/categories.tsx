@@ -4,20 +4,25 @@ import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import kebabCase from "lodash/kebabCase"
 
+type Category = {
+    totalCount: number,
+    category: string
+}
+
 const Categories = ({ data: {
   allMdx: { group },
   site: {
     siteMetadata: { title },
   }
-}, location }) => {
+}}) => {
 
   return (
-    <Layout location={location} title={title}>
+    <Layout title={title}>
       <SEO
         title={`Categories`}
         description={`Categories`}
       />
-      {group.map((node) => {
+        {group.map((node: Category) => {
         return (
           <Link to={`/categories/${kebabCase(node.category)}/`} key={node.category}>
             {node.category} ({node.totalCount})

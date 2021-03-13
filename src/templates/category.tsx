@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 
-const Category = ({ pageContext, data, location }) => {
+const Category = ({ pageContext, data }) => {
   const { category } = pageContext
   const { edges, totalCount } = data.allMdx
   const categoryHeader = `${totalCount} post${
@@ -11,7 +11,7 @@ const Category = ({ pageContext, data, location }) => {
   } in category "${category}"`
 
   return (
-    <Layout location={location} title={categoryHeader}>
+    <Layout title={categoryHeader}>
       <SEO
         title={category}
         description={category}

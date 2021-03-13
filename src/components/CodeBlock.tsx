@@ -21,14 +21,14 @@ require("prismjs/components/prism-vim");
 
 const RE = /{([\d,-]+)}/
 
-const calculateLinesToHighlight = meta => {
+const calculateLinesToHighlight = (meta: string) => {
   if (!RE.test(meta)) {
     return () => false
   }
   const lineNumbers = RE.exec(meta)[1]
     .split(`,`)
     .map(v => v.split(`-`).map(x => parseInt(x, 10)))
-  return index => {
+    return (index: number) => {
     const lineNumber = index + 1
     const inRange = lineNumbers.some(([start, end]) =>
       end ? lineNumber >= start && lineNumber <= end : lineNumber === start

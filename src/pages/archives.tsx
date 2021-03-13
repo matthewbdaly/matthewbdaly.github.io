@@ -3,11 +3,11 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 
-const Archives = ({ data, location }) => {
+const Archives = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <SEO
         title={`Archives`}
         description={`Post archive`}

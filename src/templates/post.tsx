@@ -5,7 +5,7 @@ import TextSection from "../components/TextSection"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
 
-const PostTemplate = ({ data, pageContext, location }) => {
+const PostTemplate = ({ data, pageContext }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
@@ -20,7 +20,7 @@ const PostTemplate = ({ data, pageContext, location }) => {
   }
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.excerpt}

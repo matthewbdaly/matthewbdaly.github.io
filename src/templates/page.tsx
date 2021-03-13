@@ -4,12 +4,12 @@ import TextSection from "../components/TextSection"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 
-const PageTemplate = ({ data, pageContext, location }) => {
+const PageTemplate = ({ data }) => {
   const page = data.mdx
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <SEO
         title={page.frontmatter.title}
         description={page.excerpt}

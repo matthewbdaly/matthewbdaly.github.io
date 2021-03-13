@@ -27,11 +27,11 @@ const codeStyles = {
 }
 
 // markup
-const NotFoundPage = ({ data, location }) => {
+const NotFoundPage = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <SEO
         title={`Not found`}
         description={`Not found`}

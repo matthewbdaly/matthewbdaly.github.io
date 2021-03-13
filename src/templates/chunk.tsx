@@ -3,12 +3,12 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 
-const Chunk = ({ pageContext, data, location }) => {
+const Chunk = ({ pageContext, data }) => {
   const siteTitle = data.site.siteMetadata.title
   const { currentPage, nextPage, previousPage } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <SEO
         title={`Page ${currentPage}`}
         description={`${siteTitle} - Page ${currentPage}`}
