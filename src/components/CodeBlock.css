@@ -5,7 +5,7 @@
     -webkit-overflow-scrolling: touch;
     background-color: transparent;
     overflow: initial;
-    border-radius: 4px;
+    border-radius: 0.2em;
 }
 
 .token {
@@ -16,7 +16,8 @@ p > code,
 li > code {
     background: rgb(1, 22, 39);
     color: rgb(214, 222, 235);
-    padding: 0.4em 0.3rem;
+    padding: 0.2em;
+    border-radius: 0.2em;
 }
 
 .gatsby-highlight {
