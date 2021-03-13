@@ -8,6 +8,8 @@
     background-color: transparent;
     overflow: initial;
     border-radius: 0.2em;
+    position: relative;
+    float: left;
 }
 
 .token {
