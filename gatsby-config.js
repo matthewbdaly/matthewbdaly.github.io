@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Matthew Daly's Blog`,
+    title: `Matthew Daly`,
     author: {
       name: `Matthew Daly`,
       summary: `who lives in Norfolk and works in Norwich (except during the lockdown, when he's been working from home).`,
