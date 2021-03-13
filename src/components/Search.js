@@ -23,7 +23,7 @@ const Search = () => {
 	}
 
 	return (
-		<form action="/" method="get" autoComplete="off">
+		<form action="/" method="get" autoComplete="off" className="p-4">
 			<label htmlFor="header-search">
 				<span className="hidden">Search blog posts</span>
 			</label>

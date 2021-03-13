@@ -4,16 +4,16 @@ import Search from "./Search"
 
 const Layout = ({ title, children }) => {
 	const header = (
-		<h3>
+		<h1 className="text-4xl">
 			<Link to={`/`}>
 				{title}
 			</Link>
 			<Search />
-		</h3>
+		</h1>
 	)
 
 	return (
-		<div>
+		<div className="container px-4 mx-auto">
 			<header>{header}</header>
 			<main>{children}</main>
 			<footer>
