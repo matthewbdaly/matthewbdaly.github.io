@@ -18,7 +18,25 @@ require("prismjs/components/prism-ruby");
 require("prismjs/components/prism-twig");
 require("prismjs/components/prism-vim");
 
-const CodeBlock = ({children, className, live}) => {
+const RE = /{([\d,-]+)}/
+
+const calculateLinesToHighlight = meta => {
+  if (!RE.test(meta)) {
+    return () => false
+  }
+  const lineNumbers = RE.exec(meta)[1]
+    .split(`,`)
+    .map(v => v.split(`-`).map(x => parseInt(x, 10)))
+  return index => {
+    const lineNumber = index + 1
+    const inRange = lineNumbers.some(([start, end]) =>
+      end ? lineNumber >= start && lineNumber <= end : lineNumber === start
+    )
+    return inRange
+  }
+}
+
+const CodeBlock = ({children, className, live, metastring}) => {
   const language = className ? className.replace(/language-/, '') : null
 
   if (live) {
@@ -40,17 +58,27 @@ const CodeBlock = ({children, className, live}) => {
     )
   }
 
+  const shouldHighlightLine = calculateLinesToHighlight(metastring)
+
   return (
     <Highlight Prism={Prism} {...defaultProps} code={children} language={language} theme={oceanicNext}>
       {({className, style, tokens, getLineProps, getTokenProps}) => (
         <pre className={className} style={{...style, padding: '20px'}}>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({line, key: i})}>
+          {tokens.map((line, i) => {
+						const lineProps = getLineProps({ line, key: i })
+
+						if (shouldHighlightLine(i)) {
+							lineProps.className = `${lineProps.className} highlight-line`
+						}
+
+						return (
+            <div key={i} {...lineProps}>
+							<span className="line-number-style">{i + 1}</span>
               {line.map((token, key) => (
                 <span key={key} {...getTokenProps({token, key})} />
               ))}
             </div>
-          ))}
+          )})}
         </pre>
       )}
     </Highlight>
