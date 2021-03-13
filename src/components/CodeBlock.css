@@ -2,6 +2,8 @@
     font-size: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     -webkit-overflow-scrolling: touch;
     background-color: transparent;
     overflow: initial;

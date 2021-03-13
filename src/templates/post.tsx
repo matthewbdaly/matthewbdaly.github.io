@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import TextSection from "../components/TextSection"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
+import kebabCase from "lodash/kebabCase"
 
 const PostTemplate = ({ data, pageContext }) => {
   const post = data.mdx
@@ -36,32 +37,41 @@ const PostTemplate = ({ data, pageContext }) => {
           </p>
         </header>
         <TextSection>{post.body}</TextSection>
-        <hr
-        />
-        <DiscussionEmbed {...disqusConfig} />
-        <footer>
-        </footer>
+        <hr />
+          <div className="py-4">
+              {post.frontmatter.categories.map((category: string) => (
+                  <Link className="p-2 mr-4 text-xl text-white bg-green-600 rounded-md"
+                      to={`/categories/${kebabCase(category)}/`}
+                      key={category}
+                  >
+                      {category}
+                  </Link>
+              ))}
+          </div>
+          <DiscussionEmbed {...disqusConfig} />
+          <footer>
+          </footer>
       </article>
 
-      <nav>
-        <ul
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.path} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.path} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+        <nav>
+            <ul
+            >
+                <li>
+                    {previous && (
+                        <Link to={previous.fields.path} rel="prev">
+                            ← {previous.frontmatter.title}
+                        </Link>
+                    )}
+                </li>
+                <li>
+                    {next && (
+                        <Link to={next.fields.path} rel="next">
+                            {next.frontmatter.title} →
+                        </Link>
+                    )}
+                </li>
+            </ul>
+        </nav>
     </Layout>
   )
 }
@@ -69,24 +79,25 @@ const PostTemplate = ({ data, pageContext }) => {
 export default PostTemplate
 
 export const postQuery = graphql`
-  query BlogPostByPath($path: String!) {
+query BlogPostByPath($path: String!) {
     site {
-      siteMetadata {
-        title
-        siteUrl
-      }
+        siteMetadata {
+            title
+            siteUrl
+        }
     }
     mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
-      id
-      body
-      excerpt(pruneLength: 160)
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-      }
-      fields {
-        path
-      }
+        id
+        body
+        excerpt(pruneLength: 160)
+        frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            categories
+        }
+        fields {
+            path
+        }
     }
-  }
+}
 `
