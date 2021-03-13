@@ -1,11 +1,10 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require("path")
 const _ = require("lodash")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const pageTemplate = path.resolve(`./src/templates/page.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.tsx`)
   const pageResult = await graphql(
     `
       {
@@ -35,7 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create pages.
   const pages = pageResult.data.allMdx.edges
 
-  pages.forEach((page, index) => {
+  pages.forEach((page) => {
     createPage({
       path: page.node.fields.path,
       component: pageTemplate,
@@ -44,8 +43,8 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const postTemplate = path.resolve(`./src/templates/post.js`)
-  const ampPostTemplate = path.resolve(`./src/templates/amppost.js`)
+  const postTemplate = path.resolve(`./src/templates/post.tsx`)
+  const ampPostTemplate = path.resolve(`./src/templates/amppost.tsx`)
   const result = await graphql(
     `
       {
@@ -103,7 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const chunkTemplate = path.resolve('./src/templates/chunk.js')
+  const chunkTemplate = path.resolve('./src/templates/chunk.tsx')
   const postsPerPage = 5
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
@@ -122,7 +121,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const categoryTemplate = path.resolve('./src/templates/category.js')
+  const categoryTemplate = path.resolve('./src/templates/category.tsx')
 
   const categoryResult = await graphql(`
     {
@@ -149,7 +148,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
