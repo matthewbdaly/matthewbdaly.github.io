@@ -66,7 +66,15 @@ const CodeBlock = ({children, className, live, metastring}) => {
       {({className, style, tokens, getLineProps, getTokenProps}) => (
         <div className="gatsby-highlight" data-language={language}>
           <pre className={className} style={{...style, padding: '20px'}}>
-            {tokens.map((line, i) => {
+            {tokens.filter((line, i, arr) => {
+              if (i < (arr.length - 1)) {
+                return true
+              }
+              if (line.length > 1) {
+                return true
+              }
+              return !line[0].empty
+            }).map((line, i) => {
               const lineProps = getLineProps({ line, key: i })
 
               if (shouldHighlightLine(i)) {
