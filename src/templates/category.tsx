@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import Card from "../components/Card"
 
 const Category = ({ pageContext, data }) => {
   const { category } = pageContext
@@ -16,13 +17,15 @@ const Category = ({ pageContext, data }) => {
         title={category}
         description={category}
       />
+        <div className="w-full">
       {edges.map(({ node }) => {
         return (
           <Link to={node.fields.path} key={node.fields.path}>
-            {node.frontmatter.title}
+            <Card title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} />
           </Link>
         )
       })}
+            </div>
     </Layout>
   )
 }
@@ -42,8 +45,10 @@ export const categoryQuery = graphql`
           fields {
             path
           }
+          excerpt(pruneLength: 80)
           frontmatter {
             title
+            categories
           }
         }
       }
