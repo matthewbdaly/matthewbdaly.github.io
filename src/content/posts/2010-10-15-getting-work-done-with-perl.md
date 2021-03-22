@@ -9,6 +9,7 @@ categories:
 - perl
 - python
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 After my initial struggles with Perl, I now think I'm really starting to get to grips with the language. I generally find it a pain when you have to learn by building small but basically useless scripts - I always do best when building something useful.

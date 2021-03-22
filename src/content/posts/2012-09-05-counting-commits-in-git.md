@@ -3,6 +3,7 @@ layout: post
 title: "Counting Commits in Git"
 date: 2012-09-05 00:13
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - git
 - bash

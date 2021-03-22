@@ -3,6 +3,7 @@ layout: post
 title: "My first Yeoman generator"
 date: 2014-01-25 11:38:40 +0000
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - javascript
 - grunt

@@ -3,6 +3,7 @@ layout: post
 title: "A starting boilerplate for PHP development with Vagrant"
 date: 2013-08-16 21:49
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - Vagrant
 ---

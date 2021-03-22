@@ -3,6 +3,7 @@ layout: post
 title: "Falling back to local copies of jQuery and jQuery Mobile"
 date: 2012-08-13 19:54
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - javascript
 - jquery

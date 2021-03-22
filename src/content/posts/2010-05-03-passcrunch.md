@@ -5,6 +5,7 @@ title: "PassCrunch"
 categories:
 - javascript
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 As an exercise to teach myself the basics of regular expressions in JavaScript I decided to implement a small function I called passCrunch to check how secure a password is. I implemented it based on the following principles:

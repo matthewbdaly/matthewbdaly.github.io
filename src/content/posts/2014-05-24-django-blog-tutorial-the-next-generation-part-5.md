@@ -3,6 +3,7 @@ layout: post
 title: "Django blog tutorial - the next generation - part 5"
 date: 2014-05-24 19:15:54 +0000
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - python
 - django

@@ -9,6 +9,7 @@ categories:
 - javascript
 - perl
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I'm glad to report that today I passed my CIW JavaScript Fundamentals exam with 98%! I was a bit concerned about this as some of the questions on the practice exam were downright wrong (as in the supposedly correct answers were in fact wrong), but thankfully this turned out not to be the case for the actual exam.

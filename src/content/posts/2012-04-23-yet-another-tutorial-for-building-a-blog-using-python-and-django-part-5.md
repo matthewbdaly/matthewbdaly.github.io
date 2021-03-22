@@ -10,6 +10,7 @@ categories:
 - python
 - webdevelopment
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In this instalment I'll be showing you how we can make our blogging engine a little nicer to look at by adding some CSS and images, as well as expanding on Django's templating system.

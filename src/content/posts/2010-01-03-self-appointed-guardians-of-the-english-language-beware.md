@@ -4,6 +4,7 @@ layout: post
 slug: self-appointed-guardians-of-the-english-language-beware
 title: Self-appointed guardians of the English language beware!
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 One thing that really bugs me is how anal many people are about the English language. Last year I had to deal with a case at work where someone told us that he couldn't find a word we were using in his dictionary, and told us we therefore should not be using it, in spite of the fact that it had not been coined by us, but by the industry regulator! I've encountered this kind of petty, small-minded attitude too many times, and it drives me up the wall.  

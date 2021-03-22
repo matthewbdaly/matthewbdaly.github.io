@@ -3,6 +3,7 @@ layout: post
 title: "First steps with Node.js"
 date: 2013-07-28 19:20
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - javascript
 - node.js
