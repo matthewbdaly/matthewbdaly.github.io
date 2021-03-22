@@ -35,13 +35,13 @@ const Search = () => {
 			</label>
 			<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={updateSearch} className="p-4 text-xl border-2 border-gray-100" />
 			<button type="submit">Search</button>
-			<ul>
-                {results.map((result: Result) => (
-					<li key={result.id}>
-						<Link to={result.path}>
+			<ul className="absolute shadow">
+                {results.slice(0, 5).map((result: Result) => (
+					<Link to={result.path}>
+					    <li key={result.id} className="relative z-10 bg-white border-2 border-gray-200">
 							{result.title}
-						</Link>
-					</li>
+					    </li>
+					</Link>
 				))}
 			</ul>
 		</form>
