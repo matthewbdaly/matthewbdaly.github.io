@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Card from "./Card"
 
 const RecentPosts = () => {
@@ -35,9 +35,7 @@ const RecentPosts = () => {
         <div className="w-full">
       {allMdx.edges.map(({ node }) => {
         return (
-          <Link to={node.fields.path} key={node.fields.path} className="">
-              <Card title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} />
-          </Link>
+            <Card key={node.fields.path} path={node.fields.path} title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} />
         );
       })}
       </div>
