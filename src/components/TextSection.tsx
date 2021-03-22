@@ -12,6 +12,7 @@ const components = {
   li: props => <li {...props} className="list-disc" />,
   ul: props => <ul {...props} className="py-2 pl-4" />,
   p: props => <p {...props} className="py-2" />,
+  blockquote: props => <blockquote {...props} className="pl-4 italic border-l-8 bg-gray-100 border-gray-500" />,
 }
 
 const TextSection = ({ children }) => {
