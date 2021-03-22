@@ -7,6 +7,7 @@ categories:
 - php
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 [My earlier post about integrating Laravel and Azure storage](/blog/2016/10/24/creating-an-azure-storage-adapter-for-laravel/) seems to have become something of a go-to resource on this subject (I suspect this is because very few developers actually use Laravel and Azure together). Unfortunately it hasn't really aged terribly well - changes to the namespace and to Guzzle mean that it needs some work to integrate it.

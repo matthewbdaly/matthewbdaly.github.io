@@ -7,6 +7,7 @@ categories:
 - django
 - djangorestframework
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I'm currently working on a Phonegap app that involves taking pictures and uploading them via a REST API. I've done this before, and I found at that time that the best way to do so was to fetch the image as a base-64 encoded string and push that up, rather than the image file itself. However, the last time I did so, I was using Tastypie to build the API, and I've since switched over to Django REST Framework as my API toolkit of choice.

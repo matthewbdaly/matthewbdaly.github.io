@@ -6,6 +6,7 @@ categories:
 - vim
 - markdown
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Just thought I'd share a little trick I picked up recently. As you may know, GitHub flavoured Markdown (which I use for this blog) supports fenced code blocks, allowing you to specify a language for a block of code in a Markdown file.

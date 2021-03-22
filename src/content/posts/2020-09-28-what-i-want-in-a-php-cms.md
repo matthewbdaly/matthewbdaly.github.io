@@ -6,6 +6,7 @@ categories:
 - php
 - cms
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I maintain a custom PHP legacy CMS for a client, and have also been building a micro-CMS as a learning project, so I've spent quite a lot of time in the last few years thinking about how content should be managed, and how applications to manage it should work.

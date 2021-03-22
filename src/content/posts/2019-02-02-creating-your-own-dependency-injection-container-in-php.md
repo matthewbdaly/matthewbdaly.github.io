@@ -5,6 +5,7 @@ date: 2019-02-02 21:45:52 +0100
 categories:
 - php
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Dependency injection can be a difficult concept to understand in the early stages. Even when you're using it all the time, it can often seem like magic. However, it's really not all that complicated once you actually get into the nuts and bolts of it, and building your own container is a good way to learn more about how it works and how to use it.

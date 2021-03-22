@@ -3,6 +3,7 @@ layout: post
 title: "Building a URL shortener with Node.js and Redis"
 date: 2014-11-09 17:13:16 +0000
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - node.js
 - redis

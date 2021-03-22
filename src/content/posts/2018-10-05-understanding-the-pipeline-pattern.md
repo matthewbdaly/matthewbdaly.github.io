@@ -6,6 +6,7 @@ categories:
 - php
 - designpatterns
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In a previous post, I used the pipeline pattern to demonstrate processing letters using optical recognition and machine learning. The pipeline pattern is something I've found very useful in recent months. For a sequential series of tasks, this approach can make your code easier to understand by allowing you to break it up into simple, logical steps which are easy to test and understand individually. If you're familiar with pipes and redirection in Unix, you'll be aware of how you can chain together multiple, relatively simple commands to carry out some very complex transformations on data.

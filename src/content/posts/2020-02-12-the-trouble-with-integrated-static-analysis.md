@@ -5,6 +5,7 @@ layout: post
 categories:
 - php
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I've always been a big fan in general of tools that provide feedback about the quality of my code. The development role in which I spent the most time was one in which I had no peer feedback or mentoring at all, and while I could definitely have done with more peer review than I had, automated tools helped fill the gap a little bit. When I started building my first Phonegap app, about a year after I started programming professionally, it used *far* more Javascript than I'd ever used before, and JSLint was very helpful in instilling good practices at that early stage in my career.

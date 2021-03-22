@@ -7,6 +7,7 @@ categories:
 - laravel
 - comments
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 [Laravel Comments](https://github.com/matthewbdaly/laravel-comments) is a package I recently released that allows you to add comments to any model in your application. Possible models you could use it to enable comments on might include:

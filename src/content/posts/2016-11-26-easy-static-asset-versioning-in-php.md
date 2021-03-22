@@ -6,6 +6,7 @@ categories:
 - php
 - static
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 It's prudent to cache static assets such as images, Javascript and CSS to improve performance, but that raises the issue of changes not being reflected in your site due to visitor's browsers retaining the cached versions. Many content management systems and frameworks already handle this for you (such as Laravel's Elixir build system), but what if you have to work with a legacy application that doesn't do this?

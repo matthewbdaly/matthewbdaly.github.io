@@ -7,6 +7,7 @@ categories:
 - laravel
 - mysql
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Relational databases have many advantages over other data stores. They're (mostly) solid, mature products, they have the means to prevent data duplication while still allowing related data to be accessed, and they allow for easy enforcement of data types. However, the latter point has also historically made them less flexible compared to document databases such as MongoDB, which allow for fields to be set dynamically, making it much easier to set content arbitrarily.

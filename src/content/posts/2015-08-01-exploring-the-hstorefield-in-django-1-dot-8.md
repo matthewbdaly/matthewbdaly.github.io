@@ -7,6 +7,7 @@ categories:
 - django
 - postgresql
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 One of the most interesting additions in Django 1.8 is the new Postgres-specific fields. I started using PostgreSQL in preference to MySQL for Django apps last year, and so I was interested in the additional functionality they offer.

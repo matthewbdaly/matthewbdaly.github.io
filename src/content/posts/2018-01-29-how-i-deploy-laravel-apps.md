@@ -6,6 +6,7 @@ categories:
 - php
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 A while back I provided details of the web server setup I used for Django applications. Nowadays I tend to use Laravel most of the time, so I thought I'd share an example of the sort of setup I use to deploy that.

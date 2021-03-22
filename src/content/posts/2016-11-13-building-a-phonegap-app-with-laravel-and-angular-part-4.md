@@ -10,6 +10,7 @@ categories:
 - phonegap
 - laravel-phonegap-tutorial
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In this instalment we'll return to the back end. What we've done so far is typical of the kind of proof of concept we might do for a client early on, before going back and implementing the full set of features later on. Now we'll go back and start to improve on that rather quick-and-dirty API by making sure we follow a few best practices.

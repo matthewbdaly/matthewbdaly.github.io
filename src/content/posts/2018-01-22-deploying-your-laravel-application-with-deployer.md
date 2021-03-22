@@ -7,6 +7,7 @@ categories:
 - laravel
 - deployment
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Deployment processes have a nasty tendency to be a mish-mash of cobbled-together scripts or utilities in many web shops, with little or no consistency in practice between them. As a result, it's all too easy for even the most experienced developer to mess up a deployment.

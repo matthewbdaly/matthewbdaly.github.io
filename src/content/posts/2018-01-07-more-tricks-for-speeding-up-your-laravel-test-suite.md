@@ -7,6 +7,7 @@ categories:
 - laravel
 - tdd
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 When you first start doing test-driven development with Laravel, it can be quite hard to produce a test suite that runs quickly enough. The first time I used Laravel for a large project, I had a test suite that at one time, took over seven minutes to run, which was pretty awful considering that the ideal time for a test suite to take to run is no more than ten seconds.

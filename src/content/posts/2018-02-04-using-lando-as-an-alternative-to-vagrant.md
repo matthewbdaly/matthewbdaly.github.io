@@ -6,6 +6,7 @@ categories:
 - docker
 - virtualisation
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Although Vagrant is very useful for ensuring consistency between development environments, it's quite demanding on system resources. Running a virtual machine introduces quite a bit of overhead, and it can be troublesome to provision.

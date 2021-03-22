@@ -6,6 +6,7 @@ categories:
 - php
 - sms
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 This weekend I published [sms-client](https://github.com/matthewbdaly/sms-client), a generic PHP library for sending SMS notifications. It's intended to offer a consistent interface when sending SMS notifications by using swappable drivers. That way, if your SMS service provider suddenly goes out of business or bumps up their prices, it's easy to switch to a new one.

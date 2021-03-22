@@ -5,6 +5,7 @@ layout: post
 categories:
 - search
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 For the uninitiated, OpenSearch is the technology that lets you enter a site's URL, and then press Tab to start searching on that site - you can see it in action on this site. It's really useful, and quite easy to implement if you know how.

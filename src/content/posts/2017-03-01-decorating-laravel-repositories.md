@@ -6,6 +6,7 @@ categories:
 - php
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 [As mentioned previously](/blog/2016/11/13/building-a-phonegap-app-with-laravel-and-angular-part-4/), when building any nontrivial Laravel application, it's prudent to decouple our controllers from the Eloquent ORM (or any other ORM or data source we may be using) by creating an interface, and then writing a repository that implements that interface. We can then resolve the interface to our repository, and use the repository to interact with our data source. Should we need to switch to a different implementation, we then need only create the new repository and amend how Laravel resolves that interface.

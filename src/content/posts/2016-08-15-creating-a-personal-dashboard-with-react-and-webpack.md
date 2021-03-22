@@ -7,6 +7,7 @@ categories:
 - react
 - webpack
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 The Raspberry Pi is a great device for running simple web apps at home on a permanent basis, and you can pick up a small touchscreen for it quite cheaply. This makes it easy to build and host a small personal dashboard that pulls important data from various APIs or RSS feeds and displays it. You'll often see dashboards like this on Raspberry Pi forums and subreddits. As I'm currently between jobs, and have some time to spare before my new job starts, I decided to start creating my own version of it. It was obvious that React.js is a good fit for this as it allows you to break up your user interface into multiple independent components and keep the functionality close to the UI. It also makes it easy to reuse widgets by passing different parameters through each time.

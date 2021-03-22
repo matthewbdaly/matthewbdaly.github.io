@@ -10,6 +10,7 @@ categories:
 - laravel
 - testing
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Documenting your API is something most developers agree is generally a Good Thing, but it's a pain in the backside, and somewhat boring to do. What you really need is a tool that allows you to specify the details of your API before you start work, generate documentation from that specification, and test your implementation against that specification.

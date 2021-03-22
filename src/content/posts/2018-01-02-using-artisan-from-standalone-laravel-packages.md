@@ -7,6 +7,7 @@ categories:
 - laravel
 - artisan
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Recently I've been building and publishing a significant number of Laravel packages, and I thought I'd share details of some of them over the next few days.

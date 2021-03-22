@@ -6,6 +6,7 @@ categories:
 - node.js
 - redis
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In this tutorial, we're going to extend the chat system we built in [the first tutorial](/blog/2014/12/31/building-a-chat-server-with-node-dot-js-and-redis/) to include the following functionality:

@@ -7,6 +7,7 @@ categories:
 - php7
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In the last couple of weeks I've been working on a PHP web app. Nothing unusual there, except this was the first time we'd used PHP 7 in production. We discussed the possibility a while back, and eventually decided that for certain projects we'd use PHP 7 without waiting another year or so (or maybe longer) for a version of Debian stable with it by default. I wanted to talk about how our experience has been using it in production.

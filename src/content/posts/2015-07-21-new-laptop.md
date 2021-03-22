@@ -6,6 +6,7 @@ categories:
 - ubuntu
 - hardware
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 For a while now it's been obvious that I needed a new laptop. My main workhorse for a while has been a 2008 MacBook, but I'm not really a fan of Mac OS X and it was stuck on Snow Leopard, so it was somewhat behind the times. It was also painfully slow by modern standards - regenerating this site took a couple of minutes. I had two other reasonably modern laptops, but one was too big and cumbersome, while the other was a Dell Mini, which isn't really fast enough for a developer. When I last bought a laptop, I wasn't even a developer, so it was long past time I got a more suitable machine.

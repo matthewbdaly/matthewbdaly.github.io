@@ -7,6 +7,7 @@ categories:
 - artisan
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 While the documentation for creating Artisan tasks is generally pretty good, it doesn't really touch on creating tasks that generate new files. The only way to figure it out was to go digging through the source code. In this case, I was building an Artisan command to create Fractal transformers as part of a package I'm working on.

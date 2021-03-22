@@ -10,6 +10,7 @@ categories:
 - phonegap
 - laravel-phonegap-tutorial
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In this lesson, the initial scope of the app will be extremely simple. We will implement functionality that:

@@ -7,6 +7,7 @@ categories:
 - laravel
 - php
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I've touched on [using PostgreSQL to implement fuzzy search with Laravel before](/blog/2017/10/03/simple-fuzzy-search-with-laravel-and-postgresql/), but another type of search that PostgreSQL can handle fairly easily is full-text search. Here I'll show you how to use it in a Laravel application.

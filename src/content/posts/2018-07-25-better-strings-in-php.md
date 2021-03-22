@@ -5,6 +5,7 @@ date: 2018-07-25 22:25:17 +0100
 categories:
 - php
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 One of the weaknesses of PHP as a programming language is the limitations of some of the fundamental types. For instance, a string in PHP is a simple value, rather than an object, and doesn't have any methods associated with it. Instead, to manipulate a string, you have to call all manner of functions. By comparison, in Python, not only can you call methods on a string, and receive a new string as the response, making them easily chainable, but you can also iterate through a string, as in this example:

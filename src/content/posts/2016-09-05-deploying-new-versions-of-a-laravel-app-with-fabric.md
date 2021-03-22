@@ -9,6 +9,7 @@ categories:
 - laravel
 - deployment
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 [Envoy](https://laravel.com/docs/5.3/envoy) is the official way to run tasks on a remote server for Laravel apps. A typical Envoy task for deploying a new version might look like this:

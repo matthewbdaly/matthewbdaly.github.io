@@ -6,6 +6,7 @@ categories:
 - php
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 This was a bit of a weird post to write. It started out explaining how I resolved an issue years ago on a CodeIgniter site, but amended to work for Laravel. In the process, I realised it made sense to implement it as middleware, and I ended up pulling it out into [a package](https://github.com/matthewbdaly/laravel-dynamic-serving). However, it's still useful to understand the concept behind it, even if you prefer to just install the complete package, because your needs might be slightly different to mine.

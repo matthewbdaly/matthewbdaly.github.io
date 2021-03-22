@@ -5,6 +5,7 @@ layout: post
 categories:
 - php
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 The project I've been maintaining for the last year has inherited a rather dubious database structure that would currently be very difficult to refactor, which also makes many queries more convoluted than they should be. At present, I'm involved in building a whole new home page, which has necessitated adding some new queries. Since some of these involve carrying out unions between several similar tables (that should have been one table, grr...), they can involve some quite large chunks for each query.

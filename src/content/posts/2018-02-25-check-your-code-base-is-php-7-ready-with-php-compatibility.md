@@ -5,6 +5,7 @@ layout: post
 categories:
 - php
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I've recently started a new job and as part of that I'm working on a rather substantial legacy code base. In fact, it was so legacy that it was still in Subversion - needless to say the very first thing I did was migrate it to Git. One of the jobs on our radar for this code base is to migrate it to from PHP 5.4 to 5.6, and subsequently to PHP 7. I've been using it locally in 5.6 without issue so far, but I've also been looking around for an automated tool to help catch potential problems.

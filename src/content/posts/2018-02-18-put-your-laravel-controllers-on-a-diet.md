@@ -6,6 +6,7 @@ categories:
 - php
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 MVC frameworks are a tremendously useful tool for modern web development. They offer easy ways to carry out common tasks, and enforce a certain amount of structure on a project.

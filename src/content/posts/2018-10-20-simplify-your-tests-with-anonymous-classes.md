@@ -5,6 +5,7 @@ layout: post
 categories:
 - php
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Anonymous classes were added in PHP7, but so far I haven't made all that much use of them. However, recently I've been working on building a simple dependency injection container for learning purposes. This uses the PHP Reflection API to determine how to resolve dependencies. For instance, if it's asked for a class for which one of the dependencies required by the constructor is an instance of the `DateTime` class, it should create an instance, and then pass it into the constructor automatically when instantiating the class. Then it should return the newly created class.

@@ -6,6 +6,7 @@ categories:
 - php
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 UPDATE: This post has now been superseded by [this one](/blog/2017/10/29/an-azure-filesystem-integration-for-laravel/) as I've released this integration as a package.

@@ -6,6 +6,7 @@ categories:
 - php
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Laravel Mix is a really convenient front end scaffold, and not just in the context of a Laravel application. Last year, I added it to a legacy application I maintain, with positive results, and I'm including it in a CMS I'm working on.

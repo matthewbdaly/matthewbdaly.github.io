@@ -5,6 +5,7 @@ layout: post
 categories:
 - git
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 The `bisect` command in Git can be very useful when trying to catch any regressions. If you know that a bug was not present at some point in the past, and now is, you can often use `bisect` to track it down quickly and easily.

@@ -10,6 +10,7 @@ categories:
 - phonegap
 - laravel-phonegap-tutorial
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Apologies for how long it's taken for this post to appear. I've got a lot on my plate at present as I recently started a new job, so I haven't been able to devote as much time to this series as I'd like.

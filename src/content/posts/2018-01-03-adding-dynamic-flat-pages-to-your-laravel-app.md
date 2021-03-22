@@ -7,6 +7,7 @@ categories:
 - laravel
 - flatpages
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Most web apps have at least some need for some additional flat pages, for purposes such as:

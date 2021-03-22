@@ -6,6 +6,7 @@ categories:
 - php
 - laravel
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 A couple of years ago I posted [this article](https://matthewdaly.co.uk/blog/2018/01/12/creating-a-caching-user-provider-for-laravel/) about constructing a caching user provider for Laravel. It worked, but with the benefit of hindsight I can now see that there were a number of issues with this solution:

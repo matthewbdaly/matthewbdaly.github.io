@@ -6,6 +6,7 @@ categories:
 - php
 - machine-learning
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 PHP isn't the first language that springs to mind when it comes to machine learning. However, it is practical to use PHP for machine learning purposes. In this tutorial I'll show you how to build a pipeline for classifying letters.

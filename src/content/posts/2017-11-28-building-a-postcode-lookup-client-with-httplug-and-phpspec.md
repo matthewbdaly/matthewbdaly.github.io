@@ -9,6 +9,7 @@ categories:
 - http
 - httplug
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 While PHPUnit is my normal go-to PHP testing framework, for some applications I find [PHPSpec](http://www.phpspec.net/en/stable/) superior, in particular REST API clients. I've found that it makes for a better flow when doing test-driven development, because it makes it very natural to write a test first, then run it, then make the test pass.

@@ -3,6 +3,7 @@ layout: post
 title: "Building a chat server with Node.js and Redis"
 date: 2014-12-31 14:10:57 +0000
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - node.js
 - redis

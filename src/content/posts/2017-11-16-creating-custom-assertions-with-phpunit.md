@@ -8,6 +8,7 @@ categories:
 - testing
 - phpunit
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Today I've been working on a library I'm building for making it easier to build RESTful API's with Laravel. It uses an abstract RESTful controller, which inherits from the default Laravel controller, and I wanted to verify that the instantiated controller includes all the traits from the base controller.

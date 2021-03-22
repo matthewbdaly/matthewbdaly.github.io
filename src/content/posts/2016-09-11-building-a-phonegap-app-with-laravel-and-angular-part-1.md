@@ -10,6 +10,7 @@ categories:
 - phonegap
 - laravel-phonegap-tutorial
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 A lot of my work over the last few years has been on Phonegap apps. Phonegap isn't terribly hard to use, but the difference in context between that and a more conventional web app means that you have to move a lot of functionality to the client side, and unless you've used client-side Javascript frameworks before it can be a struggle.

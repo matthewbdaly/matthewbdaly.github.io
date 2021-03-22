@@ -8,6 +8,7 @@ categories:
 - redis
 - socket.io
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In the last year or so, React.js has taken the world of web development by storm. A major reason for this is that it makes it possible to build **isomorphic web applications** - web apps where the same code can run on the client and the server. Using React.js, you can create a template that will be executed on the server when the page first loads, and then the same template can be used to re-render the content when it's updated, whether that's via AJAX, WebSockets or another method entirely.

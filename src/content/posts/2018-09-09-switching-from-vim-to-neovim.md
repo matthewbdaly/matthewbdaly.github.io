@@ -6,6 +6,7 @@ categories:
 - vim
 - neovim
 comments: true
+featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I honestly thought it would never happen. I've been using Vim since 2008, and every other editor I've tried (including VSCode, Emacs, Sublime Text and Atom) hasn't come up to scratch. There were a few useful features in PHPStorm, to be fair, but nothing that justified the bother of moving. Also, I suffer from a degree of RSI from my prior career as an insurance clerk (years of using crap keyboards and mice on Windows XP took its toll...), and Vim has always been the most RSI-friendly editor I found.
