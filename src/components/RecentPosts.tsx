@@ -31,7 +31,7 @@ const RecentPosts = () => {
 
   return (
       <Fragment>
-      <h4>Recent posts</h4>
+      <h2 className="text-2xl">Recent posts</h2>
         <div className="w-full">
       {allMdx.edges.map(({ node }) => {
         return (
