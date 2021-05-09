@@ -3,7 +3,6 @@ layout: post
 title: "Dumping WordPress for Octopress"
 date: 2012-05-31 21:25
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - wordpress
 - octopress

@@ -8,7 +8,6 @@ wordpress_id: '450'
 categories:
 - webdevelopment
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 If someone asks you to name an application for creating web pages, the chances are that one of the first things you'll think of is Adobe Dreamweaver. While it may not have quite as much mindshare as its Creative Suite stablemate Photoshop, it's still regarded as the premier application for creating web pages.

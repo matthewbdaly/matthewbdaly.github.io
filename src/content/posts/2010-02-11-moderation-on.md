@@ -6,7 +6,6 @@ status: publish
 title: Moderation on
 wordpress_id: '13'
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Due to spamming, I've reluctantly decided to start moderating comments on this blog. I don't want to do so, and regret having to take this step, but it was getting really annoying.

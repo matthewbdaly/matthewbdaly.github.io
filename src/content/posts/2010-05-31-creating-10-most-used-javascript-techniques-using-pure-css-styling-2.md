@@ -8,7 +8,6 @@ wordpress_id: '466'
 categories:
 - CSS
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I really enjoyed [this article](http://devsnippets.com/article/techniques-using-pure-css-only.html) and look forward to trying out a few of the techniques it describes. If you haven't seen it, please check it out!

@@ -8,7 +8,6 @@ wordpress_id: '364'
 categories:
 - blogging
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I've made the tough decision to abandon Blogger and move my blog to Wordpress. For those of you that have joined me from my old blog at [http://farbeyondtheedgeofreason.blogspot.com/](http://farbeyondtheedgeofreason.blogspot.com/) thank you very much for doing so!

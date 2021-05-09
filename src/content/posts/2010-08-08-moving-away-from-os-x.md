@@ -9,7 +9,6 @@ categories:
 - linux
 - mac
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I bought my MacBook two years ago, and at first I was cynical about how I would find it compared to Ubuntu, but over time I found myself using it more and more. While I have never considered myself a Mac user (I've always thought of myself as a Linux user who owns a Mac), I did grow to appreciate the combination of a solid Unix base with a well thought-out GUI, and it worked out well for me.

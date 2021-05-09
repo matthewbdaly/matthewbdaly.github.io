@@ -3,7 +3,6 @@ layout: post
 title: "My first jQuery plugin"
 date: 2013-04-21 22:06
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - javascript
 - jquery

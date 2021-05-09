@@ -6,7 +6,6 @@ status: publish
 title: My new website
 wordpress_id: '10'
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 For a while now I've been considering setting up a website on my own domain name, as this would provide an excellent way of showcasing my abilities with HTML, CSS and JavaScript, and provide a URL I can put on my CV when applying for jobs. I've had my eye on the domain name matthewdaly.co.uk, and last night I bought the bullet and paid for it (bargain at about £6 for 2 years, including VAT).

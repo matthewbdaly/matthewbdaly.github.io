@@ -3,7 +3,6 @@ layout: post
 title: "Testing PHP web applications with Cucumber"
 date: 2012-11-03 16:43
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - php
 - ruby
