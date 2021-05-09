@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import TextSection from "../components/TextSection"
 import Layout from "../components/Layout"
@@ -9,45 +9,47 @@ const PageTemplate = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout title={siteTitle}>
+    <Fragment>
       <SEO
         title={page.frontmatter.title}
         description={page.excerpt}
       />
-      <article>
-        <header>
-          <h2 className="my-8 font-serif text-4xl font-extrabold">
-            {page.frontmatter.title}
-          </h2>
-          <p>
-            {page.frontmatter.date}
-          </p>
-        </header>
-        <TextSection>{page.body}</TextSection>
-        <hr
-        />
-      </article>
-    </Layout>
+      <Layout title={siteTitle}>
+        <article>
+          <header>
+            <h2 className="my-8 font-serif text-4xl font-extrabold">
+              {page.frontmatter.title}
+            </h2>
+            <p>
+              {page.frontmatter.date}
+            </p>
+          </header>
+          <TextSection>{page.body}</TextSection>
+          <hr
+          />
+        </article>
+      </Layout>
+    </Fragment>
   )
 }
 
 export default PageTemplate
 
 export const pageQuery = graphql`
-  query PageByPath($path: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "page"}}) {
-      id
-      body
-      excerpt(pruneLength: 160)
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-      }
+query PageByPath($path: String!) {
+  site {
+    siteMetadata {
+      title
     }
   }
+  mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "page"}}) {
+    id
+    body
+    excerpt(pruneLength: 160)
+    frontmatter {
+      title
+      date(formatString: "MMMM DD, YYYY")
+    }
+  }
+}
 `

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
@@ -12,46 +12,48 @@ const Category = ({ pageContext, data }) => {
   } in category "${category}"`
 
   return (
-    <Layout title={categoryHeader}>
+    <Fragment>
       <SEO
         title={category}
         description={category}
       />
+      <Layout title={categoryHeader}>
         <div className="w-full">
-      {edges.map(({ node }) => {
-        return (
-          <Link to={node.fields.path} key={node.fields.path}>
-            <Card title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} />
-          </Link>
-        )
-      })}
-            </div>
-    </Layout>
+          {edges.map(({ node }) => {
+            return (
+              <Link to={node.fields.path} key={node.fields.path}>
+                <Card title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} />
+              </Link>
+            )
+          })}
+        </div>
+      </Layout>
+    </Fragment>
   )
 }
 
 export default Category
 
 export const categoryQuery = graphql`
-  query($category: String) {
-    allMdx(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC}
-      filter: { frontmatter: { categories: { in: [$category] }}}
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            path
-          }
-          excerpt(pruneLength: 80)
-          frontmatter {
-            title
-            categories
-          }
+query($category: String) {
+  allMdx(
+  limit: 2000
+  sort: { fields: [frontmatter___date], order: DESC}
+  filter: { frontmatter: { categories: { in: [$category] }}}
+  ) {
+    totalCount
+    edges {
+      node {
+        fields {
+          path
+        }
+        excerpt(pruneLength: 80)
+        frontmatter {
+          title
+          categories
         }
       }
     }
   }
+}
 `
