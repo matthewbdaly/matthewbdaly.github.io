@@ -34,7 +34,7 @@ const Search = () => {
 				<span className="hidden">Search blog posts</span>
 			</label>
 			<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={updateSearch} className="p-4 text-xl border-2 border-gray-100" />
-			<button type="submit">Search</button>
+			<button type="submit" className="px-2 py-4 mx-0 border-2">Search</button>
 			<ul className="absolute shadow">
                 {results.slice(0, 5).map((result: Result) => (
 					<Link to={result.path} key={result.id}>
