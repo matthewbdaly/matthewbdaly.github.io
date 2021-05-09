@@ -17,31 +17,6 @@ module.exports = {
 		`gatsby-plugin-postcss`,
 		"gatsby-plugin-image",
 		{
-			resolve: `gatsby-plugin-amp`,
-			options: {
-				analytics: {
-					type: 'gtag',
-					dataCredentials: 'include',
-					config: {
-						vars: {
-							gtag_id: "UA-17043630-1",
-							config: {
-								"UA-17043630-1": {
-									page_location: '{{pathname}}'
-								},
-							},
-						},
-					},
-				},
-				canonicalBaseUrl: 'https://matthewdaly.co.uk/',
-				components: ['amp-form'],
-				excludedPaths: ['/404*', '/'],
-				pathIdentifier: 'amp/',
-				relAmpHtmlPattern: '{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}',
-				useAmpClientIdApi: true,
-			},
-		},
-		{
 			resolve: "gatsby-plugin-local-search",
 			options: {
 				name: 'posts',

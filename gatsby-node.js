@@ -44,7 +44,6 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const postTemplate = path.resolve(`./src/templates/post.tsx`)
-  const ampPostTemplate = path.resolve(`./src/templates/amppost.tsx`)
   const result = await graphql(
     `
       {
@@ -87,17 +86,6 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         previous,
         next,
-        amppath: `${post.node.fields.path}amp/`,
-      },
-    })
-
-    createPage({
-      path: `${post.node.fields.path}amp/`,
-      component: ampPostTemplate,
-      context: {
-        previous,
-        next,
-        amppath: `${post.node.fields.path}amp/`,
       },
     })
   })
@@ -159,11 +147,6 @@ exports.onCreateNode = ({ node, actions }) => {
         name: `path`,
         node,
         value: url
-      })
-      createNodeField({
-        name: `amppath`,
-        node,
-        value: `${url}amp/`
       })
     }
     if (node.frontmatter.layout === "page") {
