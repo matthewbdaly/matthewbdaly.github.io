@@ -13,7 +13,7 @@ const RecentPosts = () => {
         ) {
           edges {
             node {
-              excerpt(pruneLength: 80)
+              excerpt(pruneLength: 120)
               fields {
                 path
               }

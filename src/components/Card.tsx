@@ -18,7 +18,7 @@ const Card = ({ path, title, excerpt, categories }) => {
                 <div className="h-12">
                     {categories.map((category: string) => (
                       <Link to={`/categories/${kebabCase(category)}/`} key={category}>
-                        <span className="px-4 py-2 mx-2 text-sm font-medium text-gray-900 bg-gray-100 rounded-full hover:bg-gray-200">
+                        <span className="px-4 py-2 mx-2 text-sm font-bold text-gray-900 bg-gray-100 rounded-full hover:bg-gray-200">
                           {category}
                         </span>
                       </Link>
