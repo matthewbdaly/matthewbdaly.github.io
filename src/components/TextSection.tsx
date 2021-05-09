@@ -6,7 +6,7 @@ import CodeBlock from "./CodeBlock"
 const components = {
   pre: props => <div {...props} />,
   code: CodeBlock,
-  h1: props => <h1 {...props} className="text-4xl font-bold" />,
+  h1: props => <h1 {...props} className="py-4 text-4xl font-bold" />,
   h2: props => <h2 {...props} className="py-4 text-2xl font-bold" />,
   h3: props => <h3 {...props} className="text-xl" />,
   li: props => <li {...props} className="list-disc" />,

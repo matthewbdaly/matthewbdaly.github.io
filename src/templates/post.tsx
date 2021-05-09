@@ -28,13 +28,10 @@ const PostTemplate = ({ data, pageContext }) => {
             />
             <article>
                 <header>
-                    <h2 className="text-2xl">
+                    <h2 className="my-8 text-4xl font-extrabold">
                         {post.frontmatter.title}
                     </h2>
-                    <p
-                    >
-                        {post.frontmatter.date}
-                    </p>
+                    <p className="my-4 text-lg font-semibold text-black">{post.frontmatter.date}</p>
                 </header>
                 <TextSection>{post.body}</TextSection>
                 <hr />
@@ -92,7 +89,7 @@ query BlogPostByPath($path: String!) {
         excerpt(pruneLength: 160)
         frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "DD MMMM YYYY")
             categories
         }
         fields {

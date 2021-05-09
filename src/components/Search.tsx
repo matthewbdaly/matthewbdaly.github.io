@@ -38,7 +38,7 @@ const Search = () => {
 			<ul className="absolute shadow">
                 {results.slice(0, 5).map((result: Result) => (
 					<Link to={result.path} key={result.id}>
-					    <li className="relative z-10 bg-white border-2 border-gray-200">
+					    <li className="relative z-10 p-2 bg-white border-2 border-gray-200">
 							{result.title}
 					    </li>
 					</Link>
