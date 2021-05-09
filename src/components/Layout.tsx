@@ -7,7 +7,7 @@ const Layout = ({ title, children }) => {
         <div className="font-sans text-lg font-normal text-gray-900 bg-white dark:bg-gray-800 dark:text-gray-200">
             <div className="container p-4 mx-auto">
                 <header>
-                    <h1 className="float-left text-4xl">
+                    <h1 className="float-left text-4xl font-serif">
                         <Link to={`/`}>{title}</Link>
                     </h1>
                     <Search />

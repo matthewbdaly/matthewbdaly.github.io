@@ -28,10 +28,10 @@ const PostTemplate = ({ data, pageContext }) => {
             />
             <article>
                 <header>
-                    <h2 className="my-8 text-4xl font-extrabold">
+                    <h2 className="my-8 font-serif text-4xl font-extrabold">
                         {post.frontmatter.title}
                     </h2>
-                    <p className="my-4 text-lg font-semibold">{post.frontmatter.date}</p>
+                    <p className="my-4 font-serif text-lg font-semibold">{post.frontmatter.date}</p>
                 </header>
                 <TextSection>{post.body}</TextSection>
                 <hr />

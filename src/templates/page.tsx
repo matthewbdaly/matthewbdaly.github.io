@@ -16,20 +16,16 @@ const PageTemplate = ({ data }) => {
       />
       <article>
         <header>
-          <h1
-          >
+          <h2 className="my-8 font-serif text-4xl font-extrabold">
             {page.frontmatter.title}
-          </h1>
-          <p
-          >
+          </h2>
+          <p>
             {page.frontmatter.date}
           </p>
         </header>
         <TextSection>{page.body}</TextSection>
         <hr
         />
-        <footer>
-        </footer>
       </article>
     </Layout>
   )

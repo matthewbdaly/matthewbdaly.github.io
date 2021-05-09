@@ -18,14 +18,10 @@ const AmpPostTemplate = ({ data, pageContext }) => {
             />
             <article>
                 <header>
-                    <h1
-                    >
+                    <h2 className="my-8 font-serif text-4xl font-extrabold">
                         {post.frontmatter.title}
-                    </h1>
-                    <p
-                    >
-                        {post.frontmatter.date}
-                    </p>
+                    </h2>
+                    <p className="my-4 font-serif text-lg font-semibold">{post.frontmatter.date}</p>
                 </header>
                 <TextSection>{post.body}</TextSection>
                 <hr />
@@ -39,22 +35,18 @@ const AmpPostTemplate = ({ data, pageContext }) => {
                         </Link>
                     ))}
                 </div>
-
-                <footer>
-                </footer>
             </article>
 
-            <nav>
-                <ul
-                >
-                    <li>
+            <nav className="p-4">
+                <ul>
+                        <li className="float-left">
                         {previous && (
                             <Link to={previous.fields.path} rel="prev">
                                 ← {previous.frontmatter.title}
                             </Link>
                         )}
                     </li>
-                    <li>
+                    <li className="float-right">
                         {next && (
                             <Link to={next.fields.path} rel="next">
                                 {next.frontmatter.title} →
