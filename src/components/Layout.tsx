@@ -15,7 +15,7 @@ const Layout = ({ title, children }) => {
                 <div className="clear-both" />
                 <main>{children}</main>
             </div>
-            <footer className="w-full text-white bg-blue-900 clear-both h-72">
+            <footer className="w-full h-24 p-4 text-center text-gray-200 align-middle bg-gray-900 clear-both">
                 © {new Date().getFullYear()}, Built with
                 {` `}
                 <a href="https://www.gatsbyjs.org">Gatsby</a>

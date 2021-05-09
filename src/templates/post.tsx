@@ -45,30 +45,28 @@ const PostTemplate = ({ data, pageContext }) => {
                         </Link>
                     ))}
                 </div>
-                <DiscussionEmbed {...disqusConfig} />
-                <footer>
-                </footer>
-            </article>
 
-            <nav>
-                <ul
-                >
-                    <li>
-                        {previous && (
-                            <Link to={previous.fields.path} rel="prev">
-                                ← {previous.frontmatter.title}
-                            </Link>
-                        )}
-                    </li>
-                    <li>
-                        {next && (
-                            <Link to={next.fields.path} rel="next">
-                                {next.frontmatter.title} →
-                            </Link>
-                        )}
-                    </li>
-                </ul>
-            </nav>
+                <nav className="p-4">
+                    <ul>
+                        <li className="float-left">
+                            {previous && (
+                                <Link to={previous.fields.path} rel="prev">
+                                    ← {previous.frontmatter.title}
+                                </Link>
+                            )}
+                        </li>
+                        <li className="float-right">
+                            {next && (
+                                <Link to={next.fields.path} rel="next">
+                                    {next.frontmatter.title} →
+                                </Link>
+                            )}
+                        </li>
+                    </ul>
+                </nav>
+
+                <DiscussionEmbed {...disqusConfig} />
+            </article>
         </Layout>
     )
 }
