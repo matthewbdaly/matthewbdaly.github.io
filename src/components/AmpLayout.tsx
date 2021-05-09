@@ -3,14 +3,6 @@ import { Link } from "gatsby"
 import Search from "./Search"
 
 const AmpLayout = ({ title, children }) => {
-	const header = (
-		<h3>
-			<Link to={`/`}>
-				{title}
-			</Link>
-		</h3>
-	)
-
 	return (
     <div className="font-sans text-lg font-normal text-gray-900 bg-white dark:bg-gray-800 dark:text-gray-200">
         <div className="container p-4 mx-auto">
