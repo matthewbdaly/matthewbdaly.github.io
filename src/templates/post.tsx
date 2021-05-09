@@ -31,7 +31,7 @@ const PostTemplate = ({ data, pageContext }) => {
                     <h2 className="my-8 text-4xl font-extrabold">
                         {post.frontmatter.title}
                     </h2>
-                    <p className="my-4 text-lg font-semibold text-black">{post.frontmatter.date}</p>
+                    <p className="my-4 text-lg font-semibold">{post.frontmatter.date}</p>
                 </header>
                 <TextSection>{post.body}</TextSection>
                 <hr />

@@ -29,12 +29,14 @@ const Search = () => {
 	}
 
 	return (
-		<form action="/" method="get" autoComplete="off" className="float-right p-4">
+		<form action="/" method="get" autoComplete="off" className="float-none pr-4 md:float-right md:p-4">
 			<label htmlFor="header-search">
 				<span className="hidden">Search blog posts</span>
 			</label>
-			<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={updateSearch} className="p-4 text-xl border-2 border-gray-100" />
-			<button type="submit" className="px-2 py-4 mx-0 border-2">Search</button>
+			<div className="w-full md:float-right">
+				<input type="search" id="header-search" placeholder="Search blog posts" name="s" onChange={updateSearch} className="float-left w-3/4 p-4 text-xl border-2 border-gray-100 md:float-none" />
+				<button type="submit" className="float-right w-1/4 px-2 py-4 mx-0 border-2 md:float-none">Search</button>
+			</div>
 			<ul className="absolute shadow">
                 {results.slice(0, 5).map((result: Result) => (
 					<Link to={result.path} key={result.id}>

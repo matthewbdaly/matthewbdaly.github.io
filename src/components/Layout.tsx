@@ -15,7 +15,7 @@ const Layout = ({ title, children }) => {
     )
 
     return (
-        <div className="font-serif text-lg font-normal text-gray-900 bg-white dark:bg-gray-800 dark:text-white">
+        <div className="font-serif text-lg font-normal text-gray-900 bg-white dark:bg-gray-800 dark:text-gray-300">
             <div className="container p-4 mx-auto">
                 <header>{header}</header>
                 <div className="clear-both" />
