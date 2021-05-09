@@ -6,7 +6,6 @@ categories:
 - php
 - laravel
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Recently I've been working on a Phonegap app that needs to work offline. The nature of relational databases can often make this tricky if you're dealing with related objects and you're trying to retrofit it to something that wasn't built with this use case in mind.

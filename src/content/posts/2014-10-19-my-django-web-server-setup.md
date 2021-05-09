@@ -3,7 +3,6 @@ layout: post
 title: "My Django web server setup"
 date: 2014-10-19 19:52:28 +0100
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - python
 - django

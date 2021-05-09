@@ -6,7 +6,6 @@ categories:
 - php
 - wordpress
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Wordpress configuration can be a serious pain in the proverbial. Hard-coding configuration details in a PHP file is not a terribly safe way of storing the details for your database, as if the server is misconfigured they can be exposed. In addition, it can be a chore to copy and populate the `wp-config.php` file to a new deploy.

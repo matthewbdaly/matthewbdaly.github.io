@@ -6,7 +6,6 @@ categories:
 - php
 - codesniffer
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 It's unfortunately quite easy to neglect to remove debugging statements in PHP code. I've done so many times myself, and it's not unknown for these to wind up in production. After I saw it happen again recently, I decided to look around for a way to prevent it happening.

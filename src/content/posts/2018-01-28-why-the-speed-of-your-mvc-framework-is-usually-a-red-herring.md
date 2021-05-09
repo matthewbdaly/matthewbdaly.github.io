@@ -5,7 +5,6 @@ layout: post
 categories:
 - performance
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Skim through any programming-related forum and you'll often find statements along the lines of the following:

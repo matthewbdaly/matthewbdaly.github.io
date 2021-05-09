@@ -6,7 +6,6 @@ categories:
 - html
 - amp
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 You may have heard of Google's [AMP Project](https://www.ampproject.org/), which allows you to create mobile-optimized pages using a subset of HTML. After seeing the sheer speed at which you can load an AMP page (practically instantaneous in many cases), I was eager to see if I could apply it to my own site.

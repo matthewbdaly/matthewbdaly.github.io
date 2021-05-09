@@ -7,7 +7,6 @@ categories:
 - mariadb
 - sql
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Recently I had the occasion to check out MariaDB's implementation of full-text search. As it's a relatively recent arrival in MySQL and MariaDB, it doesn't seem to get all that much attention. In this post I'll show you how to use it, with a few Laravel-specific pointers. We'll be using the default `User` model in a new Laravel installation, which has columns for `name` and `email`.

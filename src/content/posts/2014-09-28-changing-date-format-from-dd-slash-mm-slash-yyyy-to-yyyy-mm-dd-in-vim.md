@@ -3,7 +3,6 @@ layout: post
 title: "Changing date format from DD/MM/YYYY to YYYY-MM-DD in Vim"
 date: 2014-09-28 19:53:34 +0100
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - vim
 - regex

@@ -6,7 +6,6 @@ categories:
 - php
 - nginx
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Recently Nginx announced the release of the first beta of [Unit](https://www.nginx.com/products/nginx-unit/), an application server that supports Python, PHP and Go, with support coming for Java, Node.js and Ruby.

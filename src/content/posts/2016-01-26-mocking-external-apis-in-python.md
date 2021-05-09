@@ -7,7 +7,6 @@ categories:
 - tdd
 - mock
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 It's quite common to have to integrate an external API into your web app for some of your functionality. However, it's a really bad idea to have requests be sent to the remote API when running your tests. At best, it means your tests may fail due to unexpected circumstances, such as a network outage. At worst, you could wind up making requests to paid services that will cost you money, or sending push notifications to clients. It's therefore a good idea to mock these requests in some way, but it can be fiddly.

@@ -6,7 +6,6 @@ categories:
 - laravel
 - postgresql
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 When implementing fuzzy search, many developers reach straight for specialised tools like Elasticsearch. However, for simple implementations, this is often overkill. PostgreSQL, my relational database of choice, can natively handle fuzzy search quite easily if you know how. Here's how you might use this with Laravel.

@@ -9,7 +9,6 @@ categories:
 - javascript
 - tdd
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 At work I've recently started using [Vue](https://vuejs.org/) as my main front-end framework instead of Angular 1. It has a relatively shallow learning curve and has enough similarities with both React and Angular 1 that if you're familiar with one or both of them it feels quite familiar. We're a Laravel shop and Laravel comes out of the box with a basic scaffolding for using Vue, so not only is it the path of least resistance, but many of my colleagues knew it already and it's used on some existing projects (one of which I've been helping out on this week), so it made sense to learn it. Add to that the fact that the main alternative is Angular 2, which I vehemently dislike, and learning Vue was a no-brainer.

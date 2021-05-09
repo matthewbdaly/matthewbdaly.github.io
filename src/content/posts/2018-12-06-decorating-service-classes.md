@@ -5,7 +5,6 @@ layout: post
 categories:
 - php
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I've written before about using decorators to extend the functionality of existing classes, in the context of the repository pattern when working with Eloquent. However, the same practice is applicable in many other contexts.

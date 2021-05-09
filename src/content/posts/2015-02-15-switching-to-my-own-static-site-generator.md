@@ -7,7 +7,6 @@ categories:
 - yeoman
 - javascript
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 As you may have seen if you're visiting the site, I've finally switched over from Octopress to the static site generator I've been working on for the last few months. Apologies if you're seeing lots of old posts in your RSS reader - there must have been an inconsistency between the RSS feed for this and that for Octopress.

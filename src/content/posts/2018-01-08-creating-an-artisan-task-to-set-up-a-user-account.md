@@ -7,7 +7,6 @@ categories:
 - laravel
 - artisan
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 When working with any Laravel application that implements authentication, you'll need to set up a user account to be able to work with it. One way of doing that is to add a user in a seeder, but that's only really suitable if every user is going to use the same details.

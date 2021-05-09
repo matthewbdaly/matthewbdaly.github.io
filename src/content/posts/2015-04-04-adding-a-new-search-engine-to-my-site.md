@@ -7,7 +7,6 @@ categories:
 - yeoman
 - lunr
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I've just finished implementing a new search engine for this site. Obviously, with it using a static site generator, searching a relational database isn't an option. For a long while I'd just been getting by with Google's site-specific search, which worked, but meant leaving the site to view the search results.

@@ -7,7 +7,6 @@ categories:
 - search
 - json
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Search is a problem I'm currently taking a big interest in. The legacy project I maintain has an utterly abominable search facility, one that I'm eager to replace with something like Elasticsearch. But smaller sites that are too small for Elasticsearch to be worth the bother can still benefit from having a decent search implementation. Despite some recent improvements, relational databases aren't generally that good a fit for search  because they don't really understand the concept of relevance - you can't easily order something by how good a match it is, and your database may not deal with fuzzy matching well.

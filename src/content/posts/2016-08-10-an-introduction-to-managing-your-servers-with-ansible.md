@@ -7,7 +7,6 @@ categories:
 - sysadmin
 - python
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 If, like me, you're a web developer who sometimes also has to wear a sysadmin's hat, then you'll probably be coming across the same set of tasks each time you set up a new server. These may include:

@@ -5,7 +5,6 @@ layout: post
 categories:
 - sql
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In the last few days I've done something I've never done before, namely written a stored procedure for a web app. Like most web developers, I know enough about SQL to be able to formulate some fairly complex queries, but I hadn't really touched on control flow functions or stored procedures, and in my experience they tend to be the province of the dedicated database administrator, not us web devs, who will typically delegate more complex functionality to our application code.

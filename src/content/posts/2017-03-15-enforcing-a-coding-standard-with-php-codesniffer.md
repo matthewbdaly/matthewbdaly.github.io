@@ -5,7 +5,6 @@ layout: post
 categories:
 - php
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 We all start new projects with the best of intentions - it'll be clean, fully tested and work perfectly. Sadly as deadlines loom, it's all too easy to find yourself neglecting your code quality, and once it starts to degrade, getting it back becomes much harder. Many development teams try to adhere to a coding standard, but it can be hard to enforce on other people - it puts you in the uncomfortable position of nagging others all the time.

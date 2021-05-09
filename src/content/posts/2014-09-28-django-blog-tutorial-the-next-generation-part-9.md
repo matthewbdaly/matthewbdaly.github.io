@@ -3,7 +3,6 @@ layout: post
 title: "Django Blog Tutorial - the Next Generation - Part 9"
 date: 2014-09-28 20:51:02 +0100
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - tdd
 - python

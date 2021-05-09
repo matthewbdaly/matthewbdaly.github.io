@@ -5,7 +5,6 @@ layout: post
 categories:
 - php
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 The digital agency I work for specialises in marketing, so some of my work tends to relate to mailing lists. This week I was asked to look at an issue on a Laravel-based export system built by a co-worker who left a few months ago. This particular application pulled data from the Campaign Monitor API about campaigns, and it returned the data as instances of `stdClass`, something that I'm not terribly happy about.

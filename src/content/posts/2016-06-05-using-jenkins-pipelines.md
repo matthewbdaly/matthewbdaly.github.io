@@ -5,7 +5,6 @@ layout: post
 categories:
 - jenkins
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I use Jenkins as my main continuous integration solution at work, largely for two reasons:

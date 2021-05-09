@@ -7,7 +7,6 @@ categories:
 - neovim
 - editor
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 A while back I was asked to make some changes to a legacy project that was still using Subversion. This was troublesome because my usual method of searching in files is to use Tim Pope's Fugitive Vim plugin as a frontend for `git grep`, and so it would be harder than usual to navigate the project. I therefore started looking around for alternative search systems, and one combination that kept on coming up was FZF and Ripgrep, so I decided to give them a try. FZF is a fuzzy file finder, written in Go, while Ripgrep is an extremely fast grep, written in Rust, that respects gitignore rules by default. Both have proven so useful they're now a permanent part of my setup.

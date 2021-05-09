@@ -6,7 +6,6 @@ categories:
 - php
 - testing
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Apologies if some of the spelling or formatting on this post is off - I wrote it on a long train journey down to London, with sunlight at an inconvenient angle.

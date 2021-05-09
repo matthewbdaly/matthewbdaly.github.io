@@ -6,7 +6,6 @@ categories:
 - javascript
 - react
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In the last few weeks I've been working on a big rebuild of the homepage of the legacy application I maintain. As I've been slowly transitioning it to use React on the front end, I used that, and it's by far the largest React project I've worked on to date. This has pushed me to use some more advanced React techniques I hadn't touched on before. I've also had to create some different components that have common functionality.

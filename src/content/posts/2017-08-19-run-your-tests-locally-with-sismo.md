@@ -6,7 +6,6 @@ categories:
 - php
 - tdd
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Continuous integration is a veritable boon when working on any large software project. However, the popularity of distributed version control systems like Git over the older, more centralised ones like Subversion means that when you commit your changes, they don't necessarily get pushed up to a remote repository immediately. While this is a good thing because it means you can commit at any stage without worrying about pushing up changes that break everyone else's build, it has the downside that the tests aren't automatically run on every commit, just every push, so if you get sloppy about running your tests before every commit you can more easily get caught out. In addition, a full CI server like Jenkins is a rather large piece of software that you don't really want to run locally if you can help it, and has a lot of functionality you don't need.

@@ -6,7 +6,6 @@ categories:
 - javascript
 - react
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Like many developers who use React.js, I've been eager to explore the Hooks API in the last year or so. They allow for easier ways to share functionality between components, and can allow for a more expressive syntax that's a better fit for Javascript than class-based components. Unfortunately, they became production ready around the time I rolled out a new React-based home page, so I didn't want to jump on them immediately in the context of a legacy application. I'm now finding myself with a bit of breathing space, so I've begun refactoring these components, and converting some to use hooks, in order to more easily reuse some code that currently resides in a big higher-order component.

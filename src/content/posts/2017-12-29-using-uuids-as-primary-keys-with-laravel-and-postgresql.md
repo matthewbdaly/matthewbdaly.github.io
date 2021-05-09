@@ -7,7 +7,6 @@ categories:
 - laravel
 - postgresql
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 For many applications, using UUID's as the primary keys on a database table can make a lot of sense. For mobile or offline apps, in particular, they mean you can create new objects locally and assign them a primary key without having to worry about it colliding with another object that was created in the meantime once it gets synchronised to the server. Also, they are less informative to nefarious users - an autoincrementing value in a URL tells a user that that value is the primary key, and means the app may potentially allow gathering of information via user enumeration (eg calling `/api/v1/users/1`, `/api/v1/users/2` etc).

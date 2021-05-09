@@ -3,7 +3,6 @@ layout: post
 title: "My first Grunt plugin"
 date: 2014-12-28 17:04:41 +0000
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - grunt
 - yeoman

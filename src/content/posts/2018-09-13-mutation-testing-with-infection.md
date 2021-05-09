@@ -6,7 +6,6 @@ categories:
 - php
 - testing
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Writing automated tests is an excellent way of catching bugs during development and maintenance of your application, not to mention the other benefits. However, it's hard to gauge the quality of your tests, particularly when you first start out. Coverage will give you a good idea of what code was actually run during the test, but it won't tell you if the test itself actually tests anything worthwhile.

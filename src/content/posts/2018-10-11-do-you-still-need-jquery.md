@@ -6,7 +6,6 @@ categories:
 - javascript
 - jquery
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 There was a time not so long ago when jQuery was ubiquitous. It was used on almost every website as a matter of course, to the point that many HTML boilerplates included a reference to the CDN.

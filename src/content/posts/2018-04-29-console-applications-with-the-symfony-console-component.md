@@ -7,7 +7,6 @@ categories:
 - symfony
 - console
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Recently I've had the occasion to add a series of console commands to a legacy application. This can be made straightforward by using the Symfony console component. In this post I'll demonstrate how to write a simple console command for clearing a cache folder.

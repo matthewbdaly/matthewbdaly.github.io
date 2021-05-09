@@ -7,7 +7,6 @@ categories:
 - laravel
 - profiling
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 If you're building any non-trivial application, it's always a good idea to profile it to find performance problems. [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar) is the usual solution for profiling Laravel web applications, but it isn't really much use for REST API's or single-page web apps that consume them.

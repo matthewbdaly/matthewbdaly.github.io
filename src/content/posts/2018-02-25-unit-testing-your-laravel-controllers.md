@@ -7,7 +7,6 @@ categories:
 - laravel
 - tdd
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In [my previous post](/blog/2018/02/18/put-your-laravel-controllers-on-a-diet/) I mentioned some strategies for refactoring Laravel controllers to move unnecessary functionality elsewhere. However, I didn't cover testing them. In this post I will demonstrate the methodology I use for testing Laravel controllers.

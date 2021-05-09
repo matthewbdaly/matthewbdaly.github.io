@@ -7,7 +7,6 @@ categories:
 - designpatterns
 - refactoring
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 For the last few months, I've been making a point of picking up on certain antipatterns, and ways to avoid or remove them. One I've seen a lot recently is unnecessary large switch-case or if-else statements. For instance, here is a simplified example of one of these, which renders links to different objects:

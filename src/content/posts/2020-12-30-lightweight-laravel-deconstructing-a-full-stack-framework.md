@@ -6,7 +6,6 @@ categories:
 - php
 - laravel
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Back when I used to work with Django, I read the book [Lightweight Django](https://www.oreilly.com/library/view/lightweight-django/9781491946275/), and it completely changed the way I thought about building web applications. For years I'd heard the same lines parroted about how Django was too large and bloated, and something like Flask was a better bet for many applications, and this book completely blew this misconception away. By demonstrating how it was possible to break the framework apart, use just what you need, and leave out what you don't, it showed how I could benefit from my familiarity with Django, while making it more suitable for smaller applications.

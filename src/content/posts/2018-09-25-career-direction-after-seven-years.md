@@ -5,7 +5,6 @@ layout: post
 categories:
 - career
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Earlier this month, I passed the seven year anniversary of starting my first web dev job. That job never really worked out, for various reasons, but since then I've had an interesting time of it. I've diversified into app development via Phonegap, and I've worked with frameworks that didn't exist when I first started. So it seems a good opportunity to take stock and think about where I want to head next.

@@ -10,7 +10,6 @@ categories:
 - geo
 - geodjango
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 PostgreSQL has excellent support for geographical data thanks to the PostGIS extension, and Django allows you to take full advantage of it thanks to GeoDjango. In this tutorial, I'll show you how to use GeoDjango to build a web app that allows users to search for gigs and events near them.

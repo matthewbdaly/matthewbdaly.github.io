@@ -6,7 +6,6 @@ categories:
 - php
 - tdd
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Sometimes when writing a test, you come across a situation where you need to set a private field that's not accessible through any existing route. For instance, I've been working with Doctrine a bit lately, and since the ID on an entity is generated automatically, it should not be possible to change it via a setter, but at the same time, we sometimes have the need to set it in a test.

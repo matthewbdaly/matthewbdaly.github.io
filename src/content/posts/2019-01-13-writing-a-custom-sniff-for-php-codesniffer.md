@@ -6,7 +6,6 @@ categories:
 - php
 - codesniffer
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I've recently come around to the idea that [in PHP all classes should be final by default](https://matthiasnoback.nl/2018/09/final-classes-by-default-why/), and have started doing so as a matter of course. However, when you start doing something like this it's easy to miss a few files that haven't been updated, or forget to do it, so I wanted a way to detect PHP classes that are not set as either abstract or final, and if possible, set them as final automatically. I've mentioned before that I use PHP CodeSniffer extensively, and that has the capability to both find and resolve deviations from a coding style, so last night I started looking into the possibility of creating a coding standard for this. It took a little work to understand how to do this so I thought I'd use this sniff as a simple example.

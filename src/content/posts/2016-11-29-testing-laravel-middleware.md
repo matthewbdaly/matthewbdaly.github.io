@@ -6,7 +6,6 @@ categories:
 - php
 - laravel
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 It's widely accepted that high-level integration tests alone do not make for a good test suite. Ideally each individual component of your application should have unit tests, which test that component in isolation. These unit tests are usually much quicker to run, making it easier to practice test-driven development. However, it can sometimes be hard to grasp how to test that one component on its own.

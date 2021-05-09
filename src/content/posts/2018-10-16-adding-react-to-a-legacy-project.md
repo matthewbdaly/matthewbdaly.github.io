@@ -6,7 +6,6 @@ categories:
 - reactjs
 - javascript
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 The project I'm currently working on is a textbook example of what happens when a project uses jQuery when it really ought to use a proper Javascript framework, or it starts out just using jQuery and grows out of all proportion. It's also not helped by the fact that historically it's just been worked on when new functionality needs to be added, meaning that rather than refactoring the code base, it's been copied-and-pasted. As a result, there's lots of repetitive code in desperate need of refactoring, and huge reams of horrible jQuery spaghetti code.

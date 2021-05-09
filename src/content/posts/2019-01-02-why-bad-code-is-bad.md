@@ -5,7 +5,6 @@ layout: post
 categories:
 - productivity
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 This may sound a little trite, but why is it bad to write bad code?

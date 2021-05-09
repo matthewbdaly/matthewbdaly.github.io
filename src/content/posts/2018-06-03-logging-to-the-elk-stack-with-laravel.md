@@ -7,7 +7,6 @@ categories:
 - laravel
 - logging
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Logging to text files is the simplest and most common logging setup for web apps, and it works fine for relatively small and simple applications. However, it does have some downsides:

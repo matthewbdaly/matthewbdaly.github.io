@@ -7,7 +7,6 @@ categories:
 - laravel
 - tdd
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Last year I wrote [a post illustrating how to write golden master tests for PHP applications in general](https://matthewdaly.co.uk/blog/2018/10/08/an-approach-to-writing-golden-master-tests-for-php-web-applications/). This approach works, but has a number of issues:

@@ -6,7 +6,6 @@ categories:
 - php
 - laravel
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Creating repositories for your Laravel models, as well as creating caching decorators for them, is a useful way of not only implementing caching in your web app, but decoupling the application from a specific ORM. Unfortunately, it can involve writing a fair amount of boilerplate code.

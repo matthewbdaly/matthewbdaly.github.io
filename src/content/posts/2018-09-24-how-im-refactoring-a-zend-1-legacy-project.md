@@ -7,7 +7,6 @@ categories:
 - legacy
 - refactoring
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 In my current job I've been maintaining and developing a Zend 1 legacy project for the best part of a year. It has to be said, it's the worst code base I have ever seen, with textbook examples of many antipatterns, spaghetti jQuery, copy-pasted code and overly complex methods. It's a fairly typical example of a project built on an older MVC framework by inexperienced developers (I've been responsible for building similar things in my CodeIgniter days).

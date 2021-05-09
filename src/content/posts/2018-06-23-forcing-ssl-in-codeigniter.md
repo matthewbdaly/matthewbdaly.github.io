@@ -6,7 +6,6 @@ categories:
 - php
 - codeigniter
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I haven't started a new CodeIgniter project since 2014, and don't intend to, but on occasion I've been asked to do maintenance work on legacy CodeIgniter projects. This week I was asked to help out with a situation where a CodeIgniter site was being migrated to HTTPS and there were issues resulting from the migration.

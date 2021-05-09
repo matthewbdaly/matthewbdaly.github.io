@@ -7,7 +7,6 @@ categories:
 - laravel
 - postgresql
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Today I've been working on a generic, reusable Laravel admin interface, loosely inspired by the Django admin, that dynamically picks up the field types and generates an appropriate input field accordingly.

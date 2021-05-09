@@ -7,7 +7,6 @@ categories:
 - react
 - flow
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I'm a big fan of type systems in general. Using Psalm to find missing type declarations and incorrect calls in PHP has helped me out tremendously. However, I'm not a big fan of Typescript. The idea of creating a whole new language, primarily just to add types to Javascript, strikes me as a fundamentally bad idea given how many languages that compile to Javascript have fallen by the wayside. Flow seems like a much better approach since it adds types to the language rather than creating a new language, and I've been using it on my React components for a good while now. However, there are a few edge cases that can be difficult to figure out, and one of those is any generic AJAX component that may be reused for different requests.

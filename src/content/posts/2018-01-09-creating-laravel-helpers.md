@@ -6,7 +6,6 @@ categories:
 - php
 - laravel
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Although helpers are an important part of Laravel, the documentation doesn't really touch on creating them. Fortunately, doing so it fairly easy.

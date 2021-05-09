@@ -10,7 +10,6 @@ categories:
 - bdd
 - testing
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 The Gherkin format used by tools like Cucumber is a really great way of specifying how your application will work. It's easy for even non-technical stakeholders to understand, it makes it natural to break your tests into easily reusable steps, and it encourages you to think about the application from an end-user's perspective. It's also one of the easiest ways to get started writing automated tests when you first start out - it's much more intuitive to a junior developer than lower-level unit tests, and is easier to add to a legacy project that may not have been built with testability in mind - if you can drive a browser, you can test it.

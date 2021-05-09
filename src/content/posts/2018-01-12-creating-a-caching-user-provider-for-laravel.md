@@ -7,7 +7,6 @@ categories:
 - laravel
 - caching
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 EDIT: I no longer recommend this approach - please refer [here](https://matthewdaly.co.uk/blog/2020/03/11/caching-the-laravel-user-provider-with-a-decorator/) for an alternative approach to this.

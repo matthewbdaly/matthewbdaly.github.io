@@ -6,7 +6,6 @@ categories:
 - php
 - tdd
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 If you're doing client work, you don't generally have to worry too much about working with any services other than those that will be installed in your production environment. For instance, if you're using Memcached as your cache backend, you needn't go to the trouble of checking that it works with Redis too unless the project actively switches. However, for more general purpose software that may be deployed to a variety of different environments, you may have to test it in all of those environments, which can be a chore.

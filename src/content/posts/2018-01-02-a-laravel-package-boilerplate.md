@@ -7,7 +7,6 @@ categories:
 - laravel
 - artisan
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 The second package I've been working on recently is [Laravel Package Boilerplate](https://github.com/matthewbdaly/laravel-package-boilerplate). It's a basic starter boilerplate for building your own Laravel packages.

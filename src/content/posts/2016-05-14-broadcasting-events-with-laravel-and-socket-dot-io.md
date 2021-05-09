@@ -9,7 +9,6 @@ categories:
 - redis
 - socket.io
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 PHP frameworks like Laravel aren't really set up to handle real-time events properly, so if you want to build a real-time app, you're generally better off with another platform, such as Node.js. However, if that only forms a small part of your application, you may still prefer to work with PHP. Fortunately it's fairly straightforward to hand off the real-time aspects of your application to a dedicated microservice written using Node.js and still use Laravel to handle the rest of the functionality.

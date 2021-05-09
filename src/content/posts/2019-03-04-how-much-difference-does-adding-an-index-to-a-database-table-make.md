@@ -6,7 +6,6 @@ categories:
 - sql
 - performance
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 For the last few weeks, I've been kept busy at work building out a new homepage for the legacy intranet system I maintain. The new homepage is built virtually from scratch with React, and has a completely new set of queries. In addition, I've also rebuilt the UI for the navigation to use React too. This has allowed me to bypass a lot of the worst code in the whole code base with the intent to get rid of it once the new home page is live - something I'm very pleased about!

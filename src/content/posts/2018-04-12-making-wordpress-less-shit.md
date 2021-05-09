@@ -5,7 +5,6 @@ layout: post
 categories:
 - wordpress
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I'm not going to sugarcoat it. As a developer, I think Wordpress is shit, and I'm not alone in that opinion. Its code base dates from a time before many of the developments of the last few years that have hugely improved PHP as a language, as well as the surrounding ecosystem such as Composer and PSR-FIG, and it's likely it couldn't adopt many of those without making backward-incompatible changes that would affect its own ecosystem of plugins and themes. It actively forces you to write code that is far less elegant and efficient than what you might write with a proper framework such as Laravel, and the quality of many of the plugins and themes around is dire.

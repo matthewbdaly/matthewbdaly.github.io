@@ -7,7 +7,6 @@ categories:
 - laravel
 - redis
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Laravel has support out of the box for using Redis. However, by default it uses a Redis client written in PHP, which will always be a little slower than one written in C. If you're making heavy use of Redis, it may be worth using the [phpiredis](https://github.com/nrk/phpiredis) extension to squeeze a little more performance out of it.

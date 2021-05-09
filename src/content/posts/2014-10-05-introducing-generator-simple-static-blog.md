@@ -3,7 +3,6 @@ layout: post
 title: "Introducing generator-simple-static-blog"
 date: 2014-10-05 19:56:46 +0100
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 categories: 
 - grunt
 - yeoman

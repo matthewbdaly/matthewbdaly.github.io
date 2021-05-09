@@ -5,7 +5,6 @@ layout: post
 categories: 
 - wordpress
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 I must admit, I've had a rather bad experience with WordPress recently. The site in question was an e-commerce site, built with WordPress and WooCommerce. In development, we originally put the site on shared hosting, but after a while the hosting company told us off because it was using too much database space, so we moved to a VPS earlier than we normally would. With the benefit of hindsight, we probably should have seen that as the first warning sign.

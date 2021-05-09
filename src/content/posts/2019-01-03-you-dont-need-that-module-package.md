@@ -6,7 +6,6 @@ categories:
 - php
 - composer
 comments: true
-featured_image: ./mohammad-alizade-62t_kKa2YlA-unsplash.jpg
 ---
 
 Lately I've seen a number of Laravel packages being posted on places like Reddit that offer ways to make your project more modular by letting you break their classes out of the usual structure and place them in a separate folder called something like `packages/` or `modules/`. However, these packages are completely redundant, and it requires very little work to achieve the same thing with Composer alone. In addition, much of it is not specific to Laravel and can also be applied to any other framework that uses Composer.
