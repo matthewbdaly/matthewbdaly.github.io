@@ -31,7 +31,7 @@ const AmpPostTemplate = ({ data, pageContext }) => {
                 <hr />
                 <div className="py-4">
                     {post.frontmatter.categories && post.frontmatter.categories.map((category: string) => (
-                        <Link className="p-2 mr-4 text-xl text-white bg-green-600 rounded-md"
+                        <Link className="px-4 py-2 mx-2 text-sm font-bold text-gray-900 bg-gray-100 rounded-full hover:bg-gray-200"
                             to={`/categories/${kebabCase(category)}/`}
                             key={category}
                         >
