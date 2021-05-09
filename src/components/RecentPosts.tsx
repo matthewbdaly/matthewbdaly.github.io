@@ -21,13 +21,6 @@ const RecentPosts = () => {
                 date(formatString: "MMMM DD, YYYY")
                 title
                 categories
-                featured_image {
-                    childImageSharp {
-                        gatsbyImageData(
-                         width: 200
-                        )
-                    }
-                }
               }
             }
           }
@@ -42,7 +35,7 @@ const RecentPosts = () => {
         <div className="w-full">
       {allMdx.edges.map(({ node }) => {
         return (
-            <Card key={node.fields.path} path={node.fields.path} title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} image={node.frontmatter.featured_image} />
+            <Card key={node.fields.path} path={node.fields.path} title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} />
         );
       })}
       </div>

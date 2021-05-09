@@ -5,11 +5,9 @@ import TextSection from "../components/TextSection"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
 import kebabCase from "lodash/kebabCase"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const PostTemplate = ({ data, pageContext }) => {
     const post = data.mdx
-    const hero = getImage(post.frontmatter.featured_image)
     const siteTitle = data.site.siteMetadata.title
     const { previous, next } = pageContext
     const disqusConfig = {
@@ -24,7 +22,6 @@ const PostTemplate = ({ data, pageContext }) => {
 
     return (
         <Layout title={siteTitle}>
-            <GatsbyImage image={hero} alt={post.frontmatter.title} className="w-full" />
             <SEO
                 title={post.frontmatter.title}
                 description={post.excerpt}
@@ -97,14 +94,6 @@ query BlogPostByPath($path: String!) {
             title
             date(formatString: "MMMM DD, YYYY")
             categories
-            featured_image {
-                childImageSharp {
-                    gatsbyImageData(
-                     width: 800
-                    )
-                }
-            }
-
         }
         fields {
             path

@@ -1,15 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 import kebabCase from "lodash/kebabCase"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const Card = ({ path, title, excerpt, categories, image }) => {
-    const hero = getImage(image)
-
+const Card = ({ path, title, excerpt, categories }) => {
     return (
         <div className="float-left w-full lg:w-1/3">
         <div className="m-4 border-2 border-gray-200 rounded-lg shadow-lg">
-            <GatsbyImage image={hero} alt={title} className="w-full rounded-t-lg h-72" />
             <div className="h-72">
                 <Link to={path}>
                     <h2 className="p-4 text-2xl text-gray-700">{title}</h2>
