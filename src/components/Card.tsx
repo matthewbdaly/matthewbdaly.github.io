@@ -1,8 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
-import kebabCase from "lodash/kebabCase"
 
-const Card = ({ path, title, excerpt }) => {
+type Props = {
+    path: string,
+    title: string,
+    excerpt: string
+};
+
+const Card = ({ path, title, excerpt }: Props) => {
     return (
         <div className="float-left w-full lg:w-1/3">
             <div className="m-4 ml-0 border-2 border-gray-200 rounded-lg shadow-lg dark:border-gray-600">
