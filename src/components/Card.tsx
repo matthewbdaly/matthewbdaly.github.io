@@ -17,7 +17,7 @@ const Card = ({ path, title, excerpt }: Props) => {
                     <h2 className="p-4 font-serif text-2xl font-medium text-gray-700 dark:text-gray-200">{title}</h2>
                 </Link>
                 </div>
-                <div className="h-48 py-4 md:h-36">
+                <div className="h-48 py-4">
                     <p className="p-4 text-gray-500 dark:text-gray-300">{excerpt}</p>
                 </div>
             </div>
