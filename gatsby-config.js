@@ -17,6 +17,15 @@ module.exports = {
 		`gatsby-plugin-postcss`,
 		"gatsby-plugin-image",
 		{
+			resolve: "gatsby-plugin-opensearch",
+			options: {
+				shortName: "Matthew Daly",
+				description: "Search matthewdaly.co.uk",
+				searchTemplate: "http://www.google.com/search?q={searchTerms}&amp;sitesearch=matthewdaly.co.uk",
+				searchForm: "/search",
+			}
+		},
+		{
 			resolve: "gatsby-plugin-local-search",
 			options: {
 				name: 'posts',
