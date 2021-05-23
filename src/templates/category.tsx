@@ -22,7 +22,7 @@ const Category = ({ pageContext, data }) => {
           {edges.map(({ node }) => {
             return (
               <Link to={node.fields.path} key={node.fields.path}>
-                <Card title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} />
+                <Card title={node.frontmatter.title} excerpt={node.excerpt} />
               </Link>
             )
           })}
@@ -47,7 +47,7 @@ query($category: String) {
         fields {
           path
         }
-        excerpt(pruneLength: 80)
+        excerpt(pruneLength: 200)
         frontmatter {
           title
           categories

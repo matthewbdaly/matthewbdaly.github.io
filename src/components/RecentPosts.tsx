@@ -13,14 +13,13 @@ const RecentPosts = () => {
         ) {
           edges {
             node {
-              excerpt(pruneLength: 120)
+              excerpt(pruneLength: 200)
               fields {
                 path
               }
               frontmatter {
                 date(formatString: "MMMM DD, YYYY")
                 title
-                categories
               }
             }
           }
@@ -35,7 +34,12 @@ const RecentPosts = () => {
         <div className="w-full">
       {allMdx.edges.map(({ node }) => {
         return (
-            <Card key={node.fields.path} path={node.fields.path} title={node.frontmatter.title} excerpt={node.excerpt} categories={node.frontmatter.categories} />
+            <Card 
+              key={node.fields.path} 
+              path={node.fields.path} 
+              title={node.frontmatter.title} 
+              excerpt={node.excerpt} 
+            />
         );
       })}
       </div>
