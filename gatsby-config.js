@@ -21,7 +21,7 @@ module.exports = {
 			options: {
 				shortName: "Matthew Daly",
 				description: "Search matthewdaly.co.uk",
-				searchTemplate: "http://www.google.com/search?q={searchTerms}&amp;sitesearch=matthewdaly.co.uk",
+				searchTemplate: "/search?s={searchTerms}",
 				searchForm: "/search",
 			}
 		},
