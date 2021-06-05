@@ -12,6 +12,13 @@
     float: left;
 }
 
+pre.prism-code {
+	float: left;
+	padding: 20px;
+	min-width: 100%;
+	overflow: initial;
+}
+
 .token {
     display: inline-block;
 }
