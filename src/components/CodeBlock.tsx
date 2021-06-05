@@ -65,7 +65,7 @@ const CodeBlock = ({children, className, live, metastring}) => {
     <Highlight Prism={Prism} {...defaultProps} code={children} language={language} theme={oceanicNext}>
       {({className, style, tokens, getLineProps, getTokenProps}) => (
         <div className="gatsby-highlight" data-language={language}>
-            <pre className={className} style={{...style, padding: '20px', width: '100%', overflow: 'auto'}}>
+            <pre className={className} style={{...style, float: 'left', padding: '20px', minWidth: '100%', overflow: 'initial'}}>
             {tokens.filter((line, i, arr) => {
               if (i < (arr.length - 1)) {
                 return true
