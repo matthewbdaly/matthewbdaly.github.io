@@ -23,6 +23,11 @@ pre.prism-code {
     display: inline-block;
 }
 
+.token-line {
+	margin-left: -20px;
+	margin-right: -20px;
+}
+
 p > code,
 li > code {
     background: rgb(1, 22, 39);
