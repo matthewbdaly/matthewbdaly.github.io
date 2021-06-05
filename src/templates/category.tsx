@@ -47,7 +47,7 @@ query($category: String) {
         fields {
           path
         }
-        excerpt(pruneLength: 200)
+        excerpt(pruneLength: 180)
         frontmatter {
           title
           categories

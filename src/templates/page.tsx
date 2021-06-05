@@ -45,7 +45,7 @@ query PageByPath($path: String!) {
   mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "page"}}) {
     id
     body
-    excerpt(pruneLength: 160)
+    excerpt(pruneLength: 180)
     frontmatter {
       title
       date(formatString: "MMMM DD, YYYY")

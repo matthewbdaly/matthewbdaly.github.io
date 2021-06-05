@@ -86,7 +86,7 @@ query BlogPostByPath($path: String!) {
     mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
         id
         body
-        excerpt(pruneLength: 160)
+        excerpt(pruneLength: 180)
         frontmatter {
             title
             date(formatString: "DD MMMM YYYY")
