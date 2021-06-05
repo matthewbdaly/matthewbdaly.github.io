@@ -20,9 +20,6 @@ const PageTemplate = ({ data }) => {
             <h2 className="my-8 font-serif text-4xl font-extrabold">
               {page.frontmatter.title}
             </h2>
-            <p>
-              {page.frontmatter.date}
-            </p>
           </header>
           <TextSection>{page.body}</TextSection>
           <hr
@@ -48,7 +45,6 @@ query PageByPath($path: String!) {
     excerpt(pruneLength: 180)
     frontmatter {
       title
-      date(formatString: "MMMM DD, YYYY")
     }
   }
 }

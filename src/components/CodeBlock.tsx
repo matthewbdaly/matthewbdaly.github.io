@@ -74,7 +74,7 @@ const CodeBlock = ({children, className, live, metastring}) => {
                 return true
               }
               return !line[0].empty
-            }).map((line, i) => {
+            }).map((line, i, arr) => {
               const lineProps = getLineProps({ line, key: i })
 
               if (shouldHighlightLine(i)) {
@@ -83,7 +83,7 @@ const CodeBlock = ({children, className, live, metastring}) => {
 
               return (
                 <div key={i} {...lineProps}>
-                  <span className="line-number-style">{i + 1}</span>
+                  <span className="line-number-style">{arr.length > 1 ? i + 1 : ``}</span>
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({token, key})} />
                   ))}
