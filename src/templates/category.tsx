@@ -2,7 +2,6 @@ import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
-import Card from "../components/Card"
 
 const Category = ({ pageContext, data }) => {
   const { category } = pageContext
@@ -18,15 +17,15 @@ const Category = ({ pageContext, data }) => {
         description={category}
       />
       <Layout title={categoryHeader}>
-        <div className="w-full">
-          {edges.map(({ node }) => {
-            return (
-              <Link to={node.fields.path} key={node.fields.path}>
-                <Card title={node.frontmatter.title} excerpt={node.excerpt} />
+        <ul>
+            {edges.map(({ node }) => (
+            <li key={node.fields.path} className="p-2 text-xl font-bold">
+              <Link to={node.fields.path}>
+                {node.frontmatter.title}
               </Link>
-            )
-          })}
-        </div>
+            </li>
+            ))}
+        </ul>
       </Layout>
     </Fragment>
   )
