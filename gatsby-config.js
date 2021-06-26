@@ -102,7 +102,7 @@ module.exports = {
 							allMdx (
 								sort: { order: DESC, fields: [frontmatter___date] },
 								filter: { frontmatter: {layout: {eq: "post"}}}
-								limit: 100
+								limit: 10
 								) {
 									edges {
 										node {
