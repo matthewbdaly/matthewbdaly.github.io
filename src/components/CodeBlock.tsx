@@ -44,17 +44,17 @@ const CodeBlock = ({children, className, live, metastring}) => {
     return (
       <LiveProvider
         code={children.trim()}
-        transformCode={code => '/** @jsx mdx */' + code}
+        transformCode={code => "/** @jsx mdx */" + code}
         scope={{ mdx }}
         theme={oceanicNext}
       >
-        <div style={{marginTop: '40px', backgroundColor: 'white'}}>
+        <div className="p-4 text-gray-900 bg-gray-100 dark:bg-gray-900 dark:text-gray-100" style={{marginTop: "40px"}}>
           <LivePreview />
         </div>
-        <div style={{marginTop: '40px', backgroundColor: 'black'}}>
+        <div style={{marginTop: "40px", backgroundColor: "black"}}>
           <LiveEditor />
         </div>
-        <LiveError />
+        <LiveError className="p-4 mt-2 overflow-x-scroll text-gray-900 bg-gray-100 dark:bg-gray-900 dark:text-gray-100" />
       </LiveProvider>
     )
   }
@@ -65,7 +65,7 @@ const CodeBlock = ({children, className, live, metastring}) => {
     <Highlight Prism={Prism} {...defaultProps} code={children} language={language} theme={oceanicNext}>
       {({className, style, tokens, getLineProps, getTokenProps}) => (
         <div className="gatsby-highlight" data-language={language}>
-            <pre className={className} style={{...style}}>
+          <pre className={className} style={{...style}}>
             {tokens.filter((line, i, arr) => {
               if (i < (arr.length - 1)) {
                 return true
@@ -83,7 +83,7 @@ const CodeBlock = ({children, className, live, metastring}) => {
 
               return (
                 <div key={i} {...lineProps}>
-                  <span className="line-number-style">{arr.length > 1 ? i + 1 : ``}</span>
+                  <span className="line-number-style">{arr.length > 1 ? i + 1 : ""}</span>
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({token, key})} />
                   ))}
