@@ -1,31 +1,25 @@
 import React from "react"
 import { Link } from "gatsby"
-import Search from "./Search"
 
 const Layout = ({ title, children }) => {
     return (
-        <div className="font-sans text-lg font-normal text-gray-900 bg-white dark:bg-gray-800 dark:text-gray-200">
-            <div className="w-full text-gray-200 bg-blue-800 shadow-lg h-36">
-                <div className="container p-4 mx-auto">
-                    <header>
-                        <h1 className="float-left font-serif text-4xl">
-                            <Link to={`/`}>{title}</Link>
-                        </h1>
-                        <Search />
-                    </header>
-                </div>
-            </div>
-            <div className="clear-both" />
-            <div className="container p-4 mx-auto">
-                <main>{children}</main>
-            </div>
-            <footer className="w-full h-24 p-4 text-center text-gray-200 align-middle bg-gray-900 clear-both">
-                © {new Date().getFullYear()}, Built with
-                {` `}
-                <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </footer>
+    <div className="min-h-screen font-sans text-lg text-gray-800 bg-gray-200 dark:text-gray-100 dark:bg-gray-700 leading-6">
+      <div className="w-full h-2 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500">
+      </div>
+      <main className="w-full p-4 mx-auto md:w-2/3">
+        <h1 className="w-1/2 p-4 mx-auto text-4xl text-center text-transparent bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 bg-clip-text">
+            <Link to={`/`}>{title}</Link>
+        </h1>
+        {children}
+      </main>
+
+      <footer>
+        <div className="w-full p-4 mx-auto text-center md:w-2/3">
+          <p>&copy; Matthew Daly {new Date().getFullYear()}</p>
         </div>
-    )
+      </footer>
+    </div>
+  )
 }
 
 export default Layout
