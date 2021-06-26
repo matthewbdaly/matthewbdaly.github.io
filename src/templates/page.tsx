@@ -17,7 +17,7 @@ const PageTemplate = ({ data }) => {
       <Layout title={siteTitle}>
         <article>
           <header>
-            <h2 className="my-8 font-serif text-4xl font-extrabold">
+            <h2>
               {page.frontmatter.title}
             </h2>
           </header>

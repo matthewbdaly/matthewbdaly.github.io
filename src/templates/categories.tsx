@@ -1,8 +1,8 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
-import kebabCase from "lodash/kebabCase"
+import Tag from "../components/Tag"
 
 type Category = {
     totalCount: number,
@@ -22,13 +22,9 @@ const Categories = ({ data: {
         title={`Categories`}
         description={`Categories`}
       />
-        {group.map((node: Category) => {
-        return (
-          <Link to={`/categories/${kebabCase(node.category)}/`} key={node.category}>
-            {node.category} ({node.totalCount})
-          </Link>
-        );
-      })}
+      <div className="p-4">
+        {group.map((node: Category) => <Tag key={node.category} category={node.category} />)}
+      </div>
     </Layout>
   )
 }

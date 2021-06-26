@@ -109,6 +109,12 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  const categoriesTemplate = path.resolve('./src/templates/categories.tsx')
+  createPage({
+      path: `/blog/categories/`,
+      component: categoriesTemplate,
+  })
+
   const categoryTemplate = path.resolve('./src/templates/category.tsx')
 
   const categoryResult = await graphql(`
@@ -127,7 +133,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const categories = categoryResult.data.categoriesGroup.group
   categories.forEach(category => {
     createPage({
-      path: `/categories/${_.kebabCase(category.fieldValue)}/`,
+      path: `/blog/categories/${_.kebabCase(category.fieldValue)}/`,
       component: categoryTemplate,
       context: {
         category: category.fieldValue
