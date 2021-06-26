@@ -2,9 +2,9 @@ import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import TextSection from "../components/TextSection"
+import Tag from "../components/Tag"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
-import kebabCase from "lodash/kebabCase"
 
 const PostTemplate = ({ data, pageContext }) => {
     const post = data.mdx
@@ -29,7 +29,7 @@ const PostTemplate = ({ data, pageContext }) => {
             <Layout title={siteTitle}>
                 <article>
                     <header>
-                        <h2 className="my-8 font-serif text-4xl font-extrabold">
+                        <h2 className="py-4 text-2xl font-bold">
                             {post.frontmatter.title}
                         </h2>
                         <p className="my-4 font-serif text-lg font-semibold">{post.frontmatter.date}</p>
@@ -37,14 +37,7 @@ const PostTemplate = ({ data, pageContext }) => {
                     <TextSection>{post.body}</TextSection>
                     <hr />
                     <div className="py-4">
-                        {post.frontmatter.categories && post.frontmatter.categories.map((category: string) => (
-                            <Link className="px-4 py-2 mx-2 text-sm font-bold text-gray-900 bg-gray-100 rounded-full hover:bg-gray-200"
-                                to={`/categories/${kebabCase(category)}/`}
-                                key={category}
-                            >
-                                {category}
-                            </Link>
-                        ))}
+                        {post.frontmatter.categories && post.frontmatter.categories.map((category: string) => <Tag key={category} category={category} />)}
                     </div>
 
                     <nav className="p-4">

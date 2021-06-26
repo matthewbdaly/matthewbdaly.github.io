@@ -23,7 +23,7 @@ pre.prism-code {
     display: inline-block;
 }
 
-.token-line {
+.gatsby-highlight .token-line {
 	margin-left: -20px;
 	margin-right: -20px;
 }
@@ -45,14 +45,24 @@ li > code {
     overflow: auto;
 }
 
-gatsby-highlight > code[class*="language-"],
-.gatsby-highlight > pre[class*="language-"] {
+.gatsby-highlight::-webkit-scrollbar {
+    display: none;
+}
+
+.gatsby-highlight > code[class*="language-"],
+.gatsby > pre[class*="language-"] {
     word-spacing: normal;
     word-break: normal;
     overflow-wrap: normal;
     line-height: 1.5;
     tab-size: 4;
     hyphens: none;
+}
+
+.gatsby-highlight .token-line {
+	margin-left: -20px;
+	margin-right: -20px;
+    border-left: 4px solid transparent;
 }
 
 .line-number-style {
@@ -66,12 +76,12 @@ gatsby-highlight > code[class*="language-"],
     position: relative;
 }
 
-.highlight-line {
+.gatsby-highlight .token-line.highlight-line {
     background-color: rgb(2, 55, 81);
     border-left: 4px solid rgb(2, 155, 206);
 }
 
-.highlight-line .line-number-style {
+.gatsby-highlight .token-line.highlight-line .line-number-style {
     opacity: 0.5;
     width: calc(1.2em - 4px);
     left: -2px;
