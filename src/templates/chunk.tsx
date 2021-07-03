@@ -16,12 +16,12 @@ const Chunk = ({ pageContext, data }) => {
       <Layout title={siteTitle}>
         {data.allMdx.edges.map(({ node }) => {
           return (
-            <section key={node.fields.path}>
-              <Link to={node.fields.path}>
+            <section key={node.fields.path} className="w-full py-2">
+              <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
                 {node.frontmatter.title}
               </Link>
-              {node.frontmatter.date}
-              {node.excerpt}
+              <p className="float-left py-2">{node.frontmatter.date}</p>
+              <p className="float-left py-2">{node.excerpt}</p>
             </section>
           )
         })}

@@ -14,8 +14,8 @@ const Archives = ({ data }) => {
       />
       {data.allMdx.edges.map(({ node }) => {
         return (
-          <section className="w-full py-2">
-            <Link className="float-left w-full text-2xl font-bold" to={node.fields.path} key={node.fields.path}>
+          <section key={node.fields.path} className="w-full py-2">
+            <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
               {node.frontmatter.title}
             </Link>
             <p className="float-left py-2">{node.frontmatter.date}</p>
