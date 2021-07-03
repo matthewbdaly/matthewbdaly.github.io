@@ -14,12 +14,12 @@ const Archives = ({ data }) => {
       />
       {data.allMdx.edges.map(({ node }) => {
         return (
-          <div className="w-full py-2">
+          <section className="w-full py-2">
             <Link className="float-left w-full text-2xl font-bold" to={node.fields.path} key={node.fields.path}>
               {node.frontmatter.title}
             </Link>
             <p className="float-left py-2">{node.frontmatter.date}</p>
-          </div>
+          </section>
         );
       })}
     </Layout>
@@ -46,7 +46,7 @@ export const postsQuery = graphql`
             path
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "DD MMMM YYYY")
             title
           }
         }

@@ -20,14 +20,14 @@ const Chunk = ({ pageContext, data }) => {
               <Link to={node.fields.path}>
                 {node.frontmatter.title}
               </Link>
+              {node.frontmatter.date}
               {node.excerpt}
             </section>
           )
         })}
 
         <nav>
-          <ul
-          >
+          <ul>
             <li>
               {previousPage && (
                 <Link to={`/posts/${previousPage}`} rel="prev">
@@ -44,7 +44,6 @@ const Chunk = ({ pageContext, data }) => {
             </li>
           </ul>
         </nav>
-
       </Layout>
     </Fragment>
   )
@@ -74,6 +73,7 @@ query($skip: Int!, $limit: Int!) {
         }
         frontmatter {
           title
+          date(formatString: "DD MMMM YYYY")
         }
       }
     }
