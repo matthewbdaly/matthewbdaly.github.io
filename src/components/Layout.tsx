@@ -20,7 +20,7 @@ const Layout = ({ title, children }) => {
         {children}
       </main>
 
-      <footer>
+      <footer className="w-full p-4 bg-gray-800 text-gray-100">
         <div className="w-full p-4 mx-auto text-center md:w-2/3">
           <p>&copy; Matthew Daly {new Date().getFullYear()}</p>
         </div>
