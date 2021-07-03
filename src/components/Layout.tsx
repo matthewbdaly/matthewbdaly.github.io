@@ -11,7 +11,7 @@ const Layout = ({ title, children }) => {
           <h1 className="py-4 font-serif text-4xl text-left">
             <Link to={`/`}>{title}</Link>
           </h1>
-          <Link to={`/archives`}>Archives</Link>
+          <Link to={`/blog/archives`}>Archives</Link>
           <Link to={`/about`}>About</Link>
           <Link to={`/uses`}>Uses</Link>
           <Link to={`/posts/1`}>Blog</Link>

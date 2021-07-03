@@ -109,6 +109,12 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  const archivesTemplate = path.resolve('./src/templates/archives.tsx')
+  createPage({
+      path: `/blog/archives/`,
+      component: archivesTemplate,
+  })
+
   const categoriesTemplate = path.resolve('./src/templates/categories.tsx')
   createPage({
       path: `/blog/categories/`,
