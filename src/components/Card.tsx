@@ -18,7 +18,7 @@ const Card = ({ path, title, excerpt }: Props) => {
                 </Link>
                 </div>
                 <div className="py-4 h-30 lg:h-48">
-                    <p className="p-4 text-gray-500 dark:text-gray-300">{excerpt}</p>
+                    <p className="p-4 text-gray-800 dark:text-gray-300">{excerpt}</p>
                 </div>
             </div>
           </div>
