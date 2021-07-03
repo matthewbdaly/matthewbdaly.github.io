@@ -231,7 +231,7 @@ exports.onPostBuild = async ({ graphql }) => {
         email: result.data.site.siteMetadata.social.email,
         link: result.data.site.siteMetadata.siteUrl
       },
-      favicon: `${result.data.site.siteMetadata.siteUrl}/favicon.ico`,
+      favicon: `${result.data.site.siteMetadata.siteUrl}/favicon-32x32.png`,
       feedLinks: {
         json: "/feed.json",
         rss: "/rss.xml",
