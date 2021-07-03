@@ -249,7 +249,7 @@ exports.onPostBuild = async ({ graphql }) => {
         title: post.node.frontmatter.title,
         link: post.node.fields.path,
         date: new Date(post.node.frontmatter.date),
-        description: post.node.html,
+        content: post.node.html,
         author: {
           name: result.data.site.siteMetadata.author.name,
           email: result.data.site.siteMetadata.social.email,
