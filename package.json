@@ -20,6 +20,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "feed": "^4.2.2",
     "gatsby": "^3.8.0",
     "gatsby-plugin-google-analytics": "^3.8.0",
     "gatsby-plugin-image": "^1.8.0",
@@ -43,7 +44,6 @@
     "autoprefixer": "^10.2.6",
     "disqus-react": "^1.1.0",
     "eslint-config-react-app": "^6.0.0",
-    "gatsby-plugin-feed": "^3.8.0",
     "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-offline": "^4.8.0",
     "gatsby-plugin-postcss": "^4.8.0",
