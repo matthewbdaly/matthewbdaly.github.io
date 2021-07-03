@@ -248,6 +248,7 @@ exports.onPostBuild = async ({ graphql }) => {
       feed.addItem({
         title: post.node.frontmatter.title,
         link: post.node.fields.path,
+        id: post.node.fields.path,
         date: new Date(post.node.frontmatter.date),
         content: post.node.html,
         author: {
