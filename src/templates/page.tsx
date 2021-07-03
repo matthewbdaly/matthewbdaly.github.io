@@ -16,7 +16,7 @@ const PageTemplate = ({ data }) => {
       />
       <Layout title={siteTitle}>
         <article>
-          <header>
+          <header className="text-2xl font-bold">
             <h2>
               {page.frontmatter.title}
             </h2>
