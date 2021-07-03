@@ -83,6 +83,9 @@ const SEO = ({ description, lang, meta, title }) => {
 		  <link href="https://webmention.io/matthewdaly.co.uk/webmention" rel="webmention" />
       <link rel="openid.delegate" href={ site.siteMetadata.siteUrl } />
       <link rel="openid.server" href="https://openid.indieauth.com/openid" />
+		  <link rel="alternate" type="application/rss+xml" title={`${site.siteMetadata.title} - feed`} href="/rss.xml" />
+		  <link rel="alternate" type="application/atom+xml" title={`${site.siteMetadata.title} - feed`} href="/atom.xml" />
+		  <link rel="alternate" type="application/feed+json" title={`${site.siteMetadata.title} - feed`} href="/feed.json" />
     </Helmet>
   )
 }
