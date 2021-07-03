@@ -12,13 +12,13 @@ const Search = () => {
 	const data = useStaticQuery(graphql`
 		query {
 			localSearchPosts {
-				index
-				store
+				publicIndexURL
+				publicStoreURL
 			}
 		}
 	`)
 	const [query, setQuery] = useState(null)
-	const results = useFlexSearch(query, data.localSearchPosts.index, data.localSearchPosts.store)
+	const results = useFlexSearch(query, fetch(data.localSearchPosts.index), fetch(data.localSearchPosts.store))
 
     const updateSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.currentTarget.value.length > 2) {
