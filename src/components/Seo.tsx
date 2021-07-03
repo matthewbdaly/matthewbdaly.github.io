@@ -20,7 +20,10 @@ const SEO = ({ description, lang, meta, title }) => {
             description
             social {
               twitter
+              github
+              email
             }
+            siteUrl
           }
         }
       }
@@ -70,7 +73,15 @@ const SEO = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+		  <link href={ site.siteMetadata.siteUrl } rel="canonical" />
+      <link href={`https://twitter.com/${site.siteMetadata.social.twitter}`} rel="me" />
+      <link href={`https://github.com/${site.siteMetadata.social.github}`} rel="me" />
+      <link href={`mailto:${site.siteMetadata.social.email}`} rel="me" />
+      <link href="/key.pub" rel="pgpkey" />
+		  <link href="https://webmention.io/matthewdaly.co.uk/xmlrpc" rel="pingback" />
+		  <link href="https://webmention.io/matthewdaly.co.uk/webmention" rel="webmention" />
+    </Helmet>
   )
 }
 
