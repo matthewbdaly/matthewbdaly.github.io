@@ -7,9 +7,16 @@ const Layout = ({ title, children }) => {
       <div className="w-full h-2 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500">
       </div>
       <main className="w-full p-4 mx-auto md:w-2/3">
-        <h1 className="w-1/2 p-4 mx-auto text-4xl text-center text-transparent bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 bg-clip-text">
+        <nav>
+          <h1 className="py-4 font-serif text-4xl text-left">
             <Link to={`/`}>{title}</Link>
-        </h1>
+          </h1>
+          <Link to={`/archives`}>Archives</Link>
+          <Link to={`/about`}>About</Link>
+          <Link to={`/uses`}>Uses</Link>
+          <Link to={`/posts/1`}>Blog</Link>
+          <Link to={`/search`}>Search</Link>
+        </nav>
         {children}
       </main>
 
@@ -19,7 +26,7 @@ const Layout = ({ title, children }) => {
         </div>
       </footer>
     </div>
-  )
+    )
 }
 
 export default Layout
