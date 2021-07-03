@@ -49,13 +49,12 @@ module.exports = {
 								fields {
 									path
 								}
-								body
 							}
 						}
 					}
 				`,
 				ref: 'id',
-				index: ['title', 'categories', 'body'],
+				index: ['title', 'categories'],
 				store: ['id', 'path', 'title'],
 				normalizer: ({ data }) => 
 				data.allMdx.nodes.map(node => ({
