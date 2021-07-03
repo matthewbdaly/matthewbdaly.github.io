@@ -81,6 +81,8 @@ const SEO = ({ description, lang, meta, title }) => {
       <link href="/key.pub" rel="pgpkey" />
 		  <link href="https://webmention.io/matthewdaly.co.uk/xmlrpc" rel="pingback" />
 		  <link href="https://webmention.io/matthewdaly.co.uk/webmention" rel="webmention" />
+      <link rel="openid.delegate" href={ site.siteMetadata.siteUrl } />
+      <link rel="openid.server" href="https://openid.indieauth.com/openid" />
     </Helmet>
   )
 }
