@@ -4,7 +4,7 @@ title: "A starting boilerplate for PHP development with Vagrant"
 date: 2013-08-16 21:49
 comments: true
 categories: 
-- Vagrant
+- vagrant
 ---
 
 I've recently started using [Vagrant](http://www.vagrantup.com/) for PHP development. It's an incredibly useful and convenient tool - never again will I have to faff about installing XAMPP on someone's laptop so they can demonstrate the new site, instead I can just install Vagrant and Virtualbox, clone the repository, and run `vagrant up`, and nip off and make a cuppa, safe in the knowledge that when I get back the install will be, if not done, then at least in progress. Also, it means it's easy to run the same OS for development and production.

@@ -6,7 +6,7 @@ status: publish
 title: Creating 10 Most-Used Javascript Techniques Using Pure CSS Styling
 wordpress_id: '466'
 categories:
-- CSS
+- css
 comments: true
 ---
 
