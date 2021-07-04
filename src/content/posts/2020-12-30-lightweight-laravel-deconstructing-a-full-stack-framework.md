@@ -365,7 +365,7 @@ Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
 
 Next, let's set ETags on our images. Laravel comes with the `cache.headers` middleware, which we can easily wrap around our placeholder route:
 
-```php title=routes/web.php {1}
+```php title=routes/web.php {1,18}
 Route::middleware('cache.headers:public;etag')->group(function () {
     Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
         if (!$img = imagecreatetruecolor($width, $height)) {
