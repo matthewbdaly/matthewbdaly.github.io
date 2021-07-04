@@ -16,6 +16,7 @@ const Layout = ({ title, children }) => {
             <NavLink to={`/about`} text="About" />
             <NavLink to={`/uses`} text="Uses" />
             <NavLink to={`/posts/1`} text="Blog" />
+            <NavLink to={`/blog/categories`} text="Categories" />
             <NavLink to={`/search`} text="Search" />
           </div>
         </nav>
