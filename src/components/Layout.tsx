@@ -8,10 +8,10 @@ const Layout = ({ title, children }) => {
       <div className="flex flex-col min-h-screen font-sans text-lg text-gray-800 bg-gray-200 dark:text-gray-100 dark:bg-gray-700 leading-6">
         <div className="w-full h-2 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500" />
         <nav className="w-full p-4 mx-auto md:w-2/3 lowercase">
-          <h1 className="block float-left py-4 text-4xl font-bold">
+          <h1 className="block float-left py-4 text-4xl">
             <Link to={`/`}>{title}</Link>
           </h1>
-          <div className="hidden float-right py-2 lg:block">
+          <div className="hidden float-right py-2 md:block">
             <NavLink to={`/blog/archives`} text="Archives" />
             <NavLink to={`/about`} text="About" />
             <NavLink to={`/uses`} text="Uses" />
