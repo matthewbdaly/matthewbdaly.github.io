@@ -208,7 +208,7 @@ You've no doubt seen various novelty placeholder sites like [placekitten.com](ht
 
 Since the home page will be fairly straightforward, let's do that first. Delete the existing `resources/views/welcome.blade.php` file and save this to `resources/views/home.blade.php`:
 
-```blade.php
+```blade.php title=resources/views/home.blade.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -239,7 +239,7 @@ Since the home page will be fairly straightforward, let's do that first. Delete 
 
 Note we're using the `route()` helper to add some example images, even though it's not in place yet. Add this route to your `routes/web.php` as well:
 
-```php
+```php title=routes/web.php
 Route::get('/', function () {
     return view('home', [
         'example' => route('placeholder', ['width' => 50, 'height' => 50]),
@@ -249,7 +249,7 @@ Route::get('/', function () {
 
 Again, note that we're using the `route()` helper to get the URL for the placeholder image. Next, we need to create the outline of the route for getting the placeholders:
 
-```php
+```php title=routes/web.php
 Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
 })->where(['width' => '[0-9]+', 'height' => '[0-9]+'])
     ->name('placeholder');
@@ -259,7 +259,7 @@ Due to the limited scope of this application, we won't bother with full controll
 
 Now let's populate the callback to generate a PNG file.
 
-```php
+```php title=routes/web.php
 Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
     if (!$img = imagecreatetruecolor($width, $height)) {
         abort();
@@ -279,7 +279,7 @@ Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
 
 We'll also add some very basic CSS to the provided CSS file:
 
-```css
+```css title=resources/css/app.css
 body {
     text-align: center;
 }
@@ -303,7 +303,7 @@ If you now run `php artisan serve` you should be able to see that it works - the
 
 Let's tackle these in order. First, let's create some middleware to handle the caching:
 
-```php
+```php title=app/Http/Middleware/CacheImages.php
 <?php
 
 namespace App\Http\Middleware;
@@ -331,9 +331,9 @@ final class CacheImages
 }
 ```
 
-We construct a cache key from the request width and height, and use the `Cache::rememberForever()` method to cache the response. We then register this middleware as route middleware in `app\Http\Kernel.php`:
+We construct a cache key from the request width and height, and use the `Cache::rememberForever()` method to cache the response. We then register this middleware as route middleware in `app/Http/Kernel.php`:
 
-```php
+```php title=app/Http/Kernel.php
     protected $routeMiddleware = [
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
@@ -344,7 +344,7 @@ We construct a cache key from the request width and height, and use the `Cache::
 
 And apply it to the image route:
 
-```php
+```php title=routes/web.php
 Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
     if (!$img = imagecreatetruecolor($width, $height)) {
         abort();
@@ -365,7 +365,7 @@ Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
 
 Next, let's set ETags on our images. Laravel comes with the `cache.headers` middleware, which we can easily wrap around our placeholder route:
 
-```php
+```php title=routes/web.php
 Route::middleware('cache.headers:public;etag')->group(function () {
     Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
         if (!$img = imagecreatetruecolor($width, $height)) {
@@ -388,7 +388,7 @@ Route::middleware('cache.headers:public;etag')->group(function () {
 
 Finally, let's handle the dimensions issue. Again, this is something that is probably best handled in middleware since that way it can be rejected before the point it gets to the route handler. All we need to do is to check to see if the width and height parameters exceed the intended value, and throw an error in the middleware:
 
-```php
+```php title=app/Http/Middleware/ValidateImageDimensions.php
 <?php
 
 namespace App\Http\Middleware;
@@ -418,7 +418,7 @@ final class ValidateImageDimensions
 
 Register this middleware in `app/Http/Kernel.php`:
 
-```php
+```php title=app/Http/Kernel.php
     protected $routeMiddleware = [
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
@@ -430,7 +430,7 @@ Register this middleware in `app/Http/Kernel.php`:
 
 And apply it to the image route:
 
-```php
+```php title=routes/web.php
 Route::middleware('cache.headers:public;etag')->group(function () {
     Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
         if (!$img = imagecreatetruecolor($width, $height)) {
