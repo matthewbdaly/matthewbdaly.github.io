@@ -11,7 +11,7 @@ const Layout = ({ title, children }) => {
           <h1 className="block float-left py-4 text-4xl font-bold">
             <Link to={`/`}>{title}</Link>
           </h1>
-          <div className="float-right py-2 hidden lg:block">
+          <div className="hidden float-right py-2 lg:block">
             <NavLink to={`/blog/archives`} text="Archives" />
             <NavLink to={`/about`} text="About" />
             <NavLink to={`/uses`} text="Uses" />
