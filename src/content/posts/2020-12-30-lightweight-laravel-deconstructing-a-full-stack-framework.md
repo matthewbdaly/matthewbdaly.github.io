@@ -259,7 +259,7 @@ Due to the limited scope of this application, we won't bother with full controll
 
 Now let's populate the callback to generate a PNG file.
 
-```php title=routes/web.php
+```php title=routes/web.php {2-13}
 Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
     if (!$img = imagecreatetruecolor($width, $height)) {
         abort();
@@ -333,7 +333,7 @@ final class CacheImages
 
 We construct a cache key from the request width and height, and use the `Cache::rememberForever()` method to cache the response. We then register this middleware as route middleware in `app/Http/Kernel.php`:
 
-```php title=app/Http/Kernel.php
+```php title=app/Http/Kernel.php {5}
     protected $routeMiddleware = [
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
@@ -344,7 +344,7 @@ We construct a cache key from the request width and height, and use the `Cache::
 
 And apply it to the image route:
 
-```php title=routes/web.php
+```php title=routes/web.php {16}
 Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
     if (!$img = imagecreatetruecolor($width, $height)) {
         abort();
@@ -365,7 +365,7 @@ Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
 
 Next, let's set ETags on our images. Laravel comes with the `cache.headers` middleware, which we can easily wrap around our placeholder route:
 
-```php title=routes/web.php
+```php title=routes/web.php {1}
 Route::middleware('cache.headers:public;etag')->group(function () {
     Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
         if (!$img = imagecreatetruecolor($width, $height)) {
@@ -418,7 +418,7 @@ final class ValidateImageDimensions
 
 Register this middleware in `app/Http/Kernel.php`:
 
-```php title=app/Http/Kernel.php
+```php title=app/Http/Kernel.php {5}
     protected $routeMiddleware = [
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
@@ -430,7 +430,7 @@ Register this middleware in `app/Http/Kernel.php`:
 
 And apply it to the image route:
 
-```php title=routes/web.php
+```php title=routes/web.php {17}
 Route::middleware('cache.headers:public;etag')->group(function () {
     Route::get('/placeholder/{width}x{height}', function (int $width, int $height) {
         if (!$img = imagecreatetruecolor($width, $height)) {
