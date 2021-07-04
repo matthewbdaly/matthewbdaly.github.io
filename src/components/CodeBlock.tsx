@@ -51,7 +51,7 @@ const CodeBlock = ({children, className, live, metastring, title}) => {
         <div className="p-4 text-gray-900 bg-gray-100 dark:bg-gray-900 dark:text-gray-100" style={{marginTop: "40px"}}>
           <LivePreview />
         </div>
-        {title && <span className="block w-full p-2 px-8 m-0 mt-2 -mb-8 font-mono text-sm text-gray-800 bg-gray-300 border-gray-800 rounded-t-lg shadow-lg">{title}</span>}
+        {title && <span className="block w-full p-2 px-8 m-0 mt-2 -mb-8 overflow-x-auto font-mono text-sm text-gray-800 bg-gray-300 border-gray-800 rounded-t-lg shadow-lg">{title}</span>}
         <div style={{marginTop: "2rem", backgroundColor: "black"}}>
           <LiveEditor />
         </div>
@@ -64,7 +64,7 @@ const CodeBlock = ({children, className, live, metastring, title}) => {
 
   return (
     <Fragment>
-      {title && <span className="block w-full p-2 px-8 m-0 mt-2 -mb-4 font-mono text-sm text-gray-800 bg-gray-300 border-gray-800 rounded-t-lg shadow-lg">{title}</span>}
+      {title && <span className="block w-full p-2 px-8 m-0 mt-2 -mb-4 overflow-x-auto font-mono text-sm text-gray-800 bg-gray-300 border-gray-800 rounded-t-lg shadow-lg">{title}</span>}
       <Highlight Prism={Prism} {...defaultProps} code={children} language={language} theme={oceanicNext}>
         {({className, style, tokens, getLineProps, getTokenProps}) => (
             <div className="gatsby-highlight" data-language={language}>
