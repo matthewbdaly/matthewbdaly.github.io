@@ -51,7 +51,8 @@ const CodeBlock = ({children, className, live, metastring, title}) => {
         <div className="p-4 text-gray-900 bg-gray-100 dark:bg-gray-900 dark:text-gray-100" style={{marginTop: "40px"}}>
           <LivePreview />
         </div>
-        <div style={{marginTop: "40px", backgroundColor: "black"}}>
+        {title && <span className="block w-full p-2 px-8 m-0 mt-2 -mb-8 font-mono text-sm bg-gray-300 border-gray-800 rounded-t-lg shadow-lg">{title}</span>}
+        <div style={{marginTop: "2rem", backgroundColor: "black"}}>
           <LiveEditor />
         </div>
         <LiveError className="p-4 mt-2 overflow-x-scroll text-gray-900 bg-gray-100 dark:bg-gray-900 dark:text-gray-100" />
