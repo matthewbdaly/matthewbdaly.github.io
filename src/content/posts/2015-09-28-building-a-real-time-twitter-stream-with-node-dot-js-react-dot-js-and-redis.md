@@ -4,7 +4,7 @@ date: 2015-09-28 20:00:55 +0100
 layout: post
 categories:
 - node.js
-- react.js
+- react
 - redis
 - socket.io
 comments: true

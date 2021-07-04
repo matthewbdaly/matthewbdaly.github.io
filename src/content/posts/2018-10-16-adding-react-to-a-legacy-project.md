@@ -3,7 +3,7 @@ title: "Adding React to a legacy project"
 date: 2018-10-16 09:00:29 +0100
 layout: post
 categories:
-- reactjs
+- react
 - javascript
 comments: true
 ---

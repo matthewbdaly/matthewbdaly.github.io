@@ -9,7 +9,7 @@ categories:
 - mongodb
 - expressjs
 - socket.io
-- backbone.js
+- backbone
 ---
 
 The idea of building an entire web app using nothing but JavaScript has always appealed to me. Despite its undoubted flaws, JavaScript is a powerful language, and chopping and changing between several different programming languages is never great. So I've always wanted to check out Node.js.
