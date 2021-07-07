@@ -16,7 +16,7 @@ const Layout = ({ title, children }: Props) => {
           <h1 className="block float-left py-4 text-4xl">
             <Link to={`/`}>{title}</Link>
           </h1>
-          <div className="hidden float-right py-2 md:block">
+          <div className="hidden float-left lg:float-right py-2 md:block">
             <NavLink to={`/blog/archives`} text="Archives" />
             <NavLink to={`/about`} text="About" />
             <NavLink to={`/uses`} text="Uses" />
