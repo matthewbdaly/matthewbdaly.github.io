@@ -2,6 +2,8 @@ import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import TextSection from "../components/TextSection"
+import NextPage  from "../components/NextPage"
+import PreviousPage from "../components/PreviousPage"
 import Tag from "../components/Tag"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
@@ -42,19 +44,11 @@ const PostTemplate = ({ data, pageContext }) => {
 
                     <nav className="p-4">
                         <ul>
-                            <li className="float-left">
-                                {previous && (
-                                    <Link to={previous.fields.path} rel="prev">
-                                        ← {previous.frontmatter.title}
-                                    </Link>
-                                )}
+                            <li>
+                                {previous && <PreviousPage path={previous.fields.path} title={previous.frontmatter.title} />}
                             </li>
-                            <li className="float-right">
-                                {next && (
-                                    <Link to={next.fields.path} rel="next">
-                                        {next.frontmatter.title} →
-                                    </Link>
-                                )}
+                            <li>
+                                {next && <NextPage path={next.fields.path} title={next.frontmatter.title} />}
                             </li>
                         </ul>
                     </nav>
