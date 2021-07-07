@@ -1,6 +1,8 @@
 import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
+import NextPage from "../components/NextPage"
+import PreviousPage from "../components/PreviousPage"
 import SEO from "../components/Seo"
 
 const Chunk = ({ pageContext, data }) => {
@@ -14,6 +16,7 @@ const Chunk = ({ pageContext, data }) => {
         description={`${siteTitle} - Page ${currentPage}`}
       />
       <Layout title={siteTitle}>
+        <Fragment>
         {data.allMdx.edges.map(({ node }) => {
           return (
             <section key={node.fields.path} className="w-full py-2">
@@ -29,21 +32,14 @@ const Chunk = ({ pageContext, data }) => {
         <nav>
           <ul>
             <li>
-              {previousPage && (
-                <Link to={`/posts/${previousPage}`} rel="prev">
-                  ← 
-                </Link>
-              )}
+              {previousPage && <PreviousPage path={`/posts/${previousPage}`} title={`Page ${previousPage}`} />}
             </li>
             <li>
-              {nextPage && (
-                <Link to={`/posts/${nextPage}`} rel="next">
-                  →
-                </Link>
-              )}
+              {nextPage && <NextPage path={`/posts/${nextPage}`} title={`Page ${nextPage}`} />}
             </li>
           </ul>
         </nav>
+        </Fragment>
       </Layout>
     </Fragment>
   )
