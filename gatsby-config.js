@@ -6,7 +6,7 @@ module.exports = {
       summary: `who lives in Norfolk and works in Norwich (except during the lockdown, when he's been working from home).`,
     },
     description: `I'm a web developer in Norfolk. This is my blog...`,
-    siteUrl: `https://matthewdaly.co.uk`,
+    siteUrl: `https://eager-roentgen-df27e3.netlify.app/`,
     social: {
       twitter: `mattbd`,
 			github: `matthewbdaly`,
