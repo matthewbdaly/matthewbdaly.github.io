@@ -2,7 +2,12 @@ import React, { Fragment } from "react"
 import { Link } from "gatsby"
 import NavLink from "./NavLink"
 
-const Layout = ({ title, children }) => {
+interface Props {
+  title: string;
+  children: React.ReactChildren;
+}
+
+const Layout = ({ title, children }: Props) => {
   return (
     <Fragment>
       <div className="flex flex-col min-h-screen font-sans text-lg text-gray-800 bg-gray-200 dark:text-gray-100 dark:bg-gray-700 leading-6">

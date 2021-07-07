@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
 
-type Props = {
-  to: string,
-  text: string
+interface Props {
+  to: string;
+  text: string;
 }
 
 const NavLink = (props: Props): React.ReactElement => (

@@ -8,7 +8,7 @@ type Result = {
     title: string
 }
 
-const SearchResults = ({ value }) => {
+const SearchResults = ({ string: value }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			localSearchPosts {

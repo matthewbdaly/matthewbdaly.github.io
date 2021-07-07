@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
-type Props = {
-    path: string,
-    title: string,
-    excerpt: string
-};
+interface Props {
+    path: string;
+    title: string;
+    excerpt: string;
+}
 
 const Card = ({ path, title, excerpt }: Props) => {
     return (
