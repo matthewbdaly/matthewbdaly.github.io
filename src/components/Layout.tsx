@@ -4,7 +4,7 @@ import NavLink from "./NavLink"
 
 interface Props {
   title: string;
-  children: React.ReactElement;
+  children: React.ReactElement | React.ReactElement[];
 }
 
 const Layout = ({ title, children }: Props): React.ReactElement => {
