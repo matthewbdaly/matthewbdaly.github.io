@@ -8,7 +8,11 @@ interface Result {
     title: string;
 }
 
-const SearchResults = ({ string: value }): React.ReactElement => {
+interface Props {
+    value: string;
+}
+
+const SearchResults = ({ value }: Props): React.ReactElement => {
   const data = useStaticQuery(graphql`
 		query {
 			localSearchPosts {
