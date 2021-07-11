@@ -4,7 +4,7 @@ import TextSection from "../components/TextSection"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 
-const PageTemplate = ({ data }) => {
+const PageTemplate = ({ data }): React.ReactElement => {
   const page = data.mdx
   const siteTitle = data.site.siteMetadata.title
 

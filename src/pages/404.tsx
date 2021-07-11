@@ -27,7 +27,7 @@ const codeStyles = {
 }
 
 // markup
-const NotFoundPage = ({ data }) => {
+const NotFoundPage = ({ data }): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
 
   return (

@@ -4,9 +4,9 @@ import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import Tag from "../components/Tag"
 
-type Category = {
-    totalCount: number,
-    category: string
+interface Category {
+    totalCount: number;
+    category: string;
 }
 
 const Categories = ({ data: {
@@ -14,7 +14,7 @@ const Categories = ({ data: {
   site: {
     siteMetadata: { title },
   }
-}}) => {
+}}): React.ReactElement => {
 
   return (
     <Layout title={title}>

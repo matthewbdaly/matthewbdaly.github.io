@@ -8,7 +8,7 @@ import Tag from "../components/Tag"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
 
-const PostTemplate = ({ data, pageContext }) => {
+const PostTemplate = ({ data, pageContext }): React.ReactElement => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext

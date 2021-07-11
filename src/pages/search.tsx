@@ -5,7 +5,7 @@ import SEO from "../components/Seo"
 import SearchResults from "../components/SearchResults"
 import queryString from "query-string"
 
-const Search = ({ location, data }) => {
+const Search = ({ location, data }): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const search = queryString.parse(location.search)
 

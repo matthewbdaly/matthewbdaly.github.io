@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 
-const Archives = ({ data }) => {
+const Archives = ({ data }): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
 
   return (

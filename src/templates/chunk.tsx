@@ -5,7 +5,7 @@ import NextPage from "../components/NextPage"
 import PreviousPage from "../components/PreviousPage"
 import SEO from "../components/Seo"
 
-const Chunk = ({ pageContext, data }) => {
+const Chunk = ({ pageContext, data }): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const { currentPage, nextPage, previousPage } = pageContext
 

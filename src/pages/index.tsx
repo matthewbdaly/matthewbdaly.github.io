@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import RecentPosts from "../components/RecentPosts"
 
-const Index = ({ data }) => {
+const Index = ({ data }): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const RecentPostsComponent = memo(RecentPosts)
 
