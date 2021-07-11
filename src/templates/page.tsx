@@ -3,8 +3,15 @@ import { graphql } from "gatsby"
 import TextSection from "../components/TextSection"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import { PageData, SiteData } from "../Types"
 
-const PageTemplate = ({ data }): React.ReactElement => {
+interface Props {
+  data: {
+    site: SiteData;
+    mdx: PageData;
+  }
+}
+const PageTemplate = ({ data }: Props): React.ReactElement => {
   const page = data.mdx
   const siteTitle = data.site.siteMetadata.title
 

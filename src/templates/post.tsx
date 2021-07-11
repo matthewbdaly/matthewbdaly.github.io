@@ -12,8 +12,8 @@ import { PageContext, PageData, SiteData } from "../Types"
 interface Props {
   pageContext: PageContext;
   data: {
-      site: SiteData;
-      mdx: PageData;
+    site: SiteData;
+    mdx: PageData;
   }
 }
 
