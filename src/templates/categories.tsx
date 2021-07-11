@@ -3,10 +3,20 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import Tag from "../components/Tag"
+import { SiteData } from "../Types"
 
 interface Category {
     totalCount: number;
     category: string;
+}
+
+interface Props {
+  site: SiteData;
+  data: {
+    allMdx: {
+      group: Category[];
+    }
+  }
 }
 
 const Categories = ({ data: {
@@ -14,7 +24,7 @@ const Categories = ({ data: {
   site: {
     siteMetadata: { title },
   }
-}}): React.ReactElement => {
+}}: Props): React.ReactElement => {
 
   return (
     <Layout title={title}>
