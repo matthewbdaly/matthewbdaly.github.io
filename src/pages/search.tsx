@@ -4,8 +4,18 @@ import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import SearchResults from "../components/SearchResults"
 import queryString from "query-string"
+import { SiteData } from "../Types"
 
-const Search = ({ location, data }): React.ReactElement => {
+interface Props {
+  data: {
+    site: SiteData;
+  },
+  location: {
+    search: string;
+  }
+}
+
+const Search = ({ location, data }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const search = queryString.parse(location.search)
 

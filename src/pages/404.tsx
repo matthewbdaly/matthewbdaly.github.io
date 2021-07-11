@@ -2,6 +2,13 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import { SiteData } from "../Types"
+
+interface Props {
+  data: {
+    site: SiteData;
+  }
+}
 
 // styles
 const pageStyles = {
@@ -27,7 +34,7 @@ const codeStyles = {
 }
 
 // markup
-const NotFoundPage = ({ data }): React.ReactElement => {
+const NotFoundPage = ({ data }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
