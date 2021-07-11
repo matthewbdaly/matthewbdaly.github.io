@@ -1,6 +1,6 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import {MDXProvider} from '@mdx-js/react'
+import {MDXProvider} from "@mdx-js/react"
 import CodeBlock from "./CodeBlock"
 
 const components = {

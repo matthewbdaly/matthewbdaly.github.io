@@ -9,8 +9,8 @@ const Archives = ({ data }) => {
   return (
     <Layout title={siteTitle}>
       <SEO
-        title={`Archives`}
-        description={`Post archive`}
+        title={"Archives"}
+        description={"Post archive"}
       />
       {data.allMdx.edges.map(({ node }) => {
         return (
@@ -20,7 +20,7 @@ const Archives = ({ data }) => {
             </Link>
             <p className="float-left py-2">{node.frontmatter.date}</p>
           </section>
-        );
+        )
       })}
     </Layout>
   )

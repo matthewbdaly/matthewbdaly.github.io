@@ -33,8 +33,8 @@ const NotFoundPage = ({ data }) => {
   return (
     <Layout title={siteTitle}>
       <SEO
-        title={`Not found`}
-        description={`Not found`}
+        title={"Not found"}
+        description={"Not found"}
       />
       <main style={pageStyles}>
         <title>Not found</title>

@@ -14,15 +14,15 @@ const Layout = ({ title, children }: Props) => {
         <div className="w-full h-2 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500" />
         <nav className="w-full p-4 mx-auto md:w-2/3 lowercase">
           <h1 className="block float-none lg:float-left py-4 text-4xl text-center lg:text-left">
-            <Link to={`/`}>{title}</Link>
+            <Link to={"/"}>{title}</Link>
           </h1>
           <div className="lg:float-right py-2 md:block text-center lg:text-left">
-            <NavLink to={`/blog/archives`} text="Archives" />
-            <NavLink to={`/about`} text="About" />
-            <NavLink to={`/uses`} text="Uses" />
-            <NavLink to={`/posts/1`} text="Blog" />
-            <NavLink to={`/blog/categories`} text="Categories" />
-            <NavLink to={`/search`} text="Search" />
+            <NavLink to={"/blog/archives"} text="Archives" />
+            <NavLink to={"/about"} text="About" />
+            <NavLink to={"/uses"} text="Uses" />
+            <NavLink to={"/posts/1"} text="Blog" />
+            <NavLink to={"/blog/categories"} text="Categories" />
+            <NavLink to={"/search"} text="Search" />
           </div>
         </nav>
 

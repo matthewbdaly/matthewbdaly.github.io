@@ -11,8 +11,8 @@ const Index = ({ data }) => {
   return (
     <Layout title={siteTitle}>
       <SEO
-        title={`Home`}
-        description={`Home`}
+        title={"Home"}
+        description={"Home"}
       />
       <RecentPostsComponent />
     </Layout>

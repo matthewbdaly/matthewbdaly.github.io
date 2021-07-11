@@ -19,8 +19,8 @@ const Categories = ({ data: {
   return (
     <Layout title={title}>
       <SEO
-        title={`Categories`}
-        description={`Categories`}
+        title={"Categories"}
+        description={"Categories"}
       />
       <div className="p-4">
         {group.map((node: Category) => <Tag key={node.category} category={node.category} />)}

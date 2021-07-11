@@ -17,28 +17,28 @@ const Chunk = ({ pageContext, data }) => {
       />
       <Layout title={siteTitle}>
         <Fragment>
-        {data.allMdx.edges.map(({ node }) => {
-          return (
-            <section key={node.fields.path} className="w-full py-2">
-              <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
-                {node.frontmatter.title}
-              </Link>
-              <p className="float-left py-2">{node.frontmatter.date}</p>
-              <p className="float-left py-2">{node.excerpt}</p>
-            </section>
-          )
-        })}
+          {data.allMdx.edges.map(({ node }) => {
+            return (
+              <section key={node.fields.path} className="w-full py-2">
+                <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
+                  {node.frontmatter.title}
+                </Link>
+                <p className="float-left py-2">{node.frontmatter.date}</p>
+                <p className="float-left py-2">{node.excerpt}</p>
+              </section>
+            )
+          })}
 
-        <nav>
-          <ul>
-            <li>
-              {previousPage && <PreviousPage path={`/posts/${previousPage}`} title={`Page ${previousPage}`} />}
-            </li>
-            <li>
-              {nextPage && <NextPage path={`/posts/${nextPage}`} title={`Page ${nextPage}`} />}
-            </li>
-          </ul>
-        </nav>
+          <nav>
+            <ul>
+              <li>
+                {previousPage && <PreviousPage path={`/posts/${previousPage}`} title={`Page ${previousPage}`} />}
+              </li>
+              <li>
+                {nextPage && <NextPage path={`/posts/${nextPage}`} title={`Page ${nextPage}`} />}
+              </li>
+            </ul>
+          </nav>
         </Fragment>
       </Layout>
     </Fragment>

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import SearchResults from "../components/SearchResults"
-import queryString from 'query-string'
+import queryString from "query-string"
 
 const Search = ({ location, data }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -12,8 +12,8 @@ const Search = ({ location, data }) => {
   return (
     <Layout title={siteTitle}>
       <SEO
-        title={`Home`}
-        description={`Home`}
+        title={"Home"}
+        description={"Home"}
       />
       <SearchResults value={search.s} />
     </Layout>

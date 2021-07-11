@@ -18,13 +18,13 @@ const Category = ({ pageContext, data }) => {
       />
       <Layout title={categoryHeader}>
         <ul>
-            {edges.map(({ node }) => (
+          {edges.map(({ node }) => (
             <li key={node.fields.path} className="p-2 text-xl font-bold">
               <Link to={node.fields.path}>
                 {node.frontmatter.title}
               </Link>
             </li>
-            ))}
+          ))}
         </ul>
       </Layout>
     </Fragment>

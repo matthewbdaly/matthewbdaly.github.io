@@ -7,9 +7,9 @@ interface Props {
 }
 
 const NextPage = (props: Props): React.ReactElement => (
-    <Link to={props.path} rel="next">
-        {props.title} →
-    </Link>
+  <Link to={props.path} rel="next">
+    {props.title} →
+  </Link>
 )
 
 export default NextPage
