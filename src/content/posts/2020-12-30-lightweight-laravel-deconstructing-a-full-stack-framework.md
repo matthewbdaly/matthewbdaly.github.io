@@ -76,7 +76,7 @@ index 30020a5..10e150d 100644
 -            \App\Http\Middleware\VerifyCsrfToken::class,
 -            \Illuminate\Routing\Middleware\SubstituteBindings::class,
          ],
- 
+
          'api' => [
 @@ -53,14 +45,8 @@ class Kernel extends HttpKernel
       * @var array
@@ -93,7 +93,7 @@ index 30020a5..10e150d 100644
 -        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
      ];
  }
--- 
+--
 2.28.0
 
 ```
@@ -142,7 +142,7 @@ index 2a2f0eb..b7a38c8 100644
 -        Illuminate\Translation\TranslationServiceProvider::class,
          Illuminate\Validation\ValidationServiceProvider::class,
          Illuminate\View\ViewServiceProvider::class,
- 
+
 @@ -170,9 +161,6 @@ return [
           * Application Service Providers...
           */
@@ -151,7 +151,7 @@ index 2a2f0eb..b7a38c8 100644
 -        // App\Providers\BroadcastServiceProvider::class,
 -        App\Providers\EventServiceProvider::class,
          App\Providers\RouteServiceProvider::class,
- 
+
      ],
 @@ -193,35 +181,21 @@ return [
          'App' => Illuminate\Support\Facades\App::class,
@@ -189,7 +189,7 @@ index 2a2f0eb..b7a38c8 100644
          'Str' => Illuminate\Support\Str::class,
          'URL' => Illuminate\Support\Facades\URL::class,
          'Validator' => Illuminate\Support\Facades\Validator::class,
--- 
+--
 2.28.0
 
 ```
@@ -208,7 +208,7 @@ You've no doubt seen various novelty placeholder sites like [placekitten.com](ht
 
 Since the home page will be fairly straightforward, let's do that first. Delete the existing `resources/views/welcome.blade.php` file and save this to `resources/views/home.blade.php`:
 
-```blade.php title=resources/views/home.blade.php
+```html title=resources/views/home.blade.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
