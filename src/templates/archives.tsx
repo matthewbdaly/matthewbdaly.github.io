@@ -2,8 +2,18 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import { PageData, SiteData } from "../Types"
 
-const Archives = ({ data }): React.ReactElement => {
+interface Props {
+  data: {
+    site: SiteData;
+    allMdx: {
+      edges: PageData[];
+    }
+  }
+}
+
+const Archives = ({ data }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
