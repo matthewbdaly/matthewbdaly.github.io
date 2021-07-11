@@ -17,7 +17,7 @@ const Archives = ({ data }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
       <SEO
         title={"Archives"}
         description={"Post archive"}
@@ -43,6 +43,7 @@ export const postsQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     allMdx(

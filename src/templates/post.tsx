@@ -37,7 +37,7 @@ const PostTemplate = ({ pageContext, data }: Props): React.ReactElement => {
         title={post.frontmatter.title}
         description={post.excerpt}
       />
-      <Layout title={siteTitle}>
+      <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
         <article>
           <header>
             <h2 className="py-4 text-2xl font-bold">
@@ -73,24 +73,24 @@ export default PostTemplate
 
 export const postQuery = graphql`
 query BlogPostByPath($path: String!) {
-    site {
-        siteMetadata {
-            title
-            siteUrl
-        }
+  site {
+    siteMetadata {
+      title
+      siteUrl
     }
-    mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
-        id
-        body
-        excerpt(pruneLength: 180)
-        frontmatter {
-            title
-            date(formatString: "DD MMMM YYYY")
-            categories
-        }
-        fields {
-            path
-        }
+  }
+  mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "post"}}) {
+    id
+    body
+    excerpt(pruneLength: 180)
+    frontmatter {
+      title
+      date(formatString: "DD MMMM YYYY")
+      categories
     }
+    fields {
+      path
+    }
+  }
 }
 `

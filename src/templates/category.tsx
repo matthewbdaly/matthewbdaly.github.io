@@ -2,13 +2,14 @@ import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
-import { PageData } from "../Types"
+import { PageData, SiteData } from "../Types"
 
 interface Props {
   pageContext: {
     category: string;
   },
   data: {
+    site: SiteData;
     allMdx: {
       totalCount: number;
       edges: PageData[];
@@ -29,7 +30,7 @@ const Category = ({ pageContext, data }: Props): React.ReactElement => {
         title={category}
         description={category}
       />
-      <Layout title={categoryHeader}>
+      <Layout title={categoryHeader} siteUrl={data.site.siteMetadata.siteUrl}>
         <ul>
           {edges.map(({ node }) => (
             <li key={node.fields.path} className="p-2 text-xl font-bold">
@@ -48,6 +49,12 @@ export default Category
 
 export const categoryQuery = graphql`
 query($category: String) {
+  site {
+    siteMetadata {
+      title
+      siteUrl
+    }
+  }
   allMdx(
   limit: 2000
   sort: { fields: [frontmatter___date], order: DESC}

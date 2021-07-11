@@ -22,12 +22,12 @@ interface Props {
 const Categories = ({ data: {
   allMdx: { group },
   site: {
-    siteMetadata: { title },
+    siteMetadata: { title, siteUrl },
   }
 }}: Props): React.ReactElement => {
 
   return (
-    <Layout title={title}>
+    <Layout title={title} siteUrl={siteUrl}>
       <SEO
         title={"Categories"}
         description={"Categories"}
@@ -46,6 +46,7 @@ export const categoriesQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     allMdx {

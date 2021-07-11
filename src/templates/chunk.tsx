@@ -24,7 +24,7 @@ const Chunk = ({ pageContext, data }: Props): React.ReactElement => {
         title={`Page ${currentPage}`}
         description={`${siteTitle} - Page ${currentPage}`}
       />
-      <Layout title={siteTitle}>
+      <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
         <Fragment>
           {data.allMdx.edges.map(({ node }) => {
             return (
@@ -61,6 +61,7 @@ query($skip: Int!, $limit: Int!) {
   site {
     siteMetadata {
       title
+      siteUrl
     }
   }
   allMdx(

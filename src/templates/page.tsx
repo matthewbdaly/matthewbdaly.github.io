@@ -21,7 +21,7 @@ const PageTemplate = ({ data }: Props): React.ReactElement => {
         title={page.frontmatter.title}
         description={page.excerpt}
       />
-      <Layout title={siteTitle}>
+      <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
         <article>
           <header className="text-2xl font-bold">
             <h2>
@@ -44,6 +44,7 @@ query PageByPath($path: String!) {
   site {
     siteMetadata {
       title
+      siteUrl
     }
   }
   mdx(fields: { path: { eq: $path }}, frontmatter: {layout: {eq: "page"}}) {

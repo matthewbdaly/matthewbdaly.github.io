@@ -4,6 +4,7 @@ import NavLink from "./NavLink"
 
 interface Props {
   title: string;
+  siteUrl: string;
   children: React.ReactElement | React.ReactElement[];
 }
 

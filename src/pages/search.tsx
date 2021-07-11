@@ -20,7 +20,7 @@ const Search = ({ location, data }: Props): React.ReactElement => {
   const search = queryString.parse(location.search)
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
       <SEO
         title={"Home"}
         description={"Home"}
@@ -37,6 +37,7 @@ export const siteDataQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
   }

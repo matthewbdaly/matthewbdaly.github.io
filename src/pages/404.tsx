@@ -38,7 +38,7 @@ const NotFoundPage = ({ data }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
       <SEO
         title={"Not found"}
         description={"Not found"}
@@ -75,6 +75,7 @@ export const NotFoundQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
   }

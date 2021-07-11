@@ -17,7 +17,7 @@ const Index = ({ data }: Props): React.ReactElement => {
   const RecentPostsComponent = memo(RecentPosts)
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
       <SEO
         title={"Home"}
         description={"Home"}
@@ -34,6 +34,7 @@ export const recentPostsQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
   }
