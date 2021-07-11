@@ -7,8 +7,17 @@ import PreviousPage from "../components/PreviousPage"
 import Tag from "../components/Tag"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
+import { PageContext, PageData, SiteData } from "../Types"
 
-const PostTemplate = ({ data, pageContext }): React.ReactElement => {
+interface Props {
+  pageContext: PageContext;
+  data: {
+      site: SiteData;
+      mdx: PageData;
+  }
+}
+
+const PostTemplate = ({ pageContext, data }: Props): React.ReactElement => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
