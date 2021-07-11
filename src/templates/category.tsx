@@ -2,8 +2,21 @@ import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import { PageData } from "../Types"
 
-const Category = ({ pageContext, data }): React.ReactElement => {
+interface Props {
+  pageContext: {
+    category: string;
+  },
+  data: {
+    allMdx: {
+      totalCount: number;
+      edges: PageData[];
+    }
+  }
+}
+
+const Category = ({ pageContext, data }: Props): React.ReactElement => {
   const { category } = pageContext
   const { edges, totalCount } = data.allMdx
   const categoryHeader = `${totalCount} post${
