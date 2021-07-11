@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import kebabCase from "lodash/kebabCase"
 
-type Props = {
-  category: string
+interface Props {
+  category: string;
 }
 
 const Tag = (props: Props): React.ReactElement => (

@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title }) => {
+const SEO = ({ description, lang, meta, title }): React.ReactElement => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -74,18 +74,18 @@ const SEO = ({ description, lang, meta, title }) => {
         },
       ].concat(meta)}
     >
-		  <link href={ site.siteMetadata.siteUrl } rel="canonical" />
+      <link href={ site.siteMetadata.siteUrl } rel="canonical" />
       <link href={`https://twitter.com/${site.siteMetadata.social.twitter}`} rel="me" />
       <link href={`https://github.com/${site.siteMetadata.social.github}`} rel="me" />
       <link href={`mailto:${site.siteMetadata.social.email}`} rel="me" />
       <link href="/key.pub" rel="pgpkey" />
-		  <link href="https://webmention.io/matthewdaly.co.uk/xmlrpc" rel="pingback" />
-		  <link href="https://webmention.io/matthewdaly.co.uk/webmention" rel="webmention" />
+      <link href="https://webmention.io/matthewdaly.co.uk/xmlrpc" rel="pingback" />
+      <link href="https://webmention.io/matthewdaly.co.uk/webmention" rel="webmention" />
       <link rel="openid.delegate" href={ site.siteMetadata.siteUrl } />
       <link rel="openid.server" href="https://openid.indieauth.com/openid" />
-		  <link rel="alternate" type="application/rss+xml" title={`${site.siteMetadata.title} - feed`} href="/rss.xml" />
-		  <link rel="alternate" type="application/atom+xml" title={`${site.siteMetadata.title} - feed`} href="/atom.xml" />
-		  <link rel="alternate" type="application/feed+json" title={`${site.siteMetadata.title} - feed`} href="/feed.json" />
+      <link rel="alternate" type="application/rss+xml" title={`${site.siteMetadata.title} - feed`} href="/rss.xml" />
+      <link rel="alternate" type="application/atom+xml" title={`${site.siteMetadata.title} - feed`} href="/atom.xml" />
+      <link rel="alternate" type="application/feed+json" title={`${site.siteMetadata.title} - feed`} href="/feed.json" />
     </Helmet>
   )
 }

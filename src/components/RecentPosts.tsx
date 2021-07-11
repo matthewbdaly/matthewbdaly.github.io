@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Card from "./Card"
 
-const RecentPosts = () => {
+const RecentPosts = (): React.ReactElement => {
   const { allMdx } = useStaticQuery(
     graphql`
       query {
@@ -34,11 +34,11 @@ const RecentPosts = () => {
       <div className="w-full">
         {allMdx.edges.map(({ node }) => {
           return (
-            <Card 
-              key={node.fields.path} 
-              path={node.fields.path} 
-              title={node.frontmatter.title} 
-              excerpt={node.excerpt} 
+            <Card
+              key={node.fields.path}
+              path={node.fields.path}
+              title={node.frontmatter.title}
+              excerpt={node.excerpt}
             />
           )
         })}

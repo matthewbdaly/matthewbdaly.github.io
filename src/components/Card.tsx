@@ -7,7 +7,7 @@ interface Props {
     excerpt: string;
 }
 
-const Card = ({ path, title, excerpt }: Props) => {
+const Card = ({ path, title, excerpt }: Props): React.ReactElement => {
   return (
     <div className="float-left w-full lg:w-1/3">
       <div className="m-4 ml-0 border-2 border-gray-200 rounded-lg shadow-lg dark:border-gray-600">

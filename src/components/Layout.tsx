@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactElement;
 }
 
-const Layout = ({ title, children }: Props) => {
+const Layout = ({ title, children }: Props): React.ReactElement => {
   return (
     <Fragment>
       <div className="flex flex-col min-h-screen font-serif text-lg text-gray-800 bg-gray-200 dark:text-gray-100 dark:bg-gray-700 leading-6">

@@ -15,7 +15,7 @@ const components = {
   blockquote: props => <blockquote {...props} className="pl-4 italic text-gray-200 text-gray-900 bg-gray-100 border-l-8 border-gray-500 dark:text-gray-300 dark:bg-gray-800" />,
 }
 
-const TextSection = ({ children }) => {
+const TextSection = ({ children }): React.ReactElement => {
   return (
     <MDXProvider components={components}>
       <section>

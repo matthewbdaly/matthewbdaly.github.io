@@ -2,13 +2,13 @@ import React, { ChangeEvent, useState } from "react"
 import { useFlexSearch } from "react-use-flexsearch"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-type Result = {
-    id: string,
-    path: string,
-    title: string
+interface Result {
+    id: string;
+    path: string;
+    title: string;
 }
 
-const SearchResults = ({ string: value }) => {
+const SearchResults = ({ string: value }): React.ReactElement => {
   const data = useStaticQuery(graphql`
 		query {
 			localSearchPosts {
@@ -39,9 +39,9 @@ const SearchResults = ({ string: value }) => {
         <div className="w-full divide-y divide-gray-800 dark:divide-gray-200 mt-2">
           {results.map((result: Result) => (
             <Link key={result.id} className="float-left w-full py-4 text-xl font-bold focus:outline-none focus:ring focus:border-blue-300" to={result.path}>
-            	<span key={result.id} className="block w-full px-2">
+              <span key={result.id} className="block w-full px-2">
                 {result.title}
-            	</span>
+              </span>
             </Link>
           ))}
         </div>

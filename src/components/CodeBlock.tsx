@@ -37,7 +37,7 @@ const calculateLinesToHighlight = (meta: string) => {
   }
 }
 
-const CodeBlock = ({children, className, live, metastring, title}) => {
+const CodeBlock = ({children, className, live, metastring, title}): React.ReactElement => {
   const language = className ? className.replace(/language-/, "") : null
 
   if (live) {
