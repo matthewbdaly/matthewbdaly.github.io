@@ -4,8 +4,17 @@ import Layout from "../components/Layout"
 import NextPage from "../components/NextPage"
 import PreviousPage from "../components/PreviousPage"
 import SEO from "../components/Seo"
+import { PageContext, PageData, SiteData } from "../Types"
 
-const Chunk = ({ pageContext, data }): React.ReactElement => {
+interface Props {
+  pageContext: PageContext;
+  data: {
+    site: SiteData;
+    mdx: PageData;
+  }
+}
+
+const Chunk = ({ pageContext, data }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const { currentPage, nextPage, previousPage } = pageContext
 
