@@ -1,8 +1,7 @@
 import React, { Fragment } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
-import NextPage from "../components/NextPage"
-import PreviousPage from "../components/PreviousPage"
+import NavBlock from "../components/NavBlock"
 import SEO from "../components/Seo"
 import { PageContext, PageData, SiteData } from "../Types"
 
@@ -37,18 +36,13 @@ const Chunk = ({ pageContext, data }: Props): React.ReactElement => {
               </section>
             )
           })}
-
-          <nav className="clear-both">
-            <ul>
-              <li>
-                {previousPage && <PreviousPage path={`/posts/${previousPage}`} title={`Page ${previousPage}`} />}
-              </li>
-              <li>
-                {nextPage && <NextPage path={`/posts/${nextPage}`} title={`Page ${nextPage}`} />}
-              </li>
-            </ul>
-          </nav>
         </Fragment>
+
+        <NavBlock
+          previous={previousPage && {path: `/posts/${previousPage}`, title: `Page ${previousPage}`}}
+          next={nextPage && {path: `/posts/${nextPage}`, title: `Page ${nextPage}`}}
+        />
+
       </Layout>
     </Fragment>
   )

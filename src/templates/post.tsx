@@ -2,8 +2,7 @@ import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import TextSection from "../components/TextSection"
-import NextPage  from "../components/NextPage"
-import PreviousPage from "../components/PreviousPage"
+import NavBlock from "../components/NavBlock"
 import Tag from "../components/Tag"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
@@ -51,16 +50,10 @@ const PostTemplate = ({ pageContext, data }: Props): React.ReactElement => {
             {post.frontmatter.categories && post.frontmatter.categories.map((category: string) => <Tag key={category} category={category} />)}
           </div>
 
-          <nav className="p-4 clear-both">
-            <ul>
-              <li>
-                {previous && <PreviousPage path={previous.fields.path} title={previous.frontmatter.title} />}
-              </li>
-              <li>
-                {next && <NextPage path={next.fields.path} title={next.frontmatter.title} />}
-              </li>
-            </ul>
-          </nav>
+          <NavBlock
+            previous={previous && {path: previous.fields.path, title: previous.frontmatter.title}}
+            next={next && {path: next.fields.path, title: next.frontmatter.title}}
+          />
 
           <DiscussionEmbed {...disqusConfig} />
         </article>
