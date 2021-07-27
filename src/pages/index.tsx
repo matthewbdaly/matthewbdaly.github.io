@@ -22,8 +22,13 @@ const Index = ({ data }: Props): React.ReactElement => {
         title={"Home"}
         description={"Home"}
       />
-      <p className="font-bold text-2xl py-2">Hi, I'm Matthew Daly. I'm a web developer in East Anglia in the UK.</p>
-      <p className="text-xl">I work primarily with Laravel and React.js.</p>
+      <p className="font-bold text-2xl py-2">Hi, I&apos;m Matthew Daly.</p>
+      <p className="text-xl py-2">I&apos;m a web developer in East Anglia in the UK, and have worked in
+      the industry for about a decade now.</p>
+      <p className="text-xl py-2">Right now, I work with Laravel and React.js, and on a legacy Zend 1 project. I&apos;ve also worked with Django,
+      Angular 1, CodeIgniter, Backbone.js and Phonegap in the past.</p>
+      <p className="text-xl py-2">I blog about dealing with legacy code, web app performance, modern PHP and Javascript developlment, and
+      anything else I find interesting.</p>
       <RecentPostsComponent />
     </Layout>
   )
