@@ -1,6 +1,5 @@
 import React, { Fragment } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Card from "./Card"
+import { useStaticQuery, Link, graphql } from "gatsby"
 
 const RecentPosts = (): React.ReactElement => {
   const { allMdx } = useStaticQuery(
@@ -34,12 +33,13 @@ const RecentPosts = (): React.ReactElement => {
       <div className="w-full">
         {allMdx.edges.map(({ node }) => {
           return (
-            <Card
-              key={node.fields.path}
-              path={node.fields.path}
-              title={node.frontmatter.title}
-              excerpt={node.excerpt}
-            />
+            <section key={node.fields.path} className="w-full py-2">
+              <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
+                {node.frontmatter.title}
+              </Link>
+              <p className="float-left py-2">{node.frontmatter.date}</p>
+              <p className="float-left py-2">{node.excerpt}</p>
+            </section>
           )
         })}
       </div>
