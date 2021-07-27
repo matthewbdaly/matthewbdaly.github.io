@@ -23,11 +23,12 @@ const Index = ({ data }: Props): React.ReactElement => {
         description={"Home"}
       />
       <p className="font-bold text-2xl py-2">Hi, I&apos;m Matthew Daly.</p>
-      <p className="text-xl py-2">I&apos;m a web developer, and have worked in the industry for about a decade now. I live in Norfolk and work in Norwich (except during lockdown, when I've been working from home).</p>
+      <p className="text-xl py-2">I&apos;m a web developer, and have worked in the industry for about a decade now. I live in Norfolk and work in Norwich (except during lockdown, when I&apos;ve been working from home).</p>
       <p className="text-xl py-2">Right now, I work with Laravel and React.js, and on maintaining and migrating a legacy Zend 1 project.
        I&apos;ve also worked with Django, Angular 1, CodeIgniter, Backbone.js and Phonegap in the past.</p>
       <p className="text-xl py-2">I blog about the challenges of and solutions for dealing with legacy code, web app performance,
-      modern PHP and Javascript developlment, and anything else I find interesting.</p>
+      modern PHP and Javascript development, and anything else I find interesting.</p>
+      <p className="text-xl py-2">You can find me on <a className="border-b-4 border-transparent hover:border-green-400 transition-colors duration-500" href={`https://twitter.com/${data.site.siteMetadata.social.twitter}`} rel="me">Twitter</a> and <a className="border-b-4 border-transparent hover:border-green-400 transition-colors duration-500" href={`https://github.com/${data.site.siteMetadata.social.github}`} rel="me">GitHub</a></p>
       <RecentPostsComponent />
     </Layout>
   )
@@ -41,6 +42,10 @@ export const recentPostsQuery = graphql`
       siteMetadata {
         title
         siteUrl
+        social {
+          twitter
+          github
+        }
       }
     }
   }
