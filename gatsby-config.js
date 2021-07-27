@@ -1,41 +1,41 @@
 module.exports = {
   siteMetadata: {
-    title: `Matthew Daly`,
+    title: "Matthew Daly",
     author: {
-      name: `Matthew Daly`,
-      summary: `who lives in Norfolk and works in Norwich (except during the lockdown, when he's been working from home).`,
+      name: "Matthew Daly",
+      summary: "who lives in Norfolk and works in Norwich (except during the lockdown, when he's been working from home).",
     },
-    description: `I'm a web developer in Norfolk. This is my blog...`,
-    siteUrl: `https://eager-roentgen-df27e3.netlify.app/`,
+    description: "I'm a web developer in Norfolk. This is my blog...",
+    siteUrl: "https://eager-roentgen-df27e3.netlify.app/",
     social: {
-      twitter: `mattbd`,
-			github: `matthewbdaly`,
-			email: `matthew@matthewdaly.co.uk`
+      twitter: "mattbd",
+      github: "matthewbdaly",
+      email: "matthew@matthewdaly.co.uk"
     },
   },
-	plugins: [
-		"gatsby-plugin-netlify-cms",
-		"gatsby-plugin-robots-txt",
-		`gatsby-plugin-postcss`,
-		"gatsby-plugin-image",
-		{
-			resolve: "gatsby-plugin-opensearch",
-			options: {
-				shortName: "Matthew Daly",
-				description: "Search matthewdaly.co.uk",
-				searchTemplate: "/search?s={searchTerms}",
-				searchForm: "/search",
-			}
-		},
-		{
-			resolve: "gatsby-plugin-local-search",
-			options: {
-				name: 'posts',
-				engine: 'flexsearch',
-				engineOptions: {
-					suggest: true,
-				},
-				query: `
+  plugins: [
+    "gatsby-plugin-netlify-cms",
+    "gatsby-plugin-robots-txt",
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-image",
+    {
+      resolve: "gatsby-plugin-opensearch",
+      options: {
+        shortName: "Matthew Daly",
+        description: "Search matthewdaly.co.uk",
+        searchTemplate: "/search?s={searchTerms}",
+        searchForm: "/search",
+      }
+    },
+    {
+      resolve: "gatsby-plugin-local-search",
+      options: {
+        name: "posts",
+        engine: "flexsearch",
+        engineOptions: {
+          suggest: true,
+        },
+        query: `
 					{
 						allMdx (
 							filter: { frontmatter: {layout: {eq: "post"}}}
@@ -53,88 +53,88 @@ module.exports = {
 						}
 					}
 				`,
-				ref: 'id',
-				index: ['title', 'categories'],
-				store: ['id', 'path', 'title'],
-				normalizer: ({ data }) => 
-				data.allMdx.nodes.map(node => ({
-					id: node.id,
-					path: node.fields.path,
-					title: node.frontmatter.title,
-					body: node.body,
-				})),
-			},
-		},
-		{
-			resolve: "gatsby-plugin-google-analytics",
-			options: {
-				trackingId: "UA-17043630-1",
-			},
-		},
+        ref: "id",
+        index: ["title", "categories"],
+        store: ["id", "path", "title"],
+        normalizer: ({ data }) =>
+          data.allMdx.nodes.map(node => ({
+            id: node.id,
+            path: node.fields.path,
+            title: node.frontmatter.title,
+            body: node.body,
+          })),
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: "UA-17043630-1",
+      },
+    },
 
-		"gatsby-plugin-react-helmet",
-		"gatsby-plugin-sitemap",
-		{
-			resolve: "gatsby-plugin-manifest",
-			options: {
-				icon: `src/images/icon.png`,
-				name: `Matthew Daly's Blog`,
-				short_name: `Matthew Daly`,
-				start_url: `/`,
-				background_color: `white`,
-				theme_color: `black`,
-				display: `standalone`
-			},
-		},
-		"gatsby-plugin-offline",
-		{
-			resolve: `gatsby-plugin-mdx`,
-			options: {
-				extensions: [`.mdx`, `.md`],
-				gatsbyRemarkPlugins: [
-					{
-						resolve: `gatsby-remark-images`,
-						options: {
-							maxWidth: 1200,
-						}
-					}
-				]
-			},
-		},
-		"gatsby-plugin-sharp",
-		"gatsby-transformer-sharp",
-		"gatsby-remark-images",
-		{
-			resolve: "gatsby-source-filesystem",
-			options: {
-				name: "images",
-				path: "./src/images/",
-			},
-			__key: "images",
-		},
-		{
-			resolve: "gatsby-source-filesystem",
-			options: {
-				name: "pages",
-				path: "./src/pages/",
-			},
-			__key: "pages",
-		},
-		{
-			resolve: "gatsby-source-filesystem",
-			options: {
-				name: "content",
-				path: "./src/content/pages/",
-			},
-			__key: "content",
-		},
-		{
-			resolve: "gatsby-source-filesystem",
-			options: {
-				name: "posts",
-				path: "./src/content/posts/",
-			},
-			__key: "posts",
-		},
-	],
-};
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "src/images/icon.png",
+        name: "Matthew Daly's Blog",
+        short_name: "Matthew Daly",
+        start_url: "/",
+        background_color: "white",
+        theme_color: "black",
+        display: "standalone"
+      },
+    },
+    "gatsby-plugin-offline",
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 1200,
+            }
+          }
+        ]
+      },
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-remark-images",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: "./src/images/",
+      },
+      __key: "images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: "./src/pages/",
+      },
+      __key: "pages",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "content",
+        path: "./src/content/pages/",
+      },
+      __key: "content",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "posts",
+        path: "./src/content/posts/",
+      },
+      __key: "posts",
+    },
+  ],
+}
