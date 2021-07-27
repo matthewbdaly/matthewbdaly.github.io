@@ -51,7 +51,7 @@ const PostTemplate = ({ pageContext, data }: Props): React.ReactElement => {
             {post.frontmatter.categories && post.frontmatter.categories.map((category: string) => <Tag key={category} category={category} />)}
           </div>
 
-          <nav className="p-4">
+          <nav className="p-4 clear-both">
             <ul>
               <li>
                 {previous && <PreviousPage path={previous.fields.path} title={previous.frontmatter.title} />}

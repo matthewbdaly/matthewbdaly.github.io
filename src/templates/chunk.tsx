@@ -38,7 +38,7 @@ const Chunk = ({ pageContext, data }: Props): React.ReactElement => {
             )
           })}
 
-          <nav>
+          <nav className="clear-both">
             <ul>
               <li>
                 {previousPage && <PreviousPage path={`/posts/${previousPage}`} title={`Page ${previousPage}`} />}
