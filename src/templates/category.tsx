@@ -33,7 +33,7 @@ const Category = ({ pageContext, data }: Props): React.ReactElement => {
       <Layout title={categoryHeader} siteUrl={data.site.siteMetadata.siteUrl}>
         <ul>
           {edges.map(({ node }) => (
-            <li key={node.fields.path} className="p-2 text-xl font-bold">
+            <li key={node.fields.path} className="p-2 py-4 text-xl font-bold">
               <Link to={node.fields.path}>
                 {node.frontmatter.title}
               </Link>
