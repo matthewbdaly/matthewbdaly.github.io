@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
 const RecentPosts = (): React.ReactElement => {
@@ -28,22 +28,27 @@ const RecentPosts = (): React.ReactElement => {
   )
 
   return (
-    <section className="mt-16">
-      <h2 className="text-2xl">Recent posts</h2>
-      <div className="w-full">
-        {allMdx.edges.map(({ node }) => {
-          return (
-            <section key={node.fields.path} className="w-full py-2">
-              <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
-                {node.frontmatter.title}
-              </Link>
-              <p className="float-left py-2">{node.frontmatter.date}</p>
-              <p className="float-left py-2">{node.excerpt}</p>
-            </section>
-          )
-        })}
-      </div>
-    </section>
+    <Fragment>
+      <section className="mt-16">
+        <h2 className="text-2xl">Recent posts</h2>
+        <div className="w-full">
+          {allMdx.edges.map(({ node }) => {
+            return (
+              <section key={node.fields.path} className="w-full py-2">
+                <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
+                  {node.frontmatter.title}
+                </Link>
+                <p className="float-left py-2">{node.frontmatter.date}</p>
+                <p className="float-left py-2">{node.excerpt}</p>
+              </section>
+            )
+          })}
+        </div>
+      </section>
+      <section className="clear-both">
+        <Link to="/posts/1">Read more posts...</Link>
+      </section>
+    </Fragment>
   )
 }
 

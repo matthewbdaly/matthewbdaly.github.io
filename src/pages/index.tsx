@@ -22,6 +22,8 @@ const Index = ({ data }: Props): React.ReactElement => {
         title={"Home"}
         description={"Home"}
       />
+      <p className="font-bold text-2xl py-2">Hi, I'm Matthew Daly. I'm a web developer in East Anglia in the UK.</p>
+      <p className="text-xl">I work primarily with Laravel and React.js.</p>
       <RecentPostsComponent />
     </Layout>
   )
