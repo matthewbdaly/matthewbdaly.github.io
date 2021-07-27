@@ -11,7 +11,7 @@ interface Props {
 const Layout = ({ title, children }: Props): React.ReactElement => {
   return (
     <Fragment>
-      <div className="flex flex-col min-h-screen font-serif text-lg antialiased text-gray-800 bg-gray-200 dark:text-gray-100 dark:bg-gray-700 leading-6">
+      <div className="flex flex-col min-h-screen font-sans text-lg antialiased text-gray-800 bg-gray-50 dark:text-gray-100 dark:bg-gray-700 leading-6">
         <div className="w-full h-2 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500" />
         <nav className="w-full p-4 mx-auto lowercase md:w-2/3">
           <h1 className="block float-none py-4 text-4xl text-center lg:float-left lg:text-left">

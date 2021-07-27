@@ -43,7 +43,7 @@ const PostTemplate = ({ pageContext, data }: Props): React.ReactElement => {
             <h2 className="py-4 text-2xl font-bold">
               {post.frontmatter.title}
             </h2>
-            <p className="my-4 font-serif text-lg font-semibold">{post.frontmatter.date}</p>
+            <p className="my-4 text-lg font-semibold">{post.frontmatter.date}</p>
           </header>
           <TextSection>{post.body}</TextSection>
           <hr />
