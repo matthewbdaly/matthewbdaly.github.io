@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
 const RecentPosts = (): React.ReactElement => {
@@ -28,7 +28,7 @@ const RecentPosts = (): React.ReactElement => {
   )
 
   return (
-    <Fragment>
+    <section className="mt-16">
       <h2 className="text-2xl">Recent posts</h2>
       <div className="w-full">
         {allMdx.edges.map(({ node }) => {
@@ -43,7 +43,7 @@ const RecentPosts = (): React.ReactElement => {
           )
         })}
       </div>
-    </Fragment>
+    </section>
   )
 }
 
