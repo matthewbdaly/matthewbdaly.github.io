@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://matthewdaly.co.uk</id>
     <title>Matthew Daly</title>
-    <updated>2021-07-28T12:46:29.117Z</updated>
+    <updated>2021-07-28T13:34:48.406Z</updated>
     <generator>GatsbyJS</generator>
     <author>
         <name>Matthew Daly</name>
@@ -19,6 +19,13 @@
         <email>matthew@matthewdaly.co.uk</email>
         <uri>https://matthewdaly.co.uk</uri>
     </contributor>
+    <entry>
+        <title type="html"><![CDATA[Moving to Gatsby.js]]></title>
+        <id>/blog/2021/07/28/moving-to-gatsby-js/</id>
+        <link href="/blog/2021/07/28/moving-to-gatsby-js/"/>
+        <updated>2021-07-28T14:36:00.000Z</updated>
+        <content type="html"><![CDATA[<p>If you&#x27;re visting this site directly, rather than via RSS, you may have noticed that I&#x27;ve updated the whole thing. It&#x27;s now built in Typescript, using Gatsby.js, and with Tailwind for the styling.</p><p>This site has been through several incarnations, going from flat HTML, to Wordpress, to Octopress, before in 2015 I settled on my own custom static site generator, built as a Grunt plugin. This worked fine and produced a performant, simple flat HTML site, but over the last few years I&#x27;d started to have issues with it:</p><ul><li>I haven&#x27;t used Grunt as a build tool for anything else since 2015, and it&#x27;s not as performant as more modern tools</li><li>I also don&#x27;t use Handlebars anymore, and that was the templating system I used for the site. These days React is my go-to and that makes a lot of dynamic functionality simpler</li><li>I also don&#x27;t use Bootstrap anymore, having dropped it for Tailwind, but that would be difficult to integrate with a Grunt-based workflow</li></ul><p>As such, for the last couple of years I&#x27;ve wanted to migrate off it for something more modern. Early on, Gatsby looked like the strongest candidate since it used React, offered a GraphQL-based abstraction layer for easier querying, had a rich ecosystem of plugins for common functionality, and was highly performant, but I made about three attempts to rebuild my site in it which petered out over time. Then, earlier this year I decided to start over and had a lot more success. I did struggle a bit getting a halfway decent design, and for a while pivoted to trying to build it with Next.js instead - this was ultimately abandoned because without the GraphQL abstraction layer, a lot of the querying became a real chore, but I did ultimately decide to port the appearance of that over to the Gatsby site.</p><p>One of the things that made this particular implementation the one that stuck was <a href="https://mdxjs.com/">MDX</a>. If you&#x27;re not familiar with it, it&#x27;s a superset of Markdown that lets you include JSX in your content, allowing for easy addition of reusable UI components within page and blog post content. Also, building it in Typescript was a good call - I&#x27;d been sticking with Flow for several years, but unfortunately it&#x27;s looking like Flow has fallen by the wayside and Typescript has become the only realistic typed solution for Javascript developers, so I felt it was time to adopt that. I&#x27;ve also enjoyed how easy Tailwind was to use (implementing dark mode was really simple), and have been able to implement JSON feeds as well as the standard RSS and Atom ones. Also, for the first time since I dropped Octopress, I now have the ability to add a title and highlight individual lines in code blocks.</p><p>I did have to make a few tough decisions about what to drop as well:</p><ul><li>These days I have a few issues with how AMP works, and the site is responsive and works well on mobile, so I decided to drop AMP entirely. The old AMP versions of pages redirect to their standard versions now.</li><li>Due to issues with creating dynamic RSS feeds in Gatsby.js, I decided not to port over the per-category RSS feeds.</li></ul><p>I have to admit, I&#x27;ve been neglecting posting on this site for a while, largely because I was working on this - it&#x27;s now nearly the end of July and this is my first post of the year - but now that I&#x27;ve got this done, I&#x27;m hoping I will be able to post more. One of my biggest motivations to do this has been that I&#x27;m particularly interested in doing more posts about React.js, and adopting MDX not only means that I can embed components in my posts, but I&#x27;ve also been able to integrate <code>react-live</code> into the site so I can embed editable examples in here too, which is potentially very powerful when demonstrating a concept.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Lightweight Laravel - deconstructing a full stack framework]]></title>
         <id>/blog/2020/12/30/lightweight-laravel-deconstructing-a-full-stack-framework/</id>
@@ -832,76 +839,5 @@ Content::where(&#x27;attributes-&gt;type&#x27;, &#x27;promotional&#x27;)-&gt;get
 </code></pre><p>It&#x27;s also possible to order by a JSON field value, but at the time of writing there&#x27;s no neat syntax for it, so you have to drop down to writing it using <code>orderByRaw</code> in Eloquent:</p><pre><code class="language-php">&lt;?php
 Content::orderByRaw(&quot;attributes-&gt; &#x27;$.type&#x27;&quot;)-&gt;get();
 </code></pre><p>Eloquent also supports a few other JSON query types, such as querying if an array contains a value, and I suggest <a href="https://laravel.com/docs/6.x/queries#json-where-clauses">referring to the documentation</a> if you want to know more.</p><h2>Other applications</h2><p>There are many other scenarios where this approach can be useful. For instance, e-commerce sites often sell many different products that may have arbitrary properties, and it may be necessary to sort and filter by different properties for different types of products. A store that sells, among other things, shoes and storage containers, might need a colour and capacity field for storage containers, and a colour and size field for shoes. Using this approach, you can set up your database in such a way that those arbitrary fields can be set up when needed, and used for filtering.</p><p>This approach is not without its downsides. Any data that&#x27;s stored in a JSON field can&#x27;t be validated by the database in the same way, so the burden of ensuring that it remains in a consistent state is moved to your application code. However, it&#x27;s no worse than it would be if you used a document database, and unlike with a document database you can combine JSON and more traditional fields as you see fit.</p>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Storing Wordpress configuration in environment variables]]></title>
-        <id>/blog/2019/09/22/storing-wordpress-configuration-in-environment-variables/</id>
-        <link href="/blog/2019/09/22/storing-wordpress-configuration-in-environment-variables/"/>
-        <updated>2019-09-22T18:00:34.000Z</updated>
-        <content type="html"><![CDATA[<p>Wordpress configuration can be a serious pain in the proverbial. Hard-coding configuration details in a PHP file is not a terribly safe way of storing the details for your database, as if the server is misconfigured they can be exposed. In addition, it can be a chore to copy and populate the <code>wp-config.php</code> file to a new deploy.</p><p>A fundamental principle of <a href="https://12factor.net/">The Twelve-Factor App</a> is that config should be stored in the environment. While Wordpress does predate this, there&#x27;s no reason why we can&#x27;t abide by this. Storing Wordpress configuration in environment variables rather than the <code>wp-config.php</code> file has the following advantages:</p><ul><li>It&#x27;s more secure since the config is not stored in a file in the web root, but in the web server config</li><li>It makes managing the <code>wp-config.php</code> file less of a chore - it can be safely committed to version control, and you won&#x27;t need to change it to match your local configuration, running the risk of accidentally committing and pushing to production with broken config</li><li>Deployment to new servers is simpler because there&#x27;s no need to update the <code>wp-config.php</code></li><li>The risk of neglecting to change the database details and accidentally messing up the production database when working locally is virtually eliminated</li></ul><p>I&#x27;ve seen solutions for this that use DotEnv, but you don&#x27;t actually need to install that to be able to use environment variables with Wordpress. In fact, in some way it&#x27;s better if you don&#x27;t as too many developers use <code>.env</code> files in production. PHP natively has the ability to get data from environment variables using the <code>getenv()</code> function, so it&#x27;s easier to use that than to pull in a third-party library.</p><p>Here&#x27;s an abbreviated example of a <code>wp-config.php</code> file that&#x27;s been updated to pull the settings from environment variables:</p><pre><code class="language-php">&lt;?php
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define( &#x27;DB_NAME&#x27;, getenv(&#x27;DB_NAME&#x27;) );
-
-/** MySQL database username */
-define( &#x27;DB_USER&#x27;, getenv(&#x27;DB_USER&#x27;) );
-
-/** MySQL database password */
-define( &#x27;DB_PASSWORD&#x27;, getenv(&#x27;DB_PASSWORD&#x27;) );
-
-/** MySQL hostname */
-define( &#x27;DB_HOST&#x27;, getenv(&#x27;DB_HOST&#x27;) );
-
-/** Database Charset to use in creating database tables. */
-define( &#x27;DB_CHARSET&#x27;, &#x27;utf8&#x27; );
-
-/** The Database Collate type. Don&#x27;t change this if in doubt. */
-define( &#x27;DB_COLLATE&#x27;, &#x27;&#x27; );
-
-define( &#x27;AUTH_KEY&#x27;,         getenv(&#x27;AUTH_KEY&#x27;) );
-define( &#x27;SECURE_AUTH_KEY&#x27;,  getenv(&#x27;SECURE_AUTH_KEY&#x27;) );
-define( &#x27;LOGGED_IN_KEY&#x27;,    getenv(&#x27;LOGGED_IN_KEY&#x27;) );
-define( &#x27;NONCE_KEY&#x27;,        getenv(&#x27;NONCE_KEY&#x27;) );
-define( &#x27;AUTH_SALT&#x27;,        getenv(&#x27;AUTH_SALT&#x27;) );
-define( &#x27;SECURE_AUTH_SALT&#x27;, getenv(&#x27;SECURE_AUTH_SALT&#x27;) );
-define( &#x27;LOGGED_IN_SALT&#x27;,   getenv(&#x27;LOGGED_IN_SALT&#x27;) );
-define( &#x27;NONCE_SALT&#x27;,       getenv(&#x27;NONCE_SALT&#x27;) );
-
-$table_prefix = &#x27;wp_&#x27;;
-
-define( &#x27;WP_DEBUG&#x27;, getenv(&#x27;WP_DEBUG&#x27;) );
-
-/* That&#x27;s all, stop editing! Happy publishing. */
-
-/** Absolute path to the WordPress directory. */
-if ( ! defined( &#x27;ABSPATH&#x27; ) ) {
-    define( &#x27;ABSPATH&#x27;, dirname( __FILE__ ) . &#x27;/&#x27; );
-}
-
-/** Sets up WordPress vars and included files. */
-require_once( ABSPATH . &#x27;wp-settings.php&#x27; );
-</code></pre><p>If you&#x27;re using Lando for local development, you will need to specify a file to include that contains the environment variables you wish to set, as in this example:</p><pre><code class="language-yaml">name: wordpress
-recipe: wordpress
-config:
-  webroot: .
-env_file:
-  - .env
-</code></pre><p>This filename can be any arbitrarily chosen name. Then, you define the values for those variables in the same way you normally would in a <code>.env</code> file. Here&#x27;s an abbreviated example that excludes the crypto settings (though those should be placed here too):</p><pre><code class="language-env">DB_NAME=wordpress
-DB_USER=wordpress
-DB_PASSWORD=wordpress
-DB_HOST=database
-WP_DEBUG=true
-...
-</code></pre><p>This will work fine during local development, but in production, or if you&#x27;re using something like Vagrant for local development, you&#x27;ll want to set the environment variables in the server configuration. For Apache, this is best set in the Virtualhost configuration, although you should be able to set it in an <code>.htaccess</code> file if all else fails. You need to use the <code>SetEnv</code> directive, as in this example:</p><pre><code class="language-apache">SetEnv DB_NAME wordpress
-SetEnv DB_USER wordpress
-SetEnv DB_PASSWORD wordpress
-SetEnv DB_HOST database
-SetEnv WP_DEBUG true
-</code></pre><p>For Nginx, assuming you&#x27;re using FastCGI, you need to set it in the server configuration for that site using the <code>fastcgi_param</code> directive, as shown below:</p><pre><code class="language-nginx">fastcgi_param DB_NAME wordpress;
-fastcgi_param DB_USER wordpress;
-fastcgi_param DB_PASSWORD wordpress;
-fastcgi_param DB_HOST database;
-fastcgi_param WP_DEBUG true;
-</code></pre><p>Since Wordpress doesn&#x27;t ship with any kind of command-line task runner, this should be sufficient for most installs. However, if you&#x27;re using WP CLI, that will break it as it won&#x27;t have access to environment variables set by Apache or Nginx, so you&#x27;ll also need to set them for the user that runs WP CLI by adding them to their Bash config in the usual way.</p>]]></content>
     </entry>
 </feed>
