@@ -136,5 +136,6 @@ module.exports = {
       },
       __key: "posts",
     },
+    "gatsby-plugin-meta-redirect"
   ],
 }

@@ -4,7 +4,7 @@ const Feed = require("feed").Feed
 const fs = require("fs")
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createRedirect, createPage } = actions
 
   const notFoundTemplate = path.resolve("./src/templates/404.tsx")
   createPage({
@@ -95,6 +95,13 @@ exports.createPages = async ({ graphql, actions }) => {
         previous,
         next,
       },
+    })
+
+    // Redirect for AMP pages from old site
+    createRedirect({
+      fromPath: `${post.node.fields.path}amp/`,
+      toPath: post.node.fields.path,
+      isPermanent: true
     })
   })
 
