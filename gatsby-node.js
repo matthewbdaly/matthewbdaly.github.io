@@ -6,7 +6,7 @@ const fs = require("fs")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const pageTemplate = path.resolve(`./src/templates/page.tsx`)
+  const pageTemplate = path.resolve("./src/templates/page.tsx")
   const pageResult = await graphql(
     `
       {
@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const postTemplate = path.resolve(`./src/templates/post.tsx`)
+  const postTemplate = path.resolve("./src/templates/post.tsx")
   const result = await graphql(
     `
       {
@@ -92,7 +92,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const chunkTemplate = path.resolve('./src/templates/chunk.tsx')
+  const chunkTemplate = path.resolve("./src/templates/chunk.tsx")
   const postsPerPage = 5
   const numPages = Math.ceil(posts.length / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
@@ -111,19 +111,19 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const archivesTemplate = path.resolve('./src/templates/archives.tsx')
+  const archivesTemplate = path.resolve("./src/templates/archives.tsx")
   createPage({
-      path: `/blog/archives/`,
-      component: archivesTemplate,
+    path: "/blog/archives/",
+    component: archivesTemplate,
   })
 
-  const categoriesTemplate = path.resolve('./src/templates/categories.tsx')
+  const categoriesTemplate = path.resolve("./src/templates/categories.tsx")
   createPage({
-      path: `/blog/categories/`,
-      component: categoriesTemplate,
+    path: "/blog/categories/",
+    component: categoriesTemplate,
   })
 
-  const categoryTemplate = path.resolve('./src/templates/category.tsx')
+  const categoryTemplate = path.resolve("./src/templates/category.tsx")
 
   const categoryResult = await graphql(`
     {
@@ -153,21 +153,21 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `Mdx`) {
+  if (node.internal.type === "Mdx") {
 
     if (node.frontmatter.layout === "post") {
-      const url = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, '/blog/$1/$2/$3/$4/')
+      const url = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, "/blog/$1/$2/$3/$4/")
       createNodeField({
-        name: `path`,
+        name: "path",
         node,
         value: url
       })
     }
     if (node.frontmatter.layout === "page") {
       createNodeField({
-        name: `path`,
+        name: "path",
         node,
-        value: node.fileAbsolutePath.replace(/.+\/([\w*-]+)\.md$/, '/$1/')
+        value: node.fileAbsolutePath.replace(/.+\/([\w*-]+)\.md$/, "/$1/")
       })
     }
   }
@@ -225,7 +225,7 @@ exports.onPostBuild = async ({ graphql }) => {
       link: result.data.site.siteMetadata.siteUrl,
       language: "en",
       copyright: `All rights reserved ${result.data.site.siteMetadata.author.name} ${year}`,
-      generator: 'GatsbyJS',
+      generator: "GatsbyJS",
       author: {
         name: result.data.site.siteMetadata.author.name,
         email: result.data.site.siteMetadata.social.email,
@@ -237,7 +237,7 @@ exports.onPostBuild = async ({ graphql }) => {
         rss: "/rss.xml",
         atom: "/atom.xml"
       },
-    });
+    })
     feed.addContributor({
       name: result.data.site.siteMetadata.author.name,
       email: result.data.site.siteMetadata.social.email,
@@ -258,8 +258,8 @@ exports.onPostBuild = async ({ graphql }) => {
         }
       })
     })
-    fs.writeFileSync(`public/atom.xml`, feed.atom1())
-    fs.writeFileSync(`public/rss.xml`, feed.rss2())
-    fs.writeFileSync(`public/feed.json`, feed.json1())
+    fs.writeFileSync("public/atom.xml", feed.atom1())
+    fs.writeFileSync("public/rss.xml", feed.rss2())
+    fs.writeFileSync("public/feed.json", feed.json1())
   })
 }
