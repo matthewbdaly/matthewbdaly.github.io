@@ -6,6 +6,12 @@ const fs = require("fs")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  const notFoundTemplate = path.resolve("./src/templates/404.tsx")
+  createPage({
+      path: "404.html",
+      component: notFoundTemplate
+  })
+
   const pageTemplate = path.resolve("./src/templates/page.tsx")
   const pageResult = await graphql(
     `
