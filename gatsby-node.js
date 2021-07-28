@@ -260,8 +260,8 @@ exports.onPostBuild = async ({ graphql }) => {
     result.data.allMdx.edges.forEach(post => {
       feed.addItem({
         title: post.node.frontmatter.title,
-        link: post.node.fields.path,
-        id: post.node.fields.path,
+        link: result.data.site.siteMetadata.siteUrl + post.node.fields.path,
+        id: result.data.site.siteMetadata.siteUrl + post.node.fields.path,
         date: new Date(post.node.frontmatter.date),
         content: post.node.html,
         author: {
