@@ -57,7 +57,7 @@ export const postsQuery = graphql`
             path
           }
           frontmatter {
-            date(formatString: "DD MMMM YYYY")
+            date(formatString: "Do MMMM YYYY h:mm a")
             title
           }
         }

@@ -6,6 +6,7 @@ import NavBlock from "../components/NavBlock"
 import Tag from "../components/Tag"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
+import moment from "moment"
 import { PageContext, PageData, SiteData } from "../Types"
 
 interface Props {
@@ -37,12 +38,13 @@ const PostTemplate = ({ pageContext, data }: Props): React.ReactElement => {
         description={post.excerpt}
       />
       <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
-        <article>
+        <article className="h-entry">
           <header>
-            <h2 className="py-4 text-2xl font-bold">
-              {post.frontmatter.title}
+            <h2 className="py-4 text-2xl font-bold e-content p-name">
+              <a className="u-url" href={data.site.siteMetadata.siteUrl + post.fields.path}>{post.frontmatter.title}</a>
             </h2>
-            <p className="my-4 text-lg font-semibold">{post.frontmatter.date}</p>
+            <p className="my-4 text-lg font-semibold">Published by <a href="/" rel="author">Matthew Daly</a> at {post.frontmatter.date}</p>
+            <time className="hidden dt-published">{post.frontmatter.isoDate}</time>
           </header>
           <TextSection>{post.body}</TextSection>
           <hr />
@@ -78,7 +80,8 @@ query BlogPostByPath($path: String!) {
     excerpt(pruneLength: 180)
     frontmatter {
       title
-      date(formatString: "DD MMMM YYYY")
+      date(formatString: "Do MMMM YYYY h:mm a")
+      isoDate: date(formatString: "YYYY-MM-DDTHH:mm:ssZ")
       categories
     }
     fields {

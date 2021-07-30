@@ -18,7 +18,7 @@ const RecentPosts = (): React.ReactElement => {
                 path
               }
               frontmatter {
-                date(formatString: "MMMM DD, YYYY")
+                date(formatString: "Do MMMM YYYY h:mm a")
                 title
               }
             }

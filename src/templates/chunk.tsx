@@ -66,7 +66,7 @@ query($skip: Int!, $limit: Int!) {
         }
         frontmatter {
           title
-          date(formatString: "DD MMMM YYYY")
+          date(formatString: "Do MMMM YYYY h:mm a")
         }
       }
     }
