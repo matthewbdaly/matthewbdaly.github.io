@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import { Link } from "gatsby"
-import NavLink from "./NavLink"
 import Footer from "./Footer"
+import Nav from "./Nav"
 
 interface Props {
   title: string;
@@ -18,14 +18,7 @@ const Layout = ({ title, children }: Props): React.ReactElement => {
           <h1 className="block float-none py-4 text-4xl text-center lg:float-left lg:text-left">
             <Link to={"/"}>{title}</Link>
           </h1>
-          <div className="py-2 text-center lg:float-right md:block lg:text-left">
-            <NavLink to={"/blog/archives"} text="Archives" />
-            <NavLink to={"/about"} text="About" />
-            <NavLink to={"/uses"} text="Uses" />
-            <NavLink to={"/posts/1"} text="Blog" />
-            <NavLink to={"/blog/categories"} text="Categories" />
-            <NavLink to={"/search"} text="Search" />
-          </div>
+          <Nav />
         </nav>
 
         <div className="w-full h-4 clear" />
