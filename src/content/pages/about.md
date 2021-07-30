@@ -31,7 +31,7 @@ I've worked extensively with the following technologies:
 * Perl (primarily for systems administration purposes)
 * PHP, including:
   * Commercial experience with the CodeIgniter, Laravel, Zend and Slim frameworks
-  * Building reusable libraries, including [an interface to PushWoosh](https://packagist.org/packages/matthewbdaly/pushwoosh-php-library) and [a Laravel middleware for adding ETags to responses](https://github.com/matthewbdaly/laravel-etag-middleware)
+  * Building reusable libraries
   * Building WordPress themes and plugins, and setting up and administering WordPress
   * Extensive unit and integration testing with PHPSpec, PHPUnit and Mockery
   * Extensive acceptance testing with Behat
@@ -43,6 +43,12 @@ I've worked extensively with the following technologies:
 * Version control (some experience with Subversion, but I primarily use Git)
 * Using Jenkins and Travis CI, together with Coveralls, for continuous integration
 
-I blog regularly about web development, particularly about Django, Laravel and Node.js, and have also [written for Sitepoint](http://www.sitepoint.com/author/mdaly/). Outside of work and extra-curricular coding I'm a huge fan of *Firefly* and *Archer*, and have spent *way* too much time lately playing *No Man's Sky*, *Subnautica* and the *Mass Effect* series. I've also begun developing an appreciation of Guinness and Brewdog's range of ales (Dead Pony Club is my favourite).
+I blog regularly about web development, particularly about Django, Laravel and Node.js, and have also [written for Sitepoint](http://www.sitepoint.com/author/mdaly/). Outside of work and extra-curricular coding I'm a huge fan of *Firefly* and *Archer*, and have spent *way* too much time lately playing *No Man's Sky*, *Subnautica* (both the original and *Below Zero*) and *Mass Effect: Legendary Edition*. I've also begun developing an appreciation of Guinness and Brewdog's range of ales (Dead Pony Club is my favourite).
 
-Contact me at matthew@matthewdaly.co.uk.
+Contacting me
+-------------
+
+You can contact me at matthew@matthewdaly.co.uk, but please bear the following in mind:
+
+* This is strictly a personal blog, and I'm not interested in posting guest posts, so please don't ask.
+* I'm also not interested in reviewing commercial products unless they're directly useful to me in my work. Given I don't generally get on with graphical IDE's, *please* don't ask me to review your PHP IDE - even if I were to say yes, I won't have a good experience with it, and my review will reflect that.

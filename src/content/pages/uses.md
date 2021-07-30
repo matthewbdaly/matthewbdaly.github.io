@@ -4,11 +4,13 @@ layout: page
 ---
 ## Editor
 
-* [Neovim](https://neovim.io/)
-* [Jellybeans theme](https://github.com/nanotech/jellybeans.vim)
+* [Neovim](https://neovim.io/) - I really, *really* do not get on with IDE's. I've tried PhpStorm and it absolutely drove me up the wall, to the point I wanted to throw my laptop out the window. Furthermore, I really don't need the stuff it provides, given I use Psalm and Codesniffer widely, and I already have solid standalone tools for most of the stuff an IDE gives you. I've been using Neovim for a few years now, having migrated from Vim, and I'm very happy with my choice. It's RSI-friendly, gets out of my way, and is extremely configureable.
+* [Coc.nvim](https://github.com/neoclide/coc.nvim) - Really great completion engine for Neovim. The Typescript support in particular is excellent.
+* [Jellybeans theme](https://github.com/nanotech/jellybeans.vim) - Never found a Vim theme better than this - very easy on the eyes.
 * [PHPActor](https://phpactor.github.io/phpactor/) - I swear, this plugin is amazing. It gives Neovim and Vim the sort of powerful completion and refactoring tools that used to be the preserve of full IDE's, and it's incredibly useful for legacy code bases in particular
 * [Vim Ale](https://github.com/dense-analysis/ale) - Extremely fast in-editor linter. Works pretty much out of the box with most linting and static analysis tools. Have used it with ESLint, Flow, Psalm, PHP and CodeSniffer, among others
 * [FZF and Ripgrep](https://github.com/junegunn/fzf.vim) - I used to just rely on `git grep`, but I've had to work on a few projects that are still in SVN in the last couple of years, and I needed a good search solution. Found these and they're extremely powerful and fast
+* [VSCode](https://code.visualstudio.com/) - while I don't use graphical editors as my main workhorse, I do find it useful to have one around for certain jobs that terminal Vim/Neovim is less useful for, and while in the past Sublime Text has fulfilled that role, in recent months it's been supplanted by VSCode.
 
 ## Stack
 
