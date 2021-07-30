@@ -24,7 +24,7 @@ const Footer = (): React.ReactElement => {
         <Link className="my-2 mx-8" to={"/about"}>About</Link>
         <Link className="my-2 mx-8" to={`https://twitter.com/${site.siteMetadata.social.twitter}`}>Twitter</Link>
         <Link className="my-2 mx-8" to={`https://github.com/${site.siteMetadata.social.github}`}>Github</Link>
-        <Link className="my-2 mx-8" to={"/rss.xl"}>Feed</Link>
+        <Link className="my-2 mx-8" to={"/rss.xml"}>Feed</Link>
       </div>
       <div className="w-full p-4 mx-auto text-center md:w-2/3">
         <p>&copy; Matthew Daly {new Date().getFullYear()}</p>
