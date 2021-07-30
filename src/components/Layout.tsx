@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 import { Link } from "gatsby"
 import NavLink from "./NavLink"
+import Footer from "./Footer"
 
 interface Props {
   title: string;
@@ -34,11 +35,7 @@ const Layout = ({ title, children }: Props): React.ReactElement => {
         </main>
       </div>
 
-      <footer className="w-full p-4 text-gray-100 bg-gray-800">
-        <div className="w-full p-4 mx-auto text-center md:w-2/3">
-          <p>&copy; Matthew Daly {new Date().getFullYear()}</p>
-        </div>
-      </footer>
+      <Footer />
     </Fragment>
   )
 }
