@@ -1,9 +1,10 @@
 import React, { Fragment } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import NavBlock from "../components/NavBlock"
 import SEO from "../components/Seo"
 import { PageContext, PageData, SiteData } from "../Types"
+import PostExcerpt from "../components/PostExcerpt"
 
 interface Props {
   pageContext: PageContext;
@@ -25,17 +26,9 @@ const Chunk = ({ pageContext, data }: Props): React.ReactElement => {
       />
       <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
         <Fragment>
-          {data.allMdx.edges.map(({ node }) => {
-            return (
-              <section key={node.fields.path} className="w-full py-2">
-                <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
-                  {node.frontmatter.title}
-                </Link>
-                <p className="float-left py-2">{node.frontmatter.date}</p>
-                <p className="float-left py-2">{node.excerpt}</p>
-              </section>
-            )
-          })}
+          {data.allMdx.edges.map(({ node }) => (
+            <PostExcerpt key={node.fields.path} path={node.fields.path} title={node.frontmatter.title} date={node.frontmatter.date} excerpt={node.excerpt} />
+          ))}
         </Fragment>
 
         <NavBlock
