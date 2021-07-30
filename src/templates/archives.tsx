@@ -23,16 +23,14 @@ const Archives = ({ data }: Props): React.ReactElement => {
         description={"Post archive"}
       />
       <div className="space-y-16">
-        {data.allMdx.edges.map(({ node }) => {
-          return (
-            <section key={node.fields.path} className="w-full py-4">
-              <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
-                {node.frontmatter.title}
-              </Link>
-              <p className="float-left py-2">{node.frontmatter.date}</p>
-            </section>
-          )
-        })}
+        {data.allMdx.edges.map(({ node }) => (
+          <section key={node.fields.path} className="w-full py-4">
+            <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
+              {node.frontmatter.title}
+            </Link>
+            <p className="float-left py-2">{node.frontmatter.date}</p>
+          </section>
+        ))}
       </div>
     </Layout>
   )

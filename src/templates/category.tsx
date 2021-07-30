@@ -31,15 +31,16 @@ const Category = ({ pageContext, data }: Props): React.ReactElement => {
         description={category}
       />
       <Layout title={categoryHeader} siteUrl={data.site.siteMetadata.siteUrl}>
-        <ul>
+        <div className="space-y-8">
           {edges.map(({ node }) => (
-            <li key={node.fields.path} className="p-2 py-4 text-xl font-bold">
-              <Link to={node.fields.path}>
+            <section key={node.fields.path} className="w-full py-4">
+              <Link className="float-left w-full text-2xl font-bold" to={node.fields.path}>
                 {node.frontmatter.title}
               </Link>
-            </li>
+              <p className="float-left py-2">{node.frontmatter.date}</p>
+            </section>
           ))}
-        </ul>
+        </div>
       </Layout>
     </Fragment>
   )
