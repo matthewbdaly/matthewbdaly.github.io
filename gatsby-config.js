@@ -82,7 +82,7 @@ module.exports = {
         short_name: "Matthew Daly",
         start_url: "/",
         background_color: "white",
-        theme_color: "#8b5cf6",
+        theme_color: "#3b82f6",
         display: "standalone"
       },
     },
