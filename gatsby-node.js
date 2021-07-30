@@ -8,8 +8,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const notFoundTemplate = path.resolve("./src/templates/404.tsx")
   createPage({
-      path: "404.html",
-      component: notFoundTemplate
+    path: "404.html",
+    component: notFoundTemplate
   })
 
   const pageTemplate = path.resolve("./src/templates/page.tsx")
