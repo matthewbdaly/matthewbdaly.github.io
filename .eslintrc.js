@@ -7,7 +7,9 @@ module.exports = {
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/strict"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,7 +21,9 @@ module.exports = {
   },
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "react-hooks",
+    "jsx-a11y"
   ],
   "rules": {
     "indent": [
