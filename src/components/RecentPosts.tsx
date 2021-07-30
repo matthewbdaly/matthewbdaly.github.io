@@ -32,7 +32,7 @@ const RecentPosts = (): React.ReactElement => {
     <Fragment>
       <section className="mt-16">
         <h2 className="text-2xl">Recent posts</h2>
-        <div className="w-full">
+        <div className="w-full space-y-32">
           {allMdx.edges.map(({ node }) => (
             <PostExcerpt key={node.fields.path} path={node.fields.path} title={node.frontmatter.title} date={node.frontmatter.date} excerpt={node.excerpt} />
           ))}

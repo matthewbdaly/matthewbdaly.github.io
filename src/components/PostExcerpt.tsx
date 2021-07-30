@@ -9,13 +9,13 @@ interface Props {
 }
 
 const PostExcerpt = (props: Props): React.ReactElement => (
-  <section className="w-full py-2">
+  <div className="w-full py-2">
     <Link className="float-left w-full text-2xl font-bold" to={props.path}>
       {props.title}
     </Link>
     <p className="float-left py-2">{props.date}</p>
     <p className="float-left py-2">{props.excerpt}</p>
-  </section>
+  </div>
 )
 
 export default PostExcerpt

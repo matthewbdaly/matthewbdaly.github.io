@@ -25,11 +25,11 @@ const Chunk = ({ pageContext, data }: Props): React.ReactElement => {
         description={`${siteTitle} - Page ${currentPage}`}
       />
       <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
-        <Fragment>
+        <div className="space-y-32">
           {data.allMdx.edges.map(({ node }) => (
             <PostExcerpt key={node.fields.path} path={node.fields.path} title={node.frontmatter.title} date={node.frontmatter.date} excerpt={node.excerpt} />
           ))}
-        </Fragment>
+        </div>
 
         <NavBlock
           previous={previousPage && {path: `/posts/${previousPage}`, title: `Page ${previousPage}`}}
