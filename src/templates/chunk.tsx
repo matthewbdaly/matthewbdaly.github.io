@@ -52,10 +52,10 @@ query($skip: Int!, $limit: Int!) {
     }
   }
   allMdx(
-  sort: { fields: [frontmatter___date], order: DESC}
-  filter: { frontmatter: { layout: { eq: "post" }}}
-  limit: $limit
-  skip: $skip
+    sort: { fields: [frontmatter___date], order: DESC}
+    filter: { frontmatter: { layout: { eq: "post" }}}
+    limit: $limit
+    skip: $skip
   ) {
     totalCount
     edges {
