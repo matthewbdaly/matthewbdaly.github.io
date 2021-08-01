@@ -88,6 +88,9 @@ const SEO = ({ description, lang, meta, title }: Props): React.ReactElement => {
       <link href="/key.pub" rel="pgpkey" />
       <link href="https://webmention.io/matthewdaly.co.uk/xmlrpc" rel="pingback" />
       <link href="https://webmention.io/matthewdaly.co.uk/webmention" rel="webmention" />
+      <link rel="micropub" href="https://boiling-island-11588.herokuapp.com/micropub" />
+      <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+      <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
       <link rel="openid.delegate" href={ site.siteMetadata.siteUrl } />
       <link rel="openid.server" href="https://openid.indieauth.com/openid" />
       <link rel="alternate" type="application/rss+xml" title={`${site.siteMetadata.title} - feed`} href="/rss.xml" />
