@@ -169,7 +169,7 @@ exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === "Mdx") {
 
     if (node.frontmatter.layout === "post") {
-      const url = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\w*-]+)\.md$/, "/blog/$1/$2/$3/$4/")
+      const url = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\S]+)\.md$/, "/blog/$1/$2/$3/$4/")
       createNodeField({
         name: "path",
         node,
