@@ -6,7 +6,6 @@ import NavBlock from "../components/NavBlock"
 import Tag from "../components/Tag"
 import SEO from "../components/Seo"
 import { DiscussionEmbed } from "disqus-react"
-import moment from "moment"
 import { PageContext, PageData, SiteData } from "../Types"
 
 interface Props {
