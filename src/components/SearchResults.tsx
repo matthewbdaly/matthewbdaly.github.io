@@ -34,9 +34,6 @@ const SearchResults = ({ value }: Props): React.ReactElement => {
 
   return (
     <form action="/search" method="get" autoComplete="off" target="_top">
-      <label htmlFor="search">
-        <span className="hidden">Search blog posts</span>
-      </label>
       <div className="w-full">
         <input type="search" id="search" placeholder="Search blog posts" name="s" onChange={updateSearch} className="float-left w-3/4 p-4 text-xl text-gray-900 border-2 border-gray-100 md:float-none" defaultValue={value} />
         <button type="submit" className="float-right w-1/4 px-2 py-4 mx-0 border-2 md:float-none">Search</button>
