@@ -5,15 +5,18 @@ import CodeBlock from "./CodeBlock"
 import Paragraph from "./Paragraph"
 import Anchor from "./Anchor"
 import Blockquote from "./Blockquote"
+import ListItem from "./ListItem"
+import UnorderedList from "./UnorderedList"
+import Pre from "./Pre"
 
 const components = {
-  pre: props => <div {...props} />,
+  pre: Pre,
   code: CodeBlock,
   h1: props => <h1 {...props} className="py-4 text-4xl font-bold" />,
   h2: props => <h2 {...props} className="py-4 text-2xl font-bold" />,
   h3: props => <h3 {...props} className="text-xl" />,
-  li: props => <li {...props} className="list-disc" />,
-  ul: props => <ul {...props} className="py-2 pl-4" />,
+  li: ListItem,
+  ul: UnorderedList,
   p: Paragraph,
   a: Anchor,
   blockquote: Blockquote,
