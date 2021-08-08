@@ -7,6 +7,7 @@ interface Props {
 const Pre = (props: Props): React.ReactElement => {
   return (
     <pre>
+      {props.children}
     </pre>
   )
 }

@@ -25,11 +25,15 @@ const components = {
   blockquote: Blockquote,
 }
 
-const TextSection = ({ children }): React.ReactElement => {
+interface Props {
+    children: string & React.ReactNode;
+}
+
+const TextSection = (props: Props): React.ReactElement => {
   return (
     <MDXProvider components={components}>
       <section>
-        <MDXRenderer>{children}</MDXRenderer>
+        <MDXRenderer>{props.children}</MDXRenderer>
       </section>
     </MDXProvider>
   )

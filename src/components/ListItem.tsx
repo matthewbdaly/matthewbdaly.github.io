@@ -6,7 +6,7 @@ interface Props {
 
 const ListItem = (props: Props): React.ReactElement => {
   return (
-    <li className="list-disc">,
+    <li className="list-disc">
       {props.children}
     </li>
   )
