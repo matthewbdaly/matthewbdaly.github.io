@@ -7,8 +7,9 @@ interface Props {
 }
 
 const PreviousPage = (props: Props): React.ReactElement => (
-  <Link to={props.path} rel="prev">
-        ← {props.title}
+  <Link to={props.path} rel="prev" className="p-2 border-2 rounded shadow-sm">
+    <p><strong className="font-bold clear-both">← Previous page</strong></p>
+    <p className="pl-6">{props.title}</p>
   </Link>
 )
 
