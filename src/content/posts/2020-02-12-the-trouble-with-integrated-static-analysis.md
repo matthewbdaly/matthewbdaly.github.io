@@ -19,7 +19,7 @@ In addition, I often find that using an automated tool largely eliminates the is
 However, I'm always dubious of using any static analysis tool that's tightly integrated with a particular editor or IDE. In this post, I will explain my reasoning.
 
 In-editor feedback
-==================
+------------------
 
 Having instant feedback on the quality of your code is tremendously useful. Sure, you can run something like CodeSniffer from the command line and see what the problems are, but that's nowhere near as useful as having it actually *in* your code. If you work on a legacy code base, there's no way in hell you can wade through a long list of output in the terminal and fix them without losing the will to live. By comparison, actually seeing something flagged as an error where it actually occurs makes the mental cost of fixing it much smaller - you can see it in context, and can usually therefore resolve it more easily.
 
@@ -28,12 +28,12 @@ However, that doesn't explicitly require that any one tool form an integral part
 * Less dependence on a given development environment - it's always a struggle if you wind up stuck using a development environment you dislike (I grew to utterly despise Netbeans in my first role), but if you can use generic feedback tools that can be integrated with just about any editor, your team can use the development environment that suits them most, while still all benefiting from the feedback these tools provide
 * These tools tend to be open source, meaning you have the security of knowing that if the creator ceases maintaining it, either someone else may pick up the baton, or you can choose to fork it yourself. If a commercial IDE provider ceases trading, it's likely you won't be able to use their offering at all at some point in the future.
 
-Nowadays I use vim-ale in Neovim, and that provides real-time feedback for a number of linters and static analysis tools, including all those I mentioned above. I have comprehensive information on any issues in my code, and because any configuration is in simple text files that form part of the repository, it's easy to update those settings for all developers working on the project to ensure consistency. 
+Nowadays I use vim-ale in Neovim, and that provides real-time feedback for a number of linters and static analysis tools, including all those I mentioned above. I have comprehensive information on any issues in my code, and because any configuration is in simple text files that form part of the repository, it's easy to update those settings for all developers working on the project to ensure consistency.
 
 It's possible that an integrated solution *might* offer a few advantages in terms of tighter integration with autocompletion and other functionality allowing for it, but whether they outweigh the tradeoffs mentioned here is dependent entirely on the implementation and how useful it is for any one team.
 
 Continuous integration to the rescue
-===================================
+------------------------------------
 
 There's another issue I have with this sort of tightly integrated static analysis, which is probably the biggest, and that is that the feedback is available only at the level of an individual developer, not the team.
 

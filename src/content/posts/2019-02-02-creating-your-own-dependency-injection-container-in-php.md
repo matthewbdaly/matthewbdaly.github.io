@@ -51,7 +51,7 @@ suites:
 With that done, we can start working on our implementation.
 
 Creating the exceptions
-=======================
+-----------------------
 
 The PSR-11 specification defines two interfaces for exceptions, which we will implement before actually moving on to the container itself. The first of these is `Psr\Container\ContainerExceptionInterface`. Run the following command to create a basic spec for the exception:
 
@@ -118,15 +118,15 @@ Now run the spec and PHPSpec will generate the boilerplate exception for you:
 
 ```bash
 $ vendor/bin/phpspec run
-Matthewbdaly/Ernie/Exceptions/ContainerException                                
+Matthewbdaly/Ernie/Exceptions/ContainerException
   11  - it is initializable
       class Matthewbdaly\Ernie\Exceptions\ContainerException does not exist.
 
-Matthewbdaly/Ernie/Exceptions/ContainerException                                  
+Matthewbdaly/Ernie/Exceptions/ContainerException
   16  - it implements interface
       class Matthewbdaly\Ernie\Exceptions\ContainerException does not exist.
 
-Matthewbdaly/Ernie/Exceptions/ContainerException                                
+Matthewbdaly/Ernie/Exceptions/ContainerException
   21  - it implements throwable
       class Matthewbdaly\Ernie\Exceptions\ContainerException does not exist.
 
@@ -135,19 +135,19 @@ Matthewbdaly/Ernie/Exceptions/ContainerException
 3 examples (3 broken)
 23ms
 
-                                                                                
-  Do you want me to create `Matthewbdaly\Ernie\Exceptions\ContainerException`   
-  for you?                                                                      
+
+  Do you want me to create `Matthewbdaly\Ernie\Exceptions\ContainerException`
+  for you?
                                                                          [Y/n]
 y
 Class Matthewbdaly\Ernie\Exceptions\ContainerException created in /home/matthew/Projects/ernie-clone/src/Exceptions/ContainerException.php.
 
-Matthewbdaly/Ernie/Exceptions/ContainerException                                
+Matthewbdaly/Ernie/Exceptions/ContainerException
   16  - it implements interface
       expected an instance of Psr\Container\ContainerExceptionInterface, but got
       [obj:Matthewbdaly\Ernie\Exceptions\ContainerException].
 
-Matthewbdaly/Ernie/Exceptions/ContainerException                                
+Matthewbdaly/Ernie/Exceptions/ContainerException
   21  - it implements throwable
       expected an instance of Throwable, but got
       [obj:Matthewbdaly\Ernie\Exceptions\ContainerException].
@@ -237,7 +237,7 @@ class NotFoundException extends Exception implements NotFoundExceptionInterface
 Running `vendor/bin/phpspec run` should now see it pass. Now let's move on to the container class...
 
 Building the container
-======================
+----------------------
 
 Run the following command to create the container spec:
 
@@ -274,11 +274,11 @@ Now, if we run PHPSpec, we'll generate our class:
 
 ```bash
 $ vendor/bin/phpspec run
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   11  - it is initializable
       class Matthewbdaly\Ernie\Container does not exist.
 
-Matthewbdaly/Ernie/Container                                                      
+Matthewbdaly/Ernie/Container
   16  - it implements interface
       class Matthewbdaly\Ernie\Container does not exist.
 
@@ -287,13 +287,13 @@ Matthewbdaly/Ernie/Container
 8 examples (6 passed, 2 broken)
 404ms
 
-                                                                                
-  Do you want me to create `Matthewbdaly\Ernie\Container` for you?              
-                                                                         [Y/n] 
+
+  Do you want me to create `Matthewbdaly\Ernie\Container` for you?
+                                                                         [Y/n]
 y
 Class Matthewbdaly\Ernie\Container created in /home/matthew/Projects/ernie-clone/src/Container.php.
 
-Matthewbdaly/Ernie/Container                                                      
+Matthewbdaly/Ernie/Container
   16  - it implements interface
       expected an instance of Psr\Container\ContainerInterface, but got
       [obj:Matthewbdaly\Ernie\Container].
@@ -322,9 +322,9 @@ Now, if we run the tests, they should fail because the class needs to add the re
 
 ```bash
 $ vendor/bin/phpspec run
-✘ Fatal error happened while executing the following 
-    it is initializable 
-    Class Matthewbdaly\Ernie\Container contains 2 abstract methods and must therefore be declared abstract or implement the remaining methods (Psr\Container\ContainerInterface::get, Psr\Container\ContainerInterface::has) in /home/matthew/Projects/ernie-clone/src/Container.php on line 7 
+✘ Fatal error happened while executing the following
+    it is initializable
+    Class Matthewbdaly\Ernie\Container contains 2 abstract methods and must therefore be declared abstract or implement the remaining methods (Psr\Container\ContainerInterface::get, Psr\Container\ContainerInterface::has) in /home/matthew/Projects/ernie-clone/src/Container.php on line 7
 ```
 
 If you use an editor or IDE that allows you to implement an interface automatically, you can run it to add the required methods. I use PHPActor with Neovim, and used the option in the Transform menu to implement the contract:
@@ -390,19 +390,19 @@ Running the specs will raise errors:
 
 ```bash
 $ vendor/bin/phpspec run
-Matthewbdaly/Ernie/Container                                                      
+Matthewbdaly/Ernie/Container
   21  - it has simple classes
       expected true, but got null.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   26  - it does not have unknown classes
       expected false, but got null.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   31  - it can get simple classes
       expected an instance of DateTime, but got null.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   36  - it returns not found exception if class cannot be found
       expected to get exception / throwable, none got.
 
@@ -478,7 +478,7 @@ The Reflection API is pretty comprehensive, and I would recommend reading the do
 For the `has()` method, we check that the resolved class is instantiable, and return the result of that. For the `get()` method, we use `getInstance()` to instantiate the item and return that, throwing an exception if that fails.
 
 Registering objects
-===================
+-------------------
 
 In its current state, the container doesn't allow you to set an item. To be useful, we need to be able to specify that an interface or string should be resolved to a given class, or for cases where we need to pass in scalar parameters, such as a database object, to specify how a concrete instance of that class should be instantiated. To that end, we'll create a new `set()` public method that will allow a dependency to be set. Here are the revised specs including this:
 
@@ -539,7 +539,7 @@ class ContainerSpec extends ObjectBehavior
         $this->set('Foo\Bar', $toResolve);
         $this->get('Foo\Bar')->shouldReturnAnInstanceOf($toResolve);
     }
-    
+
     function it_can_resolve_registered_invokable()
     {
         $toResolve = new class {
@@ -550,7 +550,7 @@ class ContainerSpec extends ObjectBehavior
         $this->set('Foo\Bar', $toResolve);
         $this->get('Foo\Bar')->shouldReturnAnInstanceOf('DateTime');
     }
-    
+
     function it_can_resolve_registered_callable()
     {
         $toResolve = function () {
@@ -584,23 +584,23 @@ Running the specs should result in us being prompted to generate the `set()` met
 
 ```bash
 $ vendor/bin/phpspec run
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   42  - it can register dependencies
       method Matthewbdaly\Ernie\Container::set not found.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   49  - it can resolve registered dependencies
       method Matthewbdaly\Ernie\Container::set not found.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   57  - it can resolve registered invokable
       method Matthewbdaly\Ernie\Container::set not found.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   68  - it can resolve registered callable
       method Matthewbdaly\Ernie\Container::set not found.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   77  - it can resolve if registered dependencies instantiable
       method Matthewbdaly\Ernie\Container::set not found.
 
@@ -608,29 +608,29 @@ Matthewbdaly/Ernie/Container
 3 specs
 17 examples (12 passed, 5 broken)
 316ms
-                                                                                
-  Do you want me to create `Matthewbdaly\Ernie\Container::set()` for you?       
+
+  Do you want me to create `Matthewbdaly\Ernie\Container::set()` for you?
                                                                          [Y/n]
 y
   Method Matthewbdaly\Ernie\Container::set() has been created.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   42  - it can register dependencies
       expected [obj:Matthewbdaly\Ernie\Container], but got null.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   49  - it can resolve registered dependencies
       exception [exc:Matthewbdaly\Ernie\Exceptions\NotFoundException("Class Foo\Bar does not exist")] has been thrown.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   57  - it can resolve registered invokable
       exception [exc:Matthewbdaly\Ernie\Exceptions\NotFoundException("Class Foo\Bar does not exist")] has been thrown.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   68  - it can resolve registered callable
       exception [exc:Matthewbdaly\Ernie\Exceptions\NotFoundException("Class Foo\Bar does not exist")] has been thrown.
 
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   77  - it can resolve if registered dependencies instantiable
       expected true, but got false.
 
@@ -709,7 +709,7 @@ As you can see, if we pass in the fully qualified class name of a class that def
 According to [this issue on the PHP League's Container implementation](https://github.com/thephpleague/container/issues/113), it was also an issue for them, so seeing as this is just a toy example I'm not going to lose any sleep over it. Just something to be aware of if you use this post as the basis for writing your own container.
 
 Resolving dependencies
-======================
+----------------------
 
 One thing is missing from our container. Right now it should be able to instantiate pretty much any class that has no dependencies, but these are quite firmly in the minority. To be useful, a container should be able to resolve all of the dependencies for a class automatically.
 
@@ -736,7 +736,7 @@ Running this throws an error:
 
 ```php
 $ vendor/bin/phpspec run
-Matthewbdaly/Ernie/Container                                                    
+Matthewbdaly/Ernie/Container
   86  - it can resolve dependencies
       exception [err:ArgumentCountError("Too few arguments to function class@anonymous::__construct(), 0 passed and exactly 1 expected")] has been thrown.
 
@@ -788,7 +788,7 @@ Our container is now complete. We can:
 Not too bad for just over 100 lines of PHP...
 
 Final thoughts
-==============
+--------------
 
 As I've said, this is a pretty minimal example of a dependency injection container, and I wouldn't advise using this in production when there are so many existing, mature solutions available. I have no idea how the performance would stack up against existing solutions, or whether there are any issues with it, and quite frankly that's besides the point - this is intended as a learning exercise to understand how dependency injection containers in general work, not as an actual useful piece of code for production. If you want an off-the-shelf container, I'd point you in the direction of `league/container`, which has served me well.
 

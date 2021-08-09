@@ -43,7 +43,7 @@ export default function hocExample(WrappedComponent) {
 If you've been working with React for a while, even if you haven't written a higher-order component, you've probably used one. For instance, `withRouter()` from `react-router` is a good example of a higher-order component that forms part of an existing library.
 
 A real-world example
-====================
+--------------------
 
 A very common use case I've come across is handling a click outside of a component. For instance, if you have a sidebar or popup component, it's common to want to close it when the user clicks outside the component. As such, it's worth taking the time to refactor it to make it reusable.
 
@@ -109,10 +109,10 @@ function handleClickOutside() {
 }
 
 ReactDOM.render(
-  <SidebarComponent 
-    links={links} 
-    active={true} 
-    onClickOutside={handleClickOutside} 
+  <SidebarComponent
+    links={links}
+    active={true}
+    onClickOutside={handleClickOutside}
   />,
   document.getElementById('root')
 );

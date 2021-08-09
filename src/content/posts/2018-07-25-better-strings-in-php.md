@@ -17,7 +17,7 @@ One of the weaknesses of PHP as a programming language is the limitations of som
 'foo'
 >>> for letter in a:
 ...   print(letter)
-... 
+...
 f
 o
 o

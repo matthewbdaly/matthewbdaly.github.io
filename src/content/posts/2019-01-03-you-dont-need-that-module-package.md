@@ -13,7 +13,7 @@ Lately I've seen a number of Laravel packages being posted on places like Reddit
 There are two main approaches I'm aware of - keeping it in a single project, and moving the modules to separate Composer packages.
 
 Single project
-==============
+--------------
 
 Suppose we have a brand new Laravel project with the namespace left as the default `App`. This is what the `autoload` section of the `composer.json` file will look like:
 
@@ -69,7 +69,7 @@ Other application components such as migrations, routes and views can be loaded 
 ```
 
 Separate packages
-=================
+-----------------
 
 The above approach works particularly well in the initial stages of a project, when you may need to jump around a lot to edit different parts of the project. However, later on, once many parts of the project have stabilised, it may make more sense to pull the modules out into separate repositories and use Composer to pull them in as dependencies, using its support for private repositories. I've also often taken this approach right from the start without issue.
 

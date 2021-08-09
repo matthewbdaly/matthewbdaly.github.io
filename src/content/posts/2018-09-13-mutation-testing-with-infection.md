@@ -38,11 +38,11 @@ I found that the first run gave a large number of uncovered results, but the sec
 $ infection
 You are running Infection with xdebug enabled.
     ____      ____          __  _
-   /  _/___  / __/__  _____/ /_(_)___  ____ 
+   /  _/___  / __/__  _____/ /_(_)___  ____
    / // __ \/ /_/ _ \/ ___/ __/ / __ \/ __ \
  _/ // / / / __/  __/ /__/ /_/ / /_/ / / / /
 /___/_/ /_/_/  \___/\___/\__/_/\____/_/ /_/
- 
+
     0 [>---------------------------] < 1 secRunning initial test suite...
 
 PHPUnit version: 6.5.13
@@ -244,11 +244,11 @@ If we re-run Infection, we now get a much better result:
 $ infection
 You are running Infection with xdebug enabled.
     ____      ____          __  _
-   /  _/___  / __/__  _____/ /_(_)___  ____ 
+   /  _/___  / __/__  _____/ /_(_)___  ____
    / // __ \/ /_/ _ \/ ___/ __/ / __ \/ __ \
  _/ // / / / __/  __/ /__/ /_/ / /_/ / / / /
 /___/_/ /_/_/  \___/\___/\__/_/\____/_/ /_/
- 
+
 Running initial test suite...
 
 PHPUnit version: 6.5.13

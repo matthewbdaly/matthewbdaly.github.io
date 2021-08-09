@@ -16,7 +16,7 @@ A query object is pretty much what it says on the tin - it's a PHP object that e
 In this post I'll go through how you might create one, how it relates to the repository pattern, and when to create one.
 
 Creating a query object class
-=============================
+-----------------------------
 
 I'm a big fan of the `__invoke()` magic method in PHP. For the uninitiated, it lets you instantiate the class, and then use it in the same way you would a function, making it very useful for callbacks. This also brings some other advantages:
 
@@ -69,7 +69,7 @@ final class DashboardItems
 Note that we break each one of the tables we want to perform a `UNION` on into a private method. This is probably the biggest advantage of query objects - it lets you break particularly unwieldy queries up into logical steps, making them more readable. You could do this by adding private methods on a repository class too, but I'd be reluctant to add private methods to a repository that were only used in one query - to my mind, a query object is a better home for that.
 
 What about repositories?
-========================
+------------------------
 
 I regularly use the repository pattern in my code bases, whether that's for Laravel projects or the current Zend 1-based legacy project. It's an ongoing effort to refactor it so that all the queries are called from repository classes, leaving the models to act as containers for the data. So how do query objects fit in here?
 
@@ -130,7 +130,7 @@ final class DashboardRepository
 The only real difference is that we can instantiate the query object out of the container, simplifying setup.
 
 When to use query objects
-=========================
+-------------------------
 
 I think it probably goes without saying, but it should be a rare query that actually needs to be implemented as a query object, especially if you're using an ORM like Eloquent that provides features like scopes, and as yet I only have two using this pattern, as well as two others that were implemented as "reporter" classes, but could be query objects instead. So far, my experience has been that the sort of queries that are large enough to be worth considering include:
 
