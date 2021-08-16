@@ -84,5 +84,5 @@ li > code {
 .gatsby-highlight .token-line.highlight-line .line-number-style {
     opacity: 0.5;
     width: calc(1.2em - 4px);
-    left: -2px;
+    left: 0;
 }
