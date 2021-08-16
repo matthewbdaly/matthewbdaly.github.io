@@ -19,12 +19,12 @@ const Footer = (): React.ReactElement => {
   )
   return (
     <footer className="w-full p-4 text-gray-100 bg-gray-800">
-      <div className="w-full md:w-2/3 p-2 mx-auto text-center flex flex-col md:flex-row flex-wrap justify-center">
-        <Link className="my-2 mx-8" to={"/posts/1"}>Blog</Link>
-        <Link className="my-2 mx-8" to={"/about"}>About</Link>
-        <Link className="my-2 mx-8" to={`https://twitter.com/${site.siteMetadata.social.twitter}`}>Twitter</Link>
-        <Link className="my-2 mx-8" to={`https://github.com/${site.siteMetadata.social.github}`}>Github</Link>
-        <Link className="my-2 mx-8" to={"/rss.xml"}>Feed</Link>
+      <div className="flex flex-row flex-wrap justify-center w-full p-2 mx-auto text-center md:w-2/3 box-border">
+          <Link className="w-1/3 md:w-1/5 my-2" to={"/posts/1"}>Blog</Link>
+        <Link className="w-1/3 md:w-1/5 my-2" to={"/about"}>About</Link>
+        <Link className="w-1/3 md:w-1/5 my-2" to={`https://twitter.com/${site.siteMetadata.social.twitter}`}>Twitter</Link>
+        <Link className="w-1/3 md:w-1/5 my-2" to={`https://github.com/${site.siteMetadata.social.github}`}>Github</Link>
+        <Link className="w-1/3 md:w-1/5 my-2" to={"/rss.xml"}>Feed</Link>
       </div>
       <div className="w-full p-4 mx-auto text-center md:w-2/3">
         <p>&copy; Matthew Daly {new Date().getFullYear()}</p>
