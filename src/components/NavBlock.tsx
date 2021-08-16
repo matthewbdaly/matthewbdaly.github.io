@@ -14,7 +14,7 @@ interface Props {
 }
 
 const NavBlock = (props: Props): React.ReactElement => (
-  <nav className="pt-4 clear-both grid grid-flow-row grid-cols-2 grid-rows-1 gap-4">
+  <nav className="pt-4 clear-both box-border">
     {props.previous && <PreviousPage path={props.previous.path} title={props.previous.title} />}
     {props.next && <NextPage path={props.next.path} title={props.next.title} />}
   </nav>
