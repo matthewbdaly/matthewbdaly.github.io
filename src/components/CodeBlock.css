@@ -12,6 +12,10 @@
     float: left;
 }
 
+.prism-code.title {
+    border-radius: 0 0 0.2em 0.2em;
+}
+
 pre.prism-code {
 	float: left;
 	padding: 20px;
