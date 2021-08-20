@@ -42,7 +42,7 @@ We also don't need a lot of the middleware that ships with Laravel. If you go in
 
 As this change is a bit fiddly, here's a patch, which may be easier to read:
 
-```diff-php
+```diff
 From 6bc87e9602e839d5635963b6d740279b2dbcf16b Mon Sep 17 00:00:00 2001
 From: Matthew Daly <Matthew Daly 450801+matthewbdaly@users.noreply.github.com>
 Date: Wed, 30 Dec 2020 11:54:56 +0000
@@ -102,7 +102,7 @@ These changes also mean a lot of the service providers and facades are now redun
 
 Again, here's a patch of the required changes:
 
-```diff-php
+```diff
 From 66be3b836706ef488b890cdae6e97d4fc6195dd6 Mon Sep 17 00:00:00 2001
 From: Matthew Daly <Matthew Daly 450801+matthewbdaly@users.noreply.github.com>
 Date: Wed, 30 Dec 2020 12:10:25 +0000
