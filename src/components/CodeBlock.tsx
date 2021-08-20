@@ -69,6 +69,7 @@ const CodeBlock = ({children, className, live, metastring, title}: Props): React
   }
 
   const shouldHighlightLine = calculateLinesToHighlight(metastring)
+  const blockTitle = title ? `${title} title` : ""
 
   return (
     <Fragment>
@@ -76,7 +77,7 @@ const CodeBlock = ({children, className, live, metastring, title}: Props): React
       <Highlight Prism={Prism} {...defaultProps} code={children} language={language} theme={oceanicNext}>
         {({className, style, tokens, getLineProps, getTokenProps}) => (
           <div className="gatsby-highlight" data-language={language}>
-            <pre className={`${className}${title && " title"}`} style={{...style}}>
+            <pre className={`${className}${blockTitle}`} style={{...style}}>
               {tokens.filter((line, i, arr) => {
                 if (i < (arr.length - 1)) {
                   return true
