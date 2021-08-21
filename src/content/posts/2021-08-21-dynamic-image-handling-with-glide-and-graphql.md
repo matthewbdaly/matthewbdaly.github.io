@@ -101,7 +101,7 @@ type Image {
 }
 ```
 
-Here we're specifying what parameters the `dynamicImage()` field accepts, as well as applying some of Laravel's validation rules to the field to ensure it remains within acceptable ranges. We also use an enum to specify the supported image formats. Note that we also use the `@method` directive to tell Lighthouse that this field maps to a method, not a property. If the method name differs from the field name, you would also need to specify that method name, eg `@method(name: "myMethod")`.
+Here we're specifying what parameters the `dynamicImage()` field accepts, as well as applying some of Laravel's validation rules to the field to ensure it remains within acceptable ranges. We also use an enum to specify the supported image formats - these are actually limited to the options Glide provdes, but by specifying this as an enum, GraphQL tooling like GraphiQL can provide autocompletion for this parameter for a better developer experience when constructing queries. Note that we also use the `@method` directive to tell Lighthouse that this field maps to a method, not a property. If the method name differs from the field name, you would also need to specify that method name, eg `@method(name: "myMethod")`.
 
 Now, assuming your image was stored on the filesystem and the appropriate model field was called `image_path`, the method to retrieve the image URL on the model would look something like this:
 
@@ -141,7 +141,7 @@ query {
 
 Here we assume a query has been defined called `items` which returns all instances of the `Item` GraphQL type. This would return, for each instance of the `Item` model, the ID, caption and the URL for an image of 100% quality, 400x400 pixels, in WebP format. Please also note that none of these arguments to `dynamicImage()` are required - if you leave one out, Glide will use the default value.
 
-By setting multiple aliases for `dynamicImage()`, we can even fetch multiple versions of the image. In this example, we fetch it at two different sizes, and use a media query to determine which one is shown inside the `<picture>` element:
+By calling `dynamicImage()` separately with different aliases, we can even fetch multiple versions of the image. In this example, we fetch it at two different sizes:
 
 ```graphql
 query {
@@ -168,7 +168,7 @@ const Card = (item) => (
 )
 ```
 
-This enables us to serve responsive images, that are appropriately sized for the current screen resolution. On mobile devices, which may not always have a connection as fast as a desktop or laptop, it also means we aren't wasting bandwidth downloading images which are larger than necessary.
+This enables us to serve responsive images that are appropriately sized for the current screen resolution. On mobile devices, which may not always have a connection as fast as a desktop or laptop, it also means we aren't wasting bandwidth downloading images which are larger than necessary.
 
 Along similar lines, you could fetch both WebP and JPEG versions of an image:
 
@@ -198,4 +198,6 @@ const Card = (item) => (
 
 By doing this we aren't forced to work with the lowest common denominator in terms of image formats. We can instead offer WebP to users whose browsers support it, without locking out users on older browsers.
 
-This technique should be easy enough to apply to other PHP frameworks since Glide is fairly framework agnostic and there are GraphQL implementations for most frameworks. It should also be applicable in other languages - while I'm not aware of a direct equivalent of Glide in Node.js, you could conceivably use [Sharp](https://sharp.pixelplumbing.com/) as the basis of your own custom endpoint to serve up dynamic images based on query parameters, and then serve signed URLs for it via GraphQL.
+This technique should be easy enough to apply to other PHP frameworks since Glide is fairly framework agnostic and there are GraphQL implementations for most frameworks. It should also be applicable in other languages - for example, while I'm not aware of a direct equivalent of Glide in Node.js, you could conceivably use [Sharp](https://sharp.pixelplumbing.com/) as the basis of your own custom endpoint to serve up dynamic images based on query parameters, and then serve signed URLs for it via GraphQL.
+
+Responsive images are something that's often overlooked when trying to build a modern web app. An approach like this makes it an awful lot easier to serve appropriately-sized images on demand, without locking front-end devs into specific known dimensions that might not fit their use case.
