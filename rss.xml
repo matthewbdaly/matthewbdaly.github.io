@@ -4,7 +4,7 @@
         <title>Matthew Daly</title>
         <link>https://matthewdaly.co.uk</link>
         <description>I'm a web developer in Norfolk. This is my blog...</description>
-        <lastBuildDate>Sat, 21 Aug 2021 15:34:36 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 22 Aug 2021 14:22:52 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>GatsbyJS</generator>
         <language>en</language>
@@ -94,7 +94,7 @@ use League\Glide\Urls\UrlBuilderFactory;
             &#x27;fm&#x27; =&gt; $format,
         ]));
     }
-</code></pre><p>Note that the parameters on the model must be specified in the same order as they are defined in the GraphQL schema for them to be lined up correctly, and must have the same names. I&#x27;ve only added the most obviously useful parameters here, namely height, width, quality and format, but if you need them there&#x27;s nothing stopping you from adding further parameters - just don&#x27;t forget to update the GraphQL schema to include them too.</p><p>We can then write GraphQL queries to call <code>dynamicImage()</code> with whatever parameters we wish to pass through, and will get back an appropriate URL in response. For instance, consider this query:</p><pre><code class="language-graphql">query {
+</code></pre><p>Note that the parameters on the model must be specified in the same order as they are defined in the GraphQL schema for them to be lined up correctly, and must have the same names. I&#x27;ve only added the most obviously useful parameters here, namely height, width, quality and format, but if you need them there&#x27;s nothing stopping you from adding further parameters - just don&#x27;t forget to update the GraphQL schema to include them too.</p><p>We can then write GraphQL queries to call <code>dynamicImage()</code> with whatever parameters we wish to pass through, and will get back an appropriate URL in response. For instance, consider this query:</p><pre><code class="language-graphql" metastring="{6}">query {
   items {
     data {
       id
@@ -103,7 +103,7 @@ use League\Glide\Urls\UrlBuilderFactory;
     }
   }
 }
-</code></pre><p>Here we assume a query has been defined called <code>items</code> which returns all instances of the <code>Item</code> GraphQL type. This would return, for each instance of the <code>Item</code> model, the ID, caption and the URL for an image of 100% quality, 400x400 pixels, in WebP format. Please also note that none of these arguments to <code>dynamicImage()</code> are required - if you leave one out, Glide will use the default value.</p><p>By calling <code>dynamicImage()</code> separately with different aliases, we can even fetch multiple versions of the image. In this example, we fetch it at two different sizes:</p><pre><code class="language-graphql">query {
+</code></pre><p>Here we assume a query has been defined called <code>items</code> which returns all instances of the <code>Item</code> GraphQL type. This would return, for each instance of the <code>Item</code> model, the ID, caption and the URL for an image of 100% quality, 400x400 pixels, in WebP format. Please also note that none of these arguments to <code>dynamicImage()</code> are required - if you leave one out, Glide will use the default value.</p><p>By calling <code>dynamicImage()</code> separately with different aliases, we can even fetch multiple versions of the image. In this example, we fetch it at two different sizes:</p><pre><code class="language-graphql" metastring="{6-7}">query {
   items {
     data {
       id
@@ -113,7 +113,7 @@ use League\Glide\Urls\UrlBuilderFactory;
     }
   }
 }
-</code></pre><p>Then, when rendering a component, you could use the <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> elements to show different versions based on media queries, as in this example of a simple React component used to render individual instances of <code>Item</code>:</p><pre><code class="language-typescript" metastring="title=resources/js/components/Card.tsx" title="resources/js/components/Card.tsx">const Card = (item) =&gt; (
+</code></pre><p>Then, when rendering a component, you could use the <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> elements to show different versions based on media queries, as in this example of a simple React component used to render individual instances of <code>Item</code>:</p><pre><code class="language-typescript" metastring="title=resources/js/components/Card.tsx {3-5}" title="resources/js/components/Card.tsx">const Card = (item) =&gt; (
   &lt;picture&gt;
     &lt;source media=&quot;{max-width: 768px}&quot; srcSet={item.small_image} /&gt;
     &lt;source media=&quot;{min-width: 769px}&quot; srcSet={item.large_image} /&gt;
