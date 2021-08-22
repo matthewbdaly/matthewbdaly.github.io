@@ -127,7 +127,7 @@ Note that the parameters on the model must be specified in the same order as the
 
 We can then write GraphQL queries to call `dynamicImage()` with whatever parameters we wish to pass through, and will get back an appropriate URL in response. For instance, consider this query:
 
-```graphql
+```graphql {6}
 query {
   items {
     data {
@@ -143,7 +143,7 @@ Here we assume a query has been defined called `items` which returns all instanc
 
 By calling `dynamicImage()` separately with different aliases, we can even fetch multiple versions of the image. In this example, we fetch it at two different sizes:
 
-```graphql
+```graphql {6-7}
 query {
   items {
     data {
@@ -158,7 +158,7 @@ query {
 
 Then, when rendering a component, you could use the `<picture>` and `<source>` elements to show different versions based on media queries, as in this example of a simple React component used to render individual instances of `Item`:
 
-```typescript title=resources/js/components/Card.tsx
+```typescript title=resources/js/components/Card.tsx {3-5}
 const Card = (item) => (
   <picture>
     <source media="{max-width: 768px}" srcSet={item.small_image} />
