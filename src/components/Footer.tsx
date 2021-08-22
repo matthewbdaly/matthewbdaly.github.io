@@ -19,13 +19,23 @@ const Footer = (): React.ReactElement => {
   )
   return (
     <footer className="w-full p-4 text-gray-100 bg-gray-800">
-      <div className="flex flex-row flex-wrap justify-center w-full p-2 mx-auto text-center md:w-2/3 box-border">
-        <Link className="w-1/3 my-2 md:w-1/5" to={"/posts/1"}>Blog</Link>
-        <Link className="w-1/3 my-2 md:w-1/5" to={"/about"}>About</Link>
-        <Link className="w-1/3 my-2 md:w-1/5" to={`https://twitter.com/${site.siteMetadata.social.twitter}`}>Twitter</Link>
-        <Link className="w-1/3 my-2 md:w-1/5" to={`https://github.com/${site.siteMetadata.social.github}`}>Github</Link>
-        <Link className="w-1/3 my-2 md:w-1/5" to={"/rss.xml"}>Feed</Link>
-      </div>
+      <ul className="flex flex-row flex-wrap justify-center w-full p-2 mx-auto text-center md:w-2/3 box-border">
+        <li className="w-1/3 my-2 md:w-1/5">
+          <Link to={"/posts/1"}>Blog</Link>
+        </li>
+        <li className="w-1/3 my-2 md:w-1/5">
+          <Link to={"/about"}>About</Link>
+        </li>
+        <li className="w-1/3 my-2 md:w-1/5">
+          <Link to={`https://twitter.com/${site.siteMetadata.social.twitter}`}>Twitter</Link>
+        </li>
+        <li className="w-1/3 my-2 md:w-1/5">
+          <Link to={`https://github.com/${site.siteMetadata.social.github}`}>Github</Link>
+        </li>
+        <li className="w-1/3 my-2 md:w-1/5">
+          <Link to={"/rss.xml"}>Feed</Link>
+        </li>
+      </ul>
       <div className="w-full p-4 mx-auto text-center md:w-2/3">
         <p>&copy; Matthew Daly {new Date().getFullYear()}</p>
       </div>
