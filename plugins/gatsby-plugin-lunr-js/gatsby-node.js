@@ -29,27 +29,27 @@ exports.onPostBuild = async ({ graphql }) => {
       throw result.errors
     }
 
+    const store = {}
+
     const searchIndex = lunr(function() {
       this.field("title", { boost: 10})
       this.field("categories", { boost: 10})
       this.field("body")
       this.ref("path")
-    })
 
-    const store = {}
-
-    result.data.allMdx.edges.forEach(post => {
-      console.log(JSON.stringify(post))
-      let doc = {
-        "title": post.frontmatter.title,
-        "categories": post.frontmatter.categories.join(","),
-        "body": striptags(post.body),
-        "path": post.fields.path
-      }
-      store[doc.href] = {
-        "title": doc.title
-      }
-      searchIndex.add(doc)
+      result.data.allMdx.edges.forEach(post => {
+        let doc
+        doc = {
+          "title": post.node.frontmatter.title,
+          "categories": post.node.frontmatter.categories ? post.node.frontmatter.categories.join(",") : null,
+          "body": striptags(post.node.html),
+          "path": post.node.fields.path
+        }
+        store[doc.path] = {
+          "title": doc.title
+        }
+        this.add(doc)
+      })
     })
     fs.writeFileSync("public/search-index.json", JSON.stringify({
       index: searchIndex.toJSON(),
