@@ -14,6 +14,22 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-csp",
+      options: {
+        directives: {
+          "default-src": "'self'",
+          "child-src": "'none'",
+          "frame-src": "disqus.com *.addthis.com",
+          "object-src": "'none'",
+          "font-src": "'self' fonts.google-apis.com fonts.gstatic.com",
+          "style-src": "'self' fonts.googleapis.com *.addthis.com google-analytics.com *.disquscdn.com *.disqus.com 'unsafe-inline'",
+          "script-src": "'self' localhost:* *.addthis.com *.google-analytics.com *.disquscdn.com *.disqus.com disqus.com *.addthisedge.com graph.facebook.com 'unsafe-inline' 'unsafe-eval'",
+          "connect-src": "'self' ws://localhost:*",
+          "img-src": "'self' *.google-analytics.com *.disquscdn.com *.disqus.com stats.g.doubleclick.net'"
+        }
+      }
+    },
     "gatsby-plugin-robots-txt",
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
