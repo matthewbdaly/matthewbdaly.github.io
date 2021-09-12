@@ -15,6 +15,7 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-all-feeds",
+    "gatsby-plugin-lunr-js",
     {
       resolve: "gatsby-plugin-csp",
       options: {
