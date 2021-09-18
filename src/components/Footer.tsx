@@ -33,7 +33,7 @@ const Footer = (): React.ReactElement => {
           <a href={`https://github.com/${site.siteMetadata.social.github}`}>Github</a>
         </li>
         <li className="w-1/3 my-2 md:w-1/5">
-          <Link to={"/rss.xml"}>Feed</Link>
+          <a href={"/rss.xml"}>Feed</a>
         </li>
       </ul>
       <div className="w-full p-4 mx-auto text-center md:w-2/3">
