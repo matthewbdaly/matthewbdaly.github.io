@@ -15,9 +15,10 @@ interface Props {
   lang: string;
   title: string;
   meta: Record<string, unknown>[];
+  url: string;
 }
 
-const SEO = ({ description, lang, meta, title }: Props): React.ReactElement => {
+const SEO = ({ description, lang, meta, title, url }: Props): React.ReactElement => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -81,7 +82,7 @@ const SEO = ({ description, lang, meta, title }: Props): React.ReactElement => {
         },
       ].concat(meta)}
     >
-      <link href={ site.siteMetadata.siteUrl } rel="canonical" />
+      <link href={ url } rel="canonical" />
       <link href={`https://twitter.com/${site.siteMetadata.social.twitter}`} rel="me" />
       <link href={`https://github.com/${site.siteMetadata.social.github}`} rel="me" />
       <link href={`mailto:${site.siteMetadata.social.email}`} rel="me" />
