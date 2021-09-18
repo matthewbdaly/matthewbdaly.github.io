@@ -9,7 +9,7 @@ interface Result {
 }
 
 interface Props {
-    value: string;
+    value: string | string[];
 }
 
 const SearchResults = ({ value }: Props): React.ReactElement => {
