@@ -10,18 +10,21 @@ interface Props {
     site: SiteData;
     mdx: PageData;
   }
+  location: Location;
 }
-const PageTemplate = ({ data }: Props): React.ReactElement => {
+const PageTemplate = ({ data, location }: Props): React.ReactElement => {
   const page = data.mdx
   const siteTitle = data.site.siteMetadata.title
+  const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
     <Fragment>
       <SEO
         title={page.frontmatter.title}
         description={page.excerpt}
+        url={canonicalUrl}
       />
-      <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
+      <Layout title={siteTitle}>
         <article>
           <header className="text-2xl font-bold">
             <h2>

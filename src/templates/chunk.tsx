@@ -12,19 +12,22 @@ interface Props {
     site: SiteData;
     mdx: PageData;
   }
+  location: Location
 }
 
-const Chunk = ({ pageContext, data }: Props): React.ReactElement => {
+const Chunk = ({ pageContext, data, location }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const { currentPage, nextPage, previousPage } = pageContext
+  const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
     <Fragment>
       <SEO
         title={`Page ${currentPage}`}
         description={`${siteTitle} - Page ${currentPage}`}
+        url={canonicalUrl}
       />
-      <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
+      <Layout title={siteTitle}>
         <div className="space-y-32">
           {data.allMdx.edges.map(({ node }) => (
             <PostExcerpt key={node.fields.path} path={node.fields.path} title={node.frontmatter.title} date={node.frontmatter.date} excerpt={node.excerpt} />

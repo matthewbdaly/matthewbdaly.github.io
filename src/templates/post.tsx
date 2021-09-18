@@ -14,12 +14,14 @@ interface Props {
     site: SiteData;
     mdx: PageData;
   }
+  location: Location;
 }
 
-const PostTemplate = ({ pageContext, data }: Props): React.ReactElement => {
+const PostTemplate = ({ location, pageContext, data }: Props): React.ReactElement => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
+  const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
   const disqusConfig = {
     shortname: "matthewdaly",
     config: {
@@ -35,8 +37,9 @@ const PostTemplate = ({ pageContext, data }: Props): React.ReactElement => {
       <SEO
         title={post.frontmatter.title}
         description={post.excerpt}
+        url={canonicalUrl}
       />
-      <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
+      <Layout title={siteTitle}>
         <article className="h-entry">
           <header>
             <h2 className="py-4 text-2xl font-bold e-content p-name">

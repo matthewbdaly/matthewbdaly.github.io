@@ -11,16 +11,19 @@ interface Props {
       edges: PageData[];
     }
   }
+  location: Location;
 }
 
-const Archives = ({ data }: Props): React.ReactElement => {
+const Archives = ({ data, location }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
+  const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
     <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
       <SEO
         title={"Archives"}
         description={"Post archive"}
+        url={canonicalUrl}
       />
       <div className="space-y-16">
         {data.allMdx.edges.map(({ node }) => (

@@ -15,22 +15,25 @@ interface Props {
       edges: PageData[];
     }
   }
+  location: Location;
 }
 
-const Category = ({ pageContext, data }: Props): React.ReactElement => {
+const Category = ({ location, pageContext, data }: Props): React.ReactElement => {
   const { category } = pageContext
   const { edges, totalCount } = data.allMdx
   const categoryHeader = `${totalCount} post${
     totalCount === 1 ? "": "s"
   } in category "${category}"`
+  const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
     <Fragment>
       <SEO
         title={category}
         description={category}
+        url={canonicalUrl}
       />
-      <Layout title={categoryHeader} siteUrl={data.site.siteMetadata.siteUrl}>
+      <Layout title={categoryHeader}>
         <div className="space-y-8">
           {edges.map(({ node }) => (
             <section key={node.fields.path} className="w-full py-4">

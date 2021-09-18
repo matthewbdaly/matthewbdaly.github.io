@@ -8,6 +8,7 @@ interface Props {
   data: {
     site: SiteData;
   }
+  location: Location;
 }
 
 // styles
@@ -34,14 +35,16 @@ const codeStyles = {
 }
 
 // markup
-const NotFoundPage = ({ data }: Props): React.ReactElement => {
+const NotFoundPage = ({ data, location }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
+  const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
     <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
       <SEO
         title={"Not found"}
         description={"Not found"}
+        url={canonicalUrl}
       />
       <main style={pageStyles}>
         <title>Not found</title>

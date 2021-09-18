@@ -17,20 +17,23 @@ interface Props {
       group: Category[];
     }
   }
+  location: Location;
 }
 
-const Categories = ({ data: {
+const Categories = ({ location, data: {
   allMdx: { group },
   site: {
     siteMetadata: { title, siteUrl },
   }
 }}: Props): React.ReactElement => {
+  const canonicalUrl = siteUrl + location.pathname
 
   return (
     <Layout title={title} siteUrl={siteUrl}>
       <SEO
         title={"Categories"}
         description={"Categories"}
+        url={canonicalUrl}
       />
       <div className="p-4">
         {group.map((node: Category) => <Tag key={node.category} category={node.category} />)}
