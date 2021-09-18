@@ -10,20 +10,20 @@ interface Props {
   data: {
     site: SiteData;
   },
-  location: {
-    search: string;
-  }
+  location: Location;
 }
 
 const Search = ({ location, data }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const search = queryString.parse(location.search)
+  const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
     <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
       <SEO
         title={"Home"}
         description={"Home"}
+        url={canonicalUrl}
       />
       <SearchResults value={search.s} />
     </Layout>

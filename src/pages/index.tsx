@@ -6,21 +6,24 @@ import RecentPosts from "../components/RecentPosts"
 import { PageData, SiteData } from "../Types"
 
 interface Props {
+  location: Location;
   data: {
     site: SiteData;
     mdx: PageData;
   }
 }
 
-const Index = ({ data }: Props): React.ReactElement => {
+const Index = ({ data, location }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const RecentPostsComponent = memo(RecentPosts)
+  const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
     <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
       <SEO
         title={"Home"}
         description={"Home"}
+        url={canonicalUrl}
       />
       <p className="font-bold text-2xl py-2 p-note">Hi, I&apos;m <a className="h-card" rel="me" href={data.site.siteMetadata.siteUrl}>Matthew Daly</a>.</p>
       <p className="text-xl py-2">I&apos;m a web developer, and have worked in the industry for about a decade now. I live in Norfolk and work in Norwich (except during lockdown, when I&apos;ve been working from home).</p>
