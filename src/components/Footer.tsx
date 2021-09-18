@@ -27,10 +27,10 @@ const Footer = (): React.ReactElement => {
           <Link to={"/about"}>About</Link>
         </li>
         <li className="w-1/3 my-2 md:w-1/5">
-          <Link to={`https://twitter.com/${site.siteMetadata.social.twitter}`}>Twitter</Link>
+          <a href={`https://twitter.com/${site.siteMetadata.social.twitter}`}>Twitter</a>
         </li>
         <li className="w-1/3 my-2 md:w-1/5">
-          <Link to={`https://github.com/${site.siteMetadata.social.github}`}>Github</Link>
+          <a href={`https://github.com/${site.siteMetadata.social.github}`}>Github</a>
         </li>
         <li className="w-1/3 my-2 md:w-1/5">
           <Link to={"/rss.xml"}>Feed</Link>
