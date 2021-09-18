@@ -23,15 +23,16 @@ const SearchResults = ({ value }: Props): React.ReactElement => {
   const index = Index.load(data.LunrIndex.index)
   let results = []
   try {
+    if (query) {
       results = index.search(query).map(({ ref }) => {
-          return {
-              path: ref,
-              ...store[ref],
-          }
+        return {
+          path: ref,
+          ...store[ref],
+        }
       })
-      console.log(results)
+    }
   } catch (error) {
-      console.log(error)
+    console.log(error)
   }
 
   const updateSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -49,8 +50,8 @@ const SearchResults = ({ value }: Props): React.ReactElement => {
         <button type="submit" className="float-right w-1/4 px-2 py-4 mx-0 border-2 md:float-none">Search</button>
         <div className="w-full mt-2 divide-y divide-gray-800 dark:divide-gray-200">
           {results.map((result: Result) => (
-            <Link key={result.id} className="float-left w-full py-4 text-xl font-bold focus:outline-none focus:ring focus:border-blue-300" to={result.path}>
-              <span key={result.id} className="block w-full px-2">
+            <Link key={result.path} className="float-left w-full py-4 text-xl font-bold focus:outline-none focus:ring focus:border-blue-300" to={result.path}>
+              <span className="block w-full px-2">
                 {result.title}
               </span>
             </Link>

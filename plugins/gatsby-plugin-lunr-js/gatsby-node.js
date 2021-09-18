@@ -10,9 +10,9 @@ exports.createResolvers = ({cache, createResolvers}) => {
         type: GraphQLJSONObject,
         resolve: (source, args, context, info) => {
           const blogNodes = context.nodeModel.getAllNodes({
-            type: "mdx",
+            type: `Mdx`,
           })
-          const type = info.schema.getType("mdx")
+          const type = info.schema.getType(`Mdx`)
           return createIndex(blogNodes, type, cache)
         }
       }
@@ -26,33 +26,24 @@ const createIndex = async (blogNodes, type, cache) => {
   if (cached) {
     return cached
   }
-  const documents = []
   const store = {}
-  // Iterate over all posts
-  for (const node of blogNodes) {
-    const {path} = node.fields
-    const title = node.frontmatter.title
-    const [html, excerpt] = await Promise.all([
-      type.getFields().html.resolve(node),
-      type.getFields().excerpt.resolve(node, { pruneLength: 40 }),
-    ])
-    documents.push({
-      path: node.fields.path,
-      title: node.frontmatter.title,
-      categories: node.frontmatter.categories ? node.frontmatter.categories.join(",") : null,
-      body: striptags(html),
-    })
-    store[path] = {
-      title,
-      excerpt
-    }
-  }
   const index = lunr(function() {
     this.ref("path")
     this.field("title", {boost: 10})
     this.field("body")
     this.field("categories", {boost: 10})
-    for (const doc of documents) {
+    for (const node of blogNodes) {
+      const { path } = node.fields
+      const { title } = node.frontmatter
+      const doc = {
+        path,
+        title,
+        categories: node.frontmatter.categories ? node.frontmatter.categories.join(",") : null,
+        body: striptags(node.html),
+      }
+      store[path] = {
+        title
+      }
       this.add(doc)
     }
   })
