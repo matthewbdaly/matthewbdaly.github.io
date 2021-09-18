@@ -22,7 +22,7 @@ module.exports = {
         mergeScriptHashes: false,
         mergeStyleHashes: false,
         directives: {
-          "default-src": "'self' disqus.com *.disqus.com *.disquscdn.com",
+          "default-src": "'self' *.google-analytics.com disqus.com *.disqus.com *.disquscdn.com",
           "child-src": "'self'",
           "frame-src": "disqus.com *.addthis.com",
           "object-src": "'none'",
