@@ -21,14 +21,14 @@ module.exports = {
       options: {
         directives: {
           "default-src": "'self'",
-          "child-src": "'none'",
+          "child-src": "'self'",
           "frame-src": "disqus.com *.addthis.com",
           "object-src": "'none'",
           "font-src": "'self' fonts.google-apis.com fonts.gstatic.com",
-          "style-src": "'self' fonts.googleapis.com *.addthis.com google-analytics.com *.disquscdn.com *.disqus.com 'unsafe-inline'",
-          "script-src": "'self' localhost:* *.addthis.com *.google-analytics.com *.disquscdn.com *.disqus.com disqus.com *.addthisedge.com graph.facebook.com 'unsafe-inline' 'unsafe-eval'",
-          "connect-src": "'self' ws://localhost:*",
-          "img-src": "'self' *.google-analytics.com *.disquscdn.com *.disqus.com stats.g.doubleclick.net'"
+          "style-src": "'self' fonts.googleapis.com *.addthis.com google-analytics.com *.disquscdn.com *.disqus.com",
+          "script-src": "'self' localhost:* *.addthis.com *.google-analytics.com *.disquscdn.com *.disqus.com disqus.com *.addthisedge.com graph.facebook.com",
+          "connect-src": "'self' ws://localhost:* *.google-analytics.com stats.g.doubleclick.net",
+          "img-src": "'self' *.google-analytics.com *.disquscdn.com *.disqus.com stats.g.doubleclick.net"
         }
       }
     },
@@ -43,44 +43,6 @@ module.exports = {
         searchTemplate: "/search?s={searchTerms}",
         searchForm: "/search",
       }
-    },
-    {
-      resolve: "gatsby-plugin-local-search",
-      options: {
-        name: "posts",
-        engine: "flexsearch",
-        engineOptions: {
-          suggest: true,
-        },
-        query: `
-					{
-						allMdx (
-							filter: { frontmatter: {layout: {eq: "post"}}}
-						) {
-							nodes {
-								id
-								frontmatter {
-									title
-									categories
-								}
-								fields {
-									path
-								}
-							}
-						}
-					}
-				`,
-        ref: "id",
-        index: ["title", "categories"],
-        store: ["id", "path", "title"],
-        normalizer: ({ data }) =>
-          data.allMdx.nodes.map(node => ({
-            id: node.id,
-            path: node.fields.path,
-            title: node.frontmatter.title,
-            body: node.body,
-          })),
-      },
     },
     {
       resolve: "gatsby-plugin-google-analytics",
