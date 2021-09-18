@@ -19,14 +19,16 @@ module.exports = {
     {
       resolve: "gatsby-plugin-csp",
       options: {
+        mergeScriptHashes: false,
+        mergeStyleHashes: false,
         directives: {
-          "default-src": "'self'",
+          "default-src": "'self' disqus.com *.disqus.com *.disquscdn.com",
           "child-src": "'self'",
           "frame-src": "disqus.com *.addthis.com",
           "object-src": "'none'",
-          "font-src": "'self' fonts.google-apis.com fonts.gstatic.com",
-          "style-src": "'self' fonts.googleapis.com *.addthis.com google-analytics.com *.disquscdn.com *.disqus.com",
-          "script-src": "'self' localhost:* *.addthis.com *.google-analytics.com *.disquscdn.com *.disqus.com disqus.com *.addthisedge.com graph.facebook.com",
+          "font-src": "'self' data: fonts.google-apis.com fonts.gstatic.com",
+          "style-src": "'self' fonts.googleapis.com *.addthis.com google-analytics.com *.disquscdn.com *.disqus.com 'unsafe-inline'",
+          "script-src": "'self' localhost:* *.addthis.com *.google-analytics.com *.disquscdn.com *.disqus.com disqus.com *.addthisedge.com graph.facebook.com 'unsafe-inline' 'unsafe-eval'",
           "connect-src": "'self' ws://localhost:* *.google-analytics.com stats.g.doubleclick.net",
           "img-src": "'self' *.google-analytics.com *.disquscdn.com *.disqus.com stats.g.doubleclick.net"
         }
