@@ -39,7 +39,6 @@ const SearchResults = ({ value }: Props): React.ReactElement => {
   } catch (error) {
     console.log(error)
   }
-  console.log(results)
 
   const updateSearch = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.value.length > 2) {
