@@ -12,6 +12,8 @@ interface Props {
     value: string | string[];
 }
 
+
+
 const SearchResults = ({ value }: Props): React.ReactElement => {
   const data = useStaticQuery(graphql`
 		query {
@@ -24,16 +26,20 @@ const SearchResults = ({ value }: Props): React.ReactElement => {
   let results = []
   try {
     if (query) {
-      results = index.search(query).map(({ ref }) => {
-        return {
-          path: ref,
-          ...store[ref],
-        }
-      })
+      results = index.search(`${query}~1`)
+        .sort((a, b) => {
+          return b.score - a.score
+        }).map(({ ref }) => {
+          return {
+            path: ref,
+            ...store[ref],
+          }
+        })
     }
   } catch (error) {
     console.log(error)
   }
+  console.log(results)
 
   const updateSearch = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.value.length > 2) {
