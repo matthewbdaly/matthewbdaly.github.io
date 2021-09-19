@@ -40,7 +40,7 @@ const NotFoundPage = ({ data, location }: Props): React.ReactElement => {
   const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
-    <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
+    <Layout title={siteTitle}>
       <SEO
         title={"Not found"}
         description={"Not found"}

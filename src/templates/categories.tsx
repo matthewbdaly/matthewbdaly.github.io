@@ -29,7 +29,7 @@ const Categories = ({ location, data: {
   const canonicalUrl = siteUrl + location.pathname
 
   return (
-    <Layout title={title} siteUrl={siteUrl}>
+    <Layout title={title}>
       <SEO
         title={"Categories"}
         description={"Categories"}
