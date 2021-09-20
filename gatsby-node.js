@@ -58,7 +58,6 @@ exports.createPages = async ({ graphql, actions }) => {
         allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
           filter: { frontmatter: {layout: {eq: "post"}}}
-          limit: 1000
         ) {
           edges {
             node {
@@ -140,7 +139,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const categoryResult = await graphql(`
     {
-      categoriesGroup: allMdx(limit: 2000) {
+      categoriesGroup: allMdx {
         group(field: frontmatter___categories) {
           fieldValue
         }
