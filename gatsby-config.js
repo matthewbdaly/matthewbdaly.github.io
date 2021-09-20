@@ -31,7 +31,7 @@ module.exports = {
           "script-src": "'self' localhost:* *.addthis.com *.google-analytics.com *.disquscdn.com *.disqus.com disqus.com *.addthisedge.com graph.facebook.com 'unsafe-inline' 'unsafe-eval'",
           "connect-src": "'self' ws://localhost:* *.google-analytics.com stats.g.doubleclick.net",
           "img-src": "'self' *.google-analytics.com *.disquscdn.com *.disqus.com stats.g.doubleclick.net",
-          "form-action": "'self', getform.io"
+          "form-action": "'self' getform.io"
         }
       }
     },
