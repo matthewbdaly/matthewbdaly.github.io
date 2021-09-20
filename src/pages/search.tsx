@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactElement } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
@@ -13,16 +13,16 @@ interface Props {
   location: Location;
 }
 
-const Search = ({ location, data }: Props): React.ReactElement => {
+const Search = ({ location, data }: Props): ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const search = queryString.parse(location.search)
   const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
 
   return (
-    <Layout title={siteTitle} siteUrl={data.site.siteMetadata.siteUrl}>
+    <Layout title={siteTitle}>
       <SEO
-        title={"Home"}
-        description={"Home"}
+        title={"Search"}
+        description={"Search"}
         url={canonicalUrl}
       />
       <SearchResults value={search.s} />

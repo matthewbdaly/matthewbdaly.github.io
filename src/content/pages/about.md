@@ -48,24 +48,4 @@ I blog regularly about web development, particularly about Django, Laravel and N
 Contacting me
 -------------
 
-You can contact me with the form below, but please bear the following in mind:
-
-* This is strictly a personal blog, and I'm not interested in posting guest posts, so please don't ask. Nor am I interested in letting you rebuild it.
-* I'm also not interested in reviewing commercial products unless they're directly useful to me in my work. Given I don't generally get on with graphical IDE's, *please* don't ask me to review your PHP IDE - even if I were to say yes, I won't have a good experience with it, and my review will reflect that.
-
-<form method="post" action="https://getform.io/f/b040a476-171d-418a-a8ba-a521b8f8853e" className="p-4 w-full rounded-lg border-2 mx-auto bg-blue-600 text-white shadow-lg">
-  <label htmlFor="email" autocomplete="email" className="p-2 my-4 w-1/3 float-left">
-    Email
-  </label>
-  <input type="email" name="email" required className="p-2 my-4 w-2/3 border-2 rounded-lg float-right" />
-  <label htmlFor="name" className="p-2 w-1/3 float-left">
-    Name
-  </label>
-  <input type="text" name="name" autocomplete="name" required className="p-2 my-4 w-2/3 border-2 rounded-lg float-right" />
-  <label htmlFor="message" className="p-2 w-1/3 float-left">
-    Message
-  </label>
-  <textarea name="message" required className="p-2 w-2/3 border-2 rounded-lg float-right resize-none" />
-  <div className="clear-both" />
-  <input type="submit" value="Send" className="mt-8 p-2 w-full md:w-40 border-2 bg-white text-black rounded-lg shadow-lg" />
-</form>
+You can contact me [via this form](/contact/).
