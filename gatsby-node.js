@@ -168,7 +168,7 @@ exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === "Mdx") {
 
     if (node.frontmatter.layout === "post") {
-      const url = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\S]+)\.md$/, "/blog/$1/$2/$3/$4/")
+      const url = node.fileAbsolutePath.replace(/.+\/(\d+)-(\d+)-(\d+)-([\S]+)\.mdx?$/, "/blog/$1/$2/$3/$4/")
       createNodeField({
         name: "path",
         node,
@@ -179,7 +179,7 @@ exports.onCreateNode = ({ node, actions }) => {
       createNodeField({
         name: "path",
         node,
-        value: node.fileAbsolutePath.replace(/.+\/([\w*-]+)\.md$/, "/$1/")
+        value: node.fileAbsolutePath.replace(/.+\/([\w*-]+)\.mdx?$/, "/$1/")
       })
     }
   }
