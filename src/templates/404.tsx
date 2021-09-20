@@ -1,5 +1,6 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+import NavLink from "../components/NavLink"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import { SiteData } from "../Types"
@@ -11,30 +12,6 @@ interface Props {
   location: Location;
 }
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-// markup
 const NotFoundPage = ({ data, location }: Props): React.ReactElement => {
   const siteTitle = data.site.siteMetadata.title
   const canonicalUrl = data.site.siteMetadata.siteUrl + location.pathname
@@ -46,25 +23,21 @@ const NotFoundPage = ({ data, location }: Props): React.ReactElement => {
         description={"Not found"}
         url={canonicalUrl}
       />
-      <main style={pageStyles}>
-        <title>Not found</title>
-        <h1 style={headingStyles}>Page not found</h1>
-        <p style={paragraphStyles}>
-          Sorry{" "}
-          <span role="img" aria-label="Pensive emoji">
-            😔
-          </span>{" "}
-          we couldn’t find what you were looking for.
+      <main>
+        <title>Page not found</title>
+        <h1 className="text-2xl">We can't find that page</h1>
+        <p>
+          Sorry, we couldn’t find what you were looking for.
           <br />
           {process.env.NODE_ENV === "development" ? (
             <>
               <br />
-              Try creating a page in <code style={codeStyles}>src/pages/</code>.
+              Try creating a page in <code>src/pages/</code>.
               <br />
             </>
           ) : null}
           <br />
-          <Link to="/">Go home</Link>.
+          <NavLink to="/" text="Go home" />
         </p>
       </main>
     </Layout>
