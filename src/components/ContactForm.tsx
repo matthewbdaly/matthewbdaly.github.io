@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react"
 
 const ContactForm = (): ReactElement => (
-  <form method="post" action="https://getform.io/f/b040a476-171d-418a-a8ba-a521b8f8853e" className="w-full p-4 mx-auto my-8 text-white bg-blue-600 border-2 border-white rounded-lg shadow-lg dark:border-black">
+  <form method="post" action="https://getform.io/f/b040a476-171d-418a-a8ba-a521b8f8853e" className="w-full p-4 mx-auto my-8 text-white bg-blue-600 border-2 border-white rounded-lg shadow-lg dark:border-black text-black">
     <label htmlFor="email" className="float-left w-1/3 p-2 my-4">
     Email
     </label>
