@@ -8,12 +8,12 @@ exports.createResolvers = ({cache, createResolvers}) => {
     Query: {
       LunrIndex: {
         type: GraphQLJSONObject,
-        resolve: (source, args, context, info) => {
-          const blogNodes = context.nodeModel.getAllNodes({
+        resolve: async (source, args, context, info) => {
+          const type = info.schema.getType("Mdx")
+          const { entries } = await context.nodeModel.findAll({
             type: "Mdx",
           })
-          const type = info.schema.getType("Mdx")
-          return createIndex(blogNodes, type, cache)
+          return createIndex(entries, type, cache)
         }
       }
     }
