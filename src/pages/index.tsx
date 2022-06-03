@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import RecentPosts from "../components/RecentPosts"
+import Anchor from "../components/Anchor"
 import { PageData, SiteData } from "../Types"
 
 interface Props {
@@ -31,7 +32,7 @@ const Index = ({ data, location }: Props): React.ReactElement => {
        I&apos;ve also worked with Django, Angular 1, CodeIgniter, Backbone.js and Phonegap in the past.</p>
       <p className="text-xl py-2">I blog about the challenges of and solutions for dealing with legacy code, web app performance,
       modern PHP and Javascript development, and anything else I find interesting.</p>
-      <p className="text-xl py-2">You can find me on <a className="border-b-4 border-transparent hover:border-green-400 transition-colors duration-500" href={`https://twitter.com/${data.site.siteMetadata.social.twitter}`} rel="me">Twitter</a> and <a className="border-b-4 border-transparent hover:border-green-400 transition-colors duration-500" href={`https://github.com/${data.site.siteMetadata.social.github}`} rel="me">GitHub</a></p>
+      <p className="text-xl py-2">You can find me on <Anchor href={`https://twitter.com/${data.site.siteMetadata.social.twitter}`} rel="me">Twitter</Anchor> and <Anchor href={`https://github.com/${data.site.siteMetadata.social.github}`} rel="me">GitHub</Anchor></p>
       <RecentPostsComponent />
     </Layout>
   )
