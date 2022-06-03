@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-templates-category-tsx",
-    "path": "/blog/categories/jenkins/",
-    "result": {"data":{"site":{"siteMetadata":{"title":"Matthew Daly","siteUrl":"https://matthewdaly.co.uk"}},"allMdx":{"totalCount":1,"edges":[{"node":{"fields":{"path":"/blog/2016/06/05/using-jenkins-pipelines/"},"excerpt":"I use Jenkins as my main continuous integration solution at work, largely for two reasons: It generally works out cheaper to host it ourselves than to use one of the paid CI…","frontmatter":{"title":"Using Jenkins pipelines","categories":["jenkins"]}}}]}},"pageContext":{"category":"jenkins"}},
-    "staticQueryHashes": ["290055352","2909664151"]}
+{"componentChunkName":"component---src-templates-category-tsx","path":"/blog/categories/jenkins/","result":{"data":{"site":{"siteMetadata":{"title":"Matthew Daly","siteUrl":"https://matthewdaly.co.uk"}},"allMdx":{"totalCount":1,"edges":[{"node":{"fields":{"path":"/blog/2016/06/05/using-jenkins-pipelines/"},"excerpt":"I use Jenkins as my main continuous integration solution at work, largely for two reasons: It generally works out cheaper to host it ourselves than to use one of the paid CI…","frontmatter":{"title":"Using Jenkins pipelines","categories":["jenkins"]}}}]}},"pageContext":{"category":"jenkins"}},"staticQueryHashes":["290055352","2909664151"]}

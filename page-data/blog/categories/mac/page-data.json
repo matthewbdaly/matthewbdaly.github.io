@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-templates-category-tsx",
-    "path": "/blog/categories/mac/",
-    "result": {"data":{"site":{"siteMetadata":{"title":"Matthew Daly","siteUrl":"https://matthewdaly.co.uk"}},"allMdx":{"totalCount":1,"edges":[{"node":{"fields":{"path":"/blog/2010/08/08/moving-away-from-os-x/"},"excerpt":"I bought my MacBook two years ago, and at first I was cynical about how I would find it compared to Ubuntu, but over time I found myself using it more and more. While I have never…","frontmatter":{"title":"Moving away from OS X","categories":["linux","mac"]}}}]}},"pageContext":{"category":"mac"}},
-    "staticQueryHashes": ["290055352","2909664151"]}
+{"componentChunkName":"component---src-templates-category-tsx","path":"/blog/categories/mac/","result":{"data":{"site":{"siteMetadata":{"title":"Matthew Daly","siteUrl":"https://matthewdaly.co.uk"}},"allMdx":{"totalCount":1,"edges":[{"node":{"fields":{"path":"/blog/2010/08/08/moving-away-from-os-x/"},"excerpt":"I bought my MacBook two years ago, and at first I was cynical about how I would find it compared to Ubuntu, but over time I found myself using it more and more. While I have never…","frontmatter":{"title":"Moving away from OS X","categories":["linux","mac"]}}}]}},"pageContext":{"category":"mac"}},"staticQueryHashes":["290055352","2909664151"]}

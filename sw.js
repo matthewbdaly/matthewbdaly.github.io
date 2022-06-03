@@ -27,26 +27,23 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-261a46458a2174c3d65d.js"
+    "url": "webpack-runtime-54c97741794d5be10c22.js"
   },
   {
-    "url": "styles.897d8ad474270ae74787.css"
+    "url": "styles.2c84e2444e0a46017e4b.css"
   },
   {
-    "url": "framework-20258163f1bb460ca28d.js"
+    "url": "framework-a6e7e2d9b047634414ab.js"
   },
   {
-    "url": "app-7732d1bced30b102af67.js"
+    "url": "app-70d9172bf3fd43cbd65e.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "57344f2e9eaa66cffd13d3eabb552cee"
+    "revision": "55e77cdd5efdc3dd3162e757abf0a323"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-f73ba0fd1f8ccd9c9e51.js"
-  },
-  {
-    "url": "polyfill-6bb0cc96a95a512dc6d7.js"
+    "url": "polyfill-11649d7082f91630a0f4.js"
   },
   {
     "url": "manifest.webmanifest",
@@ -76,6 +73,24 @@ const MessageAPI = {
 
   clearPathResources: event => {
     event.waitUntil(idbKeyval.clear())
+
+    // We detected compilation hash mismatch
+    // we should clear runtime cache as data
+    // files might be out of sync and we should
+    // do fresh fetches for them
+    event.waitUntil(
+      caches.keys().then(function (keyList) {
+        return Promise.all(
+          keyList.map(function (key) {
+            if (key && key.includes(`runtime`)) {
+              return caches.delete(key)
+            }
+
+            return Promise.resolve()
+          })
+        )
+      })
+    )
   },
 
   enableOfflineShell: () => {
@@ -142,7 +157,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-7732d1bced30b102af67.js`))) {
+  if (!resources || !(await caches.match(`/app-70d9172bf3fd43cbd65e.js`))) {
     return await fetch(event.request)
   }
 
