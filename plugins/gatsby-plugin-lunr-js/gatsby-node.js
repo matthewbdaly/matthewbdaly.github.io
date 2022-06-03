@@ -10,9 +10,9 @@ exports.createResolvers = ({cache, createResolvers}) => {
         type: GraphQLJSONObject,
         resolve: (source, args, context, info) => {
           const blogNodes = context.nodeModel.getAllNodes({
-            type: `Mdx`,
+            type: "Mdx",
           })
-          const type = info.schema.getType(`Mdx`)
+          const type = info.schema.getType("Mdx")
           return createIndex(blogNodes, type, cache)
         }
       }
