@@ -28,7 +28,7 @@ module.exports = {
           "object-src": "'none'",
           "font-src": "'self' data: fonts.google-apis.com fonts.gstatic.com",
           "style-src": "'self' fonts.googleapis.com *.addthis.com google-analytics.com *.disquscdn.com *.disqus.com 'unsafe-inline'",
-          "script-src": "'self' localhost:* *.addthis.com *.google-analytics.com *.disquscdn.com *.disqus.com disqus.com *.addthisedge.com graph.facebook.com 'unsafe-inline' 'unsafe-eval'",
+          "script-src": "'self' localhost:* *.addthis.com *.google-analytics.com *.googletagmanager.com *.disquscdn.com *.disqus.com disqus.com *.addthisedge.com graph.facebook.com 'unsafe-inline' 'unsafe-eval'",
           "connect-src": "'self' ws://localhost:* *.google-analytics.com stats.g.doubleclick.net",
           "img-src": "'self' *.google-analytics.com *.disquscdn.com *.disqus.com stats.g.doubleclick.net",
           "form-action": "'self' getform.io"
