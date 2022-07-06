@@ -287,7 +287,7 @@ Honestly, the overwhelming majority of performance issues developers have with O
 If a developer treats an ORM like a black box and just writes queries without thinking about the SQL it generates, it's no surprise whatsoever if the generated queries don't perform well. It's still running queries under the bonnet, it's just that some of it is implicit. For instance, take this (relatively simple) example of an Eloquent query:
 
 ```php
-Post::join('user')->get();
+Post::join('user', 'posts.user_id', '=', 'users.id')->get();
 ```
 
 If you use something like Clockwork to profile this query, the end result will probably look something like this:
@@ -300,13 +300,13 @@ INNER JOIN users ON posts.user_id = users.id
 And, to be fair, there *are* a few potential issues with this query.
 
 * If you're retrieving all the fields from the `posts` and `users` tables, then that could easily include fields that you don't explicitly need
-* Depending on the use case, returning an arbitrary number of database rows can be potentially problematic, performance-wise, and it may be better to
+* Depending on the use case, returning an arbitrary number of database rows can be potentially problematic, performance-wise, and it may be better to paginate them
 * If you haven't set an appropriate foreign key on `posts.user_id`, the join could perform badly
 
 However, these issues really aren't inherent to using an ORM, but are to do with it being used naively. Assuming we do want to paginate these results, and the only field on `users` that we need is the name, we could achieve what we want by rewriting this query as follows:
 
 ```php
-Post::join('user')->select('posts.*', 'users.name')->paginate(20);
+Post::join('user', 'posts.user_id', '=', 'users.id')->select('posts.*', 'users.name')->paginate(20);
 ```
 
 <Notice>
