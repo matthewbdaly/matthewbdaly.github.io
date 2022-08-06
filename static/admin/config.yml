@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   branch: netlify # Branch to update (optional; defaults to master)
   repo: matthewbdaly/matthewbdaly.github.io
 publish_mode: editorial_workflow
