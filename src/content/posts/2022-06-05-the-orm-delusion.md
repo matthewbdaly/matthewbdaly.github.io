@@ -7,7 +7,6 @@ categories:
 - orm
 - laravel
 - eloquent
-- performance
 comments: true
 ---
 
