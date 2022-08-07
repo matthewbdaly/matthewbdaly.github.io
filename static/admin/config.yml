@@ -3,6 +3,9 @@ backend:
   branch: source # Branch to update (optional; defaults to master)
   repo: matthewbdaly/matthewbdaly.github.io
 publish_mode: editorial_workflow
+show_preview_links: false
+display_url: https://matthewdaly.co.uk
+locale: 'en'
 media_folder: "src/images"
 public_folder: "images"
 collections:
