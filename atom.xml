@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://matthewdaly.co.uk</id>
     <title>Matthew Daly</title>
-    <updated>2022-09-19T13:40:56.392Z</updated>
+    <updated>2022-10-02T18:28:35.419Z</updated>
     <generator>GatsbyJS</generator>
     <author>
         <name>Matthew Daly</name>
@@ -19,6 +19,321 @@
         <email>matthew@matthewdaly.co.uk</email>
         <uri>https://matthewdaly.co.uk</uri>
     </contributor>
+    <entry>
+        <title type="html"><![CDATA[Everything's (potentially) a callable]]></title>
+        <id>https://matthewdaly.co.uk/blog/2022/10/02/everythings-potentially-a-callable/</id>
+        <link href="https://matthewdaly.co.uk/blog/2022/10/02/everythings-potentially-a-callable/"/>
+        <updated>2022-10-02T19:30:00.000Z</updated>
+        <content type="html"><![CDATA[<p>I&#x27;m a big fan of callables in PHP in general. They&#x27;re an extremely powerful way to build applications out of many different reusable components, in a way that combines the best aspects of object-oriented and functional programming.</p><p>If you&#x27;re not familiar with the idea, consider this class:</p><pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Jobs;
+
+use Illuminate\Database\ConnectionInterface;
+use Illuminate\Support\Benchmark;
+
+final class Printer
+{
+    public function __invoke(string $value): void
+    {
+        echo $value;
+    }
+}
+</code></pre><p>Note the use of the <code>__invoke()</code> magic method. This gets called if you try to call the object as a function, eg:</p><pre><code class="language-php">&lt;?php
+
+// Will echo &quot;Hello, World!&quot;
+$printer = new Printer();
+$printer(&quot;Hello, World!&quot;);
+</code></pre><p>Now, this may not seem like a terribly big deal, but it&#x27;s only once you start putting them together that their real power becomes apparent. They&#x27;re essentially &quot;closures on steroids&quot; in that they can do basically anything a closure can, and a lot of stuff they can&#x27;t:</p><ul><li>An invokable class passes the <code>callable</code> type hint, so you can generally use it in most of the same places you would a closure. As such, if you have a closure whose functionality needs to be reused elsewhere, it may make sense to refactor it into an invokable class.</li><li>Because they&#x27;re classes, if they get large enough for it to be worthwhile, you can refactor part of the functionality into private methods. You can also pull in additional functionality through inheritance or traits if need be, but as this approach makes composition more achievable, you may find you don&#x27;t often need to do so.</li><li>You can use constructor injection to pull in any dependencies the class has in a way you can&#x27;t with closures.</li></ul><p>As such, invokables let you chain functionality in the same way you would with closures, but with more capabilities and a higher level of abstraction. For instance, imagine you work on an e-commerce application, where each order is represented by an ORM model called <code>Order</code>, and the job to process an order is implemented in an invokable class called <code>ProcessOrder</code>, which accepts an instance of <code>Order</code>. Now, imagine a third party want to place multiple orders by sending a CSV file over FTP. Because you implemented <code>ProcessOrder</code> as an invokable, all you need to do is get the CSV data, generate an instance of <code>Order</code> from each row, and pass it into <code>ProcessOrder</code>, without changing a single existing line of code. You might do something like this:</p><pre><code class="language-php">&lt;?php
+
+$data = file_get_contents($remote_url);
+$result = Collection::make($data)
+    -&gt;map(App::make(ConvertToOrder::class))
+    -&gt;each(App::make(ProcessOrder::class));
+</code></pre><p>All <code>ConvertToOrder</code> has to do is take the array data and create the model instance, then pass it on. Orders are processed consistently between those on the e-commerce site and those received via FTP, and the amount of new code required is minimal, limited to the <code>ConvertToOrder</code> class and whatever command class is being triggered (in this case, it might be an Artisan command). As long as you&#x27;ve picked an appropriate name for each class, it&#x27;s really obvious how this pipeline works and what each step does, without the developer having to even open the class in question.</p><p>Using <code>__invoke()</code> as the defined method for doing something when the class only carries out a single action also makes sense as a general convention. If the class name, by itself, defines what the class is meant to do, then a method name is largely superfluous, and you end up making your method something like <code>process()</code>, <code>execute()</code> or <code>handle()</code>. Using <code>__invoke()</code> instead is both more concise and more consistent, because it allows you to use the shorter syntax, without the need to either choose or remember an actual method name.</p><p>Assuming you&#x27;re working with a framework like Laravel, then as long as you&#x27;re working on a class that&#x27;s not one of the class types explicitly required by the framework, then you should be fine to use invokables however you like. For instance, if you have something like the <code>ProcessOrder</code> service class above, then its only real dependency on Laravel itself would be that it takes in an ORM instance, plus whatever is pulled in via constructor injection. However, classes generated by the framework itself are more dependent on a particular, predefined structure. That said, there are some parts of the framework that are amenable to using invokables.</p><h2>Controllers</h2><p>For a while now, Laravel has supported <a href="https://laravel.com/docs/9.x/controllers#single-action-controllers">single action controllers</a>, which implement a single <code>__invoke()</code> method, as in this example:</p><pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+
+final class FooController extends Controller
+{
+    /**
+     * Return a view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke()
+    {
+        return view(&#x27;foo&#x27;);
+    }
+}
+</code></pre><p>This has the following advantages:</p><ul><li>Injecting dependencies into a controller&#x27;s constructor adds to the time taken to process the request, and if you have a controller which handles multiple actions, then you may often be injecting dependencies for a route which aren&#x27;t required for that route, which can have a noticeable performance impact. By breaking larger controllers down into single action controllers, you can prevent that from happening.</li><li>Setting up routing for the controller is simpler - it just needs to accept the class name, not the method name.</li></ul><p>Using callables as controllers doesn&#x27;t make sense for every use case. For instance, if you&#x27;re building an API that exposes CRUD functionality for multiple resource types, it probably makes more sense to use a resource controller which defines all the actions for a given resource type, particularly if they&#x27;re similar enough that you&#x27;re extending a base resource controller with common functionality. But for any reasonably complex route, it may make sense to use a single action controller.</p><h2>Middleware</h2><p>Middleware is something else that only really has one public method and could therefore be implemented as an invokable, at least in theory. Some frameworks, such as Laminas, explicitly support it. The Laravel documentation doesn&#x27;t appear to mention it, but after some experimentation I&#x27;ve discovered that it&#x27;s possible to use callables as middleware in Laravel. For instance, take this callable middleware class I wrote:</p><pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Http\Middleware;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+final class CallableDemo
+{
+    public function __invoke(Request $request, $next): Response
+    {
+        $response = $next($request);
+        $response-&gt;header(&#x27;X-Clacks-Overhead&#x27;, &#x27;GNU Terry Pratchett&#x27;);
+        return $response;
+    }
+}
+</code></pre><p>This is a relatively simple middleware class which adds the <a href="http://www.gnuterrypratchett.com/">X-Clacks-Overhead header</a> to the response. At least in a recent version of Laravel 9, the following method of adding middleware in the router works:</p><pre><code class="language-php">&lt;?php
+
+...
+use App\Http\Middleware\CallableDemo;
+
+...
+
+Route::resource(&#x27;foo&#x27;, FooController::class)
+-&gt;middleware(CallableDemo::class);
+</code></pre><p>As does declaring it as global middleware in <code>app\Http\Kernel.php</code>:</p><pre><code class="language-php">&lt;?php
+
+namespace App\Http;
+...
+
+class Kernel extends HttpKernel
+{
+    protected $middleware = [
+        ...
+        \App\Http\Middleware\CallableDemo::class,
+    ];
+</code></pre><p>Or in the <code>web</code> group:</p><pre><code class="language-php">&lt;?php
+
+...
+    /**
+     * The application&#x27;s route middleware groups.
+     *
+     * @var array&lt;string, array&lt;int, class-string|string&gt;&gt;
+     */
+    protected $middlewareGroups = [
+        &#x27;web&#x27; =&gt; [
+            ...
+            \App\Http\Middleware\CallableDemo::class,
+        ],
+</code></pre><p>Or as route middleware:</p><pre><code class="language-php">&lt;?php
+    protected $routeMiddleware = [
+        ...
+        &#x27;gnu&#x27;   =&gt; \App\Http\Middleware\CallableDemo::class,
+    ];
+</code></pre><p>This example doesn&#x27;t cover middleware that accepts dependencies from the container, however. So what if we amend our middleware class to accept a raw database connection as a constructor dependency and use that in the middleware body to add a header giving the total number of users, as in this example?</p><pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Http\Middleware;
+
+use Illuminate\Database\ConnectionInterface;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+final class CallableDemo
+{
+    public function __construct(private ConnectionInterface $db)
+    {
+    }
+
+    public function __invoke(Request $request, $next): Response
+    {
+        $response = $next($request);
+        $response-&gt;header(&#x27;X-Clacks-Overhead&#x27;, &#x27;GNU Terry Pratchett&#x27;);
+        $response-&gt;header(&#x27;X-Total-Users&#x27;, $this-&gt;db-&gt;table(&#x27;users&#x27;)-&gt;count());
+        return $response;
+    }
+}
+</code></pre><p>Yes, looks like this works fine too.</p><h2>Queue jobs</h2><p>Job classes are something else that do only one thing, and thus it potentially makes sense to use an invokable class for them. Consider this job class which uses the Benchmark helper to benchmark a query and dump the results to the screen:</p><pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Jobs;
+
+use Illuminate\Database\ConnectionInterface;
+use Illuminate\Support\Benchmark;
+
+final class ThingDoer
+{
+    public function __construct(private ConnectionInterface $db)
+    {
+    }
+
+    public function __invoke()
+    {
+        Benchmark::dd(fn() =&gt; $this-&gt;db-&gt;table(&#x27;users&#x27;)-&gt;get());
+    }
+}
+</code></pre><div>This example will work if you&#x27;re using the sync queue connection type, but likely not with any others, because the intent is to run a query and dump it out. Obviously, that isn&#x27;t really the main use case of job classes, but it&#x27;s fine for demonstrating the principle of using invokable classes for tasks that do one thing only.</div><p>If we try the following in a route closure:</p><pre><code class="language-php">Route::get(&#x27;/&#x27;, function () {
+    dispatch(ThingDoer::class);
+</code></pre><p>We see the error <code>get_class(): Argument #1 ($object) must be of type object, string given</code>. So instead, we need to fetch <code>ThingDoer</code> from the container and pass it to <code>dispatch()</code>:</p><pre><code class="language-php">Route::get(&#x27;/&#x27;, function (ThingDoer $doer) {
+    dispatch($doer);
+</code></pre><p>In a controller, it may well make more sense to do this via method injection.</p><h2>Event listeners</h2><p>Event listeners are yet another example of something that only really does one thing. This invokable listener is based on the one used to send notifications in <a href="https://bootcamp.laravel.com/inertia/notifications-and-events">Laravel Bootcamp</a>:</p><pre><code class="language-php">&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\ChirpCreated;
+use App\Models\User;
+use App\Notifications\NewChirp;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendChirpCreatedNotifications implements ShouldQueue
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  \App\Events\ChirpCreated  $event
+     * @return void
+     */
+    public function __invoke(ChirpCreated $event)
+    {
+        foreach (User::cursor() as $user) {
+            $user-&gt;notify(new NewChirp($event-&gt;chirp));
+        }
+    }
+}
+</code></pre><p>This works in exactly the same way as a standard listener class. If you map it to an event class in the usual way, it works entirely as expected. However, as with some of the other examples, it&#x27;s not clear if it supports constructor injection, so it&#x27;s best to check. If we amend the listener as follows:</p><pre><code class="language-php">&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\ChirpCreated;
+use App\Models\User;
+use App\Notifications\NewChirp;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\ConnectionInterface;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendChirpCreatedNotifications implements ShouldQueue
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct(private ConnectionInterface $db)
+    {
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  \App\Events\ChirpCreated  $event
+     * @return void
+     */
+    public function __invoke(ChirpCreated $event)
+    {
+        foreach ($this-&gt;db-&gt;table(&#x27;users&#x27;)-&gt;cursor() as $user) {
+            dd($user);
+        }
+    }
+}
+</code></pre><p>Now, if we trigger the <code>ChirpCreated</code> event, it breaks at the right point and spits out the user data as expected, thus demonstrating that it works.</p><h2>Limitations</h2><p>There are some limitations of using invokable classes which you should bear in mind when deciding whether to make a class an invokable or not. For instance, accessing an invokable as as property of another class can be awkward - take this controller class:</p><pre><code class="language-php">&lt;?php
+
+namespace AppServiceProvider
+
+use App\Jobs\ThingDoer;
+
+final class FooController extends Controller
+{
+    public function __construct(private ThingDoer $thingDoer)
+    {
+    }
+
+    /**
+     * Return a view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke()
+    {
+        // Call $this-&gt;thingDoer...
+        return view(&#x27;foo&#x27;);
+    }
+}
+</code></pre><p>We can&#x27;t call <code>$this-&gt;thingDoer()</code> because <code>$this</code> refers to the instance of <code>FooController</code>, and so we&#x27;re referring to a non-existing method of <code>FooController</code> called <code>thingDoer</code> rather than the property <code>$this-&gt;thingDoer</code>. There are a couple of ways to do it. You can call <code>__invoke()</code> explicitly, which isn&#x27;t very elegant:</p><pre><code class="language-php">&lt;?php
+
+final class FooController extends Controller
+{
+    ...
+    /**
+     * Return a view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke()
+    {
+        $this-&gt;thingDoer-&gt;__invoke();
+        return view(&#x27;foo&#x27;);
+    }
+}
+</code></pre><p>Or you can use <code>call_user_func()</code>:</p><pre><code class="language-php">&lt;?php
+
+final class FooController extends Controller
+{
+    ...
+    /**
+     * Return a view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke()
+    {
+        call_user_func($this-&gt;thingDoer);
+        return view(&#x27;foo&#x27;);
+    }
+}
+</code></pre><p>Or, my personal favourite approach:</p><pre><code class="language-php">&lt;?php
+
+final class FooController extends Controller
+{
+    ...
+    /**
+     * Return a view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke()
+    {
+        ($this-&gt;thingDoer)();
+        return view(&#x27;foo&#x27;);
+    }
+}
+</code></pre><p>In the context of Laravel controllers, you also have the option to use method injection:</p><pre><code class="language-php">&lt;?php
+
+final class FooController extends Controller
+{
+    ...
+    /**
+     * Return a view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(ThingDoer $thingDoer)
+    {
+        $thingDoer();
+        return view(&#x27;foo&#x27;);
+    }
+}
+</code></pre><h2>Summary</h2><p>Using invokable classes for any part of your application that does one thing only, and could potentially be reused, makes a lot of sense. It allows for more elegant code, giving you the advantages of functional programming without losing the benefits of OOP, and allows you to break your application down into a selection of easily reusable parts. While I&#x27;ve not been in a position to try it before, I also suspect that it makes decorating components simpler, to the point that certain tasks like logging and caching can be done with a single closure or invokable. Next time you write a class to do something, give serious thought to the idea of whether it should be an invokable - the answer may be &quot;yes&quot; more often than you think, and it&#x27;ll often help make your code simpler and more reusable.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The ORM Delusion]]></title>
         <id>https://matthewdaly.co.uk/blog/2022/06/05/the-orm-delusion/</id>
@@ -969,18 +1284,6 @@ class AuthServiceProvider extends ServiceProvider
         <id>https://matthewdaly.co.uk/blog/2020/02/09/dont-use-stdclass/</id>
         <link href="https://matthewdaly.co.uk/blog/2020/02/09/dont-use-stdclass/"/>
         <updated>2020-02-09T10:10:48.000Z</updated>
-        <content type="html"><![CDATA[<p>The digital agency I work for specialises in marketing, so some of my work tends to relate to mailing lists. This week I was asked to look at an issue on a Laravel-based export system built by a co-worker who left a few months ago. This particular application pulled data from the Campaign Monitor API about campaigns, and it returned the data as instances of <code>stdClass</code>, something that I&#x27;m not terribly happy about.</p><p>Now, this was an implementation detail of the Campaign Monitor PHP SDK, which is old and creaky (to say the least...) and doesn&#x27;t exactly abide by modern best practices. However, the legacy application I maintain also does this (there&#x27;s a <em>lot</em> of stuff that needs sorting out on it, and sadly replacing the <code>stdClass</code> instances is a <em>long</em> way down the list), so I thought it was an interesting subject for a blog post. I consider using <code>stdClass</code>, even just as a dumb container for data, to be an antipattern, and I thought it would be useful to explain my thoughts on this.</p><h2>Why shouldn&#x27;t I use stdClass?</h2><h3>Readability</h3><p>One of the first things I learned about throwing exceptions is that they should be meaningful. It&#x27;s trivial to define a named exception and use that to specify the type of exception, and you can then capture exceptions to handle them differently elsewhere in the application. For instance, a validation error is entirely due to a user submitting the wrong details, and should therefore be handled in an entirely different manner to the database going down.</p><p>The same is applicable to an object. If an API client returns an instance of <code>stdClass</code>, that doesn&#x27;t tell me anything about what that object is. If I need to pass it elsewhere in a large application, it may become very difficult to understand what it represents without tracking it back to where it came from, which will slow me down. If instead I use a named class, the name can convey what it represents. It may seem like overkill to create a class that adds no new functionality, but the mere fact that it has a name makes your code more meaningful and easier to understand. I can also add DocBlock comments to describe it further.</p><p>Of course, just giving something a generic name like <code>Container</code> isn&#x27;t much of an improvement, and coming up with meaningful names for classes and methods is notoriously hard. As always, give some serious thoughts into what your objects represent and attempt to give them names that will make it easy to understand what they are if you look at the code base again six months down the line.</p><h3>Type hinting</h3><p>A related argument is that it makes type hinting more useful. You <em>can</em> type hint <code>stdClass</code>, but as noted above it tells someone working on the code receiving it very little about where it&#x27;s come from, or what it represents, and it doesn&#x27;t offer much value since an <code>stdClass</code> could mean anything, and could be created anywhere in the application.</p><p>By contrast, named classes provides much more information about what the type hinted parameter represents. For instance, naming your class something such as <code>App\Api\Response\Item</code>, makes it much clearer that that object represents an individual item returned from an API, and others developers working on the same code base (including your future self, who may not necessarily remember all of the details of how you&#x27;re implementing it now), will have less trouble understanding what is going on. There&#x27;s also a much-reduced likelihood of the same class being used to represent completely different types of data.</p><h3>New functionality</h3><p>Finally, are you sure you don&#x27;t want to add any functionality? PHP includes a number of interfaces that can be <em>extremely</em> useful for working with this sort of data.</p><p>First off, the <code>ArrayAccess</code> interface allows you to access an object&#x27;s values using array syntax, which can be useful. Also, implementing either <code>Iterator</code> or <code>IteratorAggregate</code> will allow you to iterate over the object using a <code>foreach</code> loop. The <code>Countable</code> interface is less useful, since all it does is let you get the number of items, but it&#x27;s sometimes handy. Finally, the <code>Serializable</code> interface lets you serialise an object so it can be stored in a suitable medium, which can sometimes be useful.</p><p>The same also applies to some of the magic methods. The <code>__toString()</code> method, in particular, can be useful for returning a suitable string-based representation of an object - for instance, if it represents an item in a database, it might be appropriate to use this to return the ID of the item, or a text representation of it (eg title for a blog post, or product name for a product in an e-commerce site). The <code>__get()</code> and <code>__set()</code> magic methods may be a bit more dubious, but they can be useful if your object is intended to just be a dumb container as they allow you to make the properties on the object private, but keep them accessible without writing explicit getters and setters. I&#x27;d also suggest adding <code>__debugInfo()</code> to objects unless you have a good reason not to, as when you&#x27;re debugging it can be hard to see the wood for the trees, and returning only the most pertinent data can make your job a <em>lot</em> easier.</p><p>Of course, you don&#x27;t have to implement all this functionality from scratch for every class. It often makes sense to create an abstract class that implements this sort of basic container functionality, and then base all your container classes on that, overriding it when necessary.</p><h3>Summary</h3><p>Hopefully, this has made it clear how compelling it is to use named classes instead of <code>stdClass</code>, and how much benefit you can get from not just using named classes, but creating your own base container class for them. I&#x27;m of the opinion that PHP should probably make <code>stdClass</code> abstract to prevent them from being used like this, and indeed I&#x27;m seriously considering the idea of creating a Codesniffer sniff to detect instances of <code>stdClass</code> being instantiated and raise them as an error.</p>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[F*** PHPStorm Man and the high horse he rode in on]]></title>
-        <id>https://matthewdaly.co.uk/blog/2020/01/25/f***-phpstorm-man-and-the-high-horse-he-rode-in-on/</id>
-        <link href="https://matthewdaly.co.uk/blog/2020/01/25/f***-phpstorm-man-and-the-high-horse-he-rode-in-on/"/>
-        <updated>2020-01-25T22:25:17.000Z</updated>
-        <content type="html"><![CDATA[<p>There&#x27;s a particularly unpleasant type of programmer that exists, and you&#x27;ve probably met him, either online or in person. I call him <strong>PHPStorm Man</strong>.</p><p>NB: Despite the name I&#x27;ve chosen, I&#x27;m not singling out users of PHPStorm in particular about this. The first time I encountered PHPStorm Man in person, he was using Sublime Text, and you will find PHPStorm Men using all different editors and IDEs. PHPStorm Man is an archetype defined not by any particular piece of software, but by a common bad attitude, and given that I work primarily with PHP these days, I&#x27;ve most often encountered this kind of behaviour from PHPStorm users (or at least, people claiming to be PHPStorm users, since at least online you can&#x27;t discount the possibility that they&#x27;re trolls). Users of other languages may well see this behaviour most prominently from those who use some other editor or IDE, but the same underlying phenomenon is at work, whether we call him PHPStorm Man, Eclipse Man, Vim Man or PyCharm Man.</p><h2>Who is PHPStorm Man?</h2><p><span class="gatsby-resp-image-wrapper" style="position:relative;display:block;margin-left:auto;margin-right:auto;max-width:500px">
-      <a class="gatsby-resp-image-link" href="/static/46cecd87a02e7a18e776a2b1243624cf/41099/phpstorm-man.jpg" style="display:block" target="_blank" rel="noopener">
-    <span class="gatsby-resp-image-background-image" style="padding-bottom:64.66666666666666%;position:relative;bottom:0;left:0;background-image:url(&#x27;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIFAwT/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAGb0S91QQD/xAAaEAEAAwADAAAAAAAAAAAAAAABAAIDEBIi/9oACAEBAAEFAsUItL6WPRO7x//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABwQAAIABwAAAAAAAAAAAAAAAAABAhESIEJhgf/aAAgBAQAGPwLFt6JxU8GrP//EABsQAQEBAAIDAAAAAAAAAAAAAAERABBBYZGh/9oACAEBAAE/IT4+Qp09IkfnKUDGUyjgOj1x/9oADAMBAAIAAwAAABCr7//EABcRAQADAAAAAAAAAAAAAAAAAAEQESH/2gAIAQMBAT8QHKj/xAAXEQEBAQEAAAAAAAAAAAAAAAABABEh/9oACAECAQE/EBA7bf/EABoQAQADAQEBAAAAAAAAAAAAAAEAESExUYH/2gAIAQEAAT8QfDyCu+uHyCdKuBto0hp0hst1kBqawQjVeXQWvfYur7s//9k=&#x27;);background-size:cover;display:block"></span>
-  <img class="gatsby-resp-image-image" alt="The hero we really, really don&#x27;t need" title="The hero we really, really don&#x27;t need" src="/static/46cecd87a02e7a18e776a2b1243624cf/41099/phpstorm-man.jpg" srcSet="/static/46cecd87a02e7a18e776a2b1243624cf/f93b5/phpstorm-man.jpg 300w,/static/46cecd87a02e7a18e776a2b1243624cf/41099/phpstorm-man.jpg 500w" sizes="(max-width: 500px) 100vw, 500px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0" loading="lazy" decoding="async"/>
-  </a>
-    </span></p><p>PHPStorm Man (and he <em>will</em> almost certainly be a man - while it could be just because our industry is male-dominated, I&#x27;ve <em>never</em> known a woman to behave like this, and I strongly suspect it&#x27;s nothing more than an industry-specific example of the common phenomenon of <a href="https://en.wikipedia.org/wiki/Mansplaining">mansplaining</a>) doesn&#x27;t know squat about your editor or IDE. He just knows his is superior, and he wants you to know it, regardless of the evidence.</p><p>His knowledge of your editor is probably either non-existent, grossly outdated, plain ill-informed or second-hand (probably from another PHPStorm Man). If he&#x27;s advocating an IDE, he&#x27;ll likely equate all text editors with Notepad - he may claim the advantages of his one over yours include such fundamentals as syntax highlighting and autocompletion.</p><p>He&#x27;ll boast about some feature his editor has that yours doesn&#x27;t, even if it does. If your editor lacks that functionality out of the box, but can add it via a plugin, apparently that doesn&#x27;t count because although you&#x27;re intelligent enough to build a working web app, somehow installing and configuring that plugin is an insurmountable burden (yet mysteriously turning off all the stuff you don&#x27;t need in <em>his</em> editor is quick and easy). If it does do that out of the box, he&#x27;ll probably find some bullshit reason why his editor&#x27;s implementation is better, even if it&#x27;s something as pointless and irrelevant as &quot;it&#x27;s been around longer&quot;. He&#x27;ll likely claim, with absolutely no evidence whatsoever, or indeed in the presence of evidence to the contrary, that you&#x27;d be more productive if you only used his editor.</p><p>In short, if you aren&#x27;t using his editor or IDE of choice, you&#x27;re a troglodyte living in a dung hut.</p><h2>PHPStorm man in the wild</h2><p>I had an encounter with PHPStorm Man in person a while back. Just over two years ago I started a new job, which as it turned out didn&#x27;t last long after I caught the flu that was going around in late 2017 my first week. On the second day, shortly after going over something with me, the senior dev sent me the following message on Slack:</p><blockquote><p>I noticed you&#x27;re using Vim. Have you tried using Sublime Text?</p></blockquote><p>I responded that I had, and chose not to use it. There followed a long string of messages along the following lines:</p><blockquote><p>Him: Sublime Text has X!</p></blockquote><blockquote><p>Me: I have that</p></blockquote><blockquote><p>Him: Well Sublime Text also has Y!</p></blockquote><blockquote><p>Me: I have that too, via a plugin</p></blockquote><blockquote><p>Him: Well, Sublime Text doesn&#x27;t need a plugin for that</p></blockquote><blockquote><p>Me: Irrelevant since the plugin is already installed and configured, and I know how to use it</p></blockquote><blockquote><p>Him: Well, what about this?</p></blockquote><blockquote><p>Me: That sounds cool, so I just found a plugin to do that and installed it</p></blockquote><blockquote><p>Him: And this?</p></blockquote><blockquote><p>Me: I have absolutely no need for that</p></blockquote><blockquote><p>Him: Well, Vim is old, Sublime Text is new!</p></blockquote><blockquote><p>Me: Actually, this is Neovim, which is technically newer than Sublime Text</p></blockquote><blockquote><p>Him: Well, Sublime Text is a GUI application</p></blockquote><blockquote><p>Me: Exactly. That makes it slower and forces me to use the mouse, aggravating my RSI. I use the terminal because it&#x27;s more efficient</p></blockquote><blockquote><p>Him: Well, I don&#x27;t mind what you use...(despite the evidence of that entire conversation)</p></blockquote><p>With the benefit of hindsight, what I <em>should</em> have responded with was this:</p><blockquote><p>I&#x27;m an experienced, professional web developer of over six years, and I chose my editor based on years of personal experience, and have chosen my plugins and configuration based on what&#x27;s useful to me, and continue to do so to this day. I don&#x27;t appreciate you talking down to me like a child.</p></blockquote><h2>Why I personally don&#x27;t use an IDE</h2><p>In my case, I have a particularly good reason not to use <em>any</em> GUI application to develop in. Before I was a developer, I worked for an insurance company in a customer service role, and I didn&#x27;t have access to the sort of decent quality keyboards and mice developers habitually use, as well as having output goals linked to discipline and bonus/salary raises and having to use custom internal applications on Windows XP, with dreadful keyboard support. As a result I developed a degree of RSI in both hands, which I&#x27;ve found is aggravated by using any application that requires me to use a mouse extensively - I&#x27;m generally OK if I only have to type, but reaching for the mouse all the time quickly becomes tiring, and soon after painful.</p><p>For that reason I&#x27;ve developed a workflow that&#x27;s strongly dependent on the command line - I use Neovim in the terminal, alongside Byobu so that I can run multiple tabs and switch between them quickly without touching the mouse. Moving to a more GUI-oriented workflow would require me to use the mouse more than I do now, which would probably become physically painful quite quickly. Using an editor or IDE which I found made me more prone to further flare-ups of RSI could have serious consequences for my long-term health, and could potentially be career-ending. If I worked somewhere that mandated a particular IDE that didn&#x27;t work well for me, I&#x27;d <em>have</em> to either negotiate an exception on health and safety grounds or quit.</p><p>I&#x27;m also of the personal opinion that much of the functionality of an IDE should not be, in principle, tied to that IDE, but should instead be the province of more general purpose tools that can used, not merely in any editor or IDE but, where appropriate, on a continuous integration server. For instance, language servers provide a tool-agnostic way for any IDE or editor to implement functionality such as completion or navigation, and linters such as ESLint can integrate into any half-decent editor or run in a CI environment. Since these tend to be open source projects, whereas IDE&#x27;s are normally commercial offerings, they&#x27;re less vulnerable to suddenly disappearing and leaving users high and dry.</p><p>There&#x27;s also a lot of functionality in an IDE that I rarely, if ever, use. There&#x27;s no point including and starting up an FTP client as part of my editor if I&#x27;m never going to use it, as it slows the application down, and nor should I have to root around trying to turn off functionality I&#x27;m never going to have to use. For a lot of other functionality, there are more powerful standalone applications that I&#x27;m used to such as Postman or MySQL Workbench, and I&#x27;ll use them as and when I need them - I gain nothing by having them integrated with my editor.</p><p>I also like to be able to use the same editor everywhere. I still occasionally dabble in Python, so a language-specific IDE wouldn&#x27;t be suitable when switching between languages. I also sometimes work on personal projects on an HP Stream netbook running Xubuntu, which is fine for small PHP projects that don&#x27;t require a database server or any web server other than the PHP dev server. I can happily run Neovim on that, but there&#x27;s no way it could run an IDE at an acceptable speed.</p><p>Last of all, screen real estate is an issue. I don&#x27;t like interfaces that are too busy - I <em>cannot stand</em> having anything, <em>at all</em> on my desktop for any length of time at all, and any interface that has too much on screen at once is distracting. I will typically have Neovim open in a terminal, with the NERDTree file finder open on the left, and two panels split in the main body, and that&#x27;s all. A big factor in my productivity is how much code I can see at once, and having too much screen real estate taken up by menus and sidebars is counterproductive - with Neovim there&#x27;s almost nothing getting in the way.</p><p>I personally have had to give this sort of explanation many, many times as to why I use first Vim and then Neovim, and indeed part of the motivation behind writing this post is that I&#x27;m sick to death of having to explain myself over and over again and will now be able to merely direct them to this article. Thanks to tools like PHPActor, vim-ale and FZF, I don&#x27;t feel like there&#x27;s anything I&#x27;m missing out on that an IDE would give me, and Psalm is very good at catching type errors without being tied to any one IDE, but that doesn&#x27;t stop people telling me I&#x27;m missing out on features I already have. Any time I come across a feature I think is cool, I go through the following process:</p><ul><li>Find cool feature</li><li>Find plugin that implements said feature</li><li>Install plugin by adding a single line to my Neovim config and running <code>:PlugUpdate</code></li><li>Add a few lines of config</li><li>Start using feature</li></ul><p>Using an IDE <em>would</em> eliminate the middle three steps, but I don&#x27;t find those onerous - we&#x27;re talking about the work of five minutes, which is insignificant compared to the time taken to learn to use the feature effectively. And a feature you don&#x27;t use is one that you still have to start up if it&#x27;s present, so making it an opt-in plugin is often a better way to go.</p><p>Every other developer will have their own version of this story. Some will have stayed mostly static in their editor choices, while others will be changing all the time - indeed, I&#x27;ve sometimes used other editors for specific tasks in the past. In short, everyone has their own reasons for using their editor of choice, and it&#x27;s <em>appallingly</em> arrogant to assume that their reasons for using a particular one are less valid than yours.</p><h2>Am I PHPStorm Man?</h2><p>As I&#x27;ve said before, this behaviour is not confined to PHPStorm users, nor is it in any way universal among them. If you use PHPStorm and enjoy it, then fine, rock on. If you use a different editor or IDE, then that&#x27;s fine too - I don&#x27;t have a problem with that, and nor should your colleagues or line manager. Using any one editor or IDE <em>does not</em> make you PHPStorm Man. What makes you PHPStorm Man is the patronising attitude.</p><p>In the example given above, what made the senior dev PHPStorm Man was not the initial enquiry as to whether I&#x27;d tried Sublime Text, but the fact that he wouldn&#x27;t leave it be when confronted with evidence that I either had, could easily obtain, or didn&#x27;t need the functionality of his editor in mine, and that he was talking down to an experienced developer like a child.</p><p>Obviously, this isn&#x27;t a new development - editor wars have long been a feature of our industry, as has the divide between IDE and editor users. But that doesn&#x27;t mean I, and no doubt others, don&#x27;t get utterly sick of it.</p><h2>How not to be PHPStorm Man</h2><p>When talking to users of other editors or IDE&#x27;s about the subject of those tools, you should always bear this in mind:</p><ul><li>If they use a different tool to you, they probably know a hell of a lot more about it than you do, and are unlikely to take kindly to you ignorantly telling them what it can and can&#x27;t do</li><li>Mastering an editor or IDE can take years, and if they&#x27;re already invested in one, it&#x27;s incredibly arrogant to just assume that they&#x27;re less productive in it than they would be in yours - even if they would (and that&#x27;s almost certainly debatable), it would take some time to adjust.</li><li>They&#x27;ve probably had this conversation many times before, and are sick of hearing it, especially if they have a few years experience under their belt</li><li>Not every feature you use is useful to them</li><li>No-one minds seeing a cool feature, so feel free to demonstrate it, but bear in mind that it&#x27;s almost certainly not limited to that platform - if it&#x27;s sufficiently cool, someone <em>will</em> have made it available as a plugin on most of the major editors and IDE&#x27;s. If they like it, the most likely scenario is that they&#x27;ll look to add that feature to their own editor via a plugin</li><li>Just because it makes you more productive, doesn&#x27;t mean that it would make them more productive</li><li>It&#x27;s perfectly possible to enforce consistent code styles and catch errors using standalone tools such as PHP CodeSniffer, Psalm, or ESLint, and these tools can be integrated in <em>any</em> editor, triggered with Git hooks, or run with continuous integration.</li></ul><p>Now, it has to be said that sometimes there <em>are</em> some people who plod on with painfully outdated tools, like Notepad. But those tools tend to be limited to either commercial offerings that are no longer maintained or supported, or ones that lack any sort of plugin or extension system, making them limited in terms of how they can integrate with other services, so they&#x27;re fairly easy to spot. However, making a particular editor or IDE compulsory is going to be disruptive. If you&#x27;re in a leadership position, one way to resolve this is to simply require that everyone&#x27;s editor have certain functionality - for instance, if you specify that everyone&#x27;s editor must allow integration with PHP CodeSniffer and support for <code>.editorconfig</code>, then anyone using a legacy editor that can&#x27;t support those will need to move away from it, but they&#x27;ll be able to pick one that suits them, rather than be forced into one they may well dislike. Editors and IDE&#x27;s don&#x27;t produce proprietary formats the way word processors do - they work with common formats, and if prominent open-source projects can enforce a consistent coding standard with many different editors there&#x27;s absolutely no reason why your colleagues can&#x27;t do so too.</p><h2>Summary</h2><p>This post is a bit of an angry rant, but at the same time it shouldn&#x27;t be taken <em>too</em> seriously. As I said, despite the name <em>PHPStorm Man</em>, it&#x27;s not specifically about users of any one editor or IDE, but about the widespread, patronising attitude many developers have about editors and IDE&#x27;s other than their own in general.</p><p>Someone using a different IDE or editor is absolutely none of your business unless you&#x27;re their line manager or you work on the same code base, and even then it should only be an issue if it causes a clear effect on their productivity or the quality of their code. If that&#x27;s not the case, keep your nose out.</p>]]></content>
+        <content type="html"><![CDATA[<p>The digital agency I work for specialises in marketing, so some of my work tends to relate to mailing lists. This week I was asked to look at an issue on a Laravel-based export system built by a co-worker who left a few months ago. This particular application pulled data from the Campaign Monitor API about campaigns, and it returned the data as instances of <code>stdClass</code>, something that I&#x27;m not terribly happy about.</p><p>Now, this was an implementation detail of the Campaign Monitor PHP SDK, which is old and creaky (to say the least...) and doesn&#x27;t exactly abide by modern best practices. However, the legacy application I maintain also does this (there&#x27;s a <em>lot</em> of stuff that needs sorting out on it, and sadly replacing the <code>stdClass</code> instances is a <em>long</em> way down the list), so I thought it was an interesting subject for a blog post. I consider using <code>stdClass</code>, even just as a dumb container for data, to be an antipattern, and I thought it would be useful to explain my thoughts on this.</p><h1>Why shouldn&#x27;t I use stdClass?</h1><h2>Readability</h2><p>One of the first things I learned about throwing exceptions is that they should be meaningful. It&#x27;s trivial to define a named exception and use that to specify the type of exception, and you can then capture exceptions to handle them differently elsewhere in the application. For instance, a validation error is entirely due to a user submitting the wrong details, and should therefore be handled in an entirely different manner to the database going down.</p><p>The same is applicable to an object. If an API client returns an instance of <code>stdClass</code>, that doesn&#x27;t tell me anything about what that object is. If I need to pass it elsewhere in a large application, it may become very difficult to understand what it represents without tracking it back to where it came from, which will slow me down. If instead I use a named class, the name can convey what it represents. It may seem like overkill to create a class that adds no new functionality, but the mere fact that it has a name makes your code more meaningful and easier to understand. I can also add DocBlock comments to describe it further.</p><p>Of course, just giving something a generic name like <code>Container</code> isn&#x27;t much of an improvement, and coming up with meaningful names for classes and methods is notoriously hard. As always, give some serious thoughts into what your objects represent and attempt to give them names that will make it easy to understand what they are if you look at the code base again six months down the line.</p><h2>Type hinting</h2><p>A related argument is that it makes type hinting more useful. You <em>can</em> type hint <code>stdClass</code>, but as noted above it tells someone working on the code receiving it very little about where it&#x27;s come from, or what it represents, and it doesn&#x27;t offer much value since an <code>stdClass</code> could mean anything, and could be created anywhere in the application.</p><p>By contrast, named classes provides much more information about what the type hinted parameter represents. For instance, naming your class something such as <code>App\Api\Response\Item</code>, makes it much clearer that that object represents an individual item returned from an API, and others developers working on the same code base (including your future self, who may not necessarily remember all of the details of how you&#x27;re implementing it now), will have less trouble understanding what is going on. There&#x27;s also a much-reduced likelihood of the same class being used to represent completely different types of data.</p><h2>New functionality</h2><p>Finally, are you sure you don&#x27;t want to add any functionality? PHP includes a number of interfaces that can be <em>extremely</em> useful for working with this sort of data.</p><p>First off, the <code>ArrayAccess</code> interface allows you to access an object&#x27;s values using array syntax, which can be useful. Also, implementing either <code>Iterator</code> or <code>IteratorAggregate</code> will allow you to iterate over the object using a <code>foreach</code> loop. The <code>Countable</code> interface is less useful, since all it does is let you get the number of items, but it&#x27;s sometimes handy. Finally, the <code>Serializable</code> interface lets you serialise an object so it can be stored in a suitable medium, which can sometimes be useful.</p><p>The same also applies to some of the magic methods. The <code>__toString()</code> method, in particular, can be useful for returning a suitable string-based representation of an object - for instance, if it represents an item in a database, it might be appropriate to use this to return the ID of the item, or a text representation of it (eg title for a blog post, or product name for a product in an e-commerce site). The <code>__get()</code> and <code>__set()</code> magic methods may be a bit more dubious, but they can be useful if your object is intended to just be a dumb container as they allow you to make the properties on the object private, but keep them accessible without writing explicit getters and setters. I&#x27;d also suggest adding <code>__debugInfo()</code> to objects unless you have a good reason not to, as when you&#x27;re debugging it can be hard to see the wood for the trees, and returning only the most pertinent data can make your job a <em>lot</em> easier.</p><p>Of course, you don&#x27;t have to implement all this functionality from scratch for every class. It often makes sense to create an abstract class that implements this sort of basic container functionality, and then base all your container classes on that, overriding it when necessary.</p><h2>Summary</h2><p>Hopefully, this has made it clear how compelling it is to use named classes instead of <code>stdClass</code>, and how much benefit you can get from not just using named classes, but creating your own base container class for them. I&#x27;m of the opinion that PHP should probably make <code>stdClass</code> abstract to prevent them from being used like this, and indeed I&#x27;m seriously considering the idea of creating a Codesniffer sniff to detect instances of <code>stdClass</code> being instantiated and raise them as an error.</p>]]></content>
     </entry>
 </feed>
