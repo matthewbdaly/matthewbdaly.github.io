@@ -34,10 +34,7 @@ pre.prism-code {
 
 p > code,
 li > code {
-    background: rgb(1, 22, 39);
-    color: rgb(214, 222, 235);
-    padding: 0.2em;
-    border-radius: 0.2em;
+    color: #ab79d6;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
