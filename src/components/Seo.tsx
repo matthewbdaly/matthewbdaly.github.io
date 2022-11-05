@@ -30,6 +30,7 @@ const SEO = ({ description, lang, meta, title, url }: Props): React.ReactElement
               twitter
               github
               email
+              mastodon
             }
             siteUrl
           }
@@ -85,6 +86,7 @@ const SEO = ({ description, lang, meta, title, url }: Props): React.ReactElement
       <link href={ url } rel="canonical" />
       <link href={`https://twitter.com/${site.siteMetadata.social.twitter}`} rel="me" />
       <link href={`https://github.com/${site.siteMetadata.social.github}`} rel="me" />
+      <link href={`${site.siteMetadata.social.mastodon}`} rel="me" />
       <link href={`mailto:${site.siteMetadata.social.email}`} rel="me" />
       <link href="/key.pub" rel="pgpkey" />
       <link href="https://webmention.io/matthewdaly.co.uk/xmlrpc" rel="pingback" />

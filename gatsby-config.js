@@ -10,7 +10,8 @@ module.exports = {
     social: {
       twitter: "mattbd",
       github: "matthewbdaly",
-      email: "matthew@matthewdaly.co.uk"
+      email: "matthew@matthewdaly.co.uk",
+      mastodon: "https://mstdn.social/@matthewbdaly"
     },
   },
   plugins: [
