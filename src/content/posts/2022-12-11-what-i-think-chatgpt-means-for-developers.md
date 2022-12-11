@@ -139,7 +139,9 @@ function App() {
 
 > In this example, the `useToast` hook uses an array to store multiple toast messages, and the `App` component displays all of the toasts in the array. The `useEffect` hook is used to set a timeout for each toast to automatically hide it after a certain amount of time. You can modify this example further to suit your specific needs, such as setting different timeouts for each toast or adding additional methods for managing the toasts.
 
-Great, but our toasts need to show different styles based on the type of alert, so I asked this:
+Great,  although I noticed an unused `_` variable in `forEach` - not sure if perhaps this is based on something that used Lodash, perhaps.
+
+Next, our toasts need to show different styles based on the type of alert, so I asked this:
 
 > Can we amend this to allow the toasts to use different styles based on the type of alert?
 
@@ -724,6 +726,6 @@ Even in its current state as a tech preview, ChatGPT is *hugely* impressive. It'
 
 However, don't get the impression that doesn't make it useful. I've used Github Copilot for a while and that offers dramatic improvements in productivity, and this has the potential to be much more significant. As shown above, it can migrate a simple controller from Zend 1 to Laravel, with the result looking perfectly acceptable, and the value of that should be clear to anyone who has to work on a large legacy project. Similarly you can ask it to rewrite something to use a specific design pattern and the end result is perfectly acceptable. It's a fantastic learning tool too since you can ask it to provide an example specific to your use case rather than trawling through blog posts, where most of them might have different requirements to you. As such it's going to hugely improve developer productivity.
 
-To a large extent, I think something like this is going change the developer's role by shifting the emphasis of it somewhat from the productive to the executive, with our job being more akin to editors than authors. Coding will become less about solving the problem and more about defining the problem in the first place and letting the system solve it. However, I don't think it will automate our jobs away entirely - the quality of the code it produces is variable, to say the least, and there will definitely be a need to be able to debug it, solve more unusual problems.
+To a large extent, I think something like this is going change the developer's role by shifting the emphasis of it somewhat from the productive to the executive, with our job being more akin to editors than authors. Coding will become less about solving the problem and more about defining the problem in the first place and letting the system solve it. However, I don't think it will automate our jobs away entirely - the quality of the code it produces is variable, to say the least, and there will definitely be a need to be able to debug it, and solve more unusual problems.
 
-However, if I were working on churning out spammy blog posts to try to get money from ads, I'd be very worried about my future prospects. I think tools like this will probably be writing most of the spammier sort of blog posts that just exist to get clicks on the web in a year at most. I've actually just asked it to write a blog post I've wanted to write for a while now for me, and the end result looks pretty solid right now.
+However, my job involved writing spammy blog posts for ad money, I'd be very worried about my future prospects. I think tools like this will probably be writing most of the spammier sort of blog posts that just exist to get clicks on the web in a year at most. I've actually just asked it to write a blog post I've wanted to write for a while now for me, and the end result looks pretty solid right now.
