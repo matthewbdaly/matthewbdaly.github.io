@@ -1,6 +1,6 @@
 ---
 title: "Two techniques for handling recursive relationships in MySQL"
-date: 2022-12-11 19:30:00 +0000
+date: 2022-12-18 14:15:00 +0000
 layout: post
 categories:
 - sql
@@ -8,11 +8,11 @@ categories:
 comments: true
 ---
 
-In a hierarchical organization, it is common to need to retrieve the line manager or subordinates of a given user. In MySQL, two of the techniques that can be used to handle these recursive relationships are the `WITH RECURSIVE` common table expression and using closure tables.
+When modelling users in a hierarchical organization, it's common to need to retrieve the line manager or subordinates of a given user. In MySQL, two of the techniques that can be used to handle these recursive relationships are the `WITH RECURSIVE` common table expression and using closure tables.
 
 ### Using CTEs with `WITH RECURSIVE`
 
-A common table expression (CTE) is a temporary result set that is defined within the execution scope of a single SQL statement. In MySQL, you can use the WITH RECURSIVE clause to define a CTE that can be used to retrieve all of the users above or below a given user in the hierarchy.
+A common table expression (CTE) is a temporary result set that is defined within the execution scope of a single SQL statement. In MySQL, you can use the `WITH RECURSIVE` clause to define a CTE that can be used to retrieve all of the users above or below a given user in the hierarchy.
 
 Say we have a `users` table that looks like this:
 
@@ -128,7 +128,22 @@ WHERE u.id = h.descendant
 
 This query will return a list of all of the users below the given user in the hierarchy.
 
+One downside of the closure table approach is that when the hierarchical structure changes, the `hierarchy` table needs to be updated to reflect the changes. There are a number of approaches you can take to handle this, including:
+
+* Creating MySQL triggers to update the `hierarchy` table automatically when a user is inserted, updated or deleted
+* Using events, such as Eloquent model events, to apply the changes in application code
+* Truncating and repopulating the `hierarchy` table from scratch
+
+The first approach is generally the most efficient, but has the downside that triggers aren't generally exported from `mysqldump`, making it difficult to manage when importing the production database locally. The last approach often makes the most sense in cases where users are populated from some kind of regular import, in which case the hierarchy will only ever change as a result of that import.
+
+### Which one should I use?
+
+Which of these approaches you should choose in a given situation is highly dependent on the specific needs of your application, since each has advantages and limitations.
+
+Using a closure table results in a smaller, simpler, and generally more efficient query that is easy to express using an ORM or query builder, but requires that you take steps to update the separate closure table when the hierarchy changes. Using the `WITH RECURSIVE` CTE doesn't require a separate table, eliminating the need to populate said table, but for some queries it may not be as efficient. In addition, it can be difficult to express with some ORMs and query builders, necessitating either additional third party packages or falling back to raw queries. If you're stuck using an older version of MySQL, such as on a legacy application, and can't upgrade, you might also not be able to use `WITH RECURSIVE` (though at this point you *really* shouldn't be using a version that old).
+
+At times I've found it necessary to combine both techniques. One application I maintain has a nightly import process for all the users and derives the permissions to view various pieces of content in part from the hierarchy - the only way to determine the hierarchy is by following the line managers back all the way to the managing director for each individual user, but permissions can be assigned to individual business units within the company and cascade down to child business units, and so to know what permissions a user has, we need to know where they sit in the hierarchy. This query would be too cumbersome to perform on the fly for each user, so we use the `WITH RECURSIVE` CTE to detetermine a user's place within the hierarchy, and then populate a closure table from it, as a part of the nightly import.
+
 ### Conclusion
 
-In MySQL, there are a number of techniques that can be used to handle recursive relationships in hierarchical data, but two of the most performant and flexible are using CTEs with `WITH RECURSIVE` and using closure tables. Both techniques have their own benefits and drawbacks, and the best choice will depend on the specific requirements of your application.
-
+In MySQL, there are a number of techniques that can be used to handle recursive relationships in hierarchical data, but two of the most performant and flexible are the `WITH RECURSIVE` CTE and using closure tables. Both techniques have their own benefits and drawbacks, and the best choice will depend on the specific requirements of your application.

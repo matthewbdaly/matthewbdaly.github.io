@@ -9,7 +9,7 @@ categories:
 comments: true
 ---
 
-I'm sure you've heard some of the buzz about [ChatGPT](https://chat.openai.com/). There's been examples of it [creating a working Wordpress plugin on demand](https://wptavern.com/chatgpt-creates-a-working-wordpress-plugin-on-the-first-try), [recreating the Apple website](https://twitter.com/ZacYungblut/status/1598593759532355584?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1598593759532355584%7Ctwgr%5E7278d2255112f76225493be1370af0fa7a975285%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fd-35506373891512421835.ampproject.net%2F2211250451000%2Fframe.html), act as a Linux terminal, and writing astonishingly detailed code samples for various purposes on demand.
+I'm sure you've heard some of the buzz about [ChatGPT](https://chat.openai.com/). There's been examples of it [creating a working Wordpress plugin on demand](https://wptavern.com/chatgpt-creates-a-working-wordpress-plugin-on-the-first-try), [recreating the Apple website](https://twitter.com/ZacYungblut/status/1598593759532355584?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1598593759532355584%7Ctwgr%5E7278d2255112f76225493be1370af0fa7a975285%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fd-35506373891512421835.ampproject.net%2F2211250451000%2Fframe.html), acting as a Linux terminal, and writing astonishingly detailed code samples for various purposes on demand.
 
 Naturally I decided to have a tinker with it as I was curious about it, and I've found it very useful for coding. Here are some samples of things I've asked it to do for me.
 
@@ -79,7 +79,7 @@ function App() {
 
 > The `useToast` hook uses the `useState` hook to manage the state for the toast, and the `useEffect` hook to automatically hide the toast after a certain amount of time. This is just one example of how to implement a toast-style alert system in React.js using hooks, and you can modify it to suit your specific needs.
 
-Looks OK, but only supports a single message at once, so I followed it up:
+Looks OK, but it only supports a single message at once, so I followed it up:
 
 > Can we amend this to support showing multiple toasts at once?
 
@@ -728,4 +728,4 @@ However, don't get the impression that doesn't make it useful. I've used Github 
 
 To a large extent, I think something like this is going change the developer's role by shifting the emphasis of it somewhat from the productive to the executive, with our job being more akin to editors than authors. Coding will become less about solving the problem and more about defining the problem in the first place and letting the system solve it. However, I don't think it will automate our jobs away entirely - the quality of the code it produces is variable, to say the least, and there will definitely be a need to be able to debug it, and solve more unusual problems.
 
-However, my job involved writing spammy blog posts for ad money, I'd be very worried about my future prospects. I think tools like this will probably be writing most of the spammier sort of blog posts that just exist to get clicks on the web in a year at most. I've actually just asked it to write a blog post I've wanted to write for a while now for me, and the end result looks pretty solid right now.
+However, if my job involved writing spammy blog posts for ad money, I'd be *very* worried about my future prospects. I think tools like this will probably be writing most of the spammier sort of blog posts that just exist to get clicks on the web in a year at most. I've actually just asked it to write a blog post I've wanted to write for a while now for me, and the end result looks pretty solid right now - I'd anticipate it saved me about 90% of the work, with the remaining 10% just a case of cleaning it up.
