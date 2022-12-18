@@ -4,18 +4,87 @@
         <title>Matthew Daly</title>
         <link>https://matthewdaly.co.uk</link>
         <description>I'm a web developer in Norfolk. This is my blog...</description>
-        <lastBuildDate>Sun, 11 Dec 2022 19:32:44 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 18 Dec 2022 14:16:16 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>GatsbyJS</generator>
         <language>en</language>
         <copyright>All rights reserved Matthew Daly 2022</copyright>
         <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
+            <title><![CDATA[Two techniques for handling recursive relationships in MySQL]]></title>
+            <link>https://matthewdaly.co.uk/blog/2022/12/18/two-techniques-for-handling-recursive-relationships-in-mysql/</link>
+            <guid>https://matthewdaly.co.uk/blog/2022/12/18/two-techniques-for-handling-recursive-relationships-in-mysql/</guid>
+            <pubDate>Sun, 18 Dec 2022 14:15:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>When modelling users in a hierarchical organization, it&#x27;s common to need to retrieve the line manager or subordinates of a given user. In MySQL, two of the techniques that can be used to handle these recursive relationships are the <code>WITH RECURSIVE</code> common table expression and using closure tables.</p><h3>Using CTEs with <code>WITH RECURSIVE</code></h3><p>A common table expression (CTE) is a temporary result set that is defined within the execution scope of a single SQL statement. In MySQL, you can use the <code>WITH RECURSIVE</code> clause to define a CTE that can be used to retrieve all of the users above or below a given user in the hierarchy.</p><p>Say we have a <code>users</code> table that looks like this:</p><pre><code class="language-sql">CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  manager_id INTEGER REFERENCES users(id)
+);
+</code></pre><p>To create a CTE that gets the users above a given user, you can use the following query:</p><pre><code class="language-sql">WITH RECURSIVE managers AS (
+  SELECT id, name, manager_id
+  FROM users
+  WHERE id = :user_id
+UNION ALL
+  SELECT u.id, u.name, u.manager_id
+  FROM users u
+  INNER JOIN managers m ON m.manager_id = u.id
+)
+SELECT * FROM managers;
+</code></pre><p>This query uses the <code>WITH RECURSIVE</code> clause to define a CTE called <code>managers</code> that first selects the user with the given <code>user_id</code> and then uses the <code>UNION ALL</code> operator to combine that user with all of the users above them in the hierarchy. The <code>INNER JOIN</code> clause is used to link the <code>managers</code> CTE to the users table, so that the <code>managers</code> CTE can keep growing until it includes all of the users above the given user in the hierarchy.</p><p>To get the users below a given user, you can use a similar query, but with the <code>manager_id</code> and <code>id</code> fields swapped in the INNER JOIN clause:</p><pre><code class="language-sql">WITH RECURSIVE subordinates AS (
+  SELECT id, name, manager_id
+  FROM users
+  WHERE id = :user_id
+UNION ALL
+  SELECT u.id, u.name, u.manager_id
+  FROM users u
+  INNER JOIN subordinates s ON s.id = u.manager_id
+)
+SELECT * FROM subordinates;
+</code></pre><p>This query uses the same technique as the previous example, but it retrieves the users below the given user instead of above.</p><h3>Using closure tables</h3><p>Another technique for handling recursive relationships in MySQL is to use closure tables. A closure table is a special type of table that is used to represent hierarchical data in a relational database. It consists of two tables: one for the entities in the hierarchy (e.g. users) and one for the relationships between those entities.</p><p>To create a closure table for a hierarchy of users, you can use the following DDL statement:</p><pre><code class="language-sql">CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE hierarchy (
+  ancestor INTEGER NOT NULL REFERENCES users(id),
+  descendant INTEGER NOT NULL REFERENCES users(id),
+  PRIMARY KEY (ancestor, descendant),
+  CHECK (ancestor != descendant)
+);
+</code></pre><p>The users table is similar to the one in the previous example, but it only contains the <code>id</code> and <code>name</code> fields. The relationships between the users are defined in the <code>hierarchy</code> table.</p><p>To insert data into these tables, you would first need to insert rows into the users table for each user in the hierarchy, and then insert rows into the hierarchy table to define the relationships between those users. Here is an example of how this could be done:</p><pre><code class="language-sql">INSERT INTO users (id, name) VALUES
+  (1, &#x27;Alice&#x27;),
+  (2, &#x27;Bob&#x27;),
+  (3, &#x27;Carol&#x27;),
+  (4, &#x27;Dave&#x27;),
+  (5, &#x27;Eve&#x27;);
+
+INSERT INTO hierarchy (ancestor, descendant) VALUES
+  (1, 1),
+  (1, 2),
+  (1, 3),
+  (1, 4),
+  (1, 5),
+  (2, 2),
+  (2, 3),
+  (2, 4),
+  (3, 3),
+  (4, 4);
+</code></pre><p>This inserts five users into the <code>users</code> table and then inserts rows into the <code>hierarchy</code> table to define the relationships between those users. The ancestor and descendant values are both set to the same id for each user, which indicates that each user is a descendant of themselves. The hierarchy table also defines the relationships between the users, with each user being a descendant of the user above them in the hierarchy.</p><p>To get all of the users above a given user using a closure table, you can use the following query:</p><pre><code class="language-sql">SELECT u.*
+FROM users u
+INNER JOIN hierarchy h ON h.descendant = :user_id
+WHERE u.id = h.ancestor
+</code></pre><p>This query uses an <code>INNER JOIN</code> to link the <code>users</code> table to the <code>hierarchy</code> table, and then filters the results to only include users that are ancestors of the user with the given <code>user_id</code>. This query will return a list of all of the users above the given user in the hierarchy.</p><p>To get the users below a given user, you can use a similar query, but with the ancestor and descendant fields swapped in the INNER JOIN clause:</p><pre><code class="language-sql">SELECT u.*
+FROM users u
+INNER JOIN hierarchy h ON h.ancestor = :user_id
+WHERE u.id = h.descendant
+</code></pre><p>This query will return a list of all of the users below the given user in the hierarchy.</p><p>One downside of the closure table approach is that when the hierarchical structure changes, the <code>hierarchy</code> table needs to be updated to reflect the changes. There are a number of approaches you can take to handle this, including:</p><ul><li>Creating MySQL triggers to update the <code>hierarchy</code> table automatically when a user is inserted, updated or deleted</li><li>Using events, such as Eloquent model events, to apply the changes in application code</li><li>Truncating and repopulating the <code>hierarchy</code> table from scratch</li></ul><p>The first approach is generally the most efficient, but has the downside that triggers aren&#x27;t generally exported from <code>mysqldump</code>, making it difficult to manage when importing the production database locally. The last approach often makes the most sense in cases where users are populated from some kind of regular import, in which case the hierarchy will only ever change as a result of that import.</p><h3>Which one should I use?</h3><p>Which of these approaches you should choose in a given situation is highly dependent on the specific needs of your application, since each has advantages and limitations.</p><p>Using a closure table results in a smaller, simpler, and generally more efficient query that is easy to express using an ORM or query builder, but requires that you take steps to update the separate closure table when the hierarchy changes. Using the <code>WITH RECURSIVE</code> CTE doesn&#x27;t require a separate table, eliminating the need to populate said table, but for some queries it may not be as efficient. In addition, it can be difficult to express with some ORMs and query builders, necessitating either additional third party packages or falling back to raw queries. If you&#x27;re stuck using an older version of MySQL, such as on a legacy application, and can&#x27;t upgrade, you might also not be able to use <code>WITH RECURSIVE</code> (though at this point you <em>really</em> shouldn&#x27;t be using a version that old).</p><p>At times I&#x27;ve found it necessary to combine both techniques. One application I maintain has a nightly import process for all the users and derives the permissions to view various pieces of content in part from the hierarchy - the only way to determine the hierarchy is by following the line managers back all the way to the managing director for each individual user, but permissions can be assigned to individual business units within the company and cascade down to child business units, and so to know what permissions a user has, we need to know where they sit in the hierarchy. This query would be too cumbersome to perform on the fly for each user, so we use the <code>WITH RECURSIVE</code> CTE to detetermine a user&#x27;s place within the hierarchy, and then populate a closure table from it, as a part of the nightly import.</p><h3>Conclusion</h3><p>In MySQL, there are a number of techniques that can be used to handle recursive relationships in hierarchical data, but two of the most performant and flexible are the <code>WITH RECURSIVE</code> CTE and using closure tables. Both techniques have their own benefits and drawbacks, and the best choice will depend on the specific requirements of your application.</p>]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[What I think ChatGPT means for developers]]></title>
             <link>https://matthewdaly.co.uk/blog/2022/12/11/what-i-think-chatgpt-means-for-developers/</link>
             <guid>https://matthewdaly.co.uk/blog/2022/12/11/what-i-think-chatgpt-means-for-developers/</guid>
             <pubDate>Sun, 11 Dec 2022 19:20:00 GMT</pubDate>
-            <content:encoded><![CDATA[<p>I&#x27;m sure you&#x27;ve heard some of the buzz about <a href="https://chat.openai.com/">ChatGPT</a>. There&#x27;s been examples of it <a href="https://wptavern.com/chatgpt-creates-a-working-wordpress-plugin-on-the-first-try">creating a working Wordpress plugin on demand</a>, <a href="https://twitter.com/ZacYungblut/status/1598593759532355584?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1598593759532355584%7Ctwgr%5E7278d2255112f76225493be1370af0fa7a975285%7Ctwcon%5Es1_&amp;ref_url=https%3A%2F%2Fd-35506373891512421835.ampproject.net%2F2211250451000%2Fframe.html">recreating the Apple website</a>, act as a Linux terminal, and writing astonishingly detailed code samples for various purposes on demand.</p><p>Naturally I decided to have a tinker with it as I was curious about it, and I&#x27;ve found it very useful for coding. Here are some samples of things I&#x27;ve asked it to do for me.</p><h3>An example of writing code with ChatGPT</h3><p>Given the popularity of React.js and my own experience using it, I figured that was something ChatGPT would probably handle OK and that I would be able to evaluate for myself. I therefore asked ChatGPT to create a React-based alert system for me. As I&#x27;ve implemented something similar myself, I was interested to see how well it would do against my own implementation which is in production:</p><blockquote><p>Please create a hook-based toast-style alert system in React.js using hooks</p></blockquote><p>It responded with:</p><blockquote><p>Sure, here is an example of a toast-style alert system in React.js using hooks:</p></blockquote><pre><code class="language-javascript">import React, { useState, useEffect } from &#x27;react&#x27;;
+            <content:encoded><![CDATA[<p>I&#x27;m sure you&#x27;ve heard some of the buzz about <a href="https://chat.openai.com/">ChatGPT</a>. There&#x27;s been examples of it <a href="https://wptavern.com/chatgpt-creates-a-working-wordpress-plugin-on-the-first-try">creating a working Wordpress plugin on demand</a>, <a href="https://twitter.com/ZacYungblut/status/1598593759532355584?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1598593759532355584%7Ctwgr%5E7278d2255112f76225493be1370af0fa7a975285%7Ctwcon%5Es1_&amp;ref_url=https%3A%2F%2Fd-35506373891512421835.ampproject.net%2F2211250451000%2Fframe.html">recreating the Apple website</a>, acting as a Linux terminal, and writing astonishingly detailed code samples for various purposes on demand.</p><p>Naturally I decided to have a tinker with it as I was curious about it, and I&#x27;ve found it very useful for coding. Here are some samples of things I&#x27;ve asked it to do for me.</p><h3>An example of writing code with ChatGPT</h3><p>Given the popularity of React.js and my own experience using it, I figured that was something ChatGPT would probably handle OK and that I would be able to evaluate for myself. I therefore asked ChatGPT to create a React-based alert system for me. As I&#x27;ve implemented something similar myself, I was interested to see how well it would do against my own implementation which is in production:</p><blockquote><p>Please create a hook-based toast-style alert system in React.js using hooks</p></blockquote><p>It responded with:</p><blockquote><p>Sure, here is an example of a toast-style alert system in React.js using hooks:</p></blockquote><pre><code class="language-javascript">import React, { useState, useEffect } from &#x27;react&#x27;;
 
 function useToast() {
   const [isShowing, setIsShowing] = useState(false);
@@ -64,7 +133,7 @@ function App() {
     &lt;/div&gt;
   );
 }
-</code></pre><blockquote><p>In this example, the <code>useToast</code> hook manages the state for the toast, including whether it is showing, the message to display, and methods for showing and hiding the toast. The <code>App</code> component uses the <code>useToast</code> hook to show and hide the toast when a button is clicked.</p></blockquote><blockquote><p>The <code>useToast</code> hook uses the <code>useState</code> hook to manage the state for the toast, and the <code>useEffect</code> hook to automatically hide the toast after a certain amount of time. This is just one example of how to implement a toast-style alert system in React.js using hooks, and you can modify it to suit your specific needs.</p></blockquote><p>Looks OK, but only supports a single message at once, so I followed it up:</p><blockquote><p>Can we amend this to support showing multiple toasts at once?</p></blockquote><blockquote><p>Yes, it is possible to modify the example to support showing multiple toasts at once. Instead of using a single state value for the message and whether the toast is showing, you can use an array to store multiple toast messages and show them all at once. Here is an example of how you might do this:</p></blockquote><pre><code class="language-javascript">import React, { useState, useEffect } from &#x27;react&#x27;;
+</code></pre><blockquote><p>In this example, the <code>useToast</code> hook manages the state for the toast, including whether it is showing, the message to display, and methods for showing and hiding the toast. The <code>App</code> component uses the <code>useToast</code> hook to show and hide the toast when a button is clicked.</p></blockquote><blockquote><p>The <code>useToast</code> hook uses the <code>useState</code> hook to manage the state for the toast, and the <code>useEffect</code> hook to automatically hide the toast after a certain amount of time. This is just one example of how to implement a toast-style alert system in React.js using hooks, and you can modify it to suit your specific needs.</p></blockquote><p>Looks OK, but it only supports a single message at once, so I followed it up:</p><blockquote><p>Can we amend this to support showing multiple toasts at once?</p></blockquote><blockquote><p>Yes, it is possible to modify the example to support showing multiple toasts at once. Instead of using a single state value for the message and whether the toast is showing, you can use an array to store multiple toast messages and show them all at once. Here is an example of how you might do this:</p></blockquote><pre><code class="language-javascript">import React, { useState, useEffect } from &#x27;react&#x27;;
 
 function useToast() {
   const [toasts, setToasts] = useState([]);
@@ -527,7 +596,7 @@ use Illuminate\Support\Facades\Response;
 // Set the Expires header to one hour from now
 $expires = Carbon::now()-&gt;addHour();
 Response::header(&#x27;Expires&#x27;, $expires-&gt;toRfc2822String());
-</code></pre><blockquote><p>By setting these headers, you can improve the performance of your Laravel application by allowing the client to make more efficient use of caching. This can reduce the number of requests that need to be made to the server, resulting in faster load times and a better user experience.</p></blockquote><blockquote><p>Of course, there are many other HTTP headers that can be used to improve the performance of your Laravel application. For more information, check out the official Laravel documentation on HTTP headers.</p></blockquote><p>Not hugely comprehensive, but a reasonably good starting point. Using this to get you started seems like a good idea, and there&#x27;s nothing more intimidating than a blank page when you want to write a blog post.</p><h3>Overall impressions</h3><p>Even in its current state as a tech preview, ChatGPT is <em>hugely</em> impressive. It&#x27;s extraordinary how good it is at generating basic code samples for almost any use case I can think of. However, the distinct impression I get is that it&#x27;s not really capable of original thought. Most of the above is basically just taking stuff that&#x27;s already out there and essentially remixing it. There&#x27;s plenty of tutorials on writing all of the above and it looks to me like it&#x27;s just taking those and converting those according to the provided specifications.</p><p>However, don&#x27;t get the impression that doesn&#x27;t make it useful. I&#x27;ve used Github Copilot for a while and that offers dramatic improvements in productivity, and this has the potential to be much more significant. As shown above, it can migrate a simple controller from Zend 1 to Laravel, with the result looking perfectly acceptable, and the value of that should be clear to anyone who has to work on a large legacy project. Similarly you can ask it to rewrite something to use a specific design pattern and the end result is perfectly acceptable. It&#x27;s a fantastic learning tool too since you can ask it to provide an example specific to your use case rather than trawling through blog posts, where most of them might have different requirements to you. As such it&#x27;s going to hugely improve developer productivity.</p><p>To a large extent, I think something like this is going change the developer&#x27;s role by shifting the emphasis of it somewhat from the productive to the executive, with our job being more akin to editors than authors. Coding will become less about solving the problem and more about defining the problem in the first place and letting the system solve it. However, I don&#x27;t think it will automate our jobs away entirely - the quality of the code it produces is variable, to say the least, and there will definitely be a need to be able to debug it, and solve more unusual problems.</p><p>However, my job involved writing spammy blog posts for ad money, I&#x27;d be very worried about my future prospects. I think tools like this will probably be writing most of the spammier sort of blog posts that just exist to get clicks on the web in a year at most. I&#x27;ve actually just asked it to write a blog post I&#x27;ve wanted to write for a while now for me, and the end result looks pretty solid right now.</p>]]></content:encoded>
+</code></pre><blockquote><p>By setting these headers, you can improve the performance of your Laravel application by allowing the client to make more efficient use of caching. This can reduce the number of requests that need to be made to the server, resulting in faster load times and a better user experience.</p></blockquote><blockquote><p>Of course, there are many other HTTP headers that can be used to improve the performance of your Laravel application. For more information, check out the official Laravel documentation on HTTP headers.</p></blockquote><p>Not hugely comprehensive, but a reasonably good starting point. Using this to get you started seems like a good idea, and there&#x27;s nothing more intimidating than a blank page when you want to write a blog post.</p><h3>Overall impressions</h3><p>Even in its current state as a tech preview, ChatGPT is <em>hugely</em> impressive. It&#x27;s extraordinary how good it is at generating basic code samples for almost any use case I can think of. However, the distinct impression I get is that it&#x27;s not really capable of original thought. Most of the above is basically just taking stuff that&#x27;s already out there and essentially remixing it. There&#x27;s plenty of tutorials on writing all of the above and it looks to me like it&#x27;s just taking those and converting those according to the provided specifications.</p><p>However, don&#x27;t get the impression that doesn&#x27;t make it useful. I&#x27;ve used Github Copilot for a while and that offers dramatic improvements in productivity, and this has the potential to be much more significant. As shown above, it can migrate a simple controller from Zend 1 to Laravel, with the result looking perfectly acceptable, and the value of that should be clear to anyone who has to work on a large legacy project. Similarly you can ask it to rewrite something to use a specific design pattern and the end result is perfectly acceptable. It&#x27;s a fantastic learning tool too since you can ask it to provide an example specific to your use case rather than trawling through blog posts, where most of them might have different requirements to you. As such it&#x27;s going to hugely improve developer productivity.</p><p>To a large extent, I think something like this is going change the developer&#x27;s role by shifting the emphasis of it somewhat from the productive to the executive, with our job being more akin to editors than authors. Coding will become less about solving the problem and more about defining the problem in the first place and letting the system solve it. However, I don&#x27;t think it will automate our jobs away entirely - the quality of the code it produces is variable, to say the least, and there will definitely be a need to be able to debug it, and solve more unusual problems.</p><p>However, if my job involved writing spammy blog posts for ad money, I&#x27;d be <em>very</em> worried about my future prospects. I think tools like this will probably be writing most of the spammier sort of blog posts that just exist to get clicks on the web in a year at most. I&#x27;ve actually just asked it to write a blog post I&#x27;ve wanted to write for a while now for me, and the end result looks pretty solid right now - I&#x27;d anticipate it saved me about 90% of the work, with the remaining 10% just a case of cleaning it up.</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Why I no longer use the repository pattern]]></title>
@@ -1668,126 +1737,6 @@ function App() {
 
 export default App;
 </code></pre><p>That way, we can specify a completely different shape for our response data every time we call a different endpoint, without creating a different hook for every different endpoint, and still enjoy properly typed responses from our hook.</p><p>Generics can be useful for many other purposes, such as specifying the contents of collections. For instance, if you had a <code>Collection</code> object, you could use a generic type to specify that any one instance must consist of instances of a given type. Flow would then flag it as an error if you assigned an item of the wrong type to that collection, thus making some unit tests redundant.</p>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Caching the Laravel user provider with a decorator]]></title>
-            <link>https://matthewdaly.co.uk/blog/2020/03/11/caching-the-laravel-user-provider-with-a-decorator/</link>
-            <guid>https://matthewdaly.co.uk/blog/2020/03/11/caching-the-laravel-user-provider-with-a-decorator/</guid>
-            <pubDate>Wed, 11 Mar 2020 21:20:14 GMT</pubDate>
-            <content:encoded><![CDATA[<p>A couple of years ago I posted <a href="https://matthewdaly.co.uk/blog/2018/01/12/creating-a-caching-user-provider-for-laravel/">this article</a> about constructing a caching user provider for Laravel. It worked, but with the benefit of hindsight I can now see that there were a number of issues with this solution:</p><ul><li>Because it extended the existing Eloquent user provider, it was dependent on the internals of that remaining largely the same - any change in how that worked could potentially break it</li><li>For the same reason, if you wanted to switch to a different user provider, you&#x27;d need to add the same functionality to that provider, either by writing a new provider from scratch or extending an existing one</li></ul><p>I&#x27;ve used the decorator pattern a few times in the past, and it&#x27;s a good fit for situations like this where you want to add functionality to something that implements an interface. It allows you to separate out one part of the functionality (in this case, caching) into its own layer, so it&#x27;s not dependent on any one implementation and can wrap any other implementation of that same interface you wish. Also, as long as the interface remains the same, there likely won&#x27;t be any need to change it when the implementation that is wrapped changes. Here I&#x27;ll demonstrate how to create a decorator to wrap the existing user providers.</p><p>If we only want to cache the <code>retrieveById()</code> method, like the previous implementation, the decorator class might look something like this:</p><pre><code class="language-php">&lt;?php
-
-namespace App\Auth;
-
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\UserProvider;
-use Illuminate\Contracts\Cache\Repository;
-
-final class UserProviderDecorator implements UserProvider
-{
-    /**
-     * @var UserProvider
-     */
-    private $provider;
-
-    /**
-     * @var Repository
-     */
-    private $cache;
-
-    public function __construct(UserProvider $provider, Repository $cache)
-    {
-        $this-&gt;provider = $provider;
-        $this-&gt;cache = $cache;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function retrieveById($identifier)
-    {
-        return $this-&gt;cache-&gt;remember(&#x27;id-&#x27; . $identifier, 60, function () use ($identifier) {
-            return $this-&gt;provider-&gt;retrieveById($identifier);
-        });
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function retrieveByToken($identifier, $token)
-    {
-        return $this-&gt;provider-&gt;retrieveById($identifier, $token);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function updateRememberToken(Authenticatable $user, $token)
-    {
-        return $this-&gt;provider-&gt;updateRememberToken($user, $token);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function retrieveByCredentials(array $credentials)
-    {
-        return $this-&gt;provider-&gt;retrieveByCredentials($credentials);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function validateCredentials(Authenticatable $user, array $credentials)
-    {
-        return $this-&gt;provider-&gt;validateCredentials($user, $credentials);
-    }
-}
-</code></pre><p>It implements the same interface as the user providers, but accepts two arguments in the constructor, which are injected and stored as properties:</p><ul><li>Another instance of <code>Illuminate\Contracts\Auth\UserProvider</code></li><li>An instance of the cache repository <code>Illuminate\Contracts\Cache\Repository</code></li></ul><p>Most of the methods just defer to their counterparts on the wrapped instance - in this example I have cached the response to <code>retrieveById()</code> only, but you can add caching to the other methods easily enough if need be. You do of course still need to flush the cache at appropriate times, which is out of scope for this example, but can be handled by model events as appropriate, as described in the prior article.</p><p>Then you add the new decorator as a custom user provider, but crucially, you need to first resolve the provider you&#x27;re going to use, then wrap it in the decorator:</p><pre><code class="language-php">&lt;?php
-
-namespace App\Providers;
-
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Contracts\Auth\UserProvider;
-use Auth;
-use Illuminate\Auth\EloquentUserProvider;
-use Illuminate\Contracts\Cache\Repository;
-use App\Auth\UserProviderDecorator;
-
-class AuthServiceProvider extends ServiceProvider
-{
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
-    protected $policies = [
-        &#x27;App\Model&#x27; =&gt; &#x27;App\Policies\ModelPolicy&#x27;,
-    ];
-
-    /**
-     * Register any authentication / authorization services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this-&gt;registerPolicies();
-
-        Auth::provider(&#x27;cached&#x27;, function ($app, array $config) {
-            $provider = new EloquentUserProvider($app[&#x27;hash&#x27;], $config[&#x27;model&#x27;]);
-            $cache = $app-&gt;make(Repository::class);
-            return new UserProviderDecorator($provider, $cache);
-        });
-    }
-}
-</code></pre><p>Finally, set up the config to use the caching provider:</p><pre><code class="language-php">    &#x27;providers&#x27; =&gt; [
-        &#x27;users&#x27; =&gt; [
-            &#x27;driver&#x27; =&gt; &#x27;cached&#x27;,
-            &#x27;model&#x27; =&gt; App\Eloquent\Models\User::class,
-        ],
-    ],
-</code></pre><p>This is pretty rough and ready, and could possibly be improved upon by allowing you to specify a particular provider to wrap in the config, as well as caching more of the methods, but it demonstrates the principle effectively.</p><p>By wrapping the existing providers, you can change the behaviour of the user provider without touching the existing implementation, which is in line with the idea of composition over inheritance. Arguably it&#x27;s more complex, but it&#x27;s also more flexible - if need be you can swap out the wrapped user provider easily, and still retain the same caching functionality.</p>]]></content:encoded>
         </item>
     </channel>
 </rss>
