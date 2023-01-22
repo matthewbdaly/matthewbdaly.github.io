@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://matthewdaly.co.uk</id>
     <title>Matthew Daly</title>
-    <updated>2022-12-18T14:16:16.699Z</updated>
+    <updated>2023-01-22T14:21:41.473Z</updated>
     <generator>GatsbyJS</generator>
     <author>
         <name>Matthew Daly</name>
@@ -13,7 +13,7 @@
     <link rel="self" href="/atom.xml"/>
     <subtitle>I'm a web developer in Norfolk. This is my blog...</subtitle>
     <icon>https://matthewdaly.co.uk/favicon-32x32.png</icon>
-    <rights>All rights reserved Matthew Daly 2022</rights>
+    <rights>All rights reserved Matthew Daly 2023</rights>
     <contributor>
         <name>Matthew Daly</name>
         <email>matthew@matthewdaly.co.uk</email>

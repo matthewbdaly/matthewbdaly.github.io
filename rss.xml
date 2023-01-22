@@ -4,11 +4,11 @@
         <title>Matthew Daly</title>
         <link>https://matthewdaly.co.uk</link>
         <description>I'm a web developer in Norfolk. This is my blog...</description>
-        <lastBuildDate>Sun, 18 Dec 2022 14:16:16 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 22 Jan 2023 14:21:41 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>GatsbyJS</generator>
         <language>en</language>
-        <copyright>All rights reserved Matthew Daly 2022</copyright>
+        <copyright>All rights reserved Matthew Daly 2023</copyright>
         <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Two techniques for handling recursive relationships in MySQL]]></title>
