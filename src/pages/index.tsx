@@ -32,7 +32,7 @@ const Index = ({ data, location }: Props): React.ReactElement => {
        I&apos;ve also worked with Django, Angular 1, CodeIgniter, Backbone.js and Phonegap in the past.</p>
       <p className="text-xl py-2">I blog about the challenges of and solutions for dealing with legacy code, web app performance,
       modern PHP and Javascript development, and anything else I find interesting.</p>
-      <p className="text-xl py-2">You can find me on <Anchor href={`https://twitter.com/${data.site.siteMetadata.social.twitter}`} rel="me">Twitter</Anchor> and <Anchor href={`https://github.com/${data.site.siteMetadata.social.github}`} rel="me">GitHub</Anchor></p>
+        <p className="text-xl py-2">You can find me on <Anchor href={`https://twitter.com/${data.site.siteMetadata.social.twitter}`} rel="me">Twitter</Anchor>, <Anchor href={data.site.siteMetadata.social.mastodon} rel="me">Mastodon</Anchor>, and <Anchor href={`https://github.com/${data.site.siteMetadata.social.github}`} rel="me">GitHub</Anchor></p>
       <RecentPostsComponent />
     </Layout>
   )
@@ -49,6 +49,7 @@ export const recentPostsQuery = graphql`
         social {
           twitter
           github
+          mastodon
         }
       }
     }
