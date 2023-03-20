@@ -45,7 +45,6 @@ const PostTemplate = ({ location, pageContext, data }: Props): React.ReactElemen
             <h2 className="py-4 text-2xl font-bold e-content p-name">
               <a className="u-url" href={data.site.siteMetadata.siteUrl + post.fields.path}>{post.frontmatter.title}</a>
             </h2>
-            {post.frontmatter.inReplyTo && <div className="italic">In reply to <a rel="in-reply-to" href={post.frontmatter.inReplyTo}>{post.frontmatter.inReplyTo}</a></div>}
             <p className="my-4 text-lg font-semibold">Published by <a href="/" rel="author">Matthew Daly</a> at {post.frontmatter.date}</p>
             <time className="hidden dt-published">{post.frontmatter.isoDate}</time>
           </header>
@@ -86,7 +85,6 @@ query BlogPostByPath($path: String!) {
       date(formatString: "Do MMMM YYYY h:mm a")
       isoDate: date(formatString: "YYYY-MM-DDTHH:mm:ssZ")
       categories
-      inReplyTo
     }
     fields {
       path

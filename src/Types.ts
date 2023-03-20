@@ -13,7 +13,6 @@ export interface PageData {
     title: string;
     date: string;
     categories: string[];
-    inReplyTo: string | null,
     isoDate: string
   },
   body: string;
