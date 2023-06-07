@@ -3,7 +3,7 @@ import React from "react"
 interface Props {
   children: React.ReactNode;
   href: string;
-  rel: string | null;
+  rel: string | undefined;
 }
 
 const Anchor = (props: Props): React.ReactElement => {

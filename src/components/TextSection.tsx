@@ -11,7 +11,6 @@ import Pre from "./Pre"
 import Header1 from "./Header1"
 import Header2 from "./Header2"
 import Header3 from "./Header3"
-import ContactForm from "./ContactForm"
 import Notice from "./Notice"
 
 const components = {
@@ -25,7 +24,6 @@ const components = {
   p: Paragraph,
   a: Anchor,
   blockquote: Blockquote,
-  ContactForm,
   Notice
 }
 
