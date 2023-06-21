@@ -27,7 +27,6 @@ module.exports = {
           "default-src": "'self' *.google-analytics.com disqus.com *.disqus.com *.disquscdn.com getform.io",
           "child-src": "'self'",
           "frame-src": "disqus.com *.addthis.com",
-          "frame-ancestors": "'none'",
           "object-src": "'none'",
           "font-src": "'self' data: fonts.google-apis.com fonts.gstatic.com",
           "style-src": "'self' fonts.googleapis.com *.addthis.com google-analytics.com *.disquscdn.com *.disqus.com 'unsafe-inline'",
