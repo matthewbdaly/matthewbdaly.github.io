@@ -28,14 +28,14 @@ I've also used Django professionally for a lot of projects - I used to build Pho
 
 ## Desktop
 
-I have literally never owned a desktop since the 8-bit days - I exclusively use laptops.
+Until quite recently I hadn't owned a desktop since the 8-bit era. However, in 2022 I had a small windfall from a share buyback by a former employer who had given out shares as a bonus some years ago, and decided to spend it on an M1 Mac Mini. As I'd been working from home throughout the pandemic, and two days a week since, I already had the other kit. Nowadays that's my main development machine for personal projects.
 
-My workhorse for personal projects is a Dell XPS 13 Developer Edition running the current Ubuntu LTS. I also own an HP Stream 11 running Xubuntu, which, while not a very powerful laptop, is good enough for some light development work and writing blog posts, and is cheap enough that it's not going to be a problem replacing it if I forget it on the train.
+I also have a Dell XPS 13 Developer Edition running the current Ubuntu LTS, though that's now eight years old so a bit past it. I also own an HP Stream 11 running Xubuntu, which, while not a very powerful laptop, is good enough for some light development work and writing blog posts, and is cheap enough that it's not going to be a problem replacing it if I forget it on the train.
 
-At work I use a Macbook Pro.
+At work I use an M1 Macbook Pro.
 
 ## Applications
 
-Honestly, there's not much in the way of applications I depend on. I pretty much live in the terminal, and I rely on Screen and Byobu for my workflow.
+Honestly, there's not much in the way of applications I depend on. I pretty much live in the terminal. I have a fairly highly customised setup with Hyper as my terminal of choice, but otherwise there's very few graphical applications I need.
 
 Remmina is one tool I'm particularly fond of, though. It's a Linux application for managing remote connections via SSH, RDP and several other supported protocols, and it's the best example of that I've ever seen. Nothing I've seen on Mac or Windows is quite as good.
