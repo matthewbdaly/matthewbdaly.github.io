@@ -30,9 +30,6 @@ const Footer = (): React.ReactElement => {
           <Link to={"/contact"}>Contact</Link>
         </li>
         <li className="w-1/3 my-2 md:w-1/6">
-          <a href={`https://twitter.com/${site.siteMetadata.social.twitter}`}>Twitter</a>
-        </li>
-        <li className="w-1/3 my-2 md:w-1/6">
           <a href={`https://github.com/${site.siteMetadata.social.github}`}>Github</a>
         </li>
         <li className="w-1/3 my-2 md:w-1/6">
