@@ -27,7 +27,6 @@ const SEO = ({ description, lang, meta, title, url }: Props): React.ReactElement
             title
             description
             social {
-              twitter
               github
               email
               mastodon
@@ -65,26 +64,9 @@ const SEO = ({ description, lang, meta, title, url }: Props): React.ReactElement
           property: "og:type",
           content: "website",
         },
-        {
-          name: "twitter:card",
-          content: "summary",
-        },
-        {
-          name: "twitter:creator",
-          content: site.siteMetadata.social.twitter,
-        },
-        {
-          name: "twitter:title",
-          content: title,
-        },
-        {
-          name: "twitter:description",
-          content: metaDescription,
-        },
       ].concat(meta)}
     >
       <link href={ url } rel="canonical" />
-      <link href={`https://twitter.com/${site.siteMetadata.social.twitter}`} rel="me" />
       <link href={`https://github.com/${site.siteMetadata.social.github}`} rel="me" />
       <link href={`${site.siteMetadata.social.mastodon}`} rel="me" />
       <link href={`mailto:${site.siteMetadata.social.email}`} rel="me" />

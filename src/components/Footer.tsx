@@ -9,7 +9,6 @@ const Footer = (): React.ReactElement => {
             site {
               siteMetadata {
                 social {
-                  twitter
                   github
                 }
               }

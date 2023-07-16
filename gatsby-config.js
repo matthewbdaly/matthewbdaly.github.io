@@ -8,7 +8,6 @@ module.exports = {
     description: "I'm a web developer in Norfolk. This is my blog...",
     siteUrl: "https://matthewdaly.co.uk/",
     social: {
-      twitter: "mattbd",
       github: "matthewbdaly",
       email: "matthew@matthewdaly.co.uk",
       mastodon: "https://mstdn.social/@matthewbdaly"
@@ -74,7 +73,7 @@ module.exports = {
         short_name: "Matthew Daly",
         start_url: "/",
         background_color: "white",
-        theme_color: "#3b82f6",
+        theme_color: "#374151",
         display: "standalone"
       },
     },

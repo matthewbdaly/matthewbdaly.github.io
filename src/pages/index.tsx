@@ -47,7 +47,6 @@ export const recentPostsQuery = graphql`
         title
         siteUrl
         social {
-          twitter
           github
           mastodon
         }
