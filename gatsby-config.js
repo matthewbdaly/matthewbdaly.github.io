@@ -14,7 +14,6 @@ module.exports = {
     },
   },
   plugins: [
-    "gatsby-plugin-netlify-cms",
     "gatsby-plugin-all-feeds",
     "gatsby-plugin-lunr-js",
     {
