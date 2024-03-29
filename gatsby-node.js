@@ -1,7 +1,5 @@
 const path = require("path")
 const _ = require("lodash")
-const Feed = require("feed").Feed
-const fs = require("fs")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createRedirect, createPage } = actions
