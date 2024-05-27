@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://matthewdaly.co.uk/sitemap/sitemap-index.xml
+Sitemap: https://matthewdaly.co.uk/sitemap-index.xml
 Host: https://matthewdaly.co.uk
