@@ -4,11 +4,11 @@
         <title>Matthew Daly</title>
         <link>https://matthewdaly.co.uk</link>
         <description>I'm a web developer in Norfolk. This is my blog...</description>
-        <lastBuildDate>Sun, 28 Jul 2024 16:57:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 29 Mar 2025 17:13:45 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>GatsbyJS</generator>
         <language>en</language>
-        <copyright>All rights reserved Matthew Daly 2024</copyright>
+        <copyright>All rights reserved Matthew Daly 2025</copyright>
         <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Using Dolt with Lando]]></title>
