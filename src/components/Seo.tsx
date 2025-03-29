@@ -27,6 +27,7 @@ const SEO = ({ description, lang, meta, title, url }: Props): React.ReactElement
             title
             description
             social {
+              bluesky
               github
               email
               mastodon
@@ -66,7 +67,7 @@ const SEO = ({ description, lang, meta, title, url }: Props): React.ReactElement
         },
       ].concat(meta)}
     >
-      <link href={ url } rel="canonical" />
+      <link href={url} rel="canonical" />
       <link href={`https://github.com/${site.siteMetadata.social.github}`} rel="me" />
       <link href={`${site.siteMetadata.social.mastodon}`} rel="me" />
       <link href={`mailto:${site.siteMetadata.social.email}`} rel="me" />
@@ -75,7 +76,7 @@ const SEO = ({ description, lang, meta, title, url }: Props): React.ReactElement
       <link href="https://webmention.io/matthewdaly.co.uk/webmention" rel="webmention" />
       <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
       <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
-      <link rel="openid.delegate" href={ site.siteMetadata.siteUrl } />
+      <link rel="openid.delegate" href={site.siteMetadata.siteUrl} />
       <link rel="openid.server" href="https://openid.indieauth.com/openid" />
       <link rel="alternate" type="application/rss+xml" title={`${site.siteMetadata.title} - feed`} href="/rss.xml" />
       <link rel="alternate" type="application/atom+xml" title={`${site.siteMetadata.title} - feed`} href="/atom.xml" />
