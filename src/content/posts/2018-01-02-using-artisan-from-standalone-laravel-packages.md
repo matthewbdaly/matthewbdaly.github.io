@@ -11,7 +11,7 @@ comments: true
 
 Recently I've been building and publishing a significant number of Laravel packages, and I thought I'd share details of some of them over the next few days.
 
-[Artisan Standalone](https://github/com/matthewbdaly/artisan-standalone) is a package that, when installed in a standalone Laravel package (eg, not in an actual Laravel install, but in a package that you're building that is intended for use with Laravel), allows you to use Artisan. It's intended largely to make it quicker and easier to build functionality as separate packages by giving you access to the same generator commands as you have when working with a Laravel application. It came about largely from a need to scratch my own itch, as when building packages I was having to either run Artisan commands in a Laravel app and move them over, or copy them from existing files, which was obviously a pain in the proverbial.
+[Artisan Standalone](https://github.com/matthewbdaly/artisan-standalone) is a package that, when installed in a standalone Laravel package (eg, not in an actual Laravel install, but in a package that you're building that is intended for use with Laravel), allows you to use Artisan. It's intended largely to make it quicker and easier to build functionality as separate packages by giving you access to the same generator commands as you have when working with a Laravel application. It came about largely from a need to scratch my own itch, as when building packages I was having to either run Artisan commands in a Laravel app and move them over, or copy them from existing files, which was obviously a pain in the proverbial.
 
 You can install it with the following command:
 
